@@ -101,7 +101,7 @@ def signin(request):
                 if next_post != "None":  # not used is_safe_url  here next post is none (a string)
                     return redirect(next_post)
                 else:
-                    return redirect("customer:user_page")
+                    return redirect("app:home")
         else:
             messages.warning(request, "Password/Username is wrong")
             return redirect("register:signin")
@@ -141,7 +141,7 @@ def welcome(request):
 
         Pay.objects.filter(user=user).update(firstname=fname, phone=number)
 
-        return redirect("customer:user_page")
+        return redirect("app:home")
     return render(request, "register/welcome.html")
 
 
