@@ -155,9 +155,8 @@ def pass_reset(request):
             return JsonResponse({"error":"User does not exist"})
         password = Password(email=email)
         password.save()
-        print()
-        password_reset(name=user.first_name,email=email,subject="Password reset",link=password.reset_link)
-        return JsonResponse({"success":"success"})
+        password_reset(name=user.first_name,email=email,subject="Password reset", link=password.reset_link)
+        return JsonResponse({"success": "success"})
 
     slug = request.session.get("slug")
 
