@@ -13,7 +13,28 @@
 {% block content_block %}
 <br><br>
 <div class="container my-5">
-    <p>Name of the person {{book.user.first_name}}</p>
+    <table class="table table-striped table-bordered equipment" style="width:100%">
+        <thead>
+            <tr>
+                <th>UserName</th>
+                <th>Email Address</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Joined</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>{{ book.user.username }}</td>
+                    <td>{{ book.user.email }}</td>
+                    <td>{{ book.user.first_name }}</td>
+                    <td>{{ book.user.last_name }}</td>
+                    <td>{{ book.user.date_joined }}</td>
+                </tr>
+        </tbody>
+
+    </table>
+
     <p>Car Images</p>
     <div class="row">
         <div class="col-3">

@@ -1,13 +1,16 @@
 from django.shortcuts import render, redirect
 from genie.models import VehiclePhoto, Cleanliness, PhotoId
 from vehicle.models import Book
+from customer.models import Customer
 from django.contrib import messages
+from datetime import date
 
 # Create your views here.
 
 
 def index(request):
-    book = Book.objects.all()
+    now = date.today()
+    book = Book.objects.filter(check_in_date__gte=now)
     return render(request, "genie/index.html", {"book": book})
 
 
@@ -49,9 +52,13 @@ def create(request, pk):
 
 def show(request, pk):
     book = Book.objects.get(pk=pk)
-    vehicle = VehiclePhoto.objects.get(book=book)
-    clean = Cleanliness.objects.get(book=book)
-    ids = PhotoId.objects.get(book=book)
+    try:
+        vehicle = VehiclePhoto.objects.get(book=book)
+        clean = Cleanliness.objects.get(book=book)
+        ids = PhotoId.objects.get(book=book)
+    except:
+        messages.warning(request, "there is no image")
+        return redirect("genie:index")
     return render(request, "genie/show.html", {"vehicle": vehicle,
                                                "book": book, "clean": clean,
                                                "ids": ids})
