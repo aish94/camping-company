@@ -1,0 +1,79 @@
+{% extends "snippets/base.html" %}
+{% load staticfiles %}
+
+{% block content_block %}
+<br><br>
+<form method="POST" enctype="multipart/form-data">{% csrf_token %}
+
+    <div class="container my-5">
+        <p>Vehicle Photo</p>
+
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Front image</label>
+            <input name="front" type="file" class="form-control-file" id="exampleFormControlFile1" required>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Back image</label>
+            <input name="back" type="file" class="form-control-file" id="exampleFormControlFile2" required>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Side 1</label>
+            <input name="side1" type="file" class="form-control-file" id="exampleFormControlFile3" required>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Side 2</label>
+            <input name="side2" type="file" class="form-control-file" id="exampleFormControlFile4" required>
+        </div>
+
+        <p>Cleanliness</p>
+
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Inside Tent</label>
+            <input name="inside_tent" type="file" class="form-control-file" id="exampleFormControlFile5" required>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Inside car</label>
+            <input name="inside_car" type="file" class="form-control-file" id="exampleFormControlFile6" required>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Outside car</label>
+            <input name="outside_car" type="file" class="form-control-file" id="exampleFormControlFile7" required>
+        </div>
+
+        <p>Photo id</p>
+
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Id 1</label>
+            <input name="inside_tent" type="file" class="form-control-file" id="exampleFormControlFile8" required>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Id 2</label>
+            <input name="inside_car" type="file" class="form-control-file" id="exampleFormControlFile9" required>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Id 3</label>
+            <input name="outside_car" type="file" class="form-control-file" id="exampleFormControlFile10" required>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Id 4</label>
+            <input name="outside_car" type="file" class="form-control-file" id="exampleFormControlFile11" required>
+        </div>
+
+
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Id 5</label>
+            <input name="outside_car" type="file" class="form-control-file" id="exampleFormControlFile12" required>
+        </div>
+
+        <button class="btn btn-secondary">Submit</button>
+    </div>
+</form>
+{% endblock %}
