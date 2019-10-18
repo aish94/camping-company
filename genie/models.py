@@ -26,11 +26,11 @@ class VehiclePhoto(models.Model):
 
 class PhotoId(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
-    id1 = models.ImageField(upload_to="genie/vehicle_photo", blank=True)
-    id2 = models.ImageField(upload_to="genie/vehicle_photo", blank=True)
-    id3 = models.ImageField(upload_to="genie/vehicle_photo", blank=True)
-    id4 = models.ImageField(upload_to="genie/vehicle_photo", blank=True)
-    id5 = models.ImageField(upload_to="genie/vehicle_photo", blank=True)
+    id1 = models.ImageField(upload_to="genie/photo_id", blank=True)
+    id2 = models.ImageField(upload_to="genie/photo_id", blank=True)
+    id3 = models.ImageField(upload_to="genie/photo_id", blank=True)
+    id4 = models.ImageField(upload_to="genie/photo_id", blank=True)
+    id5 = models.ImageField(upload_to="genie/photo_id", blank=True)
 
     def __str__(self):
         return str(self.book.pk)
