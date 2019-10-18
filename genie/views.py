@@ -37,11 +37,11 @@ def create(request, pk):
         outside_car = request.FILES['outside_car']
 
         # id
-        id1 = request.FILES['inside_tent']
-        id2 = request.FILES['inside_car']
-        id3 = request.FILES['outside_car']
-        id4 = request.FILES['outside_car']
-        id5 = request.FILES['outside_car']
+        id1 = request.FILES['id1']
+        id2 = request.FILES['id2']
+        id3 = request.FILES['id3']
+        id4 = request.FILES['id4']
+        id5 = request.FILES['id5']
 
         VehiclePhoto(book=book, front=front, back=back, side1=side1, side2=side2).save()
         Cleanliness(book=book, inside_tent=inside_tent, inside_car=inside_car, outside_car=outside_car).save()
