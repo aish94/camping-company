@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from genie.models import VehiclePhoto, Cleanliness, PhotoId
 from vehicle.models import Book
-from customer.models import Customer
+from django.contrib.auth.models import User
+from vehicle.models import Definition
 from django.contrib import messages
 from datetime import date
+import datetime
 
 # Create your views here.
 
@@ -62,3 +64,20 @@ def show(request, pk):
     return render(request, "genie/show.html", {"vehicle": vehicle,
                                                "book": book, "clean": clean,
                                                "ids": ids})
+
+
+def offline(request):
+    if request.method == "POST":
+        check_in = datetime.datetime.strptime(request.POST.get("check_in"), "%Y-%m-%d").date()
+        check_out = datetime.datetime.strptime(request.POST.get("check_out"), "%Y-%m-%d").date()
+        duration = int(request.POST.get("duration"))
+        txnid = request.POST.get("txnid")
+        username = request.POST.get("username")
+        defi = request.POST.get("definition")
+        definition = Definition.objects.get(car_name=defi)
+        user = User.objects.get(username=username)
+        Book(user=user, definition=definition, car_name=definition.car_name,
+             check_in_date=check_in, check_out_date=check_out, duration=duration, txnid=txnid).save()
+        messages.success(request, "Book saved success")
+        return redirect("genie:index")
+    return render(request, "genie/offline.html")
