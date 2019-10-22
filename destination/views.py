@@ -53,7 +53,7 @@ def destination_detail_page(request, slug):
                }
 
     if request.is_ajax():
-        if request.user.is_authenticated():
+        if request.user.is_authenticated:
             days = int(request.POST.get("number"))
             caravan = int(request.POST.get("Caravan")) * days
             ground = int(request.POST.get("Ground")) * days
