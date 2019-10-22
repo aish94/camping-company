@@ -210,9 +210,9 @@
 <script>
   window.onload = function(){
   function couponCode(a){
-        coupon = ({{price}} * a).toFixed(2);
+        coupon = (pri * a).toFixed(2);
         $("#cart-discount").html(-coupon)
-        pri = ({{price}} - coupon) * parseInt(duration);
+        pri = pri - coupon
         $(".product-line-price")[1].textContent = pri;
         var iine = "You got " + 100*a.toString() + "% discount";
         $("#coupon-text").html(iine);
