@@ -1,5 +1,5 @@
 {% extends "snippets/base.html" %} {% load staticfiles %} {% block css %}
-<link rel="stylesheet" href="{% static 'css/home/home_v2.css' %}">
+<link rel="preload" href="{% static 'css/home/home_v2.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
 {% endblock %}
 
 {% block title %}
