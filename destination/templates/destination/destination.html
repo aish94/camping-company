@@ -15,7 +15,7 @@
 {% block content_block %}
 <div class="">
    <div class="row no-gutters">
-      <div class="col-lg-7 col-12">
+      <div class="col-md-7 col-10 some">
           <div class="destination-back">
          <div class="ico">
             <i class="fas fa-map-marked-alt"></i>
@@ -48,7 +48,7 @@
         <div class="replace-me scrollbar">
            <div class="row">
              {% for x in places %}
-              <div class="col-lg-4 col-md-6 col-12">
+              <div class="col-lg-4 col-md-6 col-sm-6">
                  <div class="card">
                  <img src="{{x.images.url}}" class="card-img-top" alt="destination">
                  <div class="card-body">
@@ -76,7 +76,7 @@
         </div>
           </div>
          </div>
-      <div class="col-5">
+      <div class="col-md-5 col-2">
          <div id="map"></div>
       </div>
       </div>
