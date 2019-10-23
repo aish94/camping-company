@@ -1,7 +1,7 @@
 {% extends "snippets/base.html" %}
 {% load staticfiles %}
 {% block css %}
-<!--<link rel="stylesheet" href="{% static 'css/home/about.css' %}">-->
+<!--<link rel="stylesheet" href="{% static 'css/all_user.css' %}">-->
 {% endblock %}
 
 
@@ -47,10 +47,11 @@
     <br>
     <br>
 </div>
-{% endblock %}
-
 <script>
     window.onload = function(){
-        window.location.reload;
-    }
+        $('.equipment').DataTable( {
+        "order": [[ 3, "desc" ]]
+    } );
+ }
 </script>
+{% endblock %}
