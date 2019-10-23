@@ -6,16 +6,19 @@ from vehicle.models import Definition
 from django.contrib import messages
 from datetime import date
 import datetime
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
 
+@login_required
 def index(request):
     now = date.today()
     book = Book.objects.filter(check_in_date__gte=now)
     return render(request, "genie/index.html", {"book": book})
 
 
+@login_required
 def create(request, pk):
     book = Book.objects.get(pk=pk)
     vehicle = VehiclePhoto.objects.filter(book=book)
@@ -52,6 +55,7 @@ def create(request, pk):
     return render(request, "genie/create.html")
 
 
+@login_required
 def show(request, pk):
     book = Book.objects.get(pk=pk)
     try:
@@ -66,6 +70,7 @@ def show(request, pk):
                                                "ids": ids})
 
 
+@login_required
 def offline(request):
     if request.method == "POST":
         check_in = datetime.datetime.strptime(request.POST.get("check_in"), "%Y-%m-%d").date()

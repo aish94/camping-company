@@ -13,31 +13,74 @@
 <meta name="keywords" content="travel destination, destination for camping, beautiful east india,beautiful notheast,mountains arunachal, mountain meghalaya, caving in meghalaya, caving in meghalaya, waterfall of meghalaya, waterfalls meghalaya ,umiam lake, white water village , mawphlang sacred groove,shnonpdeng, dawki,krangsuri,living root bridge, dainthlen falls, kynrem falls, nohsngithiang falls">
 {% endblock %}
 {% block content_block %}
-<br>
-<div class="pad">
-   <h1>&nbsp;</h1>
-   <div class="row">
-      <div class="col-md-7 scrollbar">
+<div class="">
+   <div class="row no-gutters">
+      <div class="col-7">
+          <div class="destination-back">
          <div class="ico">
             <i class="fas fa-map-marked-alt"></i>
          </div>
-         <form id="submit" method="POST">
+
+         <form id="submit" method="POST" autocomplete="off">
             {% csrf_token %}
-            <div class="blog-card alt" style="box-shadow: none;">
-               <div class="input-group mb-3">
-                  <input id="place" type="text" class="form-control" placeholder="filter camp sites with location">
-               </div>
-            </div>
+                <input list="places" class="input-submit" id="place" type="text" placeholder="filter camp sites with location">
+                 <datalist id="places">
+                            <option value="Meghalaya">
+                            <option value="Assam">
+                            <option value="Arunachal Pradesh">
+                            <option value="Nagaland">
+                            <option value="Sikkim">
+                          </datalist>
+                <button class="input-submit-button"><i class="fas fa-search"></i></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input list="prices" class="input-place" type="text" placeholder="prices">
+                        <datalist id="prices">
+                        <option value="Low">
+                        <option value="High">
+                      </datalist>
+                <input list="popularity" class="input-place" type="text" placeholder="Rating">
+                 <datalist id="popularity">
+                            <option value="High">
+                            <option value="Low">
+                  </datalist>
          </form>
-        <div class="replace-me">
-          {% for x in places %}
-             <div class="my-5 blog-card alt remove"> <div class="meta"> <div class="photo" style="background-image: url({{ x.images.url}})"></div> <ul class="details"> <li ><a href="#">{{x.latitude}}</a></li> <li>{{x.longitude}}</li> <li> <ul> <li class="tags">Campsite</li> </ul> </li> </ul> </div> <div class="description" > <h1>{{x.title}}</h1> <h2>Campsite</h2> <p>{{x.description|truncatechars_html:100}}</p> <p class="read-more"> <a href="{% url 'destination:destination_detail_page' slug=x.destination.slug %}">Read More</a> </p> </div> </div>
+              <br>
+
+        <div class="replace-me scrollbar">
+           <div class="row">
+             {% for x in places %}
+              <div class="col-lg-4 col-md-6 col-12">
+                 <div class="card">
+                 <img src="{{x.images.url}}" class="card-img-top" alt="destination">
+                 <div class="card-body">
+                     <h5 class="card-title">{{x.title}}</h5>
+                     <div style="display: block; margin: 0 auto;">
+                         <span class="fa fa-star checked"></span>
+                         <span class="fa fa-star checked"></span>
+                         <span class="fa fa-star checked"></span>
+                         <span class="fa fa-star checked"></span>
+                         <span class="fa fa-star checked"></span>
+                     </div>
+                   <p class="card-text">{{x.description|truncatechars_html:100}}</p>
+                     <div class="card-url">
+                        <a class="card-url-1" href="{% url 'destination:destination_detail_page' slug=x.destination.slug %}" >Know more</a>
+                        <a href="#" class="card-url-2 pull-right">Check availability</a>
+                     </div>
+                 </div>
+              </div>
+                 <br>
+                 <br>
+                 <br>
+            </div>
           {% endfor %}
+         </div>
         </div>
-      </div>
+          </div>
+         </div>
+      <div class="col-5">
          <div id="map"></div>
       </div>
-</div>
+      </div>
+   </div>
 <script>
    function initMap(list1){
        var st = []
