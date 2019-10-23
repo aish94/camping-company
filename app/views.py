@@ -15,7 +15,7 @@ from app.utils import *
 
 
 def home(request):
-    return render(request, "app/home.html", {"nav": 1})
+    return render(request, "app/home.html")
 
 
 def about(request):
