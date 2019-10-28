@@ -133,18 +133,17 @@ def welcome(request):
         license_number = request.POST.get("license_number")
         fname = request.POST.get("fname")
         lname = request.POST.get("lname")
-        number = request.POST.get("number")
         city = request.POST.get("city")
         nickname = request.POST.get("nickname")
         about = request.POST.get("about")
         address = request.POST.get("address")
         user.first_name = fname
         user.last_name = lname
-        user.number = number
         user.save()
+        customer = Customer.objects.get(user=user)
+        number = customer.phone
         Customer.objects.filter(user=user).update(city=city, address=address, nickname=nickname,
-                                                  license_number=license_number, about=about,
-                                                  terms_condition=True).save()
+                                                  license_number=license_number, about=about)
 
         Pay.objects.filter(user=user).update(firstname=fname, phone=number)
 
