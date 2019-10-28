@@ -23,7 +23,7 @@ def signup(request):
         user_n = User.objects.filter(username=username)
         user_e = User.objects.filter(email=email)
         password1 = request.POST.get("password1")
-        number = request.POST.get("number")
+        number = request.POST.get("phone")
         code = request.POST.get("slug")
 
         if user_n.count() == 1 or user_e.count() == 1:
@@ -42,7 +42,7 @@ def signup(request):
             Customer(user=user, phone=number, terms_condition=True).save()
             messages.success(request, "Thanks for signing up")
 
-            message_to_company(email=user.email, message="someone signed up yay!! :)",
+            message_to_company(email=email, message="someone signed up yay!! :)",
                                name=username, phone=number,
                                subject="Leads Team Rock and Roll")
             return redirect("app:home")
