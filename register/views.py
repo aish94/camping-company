@@ -23,6 +23,7 @@ def signup(request):
         user_n = User.objects.filter(username=username)
         user_e = User.objects.filter(email=email)
         password1 = request.POST.get("password1")
+        number = request.POST.get("number")
         code = request.POST.get("slug")
 
         if user_n.count() == 1 or user_e.count() == 1:
@@ -38,8 +39,13 @@ def signup(request):
             user.save()
             login(request, user)
             Pay(user=user, email=email).save()
-            #Customer(user=user).save()
-            return redirect("register:welcome")
+            Customer(user=user, phone=number, terms_condition=True).save()
+            messages.success(request, "Thanks for signing up")
+
+            message_to_company(email=user.email, message="someone signed up yay!! :)",
+                               name=username, phone=number,
+                               subject="Leads Team Rock and Roll")
+            return redirect("app:home")
         try:
             ref_user = Referral.objects.get(slug=code)
         except:
@@ -56,10 +62,14 @@ def signup(request):
         ref_user.save()
         login(request, user)
         Pay(user=user, email=email).save()
-        #Customer(user=user).save()
+        Customer(user=user, phone=number, terms_condition=True).save()
+        messages.success(request, "Thanks for signing up")
+        message_to_company(email=user.email, message="someone signed up yay!! :)",
+                           name=username, phone=number,
+                           subject="Leads Team Rock and Roll")
         message_to_customer(email)
 
-        return redirect("register:welcome")
+        return redirect("app:home")
 
     else:
         return render(request, "register/signin.html")
@@ -88,15 +98,17 @@ def signin(request):
                 login(request, user)
                 return redirect("app:represent")
             else:
-                customer = Customer.objects.filter(user=user)
-                if customer.count() == 1:
-                    login(request, user)
-                    messages.success(request, "Logged in")
-                    request.session["user_pk"] = user.pk
-                else:
-                    login(request, user)
-                    messages.warning(request, "Complete sign up")
-                    return redirect("register:welcome")
+                #customer = Customer.objects.filter(user=user)
+                login(request, user)
+                messages.success(request, "Logged in")
+                # if customer.count() == 1:
+                #     login(request, user)
+                #     messages.success(request, "Logged in")
+                #     request.session["user_pk"] = user.pk
+                # else:
+                #     login(request, user)
+                #     messages.warning(request, "Complete sign up")
+                #     return redirect("register:welcome")
 
                 if next_post != "None":  # not used is_safe_url  here next post is none (a string)
                     return redirect(next_post)
@@ -130,14 +142,9 @@ def welcome(request):
         user.last_name = lname
         user.number = number
         user.save()
-        customer = Customer(user=user, phone=number, city=city,
-                            address=address, nickname=nickname,
-                            license_number=license_number, about=about,
-                            terms_condition=True)
-        customer.save()
-        message_to_company(email=user.email, message="someone signed up yay!! :)",
-                           name=fname, phone=number,
-                           subject="Leads Team Rock and Roll")
+        Customer.objects.filter(user=user).update(city=city, address=address, nickname=nickname,
+                                                  license_number=license_number, about=about,
+                                                  terms_condition=True).save()
 
         Pay.objects.filter(user=user).update(firstname=fname, phone=number)
 

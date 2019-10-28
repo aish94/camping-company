@@ -15,7 +15,7 @@
 {% block content_block %}
         {% if messages %}
             {% for message in messages %}
-                <div class="alert alert-{{message.tags}}" style="text-align: center; margin-top:6.4rem;">
+                <div class="alert alert-{{message.tags}}">
                     <strong>{{message}}</strong>
                 </div>
             {% endfor %}

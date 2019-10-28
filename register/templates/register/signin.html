@@ -29,44 +29,51 @@
               <div class="tab-content">
                 <div id="signup">
 
-                  <form action="{% url 'register:signup' %}" method="post">{% csrf_token %}
+                  <form action="{% url 'register:signup' %}" method="post" autocomplete="off">{% csrf_token %}
 
                   <div class="top-row">
                     <div class="field-wrap">
                       <label>
                         Username<span class="req">*</span>
                       </label>
-                      <input type="text" required autocomplete="off" name="username"/>
+                      <input type="text" required name="username"/>
                     </div>
 
                     <div class="field-wrap">
                       <label>
                         Email<span class="req">*</span>
                       </label>
-                      <input type="email"required autocomplete="off" name="email"/>
+                      <input type="email" required name="email"/>
                     </div>
+                  </div>
+
+                  <div class="field-wrap">
+                    <label>
+                      Contact number<span class="req">*</span>
+                    </label>
+                    <input id="number" type="number" name="number" required/>
                   </div>
 
                   <div class="field-wrap">
                     <label>
                       Password<span class="req">*</span>
                     </label>
-                    <input id="password1" type="password"required autocomplete="off" name="password1"/>
+                    <input id="password1" type="password"required name="password1"/>
                   </div>
 
                   <div class="field-wrap">
                     <label>
                       ConfirmPassword<span class="req">*</span>
                     </label>
-                    <input id="password2" type="password"required autocomplete="off" name="password2"/>
+                    <input id="password2" type="password"required name="password2"/>
                   </div>
                       <div class="field-wrap">
                     <label>
                       Referral code (if any, code is 6 digit)
                     </label>
-                    <input id="referral" type="text" autocomplete="off" name="slug"/>
+                    <input id="referral" type="text" name="slug"/>
                   </div>
-
+                    <h2 class="fs-subtitle">By clicking Submit, you agree on our <a target="_blank" href="{% url 'app:terms_condition' %}">terms and condition.</a></h2>
                   <button class="button button-block">Get Started</button>
 
                   </form>
@@ -76,20 +83,20 @@
                 <div id="login">
                   <h1>Welcome Back!</h1>
 
-                  <form action="{% url 'register:signin' %}" method="post">{% csrf_token %}
+                  <form action="{% url 'register:signin' %}" method="post" autocomplete="off">{% csrf_token %}
 
                     <div class="field-wrap">
                     <label>
                       Username/Email<span class="req">*</span>
                     </label>
-                    <input type="text"required autocomplete="off" name="username"/>
+                    <input type="text"required name="username"/>
                   </div>
 
                   <div class="field-wrap">
                     <label>
                       Password<span class="req">*</span>
                     </label>
-                    <input type="password"required autocomplete="off" name="password"/>
+                    <input type="password"required name="password"/>
                   </div>
 
                   <p class="forgot"><a href="{% url 'register:pass_reset' %}">Forgot Password?</a></p>

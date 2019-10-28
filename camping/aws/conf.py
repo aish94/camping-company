@@ -27,10 +27,10 @@ MEDIA_ROOT = MEDIA_URL
 STATIC_URL = S3_URL + 'static/'
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
-two_months = datetime.timedelta(days=365)
+one_year = datetime.timedelta(days=365)
 
 AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=%d' % (int(two_months.total_seconds()), ),
+    'CacheControl': 'max-age=%d' % (int(one_year.total_seconds()), ),
 }
 
 AWS_QUERYSTRING_AUTH = False

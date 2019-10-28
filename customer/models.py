@@ -16,7 +16,7 @@ class Customer(models.Model):
     city = models.CharField(null=True, blank=True, max_length=64)
     address = models.CharField(null=True, blank=True, max_length=256)
     nickname = models.CharField(null=True, blank=True, max_length=64)
-    about = models.TextField()
+    about = models.TextField(null=True, blank=True)
     terms_condition = models.BooleanField(default=False)
     lead_status = models.CharField(default="Follow Up", blank=True, max_length=128, null=True, choices=lead_status)
     active = models.BooleanField(default=True)
