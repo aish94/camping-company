@@ -38,7 +38,7 @@ def signup(request):
             user.set_password(password1)
             user.save()
             login(request, user)
-            Pay(user=user, email=email).save()
+            Pay(user=user, email=email, phone=number, firstname=username).save()
             Customer(user=user, phone=number, terms_condition=True).save()
             messages.success(request, "Thanks for signing up")
 
@@ -61,7 +61,7 @@ def signup(request):
         referral.save()
         ref_user.save()
         login(request, user)
-        Pay(user=user, email=email).save()
+        Pay(user=user, email=email, phone=number, firstname=username).save()
         Customer(user=user, phone=number, terms_condition=True).save()
         messages.success(request, "Thanks for signing up")
         message_to_company(email=user.email, message="someone signed up yay!! :)",
