@@ -6,24 +6,24 @@
 <form method="POST" enctype="multipart/form-data">{% csrf_token %}
 
     <div class="container my-5">
-        <p>Vehicle Photo</p>
+        <p> Add A Review </p>
 
         <div class="form-group">
-            <label for="exampleFormControlFile1">Front image</label>
-            <input name="front" type="file" class="form-control-file" id="exampleFormControlFile1" required>
+            <label for="exampleFormControlFile1"> First Name  </label>
+            <input name="first" type="text" class="form-control-file"  required>
         </div>
 
         <div class="form-group">
-            <label for="exampleFormControlFile2">Back image</label>
-            <input name="back" type="file" class="form-control-file" id="exampleFormControlFile2" required>
+            <label for="exampleFormControlFile2">Last Name </label>
+            <input name="Last" type="text" class="form-control-file" required>
         </div>
 
         <div class="form-group">
-            <label for="exampleFormControlFile3">Side 1</label>
-            <input name="side1" type="file" class="form-control-file" id="exampleFormControlFile3" required>
+            <label for="exampleFormControlFile3"> Enter email Address </label>
+            <input name="email" type="email" class="form-control-file"  required>
         </div>
 
-        <div class="form-group">
+    <!---    <div class="form-group">
             <label for="exampleFormControlFile4">Side 2</label>
             <input name="side2" type="file" class="form-control-file" id="exampleFormControlFile4" required>
         </div>
@@ -71,7 +71,7 @@
         <div class="form-group">
             <label for="exampleFormControlFile12">Id 5</label>
             <input name="id5" type="file" class="form-control-file" id="exampleFormControlFile12" required>
-        </div>
+        </div> --->
 
         <button class="btn btn-secondary">Submit</button>
     </div>
