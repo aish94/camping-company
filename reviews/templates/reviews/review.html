@@ -1,0 +1,95 @@
+{% extends "snippets/base.html" %}
+{% load staticfiles %}
+{% block css %}
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'css/home/reviews.css'%}">
+
+{% endblock %}
+
+{% block content_block %}
+<span class="heading">User Rating</span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<p>{{average_rating}} average based on all reviews.</p>
+<hr style="border:3px solid #f1f1f1">
+
+<div class="row">
+  <div class="side">
+    <div>5 star</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-5"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div>150</div>
+  </div>
+  <div class="side">
+    <div>4 star</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-4"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div>63</div>
+  </div>
+  <div class="side">
+    <div>3 star</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-3"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div>15</div>
+  </div>
+  <div class="side">
+    <div>2 star</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-2"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div>6</div>
+  </div>
+  <div class="side">
+    <div>1 star</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-1"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div>20</div>
+  </div>
+</div>
+<br><br>
+
+<a href="{% url 'reviews:add_review'%}"> Add a Review </a>
+<a href="{% url 'reviews:Show'%}"> &nbsp &nbsp Show Review </a>
+<br><br>
+
+  <div>
+    <iframe src="{% url 'reviews:review_list' %}" name="targetframe" allowTransparency="true" scrolling="no" frameborder="0" height="100%"  width='100%'> Latest Reviews
+    </iframe>
+  </div>
+
+
+
+  <!-- <div>
+    <a href="page2.html" target="targetframe">Link to Page 2</a><br />
+    <a href="page3.html" target="targetframe">Link to Page 3</a>
+  </div> -->
+
+{% endblock %}
