@@ -1,8 +1,8 @@
-<<<<<<< Updated upstream
+
 from django.shortcuts import render
 
 # Create your views here.
-=======
+
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -71,4 +71,3 @@ def destination_list(request):
 def destination_detail(request, destination_id):
     destination = get_object_or_404(Destination, pk=destination_id)
     return render(request, 'reviews/detail.html', {'campsite': campsite})
->>>>>>> Stashed changes
