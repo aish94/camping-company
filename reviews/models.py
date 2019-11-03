@@ -2,7 +2,7 @@ from django.db import models
 
 
 # Create your models here.
-=======
+
 from destination.models import Destination
 import numpy as np
 
