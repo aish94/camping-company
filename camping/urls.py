@@ -21,7 +21,7 @@ from django.urls import path
 from django.conf.urls import url, include
 
 urlpatterns = [
-    #path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
     url(r'^', include("app.urls", namespace="app")),
     url(r'^equipment/', include("equipment.urls", namespace="equipment")),
     url(r'^tent/', include("tent.urls", namespace="tent")),
@@ -33,6 +33,8 @@ urlpatterns = [
     url(r'^referral/', include("referral.urls", namespace="referral")),
     url(r'^destination/', include("destination.urls", namespace="destination")),
     url(r'^cart/', include("pay.urls", namespace="pay")),
+    url(r'^genie/', include("genie.urls", namespace="urls")),
+    url(r'^reviews/', include("reviews.urls", namespace="reviews")),
 
 ]
 
