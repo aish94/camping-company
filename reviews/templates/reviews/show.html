@@ -1,0 +1,34 @@
+{% extends "snippets/base.html" %}
+{% load staticfiles %}
+
+<!-- {% block css %}
+    <style>
+        .p{
+
+
+        }
+    </style>
+
+{% endblock %} -->
+
+{% block content_block %}
+<h2>All Reviews</h2>
+
+{% if all_review_list %}
+<div>
+    {% for review in all_review_list %}
+    <div>
+        <h3><a href="{% url 'reviews:review_detail' review.id %}">
+        {{ review.destination.name }}
+        </a></h3>
+        <h4>rated {{ review.rating }} of 5 by {{ review.user_name }}</h4>
+        <p>{{ review.comment }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p>No reviews are available.</p>
+{% endif %}
+<br><br>
+<a href="{% url 'reviews:review'%}"> &nbsp &nbsp Go Back </a>
+{% endblock %}
