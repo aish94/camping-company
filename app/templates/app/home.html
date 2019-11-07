@@ -15,7 +15,7 @@
 {% block content_block %}
         {% if messages %}
             {% for message in messages %}
-                <div class="alert alert-{{message.tags}}">
+                <div class="alert alert-{{message.tags}}" style="text-align: center;">
                     <strong>{{message}}</strong>
                 </div>
             {% endfor %}
@@ -417,6 +417,8 @@
                 <a href="{% url 'app:terms_condition' %}" class="footer-text__heading">Policy</a>
                 <a href="#" class="footer-text__heading">Media</a>
                 <a href="{% url 'app:faq' %}" class="footer-text__heading">FAQ</a>
+                <a class="footer-text__heading" href="{% url 'blog:event' %}">Event</a>
+
            </div>
         </div>
       </div>
