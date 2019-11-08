@@ -16,9 +16,9 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 col-sm-12 col-xs-12">
-          {% if request.user.is_superuser %}
-          <a href="{% url 'destination:camp_update' slug=destination.slug%}"><img class="image--center--1" src="{% static 'images/camp_add/pencil-edit-button.svg' %}" alt=""></a>
-          {% endif %}
+<!--          {% if request.user.is_superuser %}-->
+<!--          <a href="{% url 'destination:camp_update' slug=destination.slug%}"><img class="image&#45;&#45;center&#45;&#45;1" src="{% static 'images/camp_add/pencil-edit-button.svg' %}" alt=""></a>-->
+<!--          {% endif %}-->
           <h3 style="text-transform: uppercase;">{{destination.site_type}}</h3><br>
           <h1 class="heading-primary">{{destination.place}}</h1><br>
           <img class="loc" src="{% static 'images/destination-detail/maps-and-flags.svg'  %}"><span class="heading-primary__min">{{destination.state_city}}</span>
