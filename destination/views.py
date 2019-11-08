@@ -1,14 +1,16 @@
 from django.shortcuts import render, redirect
-from destination.models import (Destination, Map,
-                                Region, Image,
-                                Amenity, Activity,
-                                Detail, Circuit, Booking)
 from django.http import JsonResponse
-import os
-import datetime
 from django.contrib import messages
 from datetime import date
 from app.utils import invoice_message_camp
+import os
+import datetime
+
+from destination.models import (Destination, Map,
+                                Region, Amenity, Activity,
+                                Detail, Circuit, Booking,
+                                Experience, Feature,
+                                PaymentCampsite, Pricing)
 
 # Create your views here.
 
@@ -33,31 +35,32 @@ def destination(request):
 def destination_detail_page(request, slug):
     # Search.objects.new_or_get(request)
     destination = Destination.objects.get(slug=slug)
-    try:
-        image = Image.objects.get(destination=destination)
-    except:
-        return render(request, "destination/detail.html", {"Data": "data available soon"})
     activity = Activity.objects.get(destination=destination)
     detail = Detail.objects.get(destination=destination)
     amenity = Amenity.objects.get(destination=destination)
+    experience = Experience.objects.filter(destination=destination)
+    feature = Feature.objects.get(destination=destination)
+    pricing = Pricing.objects.get(destination=destination)
     place = destination.place
     place = 'kdestinationk' + place
     place = place.replace(" ", "-")
     context = {
-               "image": image,
-               "destination": destination,
-               "amenity": amenity,
-               "activity": activity,
-               "detail": detail,
-               "place": place
-               }
+            "experience": experience,
+            "destination": destination,
+            "amenity": amenity,
+            "activity": activity,
+            "detail": detail,
+            "place": place,
+            "feature": feature,
+            "pricing": pricing
+           }
 
     if request.is_ajax():
         if request.user.is_authenticated:
             days = int(request.POST.get("number"))
-            caravan = int(request.POST.get("Caravan")) * days
-            ground = int(request.POST.get("Ground")) * days
-            rooftop = int(request.POST.get("Rooftop")) * days
+            caravan = int(request.POST.get("Caravan"))
+            ground = int(request.POST.get("Ground"))
+            rooftop = int(request.POST.get("Rooftop"))
             dates = datetime.datetime.strptime(request.POST.get("date"), "%Y-%m-%d").date()
             amount = caravan + ground + rooftop
             igst = amount*.18
@@ -113,3 +116,265 @@ def success(request):
                              count=count, igst=igst, caravan=caravan, ground=ground, rooftop=rooftop)
 
     return render(request, "destination/success.html", {"book": book})
+
+
+def camp_add(request):
+    maps = os.environ.get("maps")
+
+    if request.is_ajax():
+        place = request.GET.get("place")
+        destination = Destination.objects.filter(place=place)
+        if destination.count() == 1:
+            return JsonResponse({"exist": "site already exist"})
+
+    if request.method == "POST":
+        # overview section save
+        place = request.POST.get("place")
+        state_city = request.POST.get("state-city")
+        lat = request.POST.get("latitude").split(",")
+        latitude = float(lat[0])
+        longitude = float(lat[1])
+        site_type = request.POST.get("site_type")
+        site_description = request.POST.get("site_description")
+        image_main = request.FILES["image-main"]
+        accessible_by = request.POST.get("accessible_by")
+        off_roading = request.POST.get("off_roading")
+        cycling = request.POST.get("cycling")
+        campfire = request.POST.get("campfire")
+        toilet = request.POST.get("toilet")
+        known_for = request.POST.get("known_for")
+        region = request.POST.get("region")
+
+        barbeque = request.POST.get("barbeque")
+        kitchen = request.POST.get("kitchen")
+        picnic = request.POST.get("picnic")
+        drinking = request.POST.get("drinking")
+        charging = request.POST.get("charging")
+        pets = request.POST.get("pets")
+        bathroom = request.POST.get("bathroom")
+        covered = request.POST.get("covered")
+        breakfast = request.POST.get("breakfast")
+
+        season = request.POST.get("season")
+        summer = request.POST.get("summer")
+        winter = request.POST.get("winter")
+
+        cave = request.POST.get("cave")
+        waterfall = request.POST.get("waterfall")
+        trekking = request.POST.get("trekking")
+        river = request.POST.get("river_beach")
+        swimming = request.POST.get("swimming")
+        historical = request.POST.get("historical_place")
+        fishing = request.POST.get("fishing")
+        farming = request.POST.get("farming")
+        lake = request.POST.get("lake")
+        boating = request.POST.get("boating")
+
+        bank_name = request.POST.get("bank_name")
+        account_number = request.POST.get("account_number")
+        IFSC = request.POST.get("IFSC")
+
+        caravan = float(request.POST.get("caravan"))
+        rooftop = float(request.POST.get("rooftop"))
+        BYOT = float(request.POST.get("BYOT"))
+        room = float(request.POST.get("room"))
+        check_in = request.POST.get("check_in")
+        check_out = request.POST.get("check_out")
+        cancellation = request.POST.get("cancel")
+        book = True
+        if caravan == 0 and rooftop == 0 and room == 0 and BYOT == 0:
+            book = False
+
+        # creating main foreign key
+        try:
+            destination = Destination.objects.create(place=place, state_city=state_city, site_type=site_type,
+                                                     image_main=image_main, distance=12, hours=12, season=season,
+                                                     night_time_temperature_summer=summer, description=site_description,
+                                                     night_time_temperature_winter=winter, known_for=known_for)
+        except:
+            messages.warning(request, "Camp site with same name already taken")
+            return redirect("destination:destinations")
+
+        ma = Map.objects.create(destination=destination, latitude=latitude, longitude=longitude,
+                                title=place, description=site_description, images=image_main)
+        # image title description
+        # Description section save
+        Detail(destination=destination, accessible_By=accessible_by,check_in=check_in, check_out=check_out,
+               cancellation_policy=cancellation).save()
+        # crazy for loop
+        for x in range(1, 4):
+            title = "experience_title" + "-" + str(x)
+            description = "experience_description" + "-" + str(x)
+            image = "experience_image" + "-" + str(x)
+            title = request.POST.get(title)
+            description = request.POST.get(description)
+            image = request.FILES[image]
+            Experience(destination=destination, title=title,
+                       description=description, image=image).save()
+
+        Feature(destination=destination, off_roading=off_roading, campfire=campfire,
+                cycling=cycling, toilet=toilet).save()
+
+        Amenity(destination=destination, basic_toilet=toilet,barbeque_grills=barbeque,kitchen=kitchen,
+                picnic_table=picnic, drinking_water=drinking, charging_points=charging, pets_allowed=pets,
+                bathroom=bathroom, campfire=campfire, covered_area=covered, breakfast=breakfast).save()
+
+        Activity(destination=destination, picnic=picnic, off_roading=off_roading, river_beach=river, caving=cave,
+                 waterfall=waterfall, trekking=trekking,swimming=swimming, historical_monument=historical,
+                 fishing=fishing, local_farm=farming, lake=lake, boating=boating).save()
+
+        PaymentCampsite(destination=destination, user=request.user, bank=bank_name, account=account_number,
+                        IFSC=IFSC).save()
+
+        Pricing(destination=destination, caravan=caravan, rooftop=rooftop, BYOT=BYOT, room=room, book=book).save()
+
+        reg = Region.objects.filter(name=region)
+        if reg.count() == 0:
+            reg = Region.objects.create(name=region)
+            reg.region.add(ma)
+        else:
+            reg[0].region.add(ma)
+        messages.success(request, "Camp site add success")
+        return redirect("destination:destinations")
+
+    return render(request, "destination/camp_add.html", {"maps": maps})
+
+
+def camp_update(request, slug):
+    maps = os.environ.get("maps")
+    destination = Destination.objects.get(slug=slug)
+    amenity = Amenity.objects.get(destination=destination)
+    detail = Detail.objects.get(destination=destination)
+    pricing = Pricing.objects.get(destination=destination)
+    activity = Activity.objects.get(destination=destination)
+    payment = PaymentCampsite.objects.get(destination=destination)
+    feature = Feature.objects.get(destination=destination)
+    experience = Experience.objects.filter(destination=destination)
+    experience1 = experience[0]
+    experience2 = experience[1]
+    experience3 = experience[2]
+    map = Map.objects.get(destination=destination)
+    context = {
+        "destination":destination,
+        "maps": maps,
+        "amenity": amenity,
+        "detail": detail,
+        "pricing": pricing,
+        "feature": feature,
+        "activity": activity,
+        "payment": payment,
+        "map": map,
+        "experience1": experience1,
+        "experience2": experience2,
+        "experience3": experience3,
+
+    }
+    if request.method == "POST":
+        # overview section save
+        place = request.POST.get("place")
+        state_city = request.POST.get("state-city")
+        lat = request.POST.get("latitude").split(",")
+        latitude = float(lat[0])
+        longitude = float(lat[1])
+        site_type = request.POST.get("site_type")
+        site_description = request.POST.get("site_description")
+        image_main = request.FILES["image-main"]
+        accessible_by = request.POST.get("accessible_by")
+        off_roading = request.POST.get("off_roading")
+        cycling = request.POST.get("cycling")
+        campfire = request.POST.get("campfire")
+        toilet = request.POST.get("toilet")
+        known_for = request.POST.get("known_for")
+
+        barbeque = request.POST.get("barbeque")
+        kitchen = request.POST.get("kitchen")
+        picnic = request.POST.get("picnic")
+        drinking = request.POST.get("drinking")
+        charging = request.POST.get("charging")
+        pets = request.POST.get("pets")
+        bathroom = request.POST.get("bathroom")
+        covered = request.POST.get("covered")
+        breakfast = request.POST.get("breakfast")
+
+        season = request.POST.get("season")
+        summer = request.POST.get("summer")
+        winter = request.POST.get("winter")
+
+        cave = request.POST.get("cave")
+        waterfall = request.POST.get("waterfall")
+        trekking = request.POST.get("trekking")
+        river = request.POST.get("river_beach")
+        swimming = request.POST.get("swimming")
+        historical = request.POST.get("historical_place")
+        fishing = request.POST.get("fishing")
+        farming = request.POST.get("farming")
+        lake = request.POST.get("lake")
+        boating = request.POST.get("boating")
+
+        bank_name = request.POST.get("bank_name")
+        account_number = request.POST.get("account_number")
+        IFSC = request.POST.get("IFSC")
+
+        caravan = float(request.POST.get("caravan"))
+        rooftop = float(request.POST.get("rooftop"))
+        BYOT = float(request.POST.get("BYOT"))
+        room = float(request.POST.get("room"))
+        check_in = request.POST.get("check_in")
+        check_out = request.POST.get("check_out")
+        cancellation = request.POST.get("cancel")
+        book = True
+        if caravan == 0 and rooftop == 0 and room == 0 and BYOT == 0:
+            book = False
+
+        # creating main foreign key
+        destination = Destination.objects.filter(slug=slug)
+        destination.update(place=place, state_city=state_city, site_type=site_type,
+                           image_main=image_main, distance=12, hours=12, season=season,
+                           night_time_temperature_summer=summer, description=site_description,
+                           night_time_temperature_winter=winter, known_for=known_for)
+
+        Map.objects.filter(destination=destination).update(latitude=latitude, longitude=longitude,
+                                                           title=place, description=site_description, images=image_main)
+
+        # image title description
+        # Description section save
+
+        Detail.objects.filter(destination=destination).update(accessible_By=accessible_by,
+                                                              check_in=check_in, check_out=check_out,
+                                                              cancellation_policy=cancellation)
+        # crazy for loop
+        for x in range(1, 4):
+            title = "experience_title" + "-" + str(x)
+            description = "experience_description" + "-" + str(x)
+            image = "experience_image" + "-" + str(x)
+            title = request.POST.get(title)
+            description = request.POST.get(description)
+            image = request.FILES[image]
+            Experience.objects.filter(destination=destination)[x-1].update(title=title, description=description,
+                                                                           image=image)
+
+        Feature.objects.filter(destination=destination).update(off_roading=off_roading, campfire=campfire,
+                                                               cycling=cycling, toilet=toilet)
+
+        Amenity.objects.filter(destination=destination).update(basic_toilet=toilet, barbeque_grills=barbeque,
+                                                               kitchen=kitchen,picnic_table=picnic,
+                                                               drinking_water=drinking, charging_points=charging,
+                                                               pets_allowed=pets,bathroom=bathroom, campfire=campfire,
+                                                               covered_area=covered, breakfast=breakfast)
+
+        Activity.objects.filter(destination=destination).update(picnic=picnic, off_roading=off_roading,
+                                                                river_beach=river, caving=cave,
+                                                                waterfall=waterfall, trekking=trekking,swimming=swimming
+                                                                , historical_monument=historical,
+                                                                fishing=fishing, local_farm=farming, lake=lake,
+                                                                boating=boating)
+
+        PaymentCampsite.objects.filter(destination=destination).update(user=request.user, bank=bank_name,
+                                                                       account=account_number, IFSC=IFSC)
+
+        Pricing.objects.filter(destination=destination).update(caravan=caravan, rooftop=rooftop, BYOT=BYOT, room=room,
+                                                               book=book)
+        messages.success(request, "Camp site update success")
+        return redirect("destination:destinations")
+
+    return render(request, "destination/camp_update.html", context)

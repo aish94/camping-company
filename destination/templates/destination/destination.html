@@ -2,8 +2,7 @@
 {% load staticfiles %}
 {% load dash %}
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/home/destination.css' %}">
-<link rel="stylesheet" href="{% static 'css/blog/blog.css' %}">
+<link rel="stylesheet" href="{% static 'css/destination/destination.css' %}">
 {% endblock %}
 {% block title %}
 <title>The places Offered By Camping Co</title>
@@ -13,6 +12,13 @@
 <meta name="keywords" content="travel destination, destination for camping, beautiful east india,beautiful notheast,mountains arunachal, mountain meghalaya, caving in meghalaya, caving in meghalaya, waterfall of meghalaya, waterfalls meghalaya ,umiam lake, white water village , mawphlang sacred groove,shnonpdeng, dawki,krangsuri,living root bridge, dainthlen falls, kynrem falls, nohsngithiang falls">
 {% endblock %}
 {% block content_block %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{message.tags}}" style="text-align: center;">
+                    <strong>{{message}}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
 <div class="">
    <div class="row no-gutters">
       <div class="col-md-7 col-10 some">
@@ -23,6 +29,8 @@
 
          <form id="submit" method="POST" autocomplete="off">
             {% csrf_token %}
+             <div class="row no-gutters">
+                 <div class="col-md-12 col-lg-6">
                 <input list="places" class="input-submit" id="place" type="text" placeholder="filter camp sites with location">
                  <datalist id="places">
                             <option value="Meghalaya">
@@ -32,21 +40,26 @@
                             <option value="Sikkim">
                           </datalist>
                 <button class="input-submit-button"><i class="fas fa-search"></i></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input list="prices" class="input-place" type="text" placeholder="prices">
-                        <datalist id="prices">
-                        <option value="Low">
-                        <option value="High">
+               </div>
+                 <div class="col-md-12 col-lg-3">
+                     <input list="sort" class="input-place" type="text" placeholder="sort-by">
+                        <datalist id="sort">
+                        <option value="price">
+                        <option value="rating">
                       </datalist>
-                <input list="popularity" class="input-place" type="text" placeholder="Rating">
-                 <datalist id="popularity">
-                            <option value="High">
-                            <option value="Low">
-                  </datalist>
+                 </div>
+
+                 <div class="col-md-12 col-lg-3">
+                    {% if request.user.is_superuser %}
+                        <a class="camp__add" href="{% url 'destination:camp_add'  %}">Add Campsite</a>
+                    {% endif %}
+                 </div>
+             </div>
          </form>
               <br>
 
-        <div class="replace-me scrollbar">
-           <div class="row">
+        <div class="scrollbar">
+           <div class="row remove">
              {% for x in places %}
               <div class="col-lg-4 col-md-6 col-sm-6">
                  <div class="card">
@@ -63,7 +76,7 @@
                    <p class="card-text">{{x.description|truncatechars_html:100}}</p>
                      <div class="card-url">
                         <a class="card-url-1" href="{% url 'destination:destination_detail_page' slug=x.destination.slug %}" >Know more</a>
-                        <a href="#" class="card-url-2 pull-right">Check availability</a>
+                        <a href="#" class="card-url-2">Check availability</a>
                      </div>
                  </div>
               </div>
@@ -73,6 +86,7 @@
             </div>
           {% endfor %}
          </div>
+           <div class="row replace-me"></div>
         </div>
           </div>
          </div>
@@ -182,7 +196,6 @@
         var marker = {
            coords:{lat:{{x.latitude}},lng:{{x.longitude}}},
            iconImage:'https://cdn4.iconfinder.com/data/icons/camp/96/tend-48.png',
-           content:'<div class="py-4"><div class="card-deck"><div class="card"><img class="card-img-top" src="{{x.images.url}}" alt="Card image cap"><div class="card-body"><h5 class="card-title" prikey="{{x.pk}}">{{x.title}}</h5><p class="card-text">{{x.description}}</p></div></div></div></div>',
           }
       if (typeof list1 == "undefined"){
            addMarker(marker);
@@ -245,7 +258,7 @@
                for (var z = 0; z < e.list1.length; z++){
                   if ({{x.pk}} == e.list1[z]){
                      var url = loc + '/destination/' + '{{x.title|dash}}'
-                     $(".replace-me").append('<div class="my-5 blog-card alt remove"> <div class="meta"> <div class="photo" style="background-image: url({{ x.images.url}})"></div> <ul class="details"> <li><a href="#">{{x.latitude}}</a></li> <li>{{x.longitude}}</li> <li> <ul> <li class="tags">Campsite</li> </ul> </li> </ul> </div> <div class="description"> <h1>{{x.title}}</h1> <h2>Campsite</h2> <p>{{x.description|truncatechars_html:100}}</p> <p class="read-more"> <a href="' + url + '">Read More</a> </p> </div> </div>')
+                     $(".replace-me").append('<div class="remove col-lg-4 col-md-6 col-sm-6"><div class="card"> <img src="{{x.images.url}}" class="card-img-top" alt="destination"><div class="card-body"><h5 class="card-title">{{x.title}}</h5><div style="display: block; margin: 0 auto;"> <span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span></div><p class="card-text">{{x.description|truncatechars_html:100}}</p><div class="card-url"> <a class="card-url-1" href="{% url 'destination:destination_detail_page' slug=x.destination.slug %}" >Know more</a> <a href="#" class="card-url-2 pull-right">Check availability</a></div></div></div> <br> <br> <br></div>')
                      break;
                   }
 

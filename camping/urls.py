@@ -33,8 +33,7 @@ urlpatterns = [
     url(r'^referral/', include("referral.urls", namespace="referral")),
     url(r'^destination/', include("destination.urls", namespace="destination")),
     url(r'^cart/', include("pay.urls", namespace="pay")),
-    url(r'^genie/', include("genie.urls", namespace="urls")),
-
+    url(r'^genie/', include("genie.urls", namespace="genie")),
 ]
 
 if settings.DEBUG:

@@ -12,11 +12,9 @@
   <body>
 
 {% include "snippets/js.html" %}
-<br>
-<br>
         {% if messages %}
             {% for message in messages %}
-                <div class="my-2 alert alert-{{message.tags}}" style="text-align: center">
+                <div class="alert alert-{{message.tags}}" style="text-align: center">
                     <strong>{{message}}</strong>
                 </div>
             {% endfor %}

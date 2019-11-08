@@ -408,10 +408,11 @@ document.getElementById('rzp-button1').onclick = function(e){
             "person_price": $(".product-line-price")[2].textContent,
             "campkit": $(".product-line-price")[3].textContent,
             "gas_stove": $(".product-line-price")[4].textContent,
-            "solar_power": $(".product-line-price")[5].textContent,
-            "torch": $(".product-line-price")[6].textContent,
-            "chair": $(".product-line-price")[7].textContent,
-            "table": $(".product-line-price")[8].textContent,
+            "torch": $(".product-line-price")[5].textContent,
+            "chair": $(".product-line-price")[6].textContent,
+            "table": $(".product-line-price")[7].textContent,
+            "shillong": $(".product-line-price")[8].textContent,
+            "airport": $(".product-line-price")[9].textContent,
             "igst": taxs,
             "convenient": shippings,
             "coupon": coupon,
@@ -425,7 +426,7 @@ document.getElementById('rzp-button1').onclick = function(e){
             options.amount = (data.amount) * 100
             options.prefill.email = data.email
             options.prefill.name = data.name
-            options.key = data.razor_id
+            options.key = "rzp_test_jhx8CJoTQCL3Eh"
             var rzp1 = new Razorpay(options);
             rzp1.open();
             },

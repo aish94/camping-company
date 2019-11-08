@@ -58,13 +58,15 @@ def payment_success(request):
         total = pay.amount
         count = book.pk
         coupon = pay.coupon
+        shillong = pay.shillong_transfer
+        airport = pay.airport_transfer
 
         invoice_message(pay.email, os.environ.get("email"),
                         car=car, duration=duration, txnid=txnid,
                         now=now, name=name, person=person, campkit=campkit,
                         gas=gas, solar=solar, torch=torch, table=table,
                         igst=igst, convenient=convenient, chair=chair,total=total,
-                        count=count, coupon=coupon)
+                        count=count, coupon=coupon, shillong=shillong, airport=airport)
 
     return render(request, "payment/success.html", {"pay": pay})
 
@@ -94,19 +96,20 @@ def cart(request):
         person_price = math.ceil(float(request.POST.get("person_price")))
         campkit = math.ceil(float(request.POST.get("campkit")))
         gas_stove = math.ceil(float(request.POST.get("gas_stove")))
-        solar_power = math.ceil(float(request.POST.get("solar_power")))
         torch = math.ceil(float(request.POST.get("torch")))
         chair = math.ceil(float(request.POST.get("chair")))
         table = math.ceil(float(request.POST.get("table")))
         igst = float(request.POST.get("igst"))
         convenient = float(request.POST.get("convenient"))
         coupon = float(request.POST.get("coupon"))
+        shillong_transfer = float(request.POST.get("shillong"))
+        airport_transfer = float(request.POST.get("airport"))
 
         Pay.objects.filter(user=user).update(amount=amount, car_price=car_price,
                                              person_price=person_price, campkit=campkit,
-                                             gas_stove=gas_stove, solar_power=solar_power,
-                                             torch=torch, chair=chair, table=table,
-                                             igst=igst, convenient=convenient, coupon=coupon)
+                                             gas_stove=gas_stove, torch=torch, chair=chair, table=table,
+                                             igst=igst, convenient=convenient, coupon=coupon,
+                                             shillong_transfer=shillong_transfer, airport_transfer=airport_transfer)
         payment = Pay.objects.get(user=user)
         name = payment.firstname
         email = payment.email

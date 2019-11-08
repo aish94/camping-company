@@ -1,7 +1,7 @@
 {% extends "snippets/base.html" %}
 {% load staticfiles %}
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/home/detail.css' %}">
+<link rel="stylesheet" href="{% static 'css/destination/detail.css' %}">
 <link rel="canonical" href="https://www.camping-co.com">
 {% endblock %}
 {% block title %}
@@ -12,443 +12,759 @@
 <meta name="keywords" content="camping places detail, camping activities, camping origins, camping stay hours">
 {% endblock %}
 {% block content_block %}
-<h1>&nbsp;</h1>
-<br>
-<br>
-<h1 class="container">{{Data}}</h1>
-   <div class="container">
-      <div class="row no-gutters">
-         <div class="col-md-6">
-               <img class="image__fix" style="width:100%; height: 360px; background-image: url({{image.image1.url}});">
-            </div>
-         <div class="col-md-6">
-               <img class="image__fix" style="width:100%; height: 360px; background-image: url({{image.image2.url}});">
-         </div>
-      </div>
-      <div class="row no-gutters">
-         <div class="col-md-6">
-            <img class="image__fix" style="width:100%; height: 360px; background-image: url({{image.image3.url}});">
-         </div>
-         <div class="col-md-6">
-               <img class="image__fix" style="width:100%; height: 360px; background-image: url({{image.image4.url}});">
-         </div>
-      </div>
-   </div>
-<br>
-      <div class="cards">
-      <h2 style="display: inline-block;">{{destination.place}}</h2> &nbsp;<span>({{destination.state_city}})</span>
-         <p><strong>Accessible by:</strong> {{detail.accessible_By}}</p>
-      <p style="margin-top: -2%;"><strong>Known for:</strong> {{destination.cc_higlight}}</p>
-      <i class="fas fa-car"></i>
-      <i class="fas fa-biking"></i>
-      <i class="fas fa-fire"></i>
-      <i class="fas fa-toilet-paper"></i>
-      <span class="cards__text">Off &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cycling &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Campfire &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;toilet </span>
-      <span class="cards__text">Roading</span>
-      <br>
-                  <p>Important To know: {{destination.important_to_know|safe}}</p>
-         {% if user.is_authenticated %}
-         <p><a href="{{destination.map_loc}}">Google Maps Location</a>&nbsp;&nbsp;&nbsp;Contact Number: {{detail.phone}}</p>
-         {% else %}
-         <p class="cards__contact">Contact Number</p>
-         <form action="{% url 'register:signin' %}" method="GET">
-            <input hidden name="next" value="{{place}}">
-            <button class="btn btn-secondary">Sign in for info</button>
-         </form>
-         {% endif %}
-      </div>
-
-<div class="container">
-   <div class="description">
+    <div class="space-bottom--big"></div>
+    <div class="container">
       <div class="row">
-         <div class="col-md-3">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <div class="description__style">
-               <h4>Description and Features</h4>
-            </div>
-         </div>
-         <div class="col-md-9 text-style">
-            <br>
-            <div class="description__content">{{destination.description|safe}}</div>
-         </div>
-      </div>
-   </div>
-   <hr>
-      <br>
-   <div class="">
-      <div class="row">
-         <div class="col-md-3">
-            <h4>Amenities</h4>
-         </div>
-         <div class="col-md-9 divide">
-            <ul>
-               {% if amenity.basic_toilet %}
-                  <li><i class="fas fa-toilet">&nbsp;</i>toilet</li>
-               {% else %}
-                  <li class="strike"><i class="fas fa-toilet">&nbsp;&nbsp;</i>toilet</li>
-               {% endif %}
+        <div class="col-lg-6 col-sm-12 col-xs-12">
+<!--          {% if request.user.is_superuser %}-->
+<!--          <a href="{% url 'destination:camp_update' slug=destination.slug%}"><img class="image&#45;&#45;center&#45;&#45;1" src="../../../static/images/camp_add/pencil-edit-button.svg" alt=""></a>-->
+<!--          {% endif %}-->
+          <h3 style="text-transform: uppercase;">{{destination.site_type}}</h3><br>
+          <h1 class="heading-primary">{{destination.place}}</h1><br>
+          <img class="loc" src="{% static 'images/destination-detail/maps-and-flags.svg'  %}"><span class="heading-primary__min">{{destination.state_city}}</span>
+          <div class="space-bottom--big"></div>
+          <br><br>
+          <p class="no-gutters opac">Accessible By:- </p> <span>{{detail.accessible_By}}</span><br>
+          <p class="no-gutters opac">  Known for:- </p><span>{{destination.known_for}}</span>
+          <div class="space-bottom--big"></div>
+          {% if pricing.book %}
+          <a href="#" class="book" data-toggle="modal" data-target="#exampleModalCenter">Book Now</a>
+          {% else %}
+              <button disabled class="book" data-toggle="modal" data-target="#exampleModalCenter">Book Now</button>
+          {% endif %}
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-lg modal-dialog modal-dialog-centered" role="document" style="max-width: 1200px; border-radius:20px;">
+              <div class="modal-content myModal" >
+                <div class="modal-header">
+                  <h3 class="modal-title" id="exampleModalCenterTitle" style="font-size: 30px;">Booking</h3>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="font-size:40px;">&times;</span>
+                  </button>
+                </div>
+                <form action="POST">{%csrf_token%}
+                <div class="modal-body">
+                  <p>&nbsp;Check in: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  Days:
+                  </p>
+                  <p>
+                  &nbsp; <input id="datetimepicker" name="tripDay" class="check-in__date" type="text" required pattern="\d{4}-\d{2}-\d{2}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input class="days__date" min="0" style="text-align:left;" name="Duration" type="number" pattern="\d{4}-\d{2}-\d{2}" required>
+                  </p>
+                  <br>
 
-               {% if amenity.bathroom %}
-                  <li><i class="fas fa-toilet">&nbsp;</i>bathroom</li>
-               {% else %}
-                  <li class="strike"><i class="fas fa-restroom">&nbsp;&nbsp;</i>bathroom</li>
-               {% endif %}
+                  <div class="row tableHeading" style="padding:15px";>
+                    <div class="col-5">
+                      <strong>&nbsp;&nbsp;&nbsp;Item</strong>
+                    </div>
 
-               {% if amenity.kitchen %}
-                  <li><i class="fas fa-utensils">&nbsp;</i>kitchen</li>
-               {% else %}
-                  <li class="strike"><i class="fas fa-utensils">&nbsp;&nbsp;</i>kitchen</li>
-               {% endif %}
+                    <div class="col-3">
+                      <strong>Price</strong>
+                    </div>
 
-               {% if amenity.pets_allowed %}
-                  <li><i class="fas fa-paw">&nbsp;</i>pets</li>
-               {% else %}
-                  <li class="strike"><i class="fas fa-paw">&nbsp;&nbsp;</i>pets</li>
-               {% endif %}
+                    <div class="col-2">
+                      <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QTY</strong>
+                    </div>
 
-               {% if amenity.charging_points %}
-                  <li><i class="fas fa-charging-station"></i>&nbsp;</i>charging points</li>
-               {% else %}
-                  <li class="strike"><i class="fas fa-charging-station"></i>&nbsp;&nbsp;</i>charging points</li>
-               {% endif %}
-
-               {% if amenity.drinking_water %}
-                  <li><i class="fas fa-glass-whiskey">&nbsp;</i>drinking water</li>
-               {% else %}
-                  <li class="strike"><i class="fas fa-glass-whiskey">&nbsp;&nbsp;</i>drinking water</li>
-               {% endif %}
-
-               {% if amenity.covered_area %}
-                  <li class="fix"><i class="fas fa-home">&nbsp;</i>covered area</li>
-               {% else %}
-                  <li class="strike"><i class="fas fa-home">&nbsp;&nbsp;</i>covered area</li>
-               {% endif %}
-
-               {% if amenity.barbeque_grills %}
-                  <li><img src="https://img.icons8.com/material-outlined/24/000000/grill.png">barbeque</li>
-               {% else %}
-                  <li class="strike"><img src="https://img.icons8.com/material-outlined/24/000000/grill.png"> >barbeque</li>
-               {% endif %}
-
-               {% if amenity.campfire %}
-                  <li><i class="fas fa-fire">&nbsp;</i>bonfire</li>
-               {% else %}
-                  <li class="strike"><i class="fas fa-fire">&nbsp;&nbsp;</i>bonfire</li>
-               {% endif %}
-
-               {% if amenity.picnic_table %}
-                  <li><i class="fas fa-table">&nbsp;</i>picnic table</li>
-               {% else %}
-                  <li class="strike"><i class="fas fa-table">&nbsp;&nbsp;</i>picnic table</li>
-               {% endif %}
-
-               {% if amenity.breakfast %}
-                  <li><i class="fas fa-egg">&nbsp;</i>breakfast</li>
-               {% else %}
-                  <li class="strike"><i class="fas fa-egg">&nbsp;&nbsp;</i>breakfast</li>
-               {% endif %}
-
-            </ul>
-         </div>
-      </div>
-   </div>
-   <hr>
-   <br>
-
-   <div class="Activity">
-      <div class="row">
-         <div class="col-md-3">
-            <h4>Activities</h4>
-         </div>
-         <div class="col-md-9 divide">
-            <ul>
-
-               {% if activity.off_roading %}
-                  <li><i class="fas fa-car">&nbsp;</i>off-roading</li>
-               {% else %}
-                  <li class="strike"><i class="fas fa-table">&nbsp;&nbsp;</i>off-roading</li>
-               {% endif %}
-
-
-               {% if activity.trekking %}
-                  <li><i class="fas fa-hiking">&nbsp;</i>trekking</li>
-               {% else %}
-                  <li class="strike"><i class="fas fa-hiking">&nbsp;&nbsp;</i>trekking</li>
-               {% endif %}
-
-
-               {% if activity.boating %}
-                  <li><i class="fas fa-ship">&nbsp;</i>boating</li>
-               {% else %}
-                  <li class="strike"><i class="fas fa-ship">&nbsp;&nbsp;</i>boating</li>
-               {% endif %}
-
-
-               {% if activity.waterfall %}
-                  <li><i class="fas fa-water">&nbsp;</i>waterfalls</li>
-               {% else %}
-                  <li class="strike"><i class="fas fa-water">&nbsp;&nbsp;</i>waterfalls</li>
-               {% endif %}
-
-               {% if activity.lake %}
-                  <li><i class="fas fa-water">&nbsp;</i>lake</li>
-               {% else %}
-                  <li class="strike"><i class="fas fa-water">&nbsp;&nbsp;</i>lake</li>
-               {% endif %}
-
-
-               {% if activity.jungle_walk %}
-                  <li><i class="fas fa-tree">&nbsp;</i>jungle walk</li>
-               {% else %}
-                  <li class="strike"><i class="fas fa-tree">&nbsp;&nbsp;</i>jungle walk</li>
-               {% endif %}
-
-
-               {% if activity.caving %}
-                  <li><i class="fas fa-archway">&nbsp;</i>caving</li>
-               {% else %}
-                  <li class="strike"><i class="fas fa-archway">&nbsp;&nbsp;</i>caving</li>
-               {% endif %}
-
-
-               {% if activity.local_farm %}
-                  <li><i class="fas fa-tractor">&nbsp;</i>local farm visit</li>
-               {% else %}
-                  <li class="strike"><i class="fas fa-tractor">&nbsp;&nbsp;</i>local farm visit</li>
-               {% endif %}
-
-               {% if activity.river_beach %}
-                  <li><i class="fas fa-umbrella-beach">&nbsp;</i>river beach</li>
-               {% else %}
-                  <li class="strike"><i class="fas fa-umbrella-beach">&nbsp;&nbsp;</i>river beach</li>
-               {% endif %}
-
-
-               {% if activity.swimming %}
-                  <li><i class="fas fa-water">&nbsp;</i>swimming</li>
-               {% else %}
-                  <li class="strike"><i class="fas fa-water">&nbsp;&nbsp;</i>swimming</li>
-               {% endif %}
-
-
-               {% if activity.historical_monument %}
-                  <li><i class="fas fa-school">&nbsp;</i>historical monument</li>
-               {% else %}
-                  <li class="strike"><i class="fas fa-school">&nbsp;&nbsp;</i>historical monument</li>
-               {% endif %}
-
-
-               {% if activity.fishing %}
-                  <li><i class="fas fa-fish">&nbsp;</i>fishing</li>
-               {% else %}
-                  <li class="strike"><i class="fas fa-fish">&nbsp;&nbsp;</i>fishing</li>
-               {% endif %}
-            </ul>
-         </div>
-      </div>
-   </div>
-   <hr>
-      <br>
-   <div class="">
-         <div class="row">
-            <div class="col-md-3">
-               <h4 class="description__style">Accommodation and Charges</h4>
-            </div>
-            <div class="col-md-8 text-style details">
-               <p>Check-in: {{detail.check_in}}</p>
-               <p>Check-out: {{detail.check_out}}</p>
-               <p>Cancellation policy: {{detail.cancellation_policy}}</p>
-            </div>
-         </div>
-      </div>
-    <hr>
-      <br>
-   <div class="">
-      <div class="row">
-         <div class="col-md-3">
-            <h4 class="description__style">Climate and Temperature</h4>
-         </div>
-         <div class="col-md-8 text-style details">
-            <p>Suitable for: All Seasons</p>
-            <p>{{destination.night_time_temperature_summer}}</p>
-            <p>{{destination.night_time_temperature_winter}}</p>
-         </div>
-      </div>
-      <hr>
-   <div class="">
-         <div class="row">
-            <div class="col-md-3">
-               <h4>Note</h4>
-            </div>
-            <div class="col-md-8 text-style details">
-               <p>{{destination.note}}</p>
-            </div>
-         </div>
-      </div>
-      <hr>
-      </div>
-    {% if destination.place == "CampingCo Nongkhnum" %}
-      <form class="book" action="{% url 'destination:destination_detail_page' slug=destination.slug %}" method="GET" autocomplete="off">
-         {% csrf_token %}
-          <div class="book__heading">
-                <p class="book__heading--text">Select camping dates</p>
-                <p class="book__heading--cross">&#10005;</p>
-          </div>
-          <div class="row mb-4">
-              <div class="col-6">
-                  <div class="check-in">
-                      <p class="check-in__text">Check in</p>
-                      <input id="datetimepicker" placeholder="DD/MM/YYYY" name="tripDay"required class="check-in__date" type="text">
+                    <div class="col-2" style="text-align:right;">
+                      <strong>Total</strong>
+                    </div>
                   </div>
-              </div>
-              <div class="col-6">
-                  <div class="days">
-                    <p class="days__text">Days</p>
-                    <input class="days__date" min="0" name="Duration" type="number" required>
+
+                  <div class="row" style="padding:15px; padding-top:20px;">
+                    <div class="col-5">
+                      &nbsp;&nbsp;&nbsp;<img src="{% static 'images/destination-detail/caravan.svg' %}"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      Caravan
+                    </div>
+
+                    <div class="col-3">
+                      INR {{pricing.caravan}}
+                    </div>
+
+                    <div class="col-2" style="text-align:center;">
+                        <div class="input-group">
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-light btn-number" data-quantity="minus" data-field="quantity">
+                              <span class="fa fa-minus"></span>
+                            </button>
+                          </span>
+                          <span id="quantity">0</span>
+
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-light btn-number" data-quantity="plus" data-field="quantity">
+                                <span class="fa fa-plus"></span>
+                            </button>
+                          </span>
+                        </div>
+                    </div>
+
+                    <div class="col-2" style="text-align:right;">
+                      <span id="caravan-total">INR 0</span>
+                    </div>
                   </div>
-              </div>
-          </div>
 
-          <div class="book__description my-1 container">
-              <div class="row">
-                  <p class="col-3">Type</p>
-                  <p class="col-3">Price</p>
-                  <p class="col-3">QTY</p>
-                <p class="col-3">Total price</p>
-              </div>
+                  <div class="row" style="padding:15px; padding-top:20px;">
+                    <div class="col-5">
+                      &nbsp;&nbsp;&nbsp;<img src="{% static 'images/destination-detail/camper.svg' %}"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      Roottop Tent
+                    </div>
 
-          </div>
-          <div class="container">
-              <div class="row">
-              <div class="col-3">
-                  <p>Roof top tent</p>
-              </div>
-              <div class="col-3">
-                  <p>500</p>
-              </div>
-              <div class="col-3">
-                  <input id="roof" class="quantity" type="number" min="0" placeholder="0" required>
-              </div>
-              <div class="col-3">
-                  <p class="price--1">Rs 0</p>
-              </div>
-          </div>
-             <div class="row">
-              <div class="col-3">
-                  <p>Caravan</p>
-              </div>
-              <div class="col-3">
-                  <p>750</p>
-              </div>
-              <div class="col-3">
-                  <input id="caravan" class="quantity" type="number" min="0" placeholder="0" required>
-              </div>
-                 <div class="col-3">
-                  <p class="price--2">Rs 0</p>
-              </div>
-          </div>
-              <div class="row">
-              <div class="col-3">
-                  <p>Ground tent</p>
-              </div>
-              <div class="col-3">
-                  <p>350</p>
-              </div>
-              <div class="col-3">
-                  <input id="ground" class="quantity" type="number" min="0" placeholder="0" required>
-              </div>
-                  <div class="col-3">
-                  <p class="price--3">Rs 0</p>
-              </div>
-          </div>
+                    <div class="col-3">
+                      INR {{pricing.rooftop}}
+                    </div>
 
-              <div class="row">
-              <div class="col-3">
-                  <p>IGST</p>
-              </div>
-              <div class="col-3">
+                    <div class="col-2" style="text-align:center;">
+                        <div class="input-group">
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-light btn-number" data-quantity="first_minus" data-field="roof">
+                              <span class="fa fa-minus"></span>
+                            </button>
+                          </span>
+                          <span id="roof">0</span>
 
-              </div>
-              <div class="col-3">
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-light btn-number" data-quantity="first_plus" data-field="roof">
+                                <span class="fa fa-plus"></span>
+                            </button>
+                          </span>
+                        </div>
+                    </div>
 
+                    <div class="col-2" style="text-align:right;">
+                        <span id="rooftop-total">INR 0</span>
+                    </div>
+                  </div>
+                  <div class="row" style="padding:15px; padding-top:20px;">
+                    <div class="col-5">
+                      &nbsp;&nbsp;&nbsp;<img src="{% static 'images/destination-detail/tent.svg' %}"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      Ground Tent
+                    </div>
+
+                    <div class="col-3">
+                      INR {{pricing.BYOT}}
+                    </div>
+
+                    <div class="col-2" style="text-align:center;">
+                        <div class="input-group">
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-light btn-number" data-quantity="second_minus" data-field="ground">
+                              <span class="fa fa-minus"></span>
+                            </button>
+                          </span>
+                          <span id="ground">0</span>
+
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-light btn-number" data-quantity="second_plus" data-field="ground">
+                                <span class="fa fa-plus"></span>
+                            </button>
+                          </span>
+                        </div>
+                    </div>
+
+                    <div class="col-2" style="text-align:right;">
+                       <span id="BYOT-total">INR 0</span>
+                    </div>
+                  </div>
+
+                {% if pricing.room is not 0 %}
+                  <div class="row" style="padding:15px; padding-top:20px;">
+                    <div class="col-5">
+                      &nbsp;&nbsp;&nbsp;<img src="{% static 'images/destination-detail/home.svg' %}"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      Rooms
+                    </div>
+
+                    <div class="col-3">
+                      INR {{pricing.room}}
+                    </div>
+
+                    <div class="col-2" style="text-align:center;">
+                        <div class="input-group">
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-light btn-number" data-quantity="third_minus" data-field="room">
+                              <span class="fa fa-minus"></span>
+                            </button>
+                          </span>
+                          <span id="room">0</span>
+
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-light btn-number" data-quantity="third_plus" data-field="room">
+                                <span class="fa fa-plus"></span>
+                            </button>
+                          </span>
+                        </div>
+                    </div>
+
+                    <div class="col-2" style="text-align:right;">
+                       <span id="price-total">INR 0</span>
+                    </div>
+                  </div>
+                  {% endif %}
+
+                  <div class="row" style="padding-top:30px;">
+                    <div class="col-6"></div>
+                    <div class="col-6" style="text-align:right;">
+                      <p id="subtotal">Subtotal 0</p>
+                      <p id="IGST">IGST 0</p>
+                      <p id="convenience">Convenience charge 0</p>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="modal-footer" >
+                  <span  id="total" style="font-size: 24px;">Total INR 0</span>
+                  <button type="button" id="rzp-button1" class="btn btn-primary book">Checkout</button>
+                </div>
+                </form>
               </div>
-                  <div class="col-3">
-                  <p class="price--4">Rs 0</p>
-              </div>
+            </div>
           </div>
+          <!-- modal end -->
+        </div>
+        <br>
+        <div class="col-lg-6 col-sm-12 col-xs-12">
+          <img class ="heador-image" src="{{destination.image_main.url}}">
+        </div>
+      </div>
+      <br><br><br><br>
 
-            <div class="row">
-              <div class="col-3">
-                  <p>Convenience charges</p>
-              </div>
-              <div class="col-3">
+      <div class="basicAmenity">
+        <br>
+        <div class="row">
+          {% if feature.off_roading %}
+            <div class="col-3">
+                <img src="{% static 'images/destination-detail/sports-car.svg' %}">
+                <p>Off Roading</p>
+            </div>
+          {% endif %}
 
-              </div>
-              <div class="col-3">
-
-              </div>
-                  <div class="col-3">
-                  <p class="price--5">Rs 0</p>
-              </div>
+          {% if feature.cycling %}
+          <div class="col-3">
+            <img src="{% static 'images/destination-detail/bike.svg' %}">
+            <p>Cycling</p>
           </div>
+          {% endif %}
+
+
+          {% if feature.campfire %}
+            <div class="col-3">
+            <img src="{% static 'images/destination-detail/campfire.svg' %}">
+            <p>Campfire</p>
           </div>
-            <button id="rzp-button1" type="button" class="form__button">BOOK</button>
-      </form>
+          {% endif %}
+
+
+          {% if feature.toilet %}
+          <div class="col-3">
+            <img src="{% static 'images/destination-detail/toilet-.svg' %}">
+            <p>Toilets</p>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="space-bottom--big"></div>
+
+      <div class="description row">
+        <div class="col-12">
+          <h4 class="heading-primary__sub">Description And Features</h4>
+          <div class="space-bottom--big"></div>
+          <p class="opac">{{destination.description|safe}}</p>
+        </div>
+      </div>
+      <div class="space-bottom--big"></div>
+      <div class="row no-gutters">
+        <h4 class="heading-primary__sub">Amenities</h4>
+      </div>
+         <div class="space-bottom--big"></div>
+
+      <div class="row no-gutters">
+       <div class="col-12 divide">
+          <ul>
+                 {% if amenity.basic_toilet %}
+                    <li>
+                      <img class="loc" src="{% static 'images/destination-detail/toilet (2).svg' %}">
+                      Toilet
+                    </li>
+                 {% else %}
+                    <li class="strike">
+                      <img class="loc" src="{% static 'images/destination-detail/toilet (2).svg' %}">
+                          Toilet
+                    </li>
+                 {% endif %}
+                <li class="space-bottom--small"></li>
+
+                 {% if amenity.bathroom %}
+                    <li><img class="loc" src="{% static 'images/destination-detail/lavatory.svg' %}">Bathroom</li>
+                 {% else %}
+                    <li class="strike"><img class="loc" src="{% static 'images/destination-detail/lavatory.svg' %}">Bathroom</li>
+                 {% endif %}
+
+                <li class="space-bottom--small"></li>
+
+                  <li class="space-bottom--small"></li>
+
+                 {% if amenity.kitchen %}
+                    <li>
+                      <img class="loc" src="{% static 'images/destination-detail/cooking.svg' %}">
+                      Kitchen
+                    </li>
+                 {% else %}
+                    <li class="strike">
+                      <img class="loc" src="{% static 'images/destination-detail/cooking.svg' %}">
+                      Kitchen
+                    </li>
+                 {% endif %}
+
+                <li class="space-bottom--small"></li>
+
+                 {% if amenity.pets_allowed %}
+            <li><img class="loc" src="{% static 'images/destination-detail/track.svg' %}">Pets</li>
+                 {% else %}
+                    <li class="strike"><img class="loc" src="{% static 'images/destination-detail/track.svg' %}">pets</li>
+                 {% endif %}
+
+                <li class="space-bottom--small"></li>
+
+                 {% if amenity.charging_points %}
+                    <li><img class="loc" src="{% static 'images/destination-detail/plug.svg' %}">Charging Point</li>
+                 {% else %}
+                    <li class="strike"><img class="loc" src="{% static 'images/destination-detail/plug.svg' %}">charging points</li>
+                 {% endif %}
+
+                <li class="space-bottom--small"></li>
+
+                 {% if amenity.drinking_water %}
+                    <li><img class="loc" src="{% static 'images/destination-detail/medication.svg' %}">Drinking Water</li>
+                 {% else %}
+                    <li class="strike"><img class="loc" src="{% static 'images/destination-detail/medication.svg' %}">Drinking Water</li>
+                 {% endif %}
+
+                <li class="space-bottom--small"></li>
+
+                 {% if amenity.barbeque_grills %}
+                    <li><img class="loc" src="{% static 'images/destination-detail/barbeque.svg' %}">Barbeque</li>
+                 {% else %}
+                    <li class="strike loc"><img class="loc" src="{% static 'images/destination-detail/barbeque.svg' %}">Barbeque</li>
+                 {% endif %}
+
+                <li class="space-bottom--small"></li>
+
+                 {% if amenity.campfire %}
+                    <li><img class="loc" src="{% static 'images/destination-detail/Bonfire.svg' %}">&nbsp;&nbsp;&nbsp;&nbsp;Bonfire</li>
+                 {% else %}
+                    <li class="strike loc"><img class="loc" src="{% static 'images/destination-detail/Bonfire.svg' %}">&nbsp;&nbsp;&nbsp;&nbsp;Bonfire</li>
+                 {% endif %}
+
+                <li class="space-bottom--small"></li>
+
+                 {% if amenity.picnic_table %}
+                    <li><img class="loc" src="{% static 'images/destination-detail/park.svg' %}">Picnic Table></li>
+                 {% else %}
+                    <li class="strike"><img class="loc" src="{% static 'images/destination-detail/park.svg' %}">Picnic Table</li>
+                 {% endif %}
+
+                <li class="space-bottom--small"></li>
+
+                 {% if amenity.breakfast %}
+                    <li><img class="loc" src="{% static 'images/destination-detail/breakfast (1).svg' %}">Breakfast</li>
+                 {% else %}
+                    <li class="strike"><img class="loc" src="{% static 'images/destination-detail/breakfast (1).svg' %}">Breakfast</li>
+                 {% endif %}
+
+              </ul>
+
+        </div>
+      </div>
+    <div class="space-bottom--big"></div>
+      <!-- Activites -->
+      <div class="row no-gutters">
+        <h4 class="heading-primary__sub">Activities</h4>
+      </div>
+
+               <div class="space-bottom--big"></div>
+
+
+      <div class="row">
+        {% if activity.caving %}
+        <div class="col-md-6 col-12">
+          <div class="card w-75">
+            <div class="card-body">
+              <h5 class="card-title heading-primary__min">Cave </h5>
+                <img class="card-imgs" src="{% static 'images/destination-detail/cave.svg' %}">
+              <p class="card-text opac">Visit nearby cave in Night.</p>
+            </div>
+          </div>
+          <div class="space-bottom--big"></div>
+        </div>
+        {% endif %}
+
+        {% if activity.waterfall %}
+        <div class="col-md-6 col-12">
+          <div class="card w-75">
+            <div class="card-body">
+              <h5 class="card-title heading-primary__min">Waterfall</h5>
+                <img class="card-imgs" src="{% static 'images/destination-detail/waterfall.svg' %}">
+              <p class="card-text opac">More than two waterfalls near 10km range.</p>
+            </div>
+          </div>
+          <div class="space-bottom--big"></div>
+        </div>
+      {% endif %}
+
+        {% if activity.off_roading %}
+        <br>
+        <div class="col-md-6 col-12">
+          <div class="card w-75">
+            <div class="card-body">
+              <h5 class="card-title heading-primary__min">Off-Roading</h5>
+                <img class="card-imgs" src="{% static 'images/destination-detail/taxi.svg' %}">
+              <p class="card-text opac">Visite nearby places.</p>
+            </div>
+          </div>
+          <div class="space-bottom--big"></div>
+        </div>
+        {% endif %}
+
+        {% if activity.trekking %}
+        <div class="col-md-6 col-12">
+          <div class="card w-75">
+            <div class="card-body">
+              <h5 class="card-title heading-primary__min">Trekking</h5>
+                <img class="card-imgs" src="{% static 'images/destination-detail/hiker.svg' %}">
+              <p class="card-text opac">More than five cliffs near 10km range.</p>
+            </div>
+          </div>
+          <div class="space-bottom--big"></div>
+        </div>
+        {% endif %}
+
+        {% if activity.boating %}
+        <div class="col-md-6 col-12">
+          <div class="card w-75">
+            <div class="card-body">
+              <h5 class="card-title heading-primary__min">Boating</h5>
+              <img class="card-imgs" src="{% static 'images/destination-detail/boating.svg' %}">
+              <p class="card-text opac">Refresh yourself while boating in fresh water lakes.</p>
+            </div>
+          </div>
+          <div class="space-bottom--big"></div>
+        </div>
+        {% endif %}
+
+        {% if activity.lake %}
+        <div class="col-md-6 col-12">
+          <div class="card w-75">
+            <div class="card-body">
+              <h5 class="card-title heading-primary__min">Lake</h5>
+              <img class="card-imgs" src="{% static 'images/destination-detail/lake.svg' %}">
+              <p class="card-text opac">More than 10 lakes in the area.</p>
+            </div>
+          </div>
+          <div class="space-bottom--big"></div>
+        </div>
+        {% endif %}
+
+        {% if activity.jungle_walk %}
+        <div class="col-md-6 col-12">
+          <div class="card w-75">
+            <div class="card-body">
+              <h5 class="card-title heading-primary__min">Jungle Walk</h5>
+                <img class="card-imgs" src="{% static 'images/destination-detail/forest.svg' %}">
+              <p class="card-text opac">Adventure in the jungle</p>
+            </div>
+          </div>
+          <div class="space-bottom--big"></div>
+        </div>
+        {% endif %}
+
+        {% if activity.local_farm %}
+        <div class="col-md-6 col-12">
+          <div class="card w-75">
+            <div class="card-body">
+              <h5 class="card-title heading-primary__min">Local Farm Visit</h5>
+                <img class="card-imgs" src="{% static 'images/destination-detail/tractor.svg' %}">
+              <p class="card-text opac">Visit to the local farm.</p>
+            </div>
+          </div>
+          <div class="space-bottom--big"></div>
+        </div>
+        {% endif %}
+
+        {% if activity.river_beach %}
+        <div class="col-md-6 col-12">
+          <div class="card w-75">
+            <div class="card-body">
+              <h5 class="card-title heading-primary__min">River Beach</h5>
+                <img class="card-imgs" src="{% static 'images/destination-detail/sunset.svg' %}">
+              <p class="card-text opac">Get the feel of beach and not caring about the tides.</p>
+            </div>
+          </div>
+          <div class="space-bottom--big"></div>
+        </div>
+        {% endif %}
+
+        {% if activity.swimming %}
+        <div class="col-md-6 col-12">
+          <div class="card w-75">
+            <div class="card-body">
+              <h5 class="card-title heading-primary__min">Swimming</h5>
+                <img class="card-imgs" src="{% static 'images/destination-detail/swim.svg' %}">
+              <p class="card-text opac">Swim from the core of your heart.</p>
+            </div>
+          </div>
+          <div class="space-bottom--big"></div>
+        </div>
+        {% endif %}
+
+        {% if activity.historical_monument %}
+        <div class="col-md-6 col-12">
+          <div class="card w-75">
+            <div class="card-body">
+              <h5 class="card-title heading-primary__min">Historical Monument</h5>
+                <img class="card-imgs" src="{% static 'images/destination-detail/temple.svg' %}">
+              <p class="card-text opac">Visit to the nearest monumnets.</p>
+            </div>
+          </div>
+          <div class="space-bottom--big"></div>
+        </div>
+        {% endif %}
+
+        {% if activity.fishing %}
+        <div class="col-md-6 col-12">
+          <div class="card w-75">
+            <div class="card-body">
+              <h5 class="card-title heading-primary__min">Fishing</h5>
+                <img class="card-imgs" src="{% static 'images/destination-detail/float.svg' %}">
+              <p class="card-text opac">let's go fishing!</p>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- Accomodation and charges -->
+      <div class="row no-gutters">
+        <h4 class="heading-primary__sub">Accomodation and charges</h4>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-12">
+          <p class="opac">Check-in:</p> <span>{{detail.check_in}}</span><br>
+          <p class="opac">Check-out: </p> <span>{{detail.check_out}}</span><br>
+         <p class="opac">Cancellation policy: </p> <span>{{detail.cancellation_policy}}</span>
+        </div>
+      </div>
+      <div class="space-bottom--big"></div>
+
+      <!-- Climate and Temperature -->
+      <div class="row no-gutters">
+        <h4 class="heading-primary__sub">Climate and Temperature</h4>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-12">
+          <p class="opac">Suitable-for: </p> <span>All Seasons</span><br>
+          <p class="opac">Temp in Summer: </p> <span>{{destination.night_time_temperature_summer}}</span><br>
+         <p class="opac">Temp in Winter:</p> <span>{{destination.night_time_temperature_winter}}</span>
+        </div>
+      </div>
+      <div class="space-bottom--big"></div>
+
+      <!-- room book button -->
+      <div class="row">
+        <div class="col-12">
+          <a href="#" class="roomBook">Room Available at Rs 1000</a>
+        </div>
+      </div>
+      <div class="space-bottom--big"></div>
+      <hr>
+
+      <div class="space-bottom--big"></div>
+
+        {% for x in experience %}
+          {% if forloop.counter == 2 %}
+          <div class="row">
+              <div class="col-lg-6 col-sm-12 col-xs-12">
+                <div class="wrapper">
+                  <div class="bot-div"></div>
+                  <img class="bot-image" src="{{x.image.url}}">
+                </div>
+              </div>
+            <div class="col-lg-6">
+              <div class="space-bottom--medium"></div>
+               <div class="space-bottom--small"></div>
+              <h4 class="heading-primary__sub">{{x.title}}</h4>
+              <div class="space-bottom--medium"></div>
+              <p class="opac">{{x.description}}</p>
+            </div>
+                  </div>
+          <br><br>
+        {% else %}
+          <div class="row">
+            <div class="col-lg-6 col-sm-12 col-xs-12">
+              <div class="space-bottom--medium"></div>
+               <div class="space-bottom--small"></div>
+              <h4 class="heading-primary__sub">{{x.title}}</h4>
+              <div class="space-bottom--medium"></div>
+              <p class="opac">{{x.description}}</p>
+            </div>
+
+            <div class="col-lg-6 col-sm-12 col-xs-12">
+              <div class="wrapper">
+                <div class="bot-div"></div>
+                <img class="bot-image" src="{{x.image.url}}">
+              </div>
+            </div>
+          </div>
+          <br><br>
+        {% endif %}
+      {% endfor %}
+    </div>
 <script defer src="{% static 'js/razorpay.js' %}"></script>
-{% endif %}
-</div>
 <script>
 window.onload = function(){
-    var rooftop = 0, ground = 0, caravan = 0,igst = 0, convenience = 0;
+      var rooftop = 0, ground = 0, caravan = 0,igst = 0, convenience = 0, subtotal = 0, room = 0;
+      function updateValue(price,totString){
+              subtotal = caravan + ground + rooftop + room
+              IGST = subtotal * .18
+              convenience = subtotal * .024
+              total = subtotal + IGST + convenience;
 
-    //hiding book
-    $(".book__heading--cross").click(function(){
-       $(".book").css("position","static")
-       $(".book").css({'transform' : 'translate(' + 0 +', ' + 0 + ')'});
-    });
-    // fucntion to change total amount
-    $("#roof").change(function(){
-       rooftop = $(this).val() * 500
-       var temp = ground + rooftop + caravan;
-       igst = temp * .18;
-       convenience = temp * .024;
+              str1 = "INR " + price.toString()
+              str2 = "Subtotal INR " + subtotal.toString()
+              str3 = "IGST INR " + IGST.toString()
+              str4 = "Convenience INR " + convenience.toString()
+              str5 = "Total INR " + total.toString()
 
-       var str = 'Rs ' + rooftop
-       var str2 = 'Rs ' + igst
-       var str3 = 'Rs' + convenience
-       $(".price--1").text(str)
-       $(".price--4").text(str2)
-       $(".price--5").text(str3)
-    });
+              $(totString).text(str1)
+              $("#subtotal").text(str2)
+              $("#IGST").text(str3)
+              $("#convenience").text(str4)
+              $("#total").text(str5)
+      }
+      $('button[data-quantity="plus"]').click(function(e){
+        if($(".days__date").val() == ""){
+          alert("please put number of days")
+        } else {
+          e.preventDefault();
+          fieldName = $(this).attr('data-field');
+          var currentVal = parseInt($('#'+fieldName).text());
+          if (!isNaN(currentVal)) {
+              $('#'+fieldName).text(currentVal + 1);
+              caravan = ({{pricing.caravan}} * (currentVal + 1)) * parseInt($(".days__date").val())
+              updateValue(caravan, "#caravan-total")
+          } else {
+              // Otherwise put a 0 there
+              $('#'+fieldName).text(0);
+          }
+        }
+      });
+      // This button will decrement the value till 0
+      $('button[data-quantity="minus"]').click(function(e) {
+      if($(".days__date").val() == ""){
+          alert("please put number of days")
+        } else {
+          e.preventDefault();
+          fieldName = $(this).attr('data-field');
+          var currentVal = parseInt($('#'+fieldName).text());
+          if (!isNaN(currentVal) && currentVal > 0) {
+              $('#'+fieldName).text(currentVal - 1);
+              caravan = ({{pricing.caravan}} * (currentVal - 1)) * parseInt($(".days__date").val())
+              updateValue(caravan, "#caravan-total")
+          } else {
+              // Otherwise put a 0 there
+              $('#'+fieldName).text(0);
+          }
+        }
+      });
 
-    $("#caravan").change(function(){
-       caravan = $(this).val() * 750
-       var temp = ground + rooftop + caravan;
-       igst = temp * .18;
-       convenience = temp * .024;
 
-       var str = 'Rs ' + caravan
-       var str2 = 'Rs ' + igst
-       var str3 = 'Rs' + convenience
-       $(".price--2").text(str)
-       $(".price--4").text(str2)
-       $(".price--5").text(str3)
-    });
+    $('button[data-quantity="first_plus"]').click(function(e){
+          if($(".days__date").val() == ""){
+          alert("please put number of days")
+        } else {
+          e.preventDefault();
+          fieldName = $(this).attr('data-field');
+          var currentVal = parseInt($('#'+fieldName).text());
+          if (!isNaN(currentVal)) {
+              $('#'+fieldName).text(currentVal + 1);
+              rooftop = ({{pricing.rooftop}} * (currentVal + 1)) * parseInt($(".days__date").val())
+              updateValue(rooftop, "#rooftop-total")
+          } else {
+              // Otherwise put a 0 there
+              $('#'+fieldName).text(0);
+          }
+        }
+      });
+      $('button[data-quantity="first_minus"]').click(function(e) {
+          e.preventDefault();
+          fieldName = $(this).attr('data-field');
+          var currentVal = parseInt($('#'+fieldName).text());
+          if (!isNaN(currentVal) && currentVal > 0) {
+              $('#'+fieldName).text(currentVal - 1);
+              rooftop = ({{pricing.rooftop}} * (currentVal - 1)) * parseInt($(".days__date").val())
+              updateValue(rooftop, "#rooftop-total")
+          } else {
+              $('#'+fieldName).text(0);
+          }
+      });
 
+      $('button[data-quantity="second_plus"]').click(function(e){
+          if($(".days__date").val() == ""){
+          alert("please put number of days")
+        } else {
+          e.preventDefault();
+          fieldName = $(this).attr('data-field');
+          var currentVal = parseInt($('#'+fieldName).text());
+          if (!isNaN(currentVal)) {
+              $('#'+fieldName).text(currentVal + 1);
+              ground = ({{pricing.BYOT}} * (currentVal + 1)) * parseInt($(".days__date").val())
+              updateValue(ground, "#BYOT-total")
+          } else {
+              $('#'+fieldName).text(0);
+          }
+      }
+      });
+      $('button[data-quantity="second_minus"]').click(function(e) {
+          e.preventDefault();
+          fieldName = $(this).attr('data-field');
+          var currentVal = parseInt($('#'+fieldName).text());
+          if (!isNaN(currentVal) && currentVal > 0) {
+              $('#'+fieldName).text(currentVal - 1);
+              ground = ({{pricing.BYOT}} * (currentVal - 1)) * parseInt($(".days__date").val())
+              updateValue(ground, "#BYOT-total")
+          } else {
+              $('#'+fieldName).text(0);
+          }
+      });
 
-    $("#ground").change(function(){
-       ground = $(this).val() * 350
-       var temp = ground + rooftop + caravan;
-       igst = temp * .18;
-       convenience = temp * .024;
-
-       var str = 'Rs ' + ground
-       var str2 = 'Rs ' + igst
-       var str3 = 'Rs' + convenience
-       $(".price--3").text(str)
-       $(".price--4").text(str2)
-       $(".price--5").text(str3)
-    });
+      $('button[data-quantity="third_plus"]').click(function(e){
+          if($(".days__date").val() == ""){
+          alert("please put number of days")
+        } else {
+          e.preventDefault();
+          fieldName = $(this).attr('data-field');
+          var currentVal = parseInt($('#'+fieldName).text());
+          if (!isNaN(currentVal)) {
+              $('#'+fieldName).text(currentVal + 1);
+              room = ({{pricing.room}} * (currentVal + 1)) * parseInt($(".days__date").val())
+              updateValue(room, "#price-total")
+          } else {
+              $('#'+fieldName).text(0);
+          }
+      }
+      });
+      $('button[data-quantity="third_minus"]').click(function(e) {
+          e.preventDefault();
+          fieldName = $(this).attr('data-field');
+          var currentVal = parseInt($('#'+fieldName).text());
+          if (!isNaN(currentVal) && currentVal > 0) {
+              $('#'+fieldName).text(currentVal - 1);
+              room = ({{pricing.room}} * (currentVal - 1)) * parseInt($(".days__date").val())
+              updateValue(room, "#price-total")
+          } else {
+              $('#'+fieldName).text(0);
+          }
+      });
 
     $("#datetimepicker").datetimepicker({
      timepicker:false,
@@ -492,6 +808,9 @@ window.onload = function(){
    };
 
  document.getElementById('rzp-button1').onclick = function(e){
+ if ($("input[name=tripDay]").val() == ""){
+    alert("Please fill date")
+ } else {
     e.preventDefault();
         var paymentMethodEndpoint = "{% url 'destination:destination_detail_page' slug=destination.slug %}"
         var t = $("input[name=csrfmiddlewaretoken]").val();
@@ -508,10 +827,10 @@ window.onload = function(){
             url: paymentMethodEndpoint,
             method: "POST",
             success: function(data){
-            options.amount = (data.amount) * 100
+            options.amount = data.amount * 100;
             options.prefill.email = data.email
             options.prefill.name = data.name
-            options.key = data.razor_id
+            options.key = razor_id
             var rzp1 = new Razorpay(options);
             rzp1.open();
             },
@@ -520,6 +839,7 @@ window.onload = function(){
             }
         })
         }
+  }
 }
 </script>
 {% endblock %}

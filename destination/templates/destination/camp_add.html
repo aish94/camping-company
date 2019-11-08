@@ -1,0 +1,797 @@
+{% extends "snippets/base.html" %}
+{% load staticfiles %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/destination/camp_add.css' %}">
+{% endblock %}
+{% block content_block %}
+<div class="row no-gutters">
+    <div class="col-2">
+        <div class="sidenav">
+            <div id="overview" class="sidenav__div space-bottom--medium">
+                <a href="#">Overview</a>
+            </div>
+            <div id="description" class="sidenav__div space-bottom--medium">
+                <a href="#">Description</a>
+            </div>
+            <div id="amenity" class="sidenav__div space-bottom--medium">
+                <a href="#">Amenities</a>
+            </div>
+
+            <div id="activity" class="sidenav__div space-bottom--medium">
+                <a href="#">Activities</a>
+            </div>
+
+            <div id="pricing" class="sidenav__div space-bottom--medium">
+                <a href="#">Pricing</a>
+            </div>
+            <div id="weather" class="sidenav__div space-bottom--medium">
+                <a href="#">Weather Info</a>
+            </div>
+            <div id="payment" class="sidenav__div space-bottom--medium">
+                <a href="#">Payment</a>
+            </div>
+        </div>
+    </div>
+        <div class="space-bottom--medium"></div>
+        <div class="col-10">
+            <div class="container">
+            <form method="POST" action="{% url 'destination:camp_add' %}" autocomplete="off" enctype="multipart/form-data">{% csrf_token %}
+            <section id="form-overview">
+            <div class="space-bottom--medium"></div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <h1>Overview</h1>
+                    </div>
+                </div>
+                <div class="space-bottom--big"></div>
+               <div class="form-group">
+                  <label for="place">Name your site</label>
+                   <div class="space-bottom--small"></div>
+
+                  <input name="place" type="text" class="form-control" id="place" required>
+               </div>
+                <div class="form-group">
+                  <label for="state_city">Location</label>
+                    <div class="space-bottom--small"></div>
+
+                  <input name="state-city" type="text" class="form-control" id="state_city" required>
+               </div>
+
+                <div class="form-group">
+                  <label for="known_for">Known-for</label>
+                    <div class="space-bottom--small"></div>
+                  <input name="known_for" type="text" class="form-control" id="known_for" required>
+               </div>
+
+                <div class="form-group">
+                  <label for="region">Region</label>
+                    <div class="space-bottom--small"></div>
+                  <input name="region" type="text" class="form-control" id="region" required>
+               </div>
+
+                <div class="form-group">
+                  <label for="latitude">Co-ordinates(comma separated)</label>
+                    <div class="space-bottom--small"></div>
+
+                  <input name="latitude" type="text" class="form-control" id="latitude" required>
+               </div>
+<!--                <div class="form-group">-->
+<!--                  <label for="longitude">Longitude</label>-->
+<!--                    <div class="space-bottom&#45;&#45;small"></div>-->
+<!--                  <input name="longitude" type="text" class="form-control" id="longitude" required>-->
+<!--               </div>-->
+                <div id="map"></div>
+                </section>
+            <!--description section-->
+            <section class="hide-div" id="form-description">
+               <div class="row">
+                   <div class="col-md-7">
+                        <div class="form-group">
+                          <div class="space-bottom--medium"></div>
+                           <h1>Description</h1>
+                           <div class="space-bottom--big"></div>
+                          <label for="site_type">Which type of site you have</label>
+                           <div class="space-bottom--small"></div>
+                          <input name="site_type" type="text" class="form-control" id="site_type" required>
+                       </div>
+                   </div>
+                   <div class="col-md-7">
+                  <div class="form-group">
+                    <label for="site_description">Describe your site</label>
+                    <div class="space-bottom--small"></div>
+                    <textarea id="site_description" name="site_description" cols="40" rows="10" required></textarea>
+                    </div>
+                   </div>
+
+                   <div class="col-md-5">
+                       <div class="avatar-upload">
+                            <div class="avatar-edit">
+                                <input name="image-main" type='file' id="imageUpload" required>
+                                <label for="imageUpload"></label>
+                        </div>
+                        <div class="avatar-preview">
+                            <div id="imagePreview" style="background-image: url(../../../static/images/camp_add/white_water.png);">
+                            </div>
+                        </div>
+                        </div>
+                   </div>
+               </div>
+                <div class="check-body">
+                    <span class="text--center">Road</span>
+                    <input required class="check--center" type="radio" name="accessible_by" value="Road">
+                </div>
+                <div class="check-body">
+                    <span class="text--center">Walk</span>
+                    <input required class="check--center" type="radio" name="accessible_by" value="Walk">
+                </div>
+                <div class="space-bottom--big"></div>
+
+                <div class="experience">
+                    <p class="experience__heador">What kind of experience you are providing to campers</p>
+                    <div class="space-bottom--medium"></div>
+                    <p class="experience--text">Experience 1</p>
+                    <input class="experience__title" type="text" name="experience_title-1" placeholder="Title" required>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <textarea name="experience_description-1" placeholder="Description" cols="40" rows="5" required></textarea>
+                        </div>
+                        <div class="col-md-5">
+                       <div class="avatar-upload">
+                            <div class="avatar-edit">
+                                <input name="experience_image-1" type='file' id="imageUpload1" required>
+                                <label for="imageUpload1"></label>
+                        </div>
+                        <div class="avatar-preview">
+                            <div id="imagePreview1" style="background-image: url(../../../static/images/camp_add/white_water.png);">
+                            </div>
+                        </div>
+                        </div>
+                   </div>
+                    </div>
+                </div>
+                <div class="space-bottom--big"></div>
+
+                <div class="experience">
+                    <div class="space-bottom--medium"></div>
+                    <p class="experience--text">Experience 2</p>
+                    <input class="experience__title" type="text" name="experience_title-2" placeholder="Title" required>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <textarea name="experience_description-2" placeholder="Description" cols="40" rows="5" required></textarea>
+                        </div>
+                        <div class="col-md-5">
+                       <div class="avatar-upload">
+                            <div class="avatar-edit">
+                                <input name="experience_image-2" type='file' id="imageUpload2" required>
+                                <label for="imageUpload2"></label>
+                        </div>
+                        <div class="avatar-preview">
+                            <div id="imagePreview2" style="background-image: url(../../../static/images/camp_add/white_water.png);">
+                            </div>
+                        </div>
+                        </div>
+                   </div>
+                </div>
+                <div class="space-bottom--big"></div>
+                </div>
+
+                 <div class="experience">
+                    <div class="space-bottom--medium"></div>
+                    <p class="experience--text">Experience 3</p>
+                    <input class="experience__title" type="text" name="experience_title-3" placeholder="Title" required>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <textarea name="experience_description-3" placeholder="Description" cols="40" rows="5" required></textarea>
+                        </div>
+                        <div class="col-md-5">
+                       <div class="avatar-upload">
+                            <div class="avatar-edit">
+                                <input name="experience_image-3" type='file' id="imageUpload3" required>
+                                <label for="imageUpload3"></label>
+                        </div>
+                        <div class="avatar-preview">
+                            <div id="imagePreview3" style="background-image: url(../../../static/images/camp_add/white_water.png);">
+                            </div>
+                        </div>
+                        </div>
+                   </div>
+                </div>
+                <div class="space-bottom-medium"></div>
+                 </div>
+
+            <p style="font-size: 2.2rem;"> Features</p>
+                <div class="check-body">
+                    <img class="image--center--1" src="../../../static/images/camp_add/sports-car.svg" alt="">
+                    <span class="text__center--1">Off roading</span>
+                    <input type="hidden" name="off_roading" value="False">
+                    <input class="check--center bool" type="checkbox" name="off_roading" value="False">
+                </div>
+
+                <div class="check-body">
+                    <img class="image--center--1" src="../../../static/images/camp_add/bike.svg" alt="">
+                    <span class="text__center--1">Cycling</span>
+                    <input type="hidden" name="cycling" value="False">
+                    <input class="check--center bool" type="checkbox" name="cycling" value="False">
+                </div>
+
+                <div class="check-body">
+                    <img class="image--center--1" src="../../../static/images/camp_add/sports-car.svg" alt="">
+                    <span class="text__center--1">Campfire</span>
+                    <input type="hidden" name="campfire" value="False">
+                    <input class="check--center bool" type="checkbox" name="campfire" value="False">
+                </div>
+
+                <div class="check-body">
+                    <span class="text__center--1">Toilet</span>
+                    <input type="hidden" name="toilet" value="False">
+                    <input class="check--center bool" type="checkbox" name="toilet" value="False">
+                </div>
+            </section>
+                <br>
+<!--                section amenities -->
+            <section class="hide-div" id="form-amenity">
+            <div class="space-bottom--medium"></div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <h1>Amenities</h1>
+                    </div>
+                    <div class="space-bottom--big"></div>
+                </div>
+                <div class="check-body">
+                    <img class="image--center--1" src="../../../static/images/camp_add/barbeque.svg" alt="">
+                    <span class="text__center--1">Barbeque</span>
+                    <input type="hidden" name="barbeque" value="False">
+                    <input class="check--center bool" type="checkbox" name="barbeque" value="False">
+                </div>
+
+                <div class="check-body">
+                    <img class="image--center--1" src="../../../static/images/camp_add/cooking.svg" alt="">
+                    <span class="text__center--1">Kitchen</span>
+                    <input type="hidden" name="kitchen" value="False">
+                    <input class="check--center bool" type="checkbox" name="kitchen" value="False">
+                </div>
+
+
+                <div class="check-body">
+                    <img class="image--center--1" src="../../../static/images/camp_add/park.svg" alt="">
+                    <span class="text__center--1">Picnic Table</span>
+                    <input type="hidden" name="picnic" value="False">
+                    <input class="check--center bool" type="checkbox" name="picnic" value="False">
+                </div>
+
+                <div class="check-body">
+                    <img class="image--center--1" src="../../../static/images/camp_add/medication.svg" alt="">
+                    <span class="text__center--1">Drinking Water</span>
+                    <input type="hidden" name="drinking" value="False">
+                    <input class="check--center bool" type="checkbox" name="drinking" value="False">
+                </div>
+
+                <div class="space-bottom--medium"></div>
+
+                <div class="check-body">
+                    <img class="image--center--1" src="../../../static/images/camp_add/plug.svg" alt="">
+                    <span class="text__center--1">Charging Points</span>
+                    <input type="hidden" name="charging" value="False">
+                    <input class="check--center bool" type="checkbox" name="charging" value="False">
+                </div>
+
+
+
+                <div class="check-body">
+                    <img class="image--center--1" src="../../../static/images/camp_add/track.svg" alt="">
+                    <span class="text__center--1">Pets</span>
+                    <input type="hidden" name="pets" value="False">
+                    <input class="check--center bool" type="checkbox" name="pets" value="False">
+                </div>
+
+
+
+
+                <div class="check-body">
+                    <img class="image--center--1" src="../../../static/images/camp_add/lavatory.svg" alt="">
+                    <span class="text__center--1">Bathroom</span>
+                    <input type="hidden" name="bathroom" value="False">
+                    <input class="check--center bool" type="checkbox" name="bathroom" value="False">
+                </div>
+                <div class="space-bottom--medium"></div>
+                <div class="check-body">
+                    <img class="image--center--1" src="../../../static/images/camp_add/lavatory.svg" alt="">
+                    <span class="text__center--1">Covered Area</span>
+                    <input type="hidden" name="covered" value="False">
+                    <input class="check--center bool" type="checkbox" name="covered" value="False">
+                </div>
+
+
+                <div class="check-body">
+                    <img class="image--center--1" src="../../../static/images/camp_add/lavatory.svg" alt="">
+                    <span class="text__center--1">Breakfast</span>
+                    <input type="hidden" name="breakfast" value="False">
+                    <input class="check--center bool" type="checkbox" name="breakfast" value="False">
+                </div>
+            </section>
+
+
+                <!--                section activity -->
+            <section class="hide-div" id="form-activity">
+            <div class="space-bottom--medium"></div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <h1>Activities</h1>
+                    </div>
+                    <div class="space-bottom--big"></div>
+                </div>
+               <div class="check-body">
+                    <img class="image--center--1" src="../../../static/images/camp_add/cave.svg" alt="">
+                    <span class="text__center--1">Cave</span>
+                   <input type="hidden" name="cave" value="False">
+                    <input class="check--center bool" type="checkbox" name="cave" value="False">
+                </div>
+                <div class="check-body">
+                    <img class="image--center--1" src="../../../static/images/camp_add/waterfall.svg" alt="">
+                    <span class="text__center--1">Waterfall</span>
+                    <input type="hidden" name="waterfall" value="False">
+                    <input class="check--center bool" type="checkbox" name="waterfall" value="False">
+                </div>
+
+                <div class="check-body">
+                    <img class="image--center--1" src="../../../static/images/camp_add/hiker.svg" alt="">
+                    <span class="text__center--1">Trekking</span>
+                    <input type="hidden" name="trekking" value="False">
+                    <input class="check--center bool" type="checkbox" name="trekking">
+                </div>
+
+<!--                <div class="check-body">-->
+<!--                    <img class="image&#45;&#45;center&#45;&#45;1" src="../../../static/images/camp_add/park.svg" alt="">-->
+<!--                    <span class="text__center&#45;&#45;1">Picnic</span>-->
+<!--                    <input type="hidden" name="picnic" value="False">-->
+<!--                    <input class="check&#45;&#45;center bool" type="checkbox" name="picnic" value="False">-->
+<!--                </div>-->
+                <div class="space-bottom--medium"></div>
+                              <div class="check-body">
+                    <img class="image--center--1" src="../../../static/images/camp_add/sunset.svg" alt="">
+                    <span class="text__center--1">River Beach</span>
+                   <input type="hidden" name="river_beach" value="False">
+                    <input class="check--center bool" type="checkbox" name="river_beach" value="False">
+                </div>
+                <div class="check-body">
+                    <img class="image--center--1" src="../../../static/images/camp_add/swim.svg" alt="">
+                    <span class="text__center--1">Swimming</span>
+                    <input type="hidden" name="swimming" value="False">
+                    <input class="check--center bool" type="checkbox" name="swimming" value="False">
+                </div>
+
+                <div class="check-body">
+                    <img class="image--center--1" src="../../../static/images/camp_add/temple.svg" alt="">
+                    <span class="text__center--1">&nbsp;&nbsp;Historical place</span>
+                    <input type="hidden" name="historical_place" value="False">
+                    <input class="check--center bool" type="checkbox" name="historical_place" value="False">
+                </div>
+
+                <div class="check-body">
+                    <img class="image--center--1" src="../../../static/images/camp_add/float.svg" alt="">
+                    <span class="text__center--1">Fishing</span>
+                    <input type="hidden" name="fishing" value="False">
+                    <input class="check--center bool" type="checkbox" name="fishing" value="False">
+                </div>
+
+                <div class="space-bottom--medium"></div>
+                <div class="check-body">
+                    <img class="image--center--1" src="../../../static/images/camp_add/tractor.svg" alt="">
+                    <span class="text__center--1">Farming</span>
+                    <input type="hidden" name="farming" value="False">
+                    <input class="check--center bool" type="checkbox" name="farming" value="False">
+                </div>
+
+                <div class="check-body">
+                    <img class="image--center--1" src="../../../static/images/camp_add/lake.svg" alt="">
+                    <span class="text__center--1">Lake</span>
+                    <input type="hidden" name="lake" value="False">
+                    <input class="check--center bool" type="checkbox" name="lake" value="False">
+                </div>
+
+
+                <div class="check-body">
+                    <img class="image--center--1" src="../../../static/images/camp_add/boating.svg" alt="">
+                    <span class="text__center--1">Boating</span>
+                    <input type="hidden" name="boating" value="False">
+                    <input class="check--center bool" type="checkbox" name="boating" value="False">
+                </div>
+
+            </section>
+
+
+<!--                section Weather -->
+            <section class="hide-div" id="form-weather">
+            <div class="space-bottom--medium"></div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <h1>Weather</h1>
+                    </div>
+                    <div class="space-bottom--big"></div>
+                </div>
+                <p style="font-size:1.8rem;">Suitable for:</p>
+                <div class="check-body">
+                    <span class="text__center--1">All season</span>
+                    <input required class="check--center" type="radio" name="season" value="All season">
+                </div>
+                <div class="check-body">
+                    <span class="text__center--1">Winter</span>
+                    <input required class="check--center" type="radio" name="season" value="winter">
+                </div>
+                <div class="check-body">
+                    <span class="text__center--1">Summer</span>
+                    <input required class="check--center" type="radio" name="season" value="summer">
+                </div>
+                <div class="space-bottom--medium"></div>
+
+                <p style="font-size:1.8rem;">Temp in summer:</p>
+                <input class="activity-input" type="text" name="summer" required>
+
+                <div class="space-bottom--big"></div>
+
+                 <p style="font-size:1.8rem;">Temp in winter:</p>
+                <input class="activity-input" type="text" name="winter" required>
+
+                <div class="space-bottom--big"></div>
+            </section>
+
+<!--                section pricing-->
+                 <section class="hide-div" id="form-pricing">
+            <div class="space-bottom--medium"></div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <h1>Pricing & Policy</h1>
+                    </div>
+                    <div class="space-bottom--big"></div>
+                </div>
+                 <p style="font-size:1.8rem;">Items</p>
+                <div class="check-body">
+                    <img class="image--center--1" src="../../../static/images/camp_add/caravan.svg" alt="">
+                    <span class="text__center--1">Caravan</span>
+                    <input class="check--center" type="checkbox" value="True">
+                </div>
+                     <input name="caravan" class="pricing-input" type="text">
+                     <div class="space-bottom--medium"></div>
+
+                <div class="check-body">
+                    <img class="image--center--1" src="../../../static/images/camp_add/camper.svg" alt="">
+                    <span class="text__center--1">&nbsp;&nbsp;&nbsp;Rooftop Tent</span>
+                    <input class="check--center" type="checkbox" value="True">
+                </div>
+
+                <input class="pricing-input" name="rooftop" type="text">
+                 <div class="space-bottom--medium"></div>
+
+                <div class="check-body">
+                    <img class="image--center--1" src="../../../static/images/camp_add/tent.svg" alt="">
+                    <span class="text__center--1">BYOT</span>
+                    <input class="check--center bool" type="checkbox" value="True">
+                </div>
+                 <input class="pricing-input" name="BYOT" type="text">
+                 <div class="space-bottom--medium"></div>
+
+                 <p style="font-size:1.8rem;">Do you provide rooms service?</p>
+            <div class="check-body">
+                <img class="image--center--1" src="../../../static/images/camp_add/pencil-edit-button.svg" alt="">
+                <span class="text__center--1">Room</span>
+                <input required class="check--center" value="True" type="checkbox">
+            </div>
+                 <input required class="pricing-input" type="text" name="room" placeholder="starts@">
+                 <div class="space-bottom--medium"></div>
+                 <div class="space-bottom--big"></div>
+
+              <p style="font-size:1.8rem;">Check-in</p>
+                 <div class="check-body">
+                    <span class="text--center">Flexible</span>
+                    <input class="check--center" type="radio" name="check_in" value="Flexible" required>
+                </div>
+
+                 <div class="check-body">
+                    <span class="text--center">Dynamic</span>
+                    <input class="check--center" type="radio" name="check_in" value="Dynamic" required>
+                </div>
+                 <div class="space-bottom--small"></div>
+
+                     <p style="font-size:1.8rem;">Check-out</p>
+                 <div class="check-body">
+                    <span class="text--center">Flexible</span>
+                    <input class="check--center" type="radio" name="check_out" value="Flexible" required>
+                </div>
+
+                 <div class="check-body">
+                    <span class="text--center">Dynamic</span>
+                    <input class="check--center" type="radio" name="check_out" value="Dynamic" required>
+                </div>
+
+                     <div class="space-bottom--small"></div>
+
+                     <p style="font-size:1.8rem;">Cancellation policy</p>
+                 <div class="check-body">
+                    <span class="text--center">Flexible</span>
+                    <input class="check--center" type="radio" name="cancel" value="Flexible" required>
+                </div>
+
+                 <div class="check-body">
+                    <span class="text--center">Dynamic</span>
+                    <input class="check--center" type="radio" name="cancel" value="Dynamic" required>
+                </div>
+                     <div class="space-bottom--medium"></div>
+
+            </section>
+
+<!--                section payemnt-->
+                <section class="hide-div" id="form-payment">
+            <div class="space-bottom--medium"></div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <h1>Payment</h1>
+                    </div>
+                </div>
+                <div class="space-bottom--big"></div>
+                  <p style="font:size: 1.8rem;">Enter Account Details</p>
+
+                <div class="form-group">
+                  <label for="state_city">Account number</label>
+                    <div class="space-bottom--small"></div>
+
+                  <input name="account_number" type="text" class="form-control" required>
+               </div>
+                <div class="form-group">
+                  <label for="latitude">Bank name</label>
+                    <div class="space-bottom--small"></div>
+                  <input name="bank_name" type="text" class="form-control" required>
+               </div>
+
+                <div class="form-group">
+                  <label for="latitude">IFSC Code</label>
+                    <div class="space-bottom--small"></div>
+                  <input name="IFSC" type="text" class="form-control" required>
+               </div>
+                                                <br>
+            <button type="submit" id="save" class="btn-save">save</button>
+            </section>
+        </form>
+    </div>
+</div>
+</div>
+<script>
+window.onload = function() {
+
+    //overview show
+   $("#overview").click(function() {
+   $("section").css({"visibility": "hidden", "opacity": 0,"display": "none"})
+   $("#form-overview").css({"visibility": "visible", "opacity": 1,"display": "block"})
+});
+    //description show
+   $("#description").click(function() {
+   $("section").css({"visibility": "hidden", "opacity": 0,"display": "none"})
+   $("#form-description").css({"visibility": "visible", "opacity": 1,"display": "block"})
+});
+
+
+    //amenities show
+   $("#amenity").click(function() {
+   $("section").css({"visibility": "hidden", "opacity": 0,"display": "none"})
+   $("#form-amenity").css({"visibility": "visible", "opacity": 1,"display": "block"})
+});
+
+
+    //activity show
+   $("#activity").click(function() {
+   $("section").css({"visibility": "hidden", "opacity": 0,"display": "none"})
+   $("#form-activity").css({"visibility": "visible", "opacity": 1,"display": "block"})
+});
+
+
+    //weather show
+   $("#weather").click(function() {
+   $("section").css({"visibility": "hidden", "opacity": 0,"display": "none"})
+   $("#form-weather").css({"visibility": "visible", "opacity": 1,"display": "block"})
+});
+
+    //pricing show
+   $("#pricing").click(function() {
+   $("section").css({"visibility": "hidden", "opacity": 0,"display": "none"})
+   $("#form-pricing").css({"visibility": "visible", "opacity": 1,"display": "block"})
+});
+
+
+    //payment show
+   $("#payment").click(function() {
+   $("section").css({"visibility": "hidden", "opacity": 0,"display": "none"})
+   $("#form-payment").css({"visibility": "visible", "opacity": 1,"display": "block"})
+});
+
+function readURL(input,x) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $(x).css('background-image', 'url('+e.target.result +')');
+            $(x).hide();
+            $(x).fadeIn(650);
+
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#imageUpload").change(function() {
+    readURL(this,"#imagePreview");
+});
+
+$("#imageUpload1").change(function() {
+    readURL(this,"#imagePreview1");
+});
+
+
+$("#imageUpload2").change(function() {
+    readURL(this,"#imagePreview2");
+});
+
+
+$("#imageUpload3").change(function() {
+    readURL(this,"#imagePreview3");
+});
+
+   // Map coords generation
+    $("#latitude").change(function(){
+      var x = $(this).val()
+      x = x.split(",")
+      initMap(parseFloat(x[0]),parseFloat(x[1]))
+    });
+
+    //destiantion exist or not
+    $("#place").change(function(){
+      var x = $(this).val()
+      var paymentMethodEndpoint = "{% url 'destination:camp_add' %}"
+        data = {
+        "place": x
+        }
+      $.ajax({
+            data: data,
+            url: paymentMethodEndpoint,
+            method: "GET",
+            success: function(data){
+                if (data.exist){
+                    alert("campsite with same name exists try different name");
+                }
+            }
+    });
+});
+
+}
+</script>
+<script>
+   function initMap(latitude,longitude){
+
+       var st = []
+       var curr_date = new Date()
+       if (curr_date.getHours() > 18) {
+           st = [
+           {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+           {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
+           {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+           {
+             featureType: 'administrative.locality',
+             elementType: 'labels.text.fill',
+             stylers: [{color: '#d59563'}]
+           },
+           {
+             featureType: 'poi',
+             elementType: 'labels.text.fill',
+             stylers: [{color: '#d59563'}]
+           },
+           {
+             featureType: 'poi.park',
+             elementType: 'geometry',
+             stylers: [{color: '#263c3f'}]
+           },
+           {
+             featureType: 'poi.park',
+             elementType: 'labels.text.fill',
+             stylers: [{color: '#6b9a76'}]
+           },
+           {
+             featureType: 'road',
+             elementType: 'geometry',
+             stylers: [{color: '#38414e'}]
+           },
+           {
+             featureType: 'road',
+             elementType: 'geometry.stroke',
+             stylers: [{color: '#212a37'}]
+           },
+           {
+             featureType: 'road',
+             elementType: 'labels.text.fill',
+             stylers: [{color: '#9ca5b3'}]
+           },
+           {
+             featureType: 'road.highway',
+             elementType: 'geometry',
+             stylers: [{color: '#746855'}]
+           },
+           {
+             featureType: 'road.highway',
+             elementType: 'geometry.stroke',
+             stylers: [{color: '#1f2835'}]
+           },
+           {
+             featureType: 'road.highway',
+             elementType: 'labels.text.fill',
+             stylers: [{color: '#f3d19c'}]
+           },
+           {
+             featureType: 'transit',
+             elementType: 'geometry',
+             stylers: [{color: '#2f3948'}]
+           },
+           {
+             featureType: 'transit.station',
+             elementType: 'labels.text.fill',
+             stylers: [{color: '#d59563'}]
+           },
+           {
+             featureType: 'water',
+             elementType: 'geometry',
+             stylers: [{color: '#17263c'}]
+           },
+           {
+             featureType: 'water',
+             elementType: 'labels.text.fill',
+             stylers: [{color: '#515c6d'}]
+           },
+           {
+             featureType: 'water',
+             elementType: 'labels.text.stroke',
+             stylers: [{color: '#17263c'}]
+           }
+         ]
+       }
+
+
+       var options = {
+       zoom:4,
+       center:{lat:25.4670,lng:91.3662},
+       styles: st
+
+     }
+
+     function addMarker(props){
+       var marker = new google.maps.Marker({
+         position:props.coords,
+         map:map,
+
+       });
+       if(props.iconImage){
+
+         marker.setIcon(props.iconImage);
+       }
+
+
+       if(props.content){
+         var infoWindow = new google.maps.InfoWindow({
+           content:props.content
+         });
+
+         marker.addListener('click', function(){
+           infoWindow.open(map, marker);
+         });
+       }
+     }
+
+     var map = new google.maps.Map(document.getElementById('map'), options);
+        var marker = {
+           coords: {lat: latitude, lng: longitude},
+           iconImage:'https://cdn4.iconfinder.com/data/icons/camp/96/tend-48.png',
+          }
+
+          if(marker.coords.lat){
+            addMarker(marker)
+        }
+
+   }
+</script>
+{% endblock %}

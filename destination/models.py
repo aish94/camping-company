@@ -8,19 +8,17 @@ from django.db.models.signals import pre_save
 
 
 class Destination(models.Model):
-    place = models.CharField(max_length=64)
+    image_main = models.ImageField(upload_to='maps/detail', blank=True)
+    place = models.CharField(max_length=64, unique=True)
     state_city = models.CharField(max_length=64)
-    cc_higlight = models.CharField(max_length=128)
-    map_loc = models.CharField(max_length=64)
+    site_type = models.CharField(max_length=64)
     description = models.TextField()
     distance = models.IntegerField()
     hours = models.IntegerField()
-    accommodation = models.CharField(max_length=64)
-    important_to_know = models.TextField()
-    note = models.CharField(max_length=128)
     night_time_temperature_summer = models.CharField(max_length=64)
     night_time_temperature_winter = models.CharField(max_length=64)
     season = models.CharField(max_length=64)
+    known_for = models.CharField(max_length=128)
     slug = models.SlugField(max_length=40, blank=True, null=True)
 
     def __str__(self):
@@ -50,7 +48,6 @@ class Amenity(models.Model):
     drinking_water = models.BooleanField()
     covered_area = models.BooleanField()
     barbeque_grills = models.BooleanField()
-    good_for_groups = models.BooleanField()
     campfire = models.BooleanField()
     picnic_table = models.BooleanField()
     breakfast = models.BooleanField()
@@ -67,7 +64,6 @@ class Detail(models.Model):
     check_out = models.CharField(max_length=64)
     phone = models.BigIntegerField(null=True, blank=True)
     cancellation_policy = models.CharField(max_length=64)
-    booked = models.BooleanField(default=False)
 
     def __str__(self):
         return self.destination.place
@@ -87,7 +83,7 @@ class Booking(models.Model):
     convenient = models.FloatField(blank=True, null=True)
 
     def __str__(self):
-        return self.txnid
+        return str(self.txnid)
 
 
 class Activity(models.Model):
@@ -97,7 +93,7 @@ class Activity(models.Model):
     boating = models.BooleanField()
     waterfall = models.BooleanField()
     lake = models.BooleanField()
-    jungle_walk = models.BooleanField()
+    picnic = models.BooleanField()
     caving = models.BooleanField()
     local_farm = models.BooleanField()
     river_beach = models.BooleanField()
@@ -108,6 +104,50 @@ class Activity(models.Model):
     def __str__(self):
         return self.destination.place
 
+
+class Experience(models.Model):
+    destination = models.ForeignKey(Destination, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='maps/detail', blank=True)
+    title = models.CharField(max_length=64, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+
+class Feature(models.Model):
+    destination = models.ForeignKey(Destination, on_delete=models.CASCADE)
+    off_roading = models.BooleanField()
+    cycling = models.BooleanField()
+    toilet = models.BooleanField()
+    campfire = models.BooleanField()
+
+    def __str__(self):
+        return self.destination.place
+
+
+class PaymentCampsite(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    destination = models.ForeignKey(Destination, on_delete=models.CASCADE)
+    account = models.CharField(max_length=128)
+    bank = models.CharField(max_length=128)
+    IFSC = models.CharField(max_length=128)
+
+    def __str__(self):
+        return self.user.username
+
+
+class Pricing(models.Model):
+    destination = models.ForeignKey(Destination, on_delete=models.CASCADE)
+    caravan = models.IntegerField(default=0)
+    rooftop = models.IntegerField(default=0)
+    BYOT = models.IntegerField(default=0)
+    room = models.IntegerField(default=0)
+    book = models.BooleanField(default=False)
+
+    def __str__(self):
+        return str(self.book)
+
 # map related
 
 
@@ -116,7 +156,6 @@ class Map(models.Model):
     latitude = models.FloatField(max_length=128, blank=True, null=True)
     longitude = models.FloatField(max_length=128, blank=True, null=True)
     images = models.ImageField(upload_to='maps/image', blank=True)
-    iconImage = models.ImageField(upload_to='maps/iconImage', blank=True)
     title = models.CharField(max_length=64, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
 

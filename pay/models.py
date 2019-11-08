@@ -21,6 +21,8 @@ class Pay(models.Model):
     table = models.IntegerField(blank=True, null=True)
     igst = models.FloatField(blank=True, null=True)
     convenient = models.FloatField(blank=True, null=True)
+    shillong_transfer = models.IntegerField(blank=True, null=True)
+    airport_transfer = models.IntegerField(blank=True, null=True)
     created = models.DateField(auto_now=True)
 
     def __str__(self):
