@@ -17,7 +17,7 @@
       <div class="row">
         <div class="col-lg-6 col-sm-12 col-xs-12">
           {% if request.user.is_superuser %}
-          <a href="{% url 'destination:camp_update' slug=destination.slug%}"><img class="image--center--1" src="../../../static/images/camp_add/pencil-edit-button.svg" alt=""></a>
+          <a href="{% url 'destination:camp_update' slug=destination.slug%}"><img class="image--center--1" src="{% static 'images/camp_add/pencil-edit-button.svg' %}" alt=""></a>
           {% endif %}
           <h3 style="text-transform: uppercase;">{{destination.site_type}}</h3><br>
           <h1 class="heading-primary">{{destination.place}}</h1><br>
@@ -73,7 +73,7 @@
 
                   <div class="row" style="padding:15px; padding-top:20px;">
                     <div class="col-5">
-                      &nbsp;&nbsp;&nbsp;<img src="{% static 'images/destination-detail/caravan.svg' %}"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;<img src="{% static 'images/destination-detail/Caravan.svg' %}"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       Caravan
                     </div>
 
