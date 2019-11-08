@@ -110,7 +110,7 @@
                                 <label for="imageUpload"></label>
                         </div>
                         <div class="avatar-preview">
-                            <div id="imagePreview" style="background-image: url();">
+                            <div id="imagePreview" style="background-image: url({% static 'images/camp_add/white_water.png' %});">
                             </div>
                         </div>
                         </div>
@@ -143,7 +143,7 @@
                                 <label for="imageUpload1"></label>
                         </div>
                         <div class="avatar-preview">
-                            <div id="imagePreview1" style="background-image: url();">
+                            <div id="imagePreview1" style="background-image: url({% static 'images/camp_add/white_water.png' %});">
                             </div>
                         </div>
                         </div>
@@ -168,7 +168,7 @@
                                 <label for="imageUpload2"></label>
                         </div>
                         <div class="avatar-preview">
-                            <div id="imagePreview2" style="background-image: url();">
+                            <div id="imagePreview2" style="background-image: url({% static 'images/camp_add/white_water.png' %});">
                             </div>
                         </div>
                         </div>
@@ -193,7 +193,7 @@
                                 <label for="imageUpload3"></label>
                         </div>
                         <div class="avatar-preview">
-                            <div id="imagePreview3" style="background-image: url();">
+                            <div id="imagePreview3" style="background-image: url({% static 'images/camp_add/white_water.png' %});">
                             </div>
                         </div>
                         </div>
@@ -551,7 +551,14 @@
                     <div class="space-bottom--small"></div>
                   <input name="IFSC" type="text" class="form-control" required>
                </div>
-                                                <br>
+
+                <div class="form-group">
+                  <label for="latitude">Contact number</label>
+                    <div class="space-bottom--small"></div>
+                  <input name="number" type="text" class="form-control" required>
+               </div>
+
+            <br>
             <button type="submit" id="save" class="btn-save">save</button>
             </section>
         </form>
@@ -659,8 +666,19 @@ $("#imageUpload3").change(function() {
                     alert("campsite with same name exists try different name");
                 }
             }
+        });
     });
-});
+
+    //check if input is not empty
+    var inputs = $('input')
+    $("#save").click(function(){
+            $.each(inputs,function(y,z){
+            if (z.value == "" ){
+                alert(z.name + " is empty");
+                return false;
+            }
+        })
+    })
 
 }
 </script>

@@ -143,7 +143,7 @@ def camp_add(request):
         campfire = request.POST.get("campfire")
         toilet = request.POST.get("toilet")
         known_for = request.POST.get("known_for")
-        region = request.POST.get("region")
+        region = (request.POST.get("region")).lower()
 
         barbeque = request.POST.get("barbeque")
         kitchen = request.POST.get("kitchen")
@@ -173,6 +173,7 @@ def camp_add(request):
         bank_name = request.POST.get("bank_name")
         account_number = request.POST.get("account_number")
         IFSC = request.POST.get("IFSC")
+        number = request.POST.get("number")
 
         caravan = float(request.POST.get("caravan"))
         rooftop = float(request.POST.get("rooftop"))
@@ -224,7 +225,7 @@ def camp_add(request):
                  fishing=fishing, local_farm=farming, lake=lake, boating=boating).save()
 
         PaymentCampsite(destination=destination, user=request.user, bank=bank_name, account=account_number,
-                        IFSC=IFSC).save()
+                        IFSC=IFSC, phone=number).save()
 
         Pricing(destination=destination, caravan=caravan, rooftop=rooftop, BYOT=BYOT, room=room, book=book).save()
 
@@ -254,6 +255,7 @@ def camp_update(request, slug):
     experience2 = experience[1]
     experience3 = experience[2]
     map = Map.objects.get(destination=destination)
+    region = Region.objects.get(region=map)
     context = {
         "destination":destination,
         "maps": maps,
@@ -267,6 +269,7 @@ def camp_update(request, slug):
         "experience1": experience1,
         "experience2": experience2,
         "experience3": experience3,
+        "region": region,
 
     }
     if request.method == "POST":
@@ -278,13 +281,18 @@ def camp_update(request, slug):
         longitude = float(lat[1])
         site_type = request.POST.get("site_type")
         site_description = request.POST.get("site_description")
-        image_main = request.FILES["image-main"]
+        try:
+            image_main = request.FILES["image-main"]
+            no_image = True
+        except:
+            no_image = False
         accessible_by = request.POST.get("accessible_by")
         off_roading = request.POST.get("off_roading")
         cycling = request.POST.get("cycling")
         campfire = request.POST.get("campfire")
         toilet = request.POST.get("toilet")
         known_for = request.POST.get("known_for")
+        region = (request.POST.get("region")).lower()
 
         barbeque = request.POST.get("barbeque")
         kitchen = request.POST.get("kitchen")
@@ -327,14 +335,25 @@ def camp_update(request, slug):
             book = False
 
         # creating main foreign key
-        destination = Destination.objects.filter(slug=slug)
-        destination.update(place=place, state_city=state_city, site_type=site_type,
-                           image_main=image_main, distance=12, hours=12, season=season,
-                           night_time_temperature_summer=summer, description=site_description,
-                           night_time_temperature_winter=winter, known_for=known_for)
-
-        Map.objects.filter(destination=destination).update(latitude=latitude, longitude=longitude,
-                                                           title=place, description=site_description, images=image_main)
+        des = destination = Destination.objects.filter(slug=slug)
+        destination = destination[0]
+        if no_image:
+            des.update(place=place, state_city=state_city, site_type=site_type,
+                       image_main=image_main, distance=12, hours=12, season=season,
+                       night_time_temperature_summer=summer, description=site_description,
+                       night_time_temperature_winter=winter, known_for=known_for)
+        else:
+            des.update(place=place, state_city=state_city, site_type=site_type,
+                       distance=12, hours=12, season=season,
+                       night_time_temperature_summer=summer, description=site_description,
+                       night_time_temperature_winter=winter, known_for=known_for)
+        if no_image:
+            Map.objects.filter(destination=destination).update(latitude=latitude, longitude=longitude,
+                                                               title=place, description=site_description,
+                                                               images=image_main)
+        else:
+            Map.objects.filter(destination=destination).update(latitude=latitude, longitude=longitude,
+                                                               title=place, description=site_description)
 
         # image title description
         # Description section save
@@ -343,15 +362,24 @@ def camp_update(request, slug):
                                                               check_in=check_in, check_out=check_out,
                                                               cancellation_policy=cancellation)
         # crazy for loop
+        ids = experience1.id
         for x in range(1, 4):
             title = "experience_title" + "-" + str(x)
             description = "experience_description" + "-" + str(x)
             image = "experience_image" + "-" + str(x)
             title = request.POST.get(title)
             description = request.POST.get(description)
-            image = request.FILES[image]
-            Experience.objects.filter(destination=destination)[x-1].update(title=title, description=description,
-                                                                           image=image)
+            try:
+                image = request.FILES[image]
+                expr_image = True
+            except:
+                expr_image = False
+            if expr_image:
+                Experience.objects.filter(destination=destination, id=ids+x-1).update(title=title, description=description,
+                                                                                       image=image)
+            else:
+                Experience.objects.filter(destination=destination)
+                Experience.objects.filter(destination=destination, id=ids+x-1).update(title=title, description=description)
 
         Feature.objects.filter(destination=destination).update(off_roading=off_roading, campfire=campfire,
                                                                cycling=cycling, toilet=toilet)
@@ -373,7 +401,16 @@ def camp_update(request, slug):
                                                                        account=account_number, IFSC=IFSC)
 
         Pricing.objects.filter(destination=destination).update(caravan=caravan, rooftop=rooftop, BYOT=BYOT, room=room,
+
                                                                book=book)
+        reg = Region.objects.filter(name=region)
+        if reg.count() == 0:
+            reg = Region.objects.create(name=region)
+            reg.region.add(map)
+        else:
+            reg[0].region.add(map)
+        messages.success(request, "Camp site add success")
+
         messages.success(request, "Camp site update success")
         return redirect("destination:destinations")
 

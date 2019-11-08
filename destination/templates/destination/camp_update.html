@@ -35,7 +35,7 @@
         <div class="space-bottom--medium"></div>
         <div class="col-10">
             <div class="container">
-            <form method="POST" action="{% url 'destination:camp_add' %}" autocomplete="off" enctype="multipart/form-data">{% csrf_token %}
+            <form method="POST" action="{% url 'destination:camp_update' slug=destination.slug %}" autocomplete="off" enctype="multipart/form-data">{% csrf_token %}
             <section id="form-overview">
             <div class="space-bottom--medium"></div>
                 <div class="row">
@@ -61,6 +61,12 @@
                   <label for="state_city">Known-for</label>
                     <div class="space-bottom--small"></div>
                   <input name="known_for" type="text" class="form-control" id="known_for" value="{{destination.known_for}}" required>
+               </div>
+
+                <div class="form-group">
+                  <label for="region">Region</label>
+                    <div class="space-bottom--small"></div>
+                  <input name="region" type="text" class="form-control" id="region" required value="{{region.name}}">
                </div>
 
                 <div class="form-group">
@@ -100,7 +106,7 @@
                    <div class="col-md-5">
                        <div class="avatar-upload">
                             <div class="avatar-edit">
-                                <input name="image-main" type='file' id="imageUpload" required value="{{destination.image_main.url}}">
+                                <input name="image-main" type='file' id="imageUpload">
                                 <label for="imageUpload"></label>
                         </div>
                         <div class="avatar-preview">
@@ -124,7 +130,7 @@
                     <p class="experience__heador">What kind of experience you are providing to campers</p>
                     <div class="space-bottom--medium"></div>
                     <p class="experience--text">Experience 1</p>
-                    <input class="experience__title" type="text" name="experience_title-1" placeholder="Title"  value="{{experience1.title}}" required>
+                    <input class="experience__title" type="text" name="experience_title-1" placeholder="Title" required value="{{experience1.title}}">
                     <br>
                     <div class="row">
                         <div class="col-md-7">
@@ -133,7 +139,7 @@
                         <div class="col-md-5">
                        <div class="avatar-upload">
                             <div class="avatar-edit">
-                                <input name="experience_image-1" type='file' id="imageUpload1" required value="{{experience1.image}}">
+                                <input name="experience_image-1" type='file' id="imageUpload1">
                                 <label for="imageUpload1"></label>
                         </div>
                         <div class="avatar-preview">
@@ -158,7 +164,7 @@
                         <div class="col-md-5">
                        <div class="avatar-upload">
                             <div class="avatar-edit">
-                                <input name="experience_image-2" type='file' id="imageUpload2" required value="{{experience2.image}}">
+                                <input name="experience_image-2" type='file' id="imageUpload2">
                                 <label for="imageUpload2"></label>
                         </div>
                         <div class="avatar-preview">
@@ -183,7 +189,7 @@
                         <div class="col-md-5">
                        <div class="avatar-upload">
                             <div class="avatar-edit">
-                                <input name="experience_image-3" type='file' id="imageUpload3" required value="{{experience3.image}}">
+                                <input name="experience_image-3" type='file' id="imageUpload3">
                                 <label for="imageUpload3"></label>
                         </div>
                         <div class="avatar-preview">
@@ -198,27 +204,28 @@
 
             <p style="font-size: 2.2rem;"> Features</p>
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/sports-car.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/sports-car.svg' %}" alt="">
                     <span class="text__center--1">Off roading</span>
                     <input type="hidden" name="off_roading" value="False">
                     <input class="check--center bool" type="checkbox" name="off_roading" value="{{feature.off_roading}}">
                 </div>
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/bike.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/bike.svg' %}" alt="">
                     <span class="text__center--1">Cycling</span>
                     <input type="hidden" name="cycling" value="False">
                     <input class="check--center bool" type="checkbox" name="cycling" value="{{feature.cycling}}">
                 </div>
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/sports-car.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/Bonfire.svg' %}" alt="">
                     <span class="text__center--1">Campfire</span>
                     <input type="hidden" name="campfire" value="False">
                     <input class="check--center bool" type="checkbox" name="campfire" value="{{feature.campfire}}">
                 </div>
 
                 <div class="check-body">
+                    <img class="image--center--1" src="{% static 'images/camp_add/lavatory.svg' %}" alt="">
                     <span class="text__center--1">Toilet</span>
                     <input type="hidden" name="toilet" value="False">
                     <input class="check--center bool" type="checkbox" name="toilet" value="{{feature.toilet}}">
@@ -235,14 +242,14 @@
                     <div class="space-bottom--big"></div>
                 </div>
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/barbeque.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/barbeque.svg' %}" alt="">
                     <span class="text__center--1">Barbeque</span>
                     <input type="hidden" name="barbeque" value="False">
                     <input class="check--center bool" type="checkbox" name="barbeque" value="{{amenity.barbeque_grills}}">
                 </div>
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/cooking.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/cooking.svg' %}" alt="">
                     <span class="text__center--1">Kitchen</span>
                     <input type="hidden" name="kitchen" value="False">
                     <input class="check--center bool" type="checkbox" name="kitchen" value="{{amenity.kitchen}}">
@@ -250,14 +257,14 @@
 
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/park.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/park.svg' %}" alt="">
                     <span class="text__center--1">Picnic Table</span>
                     <input type="hidden" name="picnic" value="False">
                     <input class="check--center bool" type="checkbox" name="picnic" value="{{amenity.picnic_table}}">
                 </div>
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/medication.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/medication.svg' %}" alt="">
                     <span class="text__center--1">Drinking Water</span>
                     <input type="hidden" name="drinking" value="False">
                     <input class="check--center bool" type="checkbox" name="drinking" value="{{amenity.drinking_water}}">
@@ -266,7 +273,7 @@
                 <div class="space-bottom--medium"></div>
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/plug.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/plug.svg' %}" alt="">
                     <span class="text__center--1">Charging Points</span>
                     <input type="hidden" name="charging" value="False">
                     <input class="check--center bool" type="checkbox" name="charging" value="{{amenity.charging_points}}">
@@ -275,7 +282,7 @@
 
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/track.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/track.svg' %}" alt="">
                     <span class="text__center--1">Pets</span>
                     <input type="hidden" name="pets" value="False">
                     <input class="check--center bool" type="checkbox" name="pets" value="{{amenity.pets_allowed}}">
@@ -285,14 +292,14 @@
 
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/lavatory.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/lavatory.svg' %}" alt="">
                     <span class="text__center--1">Bathroom</span>
                     <input type="hidden" name="bathroom" value="False">
                     <input class="check--center bool" type="checkbox" name="bathroom" value="{{amenity.bathroom}}">
                 </div>
                 <div class="space-bottom--medium"></div>
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/lavatory.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/home.svg' %}" alt="">
                     <span class="text__center--1">Covered Area</span>
                     <input type="hidden" name="covered" value="False">
                     <input class="check--center bool" type="checkbox" name="covered" value="{{amenity.covered_area}}">
@@ -300,7 +307,7 @@
 
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/lavatory.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/cooking.svg' %}" alt="">
                     <span class="text__center--1">Breakfast</span>
                     <input type="hidden" name="breakfast" value="False">
                     <input class="check--center bool" type="checkbox" name="breakfast" value="{{amenity.breakfast}}">
@@ -318,20 +325,20 @@
                     <div class="space-bottom--big"></div>
                 </div>
                <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/cave.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/cave.svg' %}" alt="">
                     <span class="text__center--1">Cave</span>
                    <input type="hidden" name="cave" value="False">
                     <input class="check--center bool" type="checkbox" name="cave" value="{{activity.caving}}">
                 </div>
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/waterfall.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/waterfall.svg' %}" alt="">
                     <span class="text__center--1">Waterfall</span>
                     <input type="hidden" name="waterfall" value="False">
                     <input class="check--center bool" type="checkbox" name="waterfall" value="{{activity.waterfall}}">
                 </div>
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/hiker.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/hiker.svg' %}" alt="">
                     <span class="text__center--1">Trekking</span>
                     <input type="hidden" name="trekking" value="False">
                     <input class="check--center bool" type="checkbox" name="trekking" value="{{activity.trekking}}">
@@ -345,27 +352,27 @@
 <!--                </div>-->
                 <div class="space-bottom--medium"></div>
                               <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/sunset.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/sunset.svg' %}" alt="">
                     <span class="text__center--1">River Beach</span>
                    <input type="hidden" name="river_beach" value="False">
                     <input class="check--center bool" type="checkbox" name="river_beach" value="{{activity.river_beach}}">
                 </div>
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/swim.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/swim.svg' %}" alt="">
                     <span class="text__center--1">Swimming</span>
                     <input type="hidden" name="swimming" value="False">
                     <input class="check--center bool" type="checkbox" name="swimming" value="{{activity.swimming}}">
                 </div>
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/temple.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/temple.svg' %}" alt="">
                     <span class="text__center--1">&nbsp;&nbsp;Historical place</span>
                     <input type="hidden" name="historical_place" value="False">
                     <input class="check--center bool" type="checkbox" name="historical_place" value="{{activity.historical_monument}}">
                 </div>
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/float.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/float.svg' %}" alt="">
                     <span class="text__center--1">Fishing</span>
                     <input type="hidden" name="fishing" value="False">
                     <input class="check--center bool" type="checkbox" name="fishing" value="{{activity.fishing}}">
@@ -373,14 +380,14 @@
 
                 <div class="space-bottom--medium"></div>
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/tractor.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/tractor.svg' %}" alt="">
                     <span class="text__center--1">Farming</span>
                     <input type="hidden" name="farming" value="False">
                     <input class="check--center bool" type="checkbox" name="farming" value="{{activity.local_farm}}">
                 </div>
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/lake.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/lake.svg' %}" alt="">
                     <span class="text__center--1">Lake</span>
                     <input type="hidden" name="lake" value="False">
                     <input class="check--center bool" type="checkbox" name="lake" value="{{activity.lake}}">
@@ -388,7 +395,7 @@
 
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/boating.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/boating.svg' %}" alt="">
                     <span class="text__center--1">Boating</span>
                     <input type="hidden" name="boating" value="False">
                     <input class="check--center bool" type="checkbox" name="boating" value="{{activity.boating}}">
@@ -443,7 +450,7 @@
                 </div>
                  <p style="font-size:1.8rem;">Items</p>
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/caravan.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/caravan.svg' %}" alt="">
                     <span class="text__center--1">Caravan</span>
                     <input class="check--center" type="checkbox" value="True">
                 </div>
@@ -451,7 +458,7 @@
                      <div class="space-bottom--medium"></div>
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/camper.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/camper.svg' %}" alt="">
                     <span class="text__center--1">&nbsp;&nbsp;&nbsp;Rooftop Tent</span>
                     <input class="check--center" type="checkbox" value="True">
                 </div>
@@ -460,7 +467,7 @@
                  <div class="space-bottom--medium"></div>
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/tent.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/tent.svg' %}" alt="">
                     <span class="text__center--1">BYOT</span>
                     <input class="check--center bool" type="checkbox" value="True">
                 </div>
@@ -469,7 +476,7 @@
 
                  <p style="font-size:1.8rem;">Do you provide rooms service?</p>
             <div class="check-body">
-                <img class="image--center--1" src="../../../static/images/camp_add/pencil-edit-button.svg" alt="">
+                <img class="image--center--1" src="{% static 'images/camp_add/pencil-edit-button.svg' %}" alt="">
                 <span class="text__center--1">Room</span>
                 <input required class="check--center" value="True" type="checkbox">
             </div>
@@ -554,6 +561,19 @@
 <script>
 window.onload = function() {
 
+    //updating radio buttons true values from backend
+    x = $("input[type=radio]")
+
+        $.each(x,function(y,z){
+        if (z.value == "{{detail.accessible_By}}" || z.value == "{{detail.check_in}}" ||
+        z.value == "{{detail.check_out}}" || z.value == "{{detail.cancellation_policy}}" ||
+        z.value == "{{destination.night_time_temperature_summer}}" || z.value == "{{night_time_temperature_summer}}" ||
+        z.value == "{{destination.season}}"){
+            z.checked = true
+        }
+    })
+
+
     //overview show
    $("#overview").click(function() {
    $("section").css({"visibility": "hidden", "opacity": 0,"display": "none"})
@@ -636,6 +656,44 @@ $("#imageUpload3").change(function() {
       initMap(parseFloat(x[0]),parseFloat(x[1]))
     });
 
+    //destiantion exist or not
+    $("#place").change(function(){
+      var x = $(this).val()
+      var paymentMethodEndpoint = "{% url 'destination:camp_add' %}"
+        data = {
+        "place": x
+        }
+      $.ajax({
+            data: data,
+            url: paymentMethodEndpoint,
+            method: "GET",
+            success: function(data){
+                if (data.exist){
+                    alert("campsite with same name exists try different name");
+                }
+            }
+        });
+    });
+
+    //check if input is not empty
+    var inputs = $('input')
+    $.each(inputs,function(y,z){
+        if (z.value == "" ){
+            alert(z + " is empty");
+            break;
+        }
+    })
+
+        //check if input is not empty
+    var inputs = $('input')
+    $("#save").click(function(){
+            $.each(inputs,function(y,z){
+            if (z.value == "" ){
+                alert(z.name + " is empty");
+                return false;
+            }
+        })
+    })
 
 }
 </script>

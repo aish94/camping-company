@@ -132,6 +132,7 @@ class PaymentCampsite(models.Model):
     account = models.CharField(max_length=128)
     bank = models.CharField(max_length=128)
     IFSC = models.CharField(max_length=128)
+    phone = models.BigIntegerField()
 
     def __str__(self):
         return self.user.username
