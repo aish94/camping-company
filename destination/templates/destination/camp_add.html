@@ -110,7 +110,7 @@
                                 <label for="imageUpload"></label>
                         </div>
                         <div class="avatar-preview">
-                            <div id="imagePreview" style="background-image: url(../../../static/images/camp_add/white_water.png);">
+                            <div id="imagePreview" style="background-image: url({% static 'images/camp_add/white_water.png' %});">
                             </div>
                         </div>
                         </div>
@@ -143,7 +143,7 @@
                                 <label for="imageUpload1"></label>
                         </div>
                         <div class="avatar-preview">
-                            <div id="imagePreview1" style="background-image: url(../../../static/images/camp_add/white_water.png);">
+                            <div id="imagePreview1" style="background-image: url({% static 'images/camp_add/white_water.png' %});">
                             </div>
                         </div>
                         </div>
@@ -168,7 +168,7 @@
                                 <label for="imageUpload2"></label>
                         </div>
                         <div class="avatar-preview">
-                            <div id="imagePreview2" style="background-image: url(../../../static/images/camp_add/white_water.png);">
+                            <div id="imagePreview2" style="background-image: url({% static 'images/camp_add/white_water.png' %});">
                             </div>
                         </div>
                         </div>
@@ -204,27 +204,28 @@
 
             <p style="font-size: 2.2rem;"> Features</p>
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/sports-car.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/sports-car.svg' %}" alt="">
                     <span class="text__center--1">Off roading</span>
                     <input type="hidden" name="off_roading" value="False">
                     <input class="check--center bool" type="checkbox" name="off_roading" value="False">
                 </div>
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/bike.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/bike.svg' %}" alt="">
                     <span class="text__center--1">Cycling</span>
                     <input type="hidden" name="cycling" value="False">
                     <input class="check--center bool" type="checkbox" name="cycling" value="False">
                 </div>
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/sports-car.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/Bonfire.svg' %}" alt="">
                     <span class="text__center--1">Campfire</span>
                     <input type="hidden" name="campfire" value="False">
                     <input class="check--center bool" type="checkbox" name="campfire" value="False">
                 </div>
 
                 <div class="check-body">
+                    <img class="image--center--1" src="{% static 'images/camp_add/lavatory.svg' %}" alt="">
                     <span class="text__center--1">Toilet</span>
                     <input type="hidden" name="toilet" value="False">
                     <input class="check--center bool" type="checkbox" name="toilet" value="False">
@@ -241,14 +242,14 @@
                     <div class="space-bottom--big"></div>
                 </div>
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/barbeque.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/barbeque.svg' %}" alt="">
                     <span class="text__center--1">Barbeque</span>
                     <input type="hidden" name="barbeque" value="False">
                     <input class="check--center bool" type="checkbox" name="barbeque" value="False">
                 </div>
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/cooking.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/cooking.svg' %}" alt="">
                     <span class="text__center--1">Kitchen</span>
                     <input type="hidden" name="kitchen" value="False">
                     <input class="check--center bool" type="checkbox" name="kitchen" value="False">
@@ -256,14 +257,14 @@
 
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/park.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/park.svg' %}" alt="">
                     <span class="text__center--1">Picnic Table</span>
                     <input type="hidden" name="picnic" value="False">
                     <input class="check--center bool" type="checkbox" name="picnic" value="False">
                 </div>
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/medication.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/medication.svg' %}" alt="">
                     <span class="text__center--1">Drinking Water</span>
                     <input type="hidden" name="drinking" value="False">
                     <input class="check--center bool" type="checkbox" name="drinking" value="False">
@@ -272,7 +273,7 @@
                 <div class="space-bottom--medium"></div>
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/plug.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/plug.svg' %}" alt="">
                     <span class="text__center--1">Charging Points</span>
                     <input type="hidden" name="charging" value="False">
                     <input class="check--center bool" type="checkbox" name="charging" value="False">
@@ -281,7 +282,7 @@
 
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/track.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/track.svg' %}" alt="">
                     <span class="text__center--1">Pets</span>
                     <input type="hidden" name="pets" value="False">
                     <input class="check--center bool" type="checkbox" name="pets" value="False">
@@ -291,14 +292,14 @@
 
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/lavatory.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/lavatory.svg' %}" alt="">
                     <span class="text__center--1">Bathroom</span>
                     <input type="hidden" name="bathroom" value="False">
                     <input class="check--center bool" type="checkbox" name="bathroom" value="False">
                 </div>
                 <div class="space-bottom--medium"></div>
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/lavatory.svg" alt="">
+                    <img class="image--center--1" src="../../../static/images/camp_add/home.svg" alt="">
                     <span class="text__center--1">Covered Area</span>
                     <input type="hidden" name="covered" value="False">
                     <input class="check--center bool" type="checkbox" name="covered" value="False">
@@ -306,7 +307,7 @@
 
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/lavatory.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/cooking.svg' %}" alt="">
                     <span class="text__center--1">Breakfast</span>
                     <input type="hidden" name="breakfast" value="False">
                     <input class="check--center bool" type="checkbox" name="breakfast" value="False">
@@ -324,20 +325,20 @@
                     <div class="space-bottom--big"></div>
                 </div>
                <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/cave.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/cave.svg' %}" alt="">
                     <span class="text__center--1">Cave</span>
                    <input type="hidden" name="cave" value="False">
                     <input class="check--center bool" type="checkbox" name="cave" value="False">
                 </div>
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/waterfall.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/waterfall.svg' %}" alt="">
                     <span class="text__center--1">Waterfall</span>
                     <input type="hidden" name="waterfall" value="False">
                     <input class="check--center bool" type="checkbox" name="waterfall" value="False">
                 </div>
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/hiker.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/hiker.svg' %}" alt="">
                     <span class="text__center--1">Trekking</span>
                     <input type="hidden" name="trekking" value="False">
                     <input class="check--center bool" type="checkbox" name="trekking">
@@ -351,27 +352,27 @@
 <!--                </div>-->
                 <div class="space-bottom--medium"></div>
                               <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/sunset.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/sunset.svg' %}" alt="">
                     <span class="text__center--1">River Beach</span>
                    <input type="hidden" name="river_beach" value="False">
                     <input class="check--center bool" type="checkbox" name="river_beach" value="False">
                 </div>
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/swim.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/swim.svg' %}" alt="">
                     <span class="text__center--1">Swimming</span>
                     <input type="hidden" name="swimming" value="False">
                     <input class="check--center bool" type="checkbox" name="swimming" value="False">
                 </div>
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/temple.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/temple.svg' %}" alt="">
                     <span class="text__center--1">&nbsp;&nbsp;Historical place</span>
                     <input type="hidden" name="historical_place" value="False">
                     <input class="check--center bool" type="checkbox" name="historical_place" value="False">
                 </div>
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/float.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/float.svg' %}" alt="">
                     <span class="text__center--1">Fishing</span>
                     <input type="hidden" name="fishing" value="False">
                     <input class="check--center bool" type="checkbox" name="fishing" value="False">
@@ -379,14 +380,14 @@
 
                 <div class="space-bottom--medium"></div>
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/tractor.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/tractor.svg' %}" alt="">
                     <span class="text__center--1">Farming</span>
                     <input type="hidden" name="farming" value="False">
                     <input class="check--center bool" type="checkbox" name="farming" value="False">
                 </div>
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/lake.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/lake.svg' %}" alt="">
                     <span class="text__center--1">Lake</span>
                     <input type="hidden" name="lake" value="False">
                     <input class="check--center bool" type="checkbox" name="lake" value="False">
@@ -394,7 +395,7 @@
 
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/boating.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/boating.svg' %}" alt="">
                     <span class="text__center--1">Boating</span>
                     <input type="hidden" name="boating" value="False">
                     <input class="check--center bool" type="checkbox" name="boating" value="False">
@@ -449,7 +450,7 @@
                 </div>
                  <p style="font-size:1.8rem;">Items</p>
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/caravan.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/caravan.svg' %}" alt="">
                     <span class="text__center--1">Caravan</span>
                     <input class="check--center" type="checkbox" value="True">
                 </div>
@@ -457,7 +458,7 @@
                      <div class="space-bottom--medium"></div>
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/camper.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/camper.svg' %}" alt="">
                     <span class="text__center--1">&nbsp;&nbsp;&nbsp;Rooftop Tent</span>
                     <input class="check--center" type="checkbox" value="True">
                 </div>
@@ -466,7 +467,7 @@
                  <div class="space-bottom--medium"></div>
 
                 <div class="check-body">
-                    <img class="image--center--1" src="../../../static/images/camp_add/tent.svg" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/tent.svg' %}" alt="">
                     <span class="text__center--1">BYOT</span>
                     <input class="check--center bool" type="checkbox" value="True">
                 </div>
@@ -475,7 +476,7 @@
 
                  <p style="font-size:1.8rem;">Do you provide rooms service?</p>
             <div class="check-body">
-                <img class="image--center--1" src="../../../static/images/camp_add/pencil-edit-button.svg" alt="">
+                <img class="image--center--1" src="{% static 'images/camp_add/pencil-edit-button.svg' %}" alt="">
                 <span class="text__center--1">Room</span>
                 <input required class="check--center" value="True" type="checkbox">
             </div>
