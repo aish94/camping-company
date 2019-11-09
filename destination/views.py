@@ -255,7 +255,7 @@ def camp_update(request, slug):
     experience2 = experience[1]
     experience3 = experience[2]
     map = Map.objects.get(destination=destination)
-    region = Region.objects.get(region=map)
+    reg = region = Region.objects.get(region=map)
     context = {
         "destination":destination,
         "maps": maps,
@@ -362,7 +362,6 @@ def camp_update(request, slug):
                                                               check_in=check_in, check_out=check_out,
                                                               cancellation_policy=cancellation)
         # crazy for loop
-        ids = experience1.id
         for x in range(1, 4):
             title = "experience_title" + "-" + str(x)
             description = "experience_description" + "-" + str(x)
@@ -374,12 +373,18 @@ def camp_update(request, slug):
                 expr_image = True
             except:
                 expr_image = False
+
             if expr_image:
-                Experience.objects.filter(destination=destination, id=ids+x-1).update(title=title, description=description,
-                                                                                       image=image)
+                ex = Experience.objects.filter(destination=destination)[x-1]
+                ex.title = title
+                ex.description = description
+                ex.image = image
+                ex.save()
             else:
-                Experience.objects.filter(destination=destination)
-                Experience.objects.filter(destination=destination, id=ids+x-1).update(title=title, description=description)
+                ex = Experience.objects.filter(destination=destination)[x - 1]
+                ex.title = title
+                ex.description = description
+                ex.save()
 
         Feature.objects.filter(destination=destination).update(off_roading=off_roading, campfire=campfire,
                                                                cycling=cycling, toilet=toilet)
@@ -401,17 +406,20 @@ def camp_update(request, slug):
                                                                        account=account_number, IFSC=IFSC)
 
         Pricing.objects.filter(destination=destination).update(caravan=caravan, rooftop=rooftop, BYOT=BYOT, room=room,
-
                                                                book=book)
+        reg.region.remove(map)
         reg = Region.objects.filter(name=region)
         if reg.count() == 0:
             reg = Region.objects.create(name=region)
             reg.region.add(map)
         else:
             reg[0].region.add(map)
-        messages.success(request, "Camp site add success")
-
         messages.success(request, "Camp site update success")
         return redirect("destination:destinations")
 
     return render(request, "destination/camp_update.html", context)
+
+
+# def camp_remove(request, slug):
+#     return render(request, "destination/camp_update.html")
+
