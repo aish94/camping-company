@@ -426,7 +426,7 @@ document.getElementById('rzp-button1').onclick = function(e){
             options.amount = (data.amount) * 100
             options.prefill.email = data.email
             options.prefill.name = data.name
-            options.key = "rzp_test_jhx8CJoTQCL3Eh"
+            options.key = data.razor_id
             var rzp1 = new Razorpay(options);
             rzp1.open();
             },
