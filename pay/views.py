@@ -49,7 +49,6 @@ def payment_success(request):
         person = pay.person_price
         campkit = pay.campkit
         gas = pay.gas_stove
-        solar = pay.solar_power
         torch = pay.torch
         table = pay.table
         igst = pay.igst
@@ -64,7 +63,7 @@ def payment_success(request):
         invoice_message(pay.email, os.environ.get("email"),
                         car=car, duration=duration, txnid=txnid,
                         now=now, name=name, person=person, campkit=campkit,
-                        gas=gas, solar=solar, torch=torch, table=table,
+                        gas=gas, torch=torch, table=table,
                         igst=igst, convenient=convenient, chair=chair,total=total,
                         count=count, coupon=coupon, shillong=shillong, airport=airport)
 
