@@ -173,7 +173,7 @@ def camp_add(request):
         bank_name = request.POST.get("bank_name")
         account_number = request.POST.get("account_number")
         IFSC = request.POST.get("IFSC")
-        number = request.POST.get("number")
+        number = request.POST.get("phone")
 
         caravan = float(request.POST.get("caravan"))
         rooftop = float(request.POST.get("rooftop"))
