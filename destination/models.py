@@ -202,8 +202,9 @@ class Circuit(models.Model):
 
 
 def destination_pre_save_receiver(sender, instance, **kwargs):
-    title = instance.place.split()
-    instance.slug = "-".join(title).replace("?", "")
+    title = instance.place
+    title = ''.join(e for e in title if e.isalnum())
+    instance.slug = "-".join(title)
     # slug cant have question marks boy
 
 
