@@ -335,11 +335,12 @@ def camp_update(request, slug):
             book = False
 
         # creating main foreign key
-        des = destination = Destination.objects.filter(slug=slug)
-        destination = destination[0]
+        des = Destination.objects.filter(slug=slug)
+        destination = des[0]
         if no_image:
-            des.update(place=place, state_city=state_city, site_type=site_type,
-                       image_main=image_main, distance=12, hours=12, season=season,
+            destination.image_main = image_main
+            destination.save()
+            des.update(place=place, state_city=state_city, site_type=site_type, distance=12, hours=12, season=season,
                        night_time_temperature_summer=summer, description=site_description,
                        night_time_temperature_winter=winter, known_for=known_for)
         else:
@@ -348,9 +349,12 @@ def camp_update(request, slug):
                        night_time_temperature_summer=summer, description=site_description,
                        night_time_temperature_winter=winter, known_for=known_for)
         if no_image:
-            Map.objects.filter(destination=destination).update(latitude=latitude, longitude=longitude,
-                                                               title=place, description=site_description,
-                                                               images=image_main)
+            ma = Map.objects.filter(destination=destination)
+            m = ma[0]
+            m.images = image_main
+            m.save()
+            ma.update(latitude=latitude, longitude=longitude,
+                      title=place, description=site_description)
         else:
             Map.objects.filter(destination=destination).update(latitude=latitude, longitude=longitude,
                                                                title=place, description=site_description)
