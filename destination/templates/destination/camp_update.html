@@ -387,7 +387,7 @@
                 </div>
 
                 <div class="check-body">
-                    <img class="image--center--1" src="{% static 'images/camp_add/lake.svg' %}" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/Lake.svg' %}" alt="">
                     <span class="text__center--1">Lake</span>
                     <input type="hidden" name="lake" value="False">
                     <input class="check--center bool" type="checkbox" name="lake" value="{{activity.lake}}">
@@ -395,7 +395,7 @@
 
 
                 <div class="check-body">
-                    <img class="image--center--1" src="{% static 'images/camp_add/boating.svg' %}" alt="">
+                    <img class="image--center--1" src="{% static 'images/camp_add/Boating.svg' %}" alt="">
                     <span class="text__center--1">Boating</span>
                     <input type="hidden" name="boating" value="False">
                     <input class="check--center bool" type="checkbox" name="boating" value="{{activity.boating}}">
@@ -674,15 +674,6 @@ $("#imageUpload3").change(function() {
             }
         });
     });
-
-    //check if input is not empty
-    var inputs = $('input')
-    $.each(inputs,function(y,z){
-        if (z.value == "" ){
-            alert(z + " is empty");
-            break;
-        }
-    })
 
         //check if input is not empty
     var inputs = $('input')

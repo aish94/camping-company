@@ -33,6 +33,7 @@ def destination(request):
 
 
 def destination_detail_page(request, slug):
+    razor_id = os.environ.get("razor_id")
     # Search.objects.new_or_get(request)
     destination = Destination.objects.get(slug=slug)
     activity = Activity.objects.get(destination=destination)
@@ -136,6 +137,7 @@ def camp_add(request):
         longitude = float(lat[1])
         site_type = request.POST.get("site_type")
         site_description = request.POST.get("site_description")
+        site_description = site_description.replace("\n", "")
         image_main = request.FILES["image-main"]
         accessible_by = request.POST.get("accessible_by")
         off_roading = request.POST.get("off_roading")
@@ -281,6 +283,7 @@ def camp_update(request, slug):
         longitude = float(lat[1])
         site_type = request.POST.get("site_type")
         site_description = request.POST.get("site_description")
+        site_description = site_description.replace("\n", "")
         try:
             image_main = request.FILES["image-main"]
             no_image = True
