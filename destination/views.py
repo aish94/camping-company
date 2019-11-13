@@ -20,8 +20,10 @@ def destination(request):
     maps = os.environ.get("maps")
     places = Map.objects.all().order_by("pk")
     if request.is_ajax():
-        place = request.POST.get("place")
-        region = Region.objects.filter(name__contains=place)  # name__icontains=place for lower + upper case retrieval
+        place = request.POST.get("place").split(" ")[0]
+        place = ''.join(place)
+        print(place)
+        region = Region.objects.filter(name__icontains=place)
 
         for x in region:
             for y in x.region.all():
