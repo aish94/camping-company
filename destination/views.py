@@ -33,7 +33,6 @@ def destination(request):
 
 
 def destination_detail_page(request, slug):
-    razor_id = os.environ.get("razor_id")
     # Search.objects.new_or_get(request)
     destination = Destination.objects.get(slug=slug)
     activity = Activity.objects.get(destination=destination)
