@@ -22,7 +22,6 @@ def destination(request):
     if request.is_ajax():
         place = request.POST.get("place").split(" ")[0]
         place = ''.join(place)
-        print(place)
         region = Region.objects.filter(name__icontains=place)
 
         for x in region:
@@ -185,9 +184,12 @@ def camp_add(request):
         check_in = request.POST.get("check_in")
         check_out = request.POST.get("check_out")
         cancellation = request.POST.get("cancel")
-        book = True
         if caravan == 0 and rooftop == 0 and room == 0 and BYOT == 0:
+            starting = 0
             book = False
+        else:
+            book = True
+            starting = min(caravan, rooftop, room, BYOT)
 
         # creating main foreign key
         try:
@@ -200,10 +202,10 @@ def camp_add(request):
             return redirect("destination:destinations")
 
         ma = Map.objects.create(destination=destination, latitude=latitude, longitude=longitude,
-                                title=place, description=site_description, images=image_main)
+                                title=place, description=site_description, images=image_main, starting=starting)
         # image title description
         # Description section save
-        Detail(destination=destination, accessible_By=accessible_by,check_in=check_in, check_out=check_out,
+        Detail(destination=destination, accessible_By=accessible_by, check_in=check_in, check_out=check_out,
                cancellation_policy=cancellation).save()
         # crazy for loop
         for x in range(1, 4):
@@ -334,9 +336,12 @@ def camp_update(request, slug):
         check_in = request.POST.get("check_in")
         check_out = request.POST.get("check_out")
         cancellation = request.POST.get("cancel")
-        book = True
         if caravan == 0 and rooftop == 0 and room == 0 and BYOT == 0:
+            starting = 0
             book = False
+        else:
+            book = True
+            starting = min(caravan, rooftop, room, BYOT)
 
         # creating main foreign key
         des = Destination.objects.filter(slug=slug)
@@ -358,10 +363,11 @@ def camp_update(request, slug):
             m.images = image_main
             m.save()
             ma.update(latitude=latitude, longitude=longitude,
-                      title=place, description=site_description)
+                      title=place, description=site_description, starting=starting)
         else:
             Map.objects.filter(destination=destination).update(latitude=latitude, longitude=longitude,
-                                                               title=place, description=site_description)
+                                                               title=place, description=site_description
+                                                               ,starting=starting)
 
         # image title description
         # Description section save

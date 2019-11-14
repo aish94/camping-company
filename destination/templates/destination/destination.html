@@ -76,8 +76,10 @@
                      </div>
                    <p class="card-text">{{x.description|truncatechars_html:100}}</p>
                      <div class="card-url">
-                        <a class="card-url-1" href="{% url 'destination:destination_detail_page' slug=x.destination.slug %}" >Know more</a>
-                        <a href="#" class="card-url-2">Check availability</a>
+                         <h3>
+                            <a class="card-url-1" href="{% url 'destination:destination_detail_page' slug=x.destination.slug %}" >Know more</a>
+                            <span class="card-url-2">Price starts @ INR {{x.starting}}</span>
+                         </h3>
                      </div>
                  </div>
               </div>

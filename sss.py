@@ -1,6 +1,6 @@
 import requests
 url = 'https://api.ap.kaleyra.io/v1/HXAP1649269665IN/messages/'
-payload = 'to=+919412680960&sender=KLRHXA&type=TXT&body=message'
+payload = 'to=+918638692498&sender=CAMPCO&type=OTP&body=Some message send me the screen shot when you recieve the meesage thanks'
 headers = {
   'Content-Type': 'application/x-www-form-urlencoded',
   'api-key': 'Aee64e53a44e478f3ce9e71395fc5a813'
