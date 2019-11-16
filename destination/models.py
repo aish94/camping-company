@@ -140,10 +140,10 @@ class PaymentCampsite(models.Model):
 
 class Pricing(models.Model):
     destination = models.ForeignKey(Destination, on_delete=models.CASCADE)
-    caravan = models.FloatField(default=0)
-    rooftop = models.FloatField(default=0)
-    BYOT = models.FloatField(default=0)
-    room = models.FloatField(default=0)
+    caravan = models.IntegerField(default=0)
+    rooftop = models.IntegerField(default=0)
+    BYOT = models.IntegerField(default=0)
+    room = models.IntegerField(default=0)
     book = models.BooleanField(default=False)
 
     def __str__(self):
@@ -160,7 +160,6 @@ class Map(models.Model):
     title = models.CharField(max_length=64, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     starting = models.IntegerField(default=0)
-
 
     def __str__(self):
         return self.destination.place
