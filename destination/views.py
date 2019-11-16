@@ -418,13 +418,13 @@ def camp_update(request, slug):
                 expr_image = False
 
             if expr_image:
-                ex = Experience.objects.filter(destination=destination)[x-1]
+                ex = Experience.objects.filter(destination=destination).order_by("pk")[x - 1]
                 ex.title = title
                 ex.description = description
                 ex.image = image
                 ex.save()
             else:
-                ex = Experience.objects.filter(destination=destination)[x - 1]
+                ex = Experience.objects.filter(destination=destination).order_by("pk")[x - 1]
                 ex.title = title
                 ex.description = description
                 ex.save()
