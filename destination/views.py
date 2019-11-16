@@ -64,7 +64,7 @@ def destination_detail_page(request, slug):
     activity = Activity.objects.get(destination=destination)
     detail = Detail.objects.get(destination=destination)
     amenity = Amenity.objects.get(destination=destination)
-    experience = Experience.objects.filter(destination=destination)
+    experience = Experience.objects.filter(destination=destination).order_by("pk")
     feature = Feature.objects.get(destination=destination)
     pricing = Pricing.objects.get(destination=destination)
     place = destination.place
