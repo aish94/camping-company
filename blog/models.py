@@ -27,7 +27,7 @@ class Image(models.Model):
     heading = models.CharField(max_length=256, blank=True, null=True)
     blog_image1 = models.ImageField(upload_to="blog_image", blank=True)
     blog_image2 = models.ImageField(upload_to="blog_image", blank=True)
-    content = models.TextField()
+    content = models.TextField(null=True, blank=True)
     created_date = models.DateField(auto_now_add=True)
     created_time = models.TimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
