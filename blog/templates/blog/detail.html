@@ -18,6 +18,7 @@
         <img class="image" src="{{blog.blog_cover_images.url}}">
         <div class="container my-5 mr-auto">
           {% for y in image %}
+            <h4 class="">{{y.heading}}</h4>
             <p>{{y.content|safe}}</p>
             {% if not y.blog_image1.url.isempty %}
                 <img class="fix" src="{{y.blog_image1.url}}">
@@ -29,6 +30,10 @@
             <br>
             <br>
                 <img class="fix" src="{{y.blog_image2.url}}">
+            <br>
+            <br>
+            <br>
+            <br>
             {% else %}
               {% endif %}
           {% endfor %}

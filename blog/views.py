@@ -6,7 +6,7 @@ from django.contrib import messages
 
 
 def all_blog(request):
-    blogs = Blog.objects.all()
+    blogs = Blog.objects.all().order_by("-created_time")
     # try:
     #     blogs = Blog.objects.all().order_by("-created_time")
     # except Blog.DoesNotExist:

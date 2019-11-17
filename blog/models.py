@@ -24,6 +24,7 @@ class Blog(models.Model):
 
 class Image(models.Model):
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    heading = models.CharField(max_length=256)
     blog_image1 = models.ImageField(upload_to="blog_image", blank=True)
     blog_image2 = models.ImageField(upload_to="blog_image", blank=True)
     content = models.TextField()
@@ -50,8 +51,14 @@ class Form(models.Model):
 
 
 def blog_pre_save_receiver(sender, instance, **kwargs):
-    title = instance.heading.split()
-    instance.slug = "-".join(title).replace("?", "")
+    temp = ""
+    title = instance.heading
+    for x in title:
+        if x == " ":
+            temp += "-"
+        elif x.isalnum():
+            temp += x
+    instance.slug = temp
     # slug cant have question marks boy
 
 
