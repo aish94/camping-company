@@ -1,1 +1,1 @@
-web: gunicorn camping.wsgi
+web: gunicorn camping.wsgi --timeout 60
