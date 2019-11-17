@@ -24,7 +24,7 @@ class Blog(models.Model):
 
 class Image(models.Model):
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
-    heading = models.CharField(max_length=256)
+    heading = models.CharField(max_length=256, blank=True, null=True)
     blog_image1 = models.ImageField(upload_to="blog_image", blank=True)
     blog_image2 = models.ImageField(upload_to="blog_image", blank=True)
     content = models.TextField()
