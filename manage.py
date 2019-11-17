@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 import os
 import sys
-from utils import count_words_at_url
-from rq import Queue
-from worker import conn
 
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "camping.settings")
@@ -15,6 +12,4 @@ if __name__ == "__main__":
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
-    q = Queue(connection=conn)
-    result = q.enqueue(count_words_at_url, 'http://heroku.com')
     execute_from_command_line(sys.argv)
