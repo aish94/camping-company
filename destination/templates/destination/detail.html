@@ -79,7 +79,7 @@
                       <strong>Total</strong>
                     </div>
                   </div>
-
+                  {% if pricing.caravan is not 0 %}
                   <div class="row" style="padding:15px; padding-top:20px;">
                     <div class="col-5">
                       &nbsp;&nbsp;&nbsp;<img src="{% static 'images/destination-detail/Caravan.svg' %}"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -111,7 +111,9 @@
                       <span id="caravan-total">INR 0</span>
                     </div>
                   </div>
+                  {% endif %}
 
+                  {% if pricing.rooftop is not 0 %}
                   <div class="row" style="padding:15px; padding-top:20px;">
                     <div class="col-5">
                       &nbsp;&nbsp;&nbsp;<img src="{% static 'images/destination-detail/camper.svg' %}"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -143,6 +145,9 @@
                         <span id="rooftop-total">INR 0</span>
                     </div>
                   </div>
+                  {% endif %}
+
+                  {% if pricing.BYOT is not 0 %}
                   <div class="row" style="padding:15px; padding-top:20px;">
                     <div class="col-5">
                       &nbsp;&nbsp;&nbsp;<img src="{% static 'images/destination-detail/tent.svg' %}"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -174,6 +179,7 @@
                        <span id="BYOT-total">INR 0</span>
                     </div>
                   </div>
+                {% endif %}
 
                 {% if pricing.room is not 0 %}
                   <div class="row" style="padding:15px; padding-top:20px;">

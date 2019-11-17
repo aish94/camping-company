@@ -203,10 +203,10 @@ def camp_add(request):
         IFSC = request.POST.get("IFSC")
         number = request.POST.get("phone")
 
-        caravan = float(request.POST.get("caravan"))
-        rooftop = float(request.POST.get("rooftop"))
-        BYOT = float(request.POST.get("BYOT"))
-        room = float(request.POST.get("room"))
+        caravan = int(request.POST.get("caravan"))
+        rooftop = int(request.POST.get("rooftop"))
+        BYOT = int(request.POST.get("BYOT"))
+        room = int(request.POST.get("room"))
         check_in = request.POST.get("check_in")
         check_out = request.POST.get("check_out")
         cancellation = request.POST.get("cancel")
@@ -215,8 +215,9 @@ def camp_add(request):
             book = False
         else:
             book = True
-            starting = min(caravan, rooftop, room, BYOT)
-
+            starting = [caravan, rooftop, room, BYOT]
+            starting = [x for x in starting if x is not 0]
+            starting = min(starting)
         # creating main foreign key
         try:
             destination = Destination.objects.create(place=place, state_city=state_city, site_type=site_type,
@@ -357,10 +358,10 @@ def camp_update(request, slug):
         account_number = request.POST.get("account_number")
         IFSC = request.POST.get("IFSC")
 
-        caravan = float(request.POST.get("caravan"))
-        rooftop = float(request.POST.get("rooftop"))
-        BYOT = float(request.POST.get("BYOT"))
-        room = float(request.POST.get("room"))
+        caravan = int(request.POST.get("caravan"))
+        rooftop = int(request.POST.get("rooftop"))
+        BYOT = int(request.POST.get("BYOT"))
+        room = int(request.POST.get("room"))
         check_in = request.POST.get("check_in")
         check_out = request.POST.get("check_out")
         cancellation = request.POST.get("cancel")
@@ -369,7 +370,9 @@ def camp_update(request, slug):
             book = False
         else:
             book = True
-            starting = min(caravan, rooftop, room, BYOT)
+            starting = [caravan, rooftop, room, BYOT]
+            starting = [x for x in starting if x is not 0]
+            starting = min(starting)
 
         # creating main foreign key
         des = Destination.objects.filter(slug=slug)
