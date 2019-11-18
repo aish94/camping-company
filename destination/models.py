@@ -113,7 +113,7 @@ class Experience(models.Model):
     exp_number = models.IntegerField(default=1)
 
     def __str__(self):
-        return self.title
+        return self.exp_number
 
 
 class Feature(models.Model):
