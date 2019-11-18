@@ -94,7 +94,7 @@ def destination_detail_page(request, slug):
                                  "razor_id": os.environ.get("razor_id")
                                  })
         else:
-            return redirect("register:signup")
+            return JsonResponse({"error": "Please log in"})
 
     return render(request, "destination/detail.html", context)
 
