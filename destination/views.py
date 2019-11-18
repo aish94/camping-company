@@ -57,7 +57,7 @@ def destination_detail_page(request, slug):
     activity = Activity.objects.get(destination=destination)
     detail = Detail.objects.get(destination=destination)
     amenity = Amenity.objects.get(destination=destination)
-    experience = Experience.objects.filter(destination=destination).order_by("pk")
+    experience = Experience.objects.filter(destination=destination)
     feature = Feature.objects.get(destination=destination)
     pricing = Pricing.objects.get(destination=destination)
     place = destination.place
@@ -237,7 +237,7 @@ def camp_add(request):
             image = request.FILES[image]
             image = compress(image)
             Experience(destination=destination, title=title,
-                       description=description, image=image).save()
+                       description=description, image=image, exp_number=x).save()
 
         Feature(destination=destination, off_roading=off_roading, campfire=campfire,
                 cycling=cycling, toilet=toilet).save()
@@ -414,13 +414,13 @@ def camp_update(request, slug):
                 expr_image = False
 
             if expr_image:
-                ex = Experience.objects.filter(destination=destination).order_by("pk")[x - 1]
+                ex = Experience.objects.filter(destination=destination, exp_number=x)[0]
                 ex.title = title
                 ex.description = description
                 ex.image = image
                 ex.save()
             else:
-                ex = Experience.objects.filter(destination=destination).order_by("pk")[x - 1]
+                ex = Experience.objects.filter(destination=destination, exp_number=x)[0]
                 ex.title = title
                 ex.description = description
                 ex.save()
