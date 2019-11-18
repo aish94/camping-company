@@ -24,15 +24,8 @@ def compress(image):
     im = Image.open(image)
     # create a BytesIO object
     im_io = BytesIO()
-    # cropped image
-    # width, height = im.size  # Get dimensions
-    # left = width / 8
-    # top = height / 8
-    # right = 3 * width / 8
-    # bottom = 3 * height / 8
-    # im = im.crop((left, top, right, bottom))
     # save image to BytesIO object
-    im.save(im_io, 'webp', quality=70)
+    im.save(im_io, 'webp', quality=10)
     # create a django-friendly Files object
     i = image.name.split('.')
     i = i[0] + '.webp'
