@@ -57,7 +57,7 @@ def destination_detail_page(request, slug):
     activity = Activity.objects.get(destination=destination)
     detail = Detail.objects.get(destination=destination)
     amenity = Amenity.objects.get(destination=destination)
-    experience = Experience.objects.filter(destination=destination)
+    experience = Experience.objects.filter(destination=destination).order_by("pk")
     feature = Feature.objects.get(destination=destination)
     pricing = Pricing.objects.get(destination=destination)
     place = destination.place
@@ -276,7 +276,7 @@ def camp_update(request, slug):
     activity = Activity.objects.get(destination=destination)
     payment = PaymentCampsite.objects.get(destination=destination)
     feature = Feature.objects.get(destination=destination)
-    experience = Experience.objects.filter(destination=destination)
+    experience = Experience.objects.filter(destination=destination).order_by("pk")
     experience1 = experience[0]
     experience2 = experience[1]
     experience3 = experience[2]
