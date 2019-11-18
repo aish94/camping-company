@@ -82,7 +82,8 @@ def signin(request):
         next_post = next_post.replace("k", "/")
         username = request.POST.get("username")
         password = request.POST.get("password")
-
+        if next_post is "":
+            next_post = "None"
         if re.search("@", username):
             try:
                 u = User.objects.get(email=username)
@@ -109,7 +110,6 @@ def signin(request):
                 #     login(request, user)
                 #     messages.warning(request, "Complete sign up")
                 #     return redirect("register:welcome")
-
                 if next_post != "None":  # not used is_safe_url  here next post is none (a string)
                     return redirect(next_post)
                 else:
