@@ -25,7 +25,7 @@ def compress(image):
     # create a BytesIO object
     im_io = BytesIO()
     # save image to BytesIO object
-    im.save(im_io, 'webp', quality=70)
+    im.save(im_io, 'webp', quality=10)
     # create a django-friendly Files object
     i = image.name.split('.')
     i = i[0] + '.webp'
