@@ -846,12 +846,16 @@ window.onload = function(){
               alert("Please log in first");
               window.location.href = "{% url 'register:signin' %}" + "?next=/destination/{{destination.slug}}"
             } else {
-              options.amount = data.amount * 100;
-              options.prefill.email = data.email
-              options.prefill.name = data.name
-              options.key = data.razor_id
-              var rzp1 = new Razorpay(options);
-              rzp1.open();
+              if (options.amount == 0){
+                alert("please check any item");
+              } else {
+                options.amount = data.amount * 100;
+                options.prefill.email = data.email
+                options.prefill.name = data.name
+                options.key = data.razor_id
+                var rzp1 = new Razorpay(options);
+                rzp1.open();
+                }
             }
             },
             error: function(error){
