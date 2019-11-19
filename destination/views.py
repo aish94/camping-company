@@ -5,10 +5,7 @@ from datetime import date
 from app.utils import invoice_message_camp
 import os
 import datetime
-
-from io import BytesIO
-from PIL import Image
-from django.core.files import File
+from app.utils import compress
 
 
 from destination.models import (Destination, Map,
@@ -18,19 +15,6 @@ from destination.models import (Destination, Map,
                                 PaymentCampsite, Pricing)
 
 # Create your views here.
-
-
-def compress(image):
-    im = Image.open(image)
-    # create a BytesIO object
-    im_io = BytesIO()
-    # save image to BytesIO object
-    im.save(im_io, 'webp', quality=10)
-    # create a django-friendly Files object
-    i = image.name.split('.')
-    i = i[0] + '.webp'
-    new_image = File(im_io, name=i)
-    return new_image
 
 
 def destination(request):
@@ -152,8 +136,7 @@ def camp_add(request):
         site_type = request.POST.get("site_type")
         site_description = request.POST.get("site_description")
         site_description = site_description.replace("\n", "")
-        image_main = request.FILES["image-main"]
-        image_main = compress(image_main)
+        image_main = compress(request.FILES["image-main"])
         accessible_by = request.POST.get("accessible_by")
         off_roading = request.POST.get("off_roading")
         cycling = request.POST.get("cycling")
@@ -230,8 +213,7 @@ def camp_add(request):
             image = "experience_image" + "-" + str(x)
             title = request.POST.get(title)
             description = request.POST.get(description)
-            image = request.FILES[image]
-            image = compress(image)
+            image = compress(request.FILES[image])
             Experience(destination=destination, title=title,
                        description=description, image=image, exp_number=x).save()
 
@@ -305,8 +287,7 @@ def camp_update(request, slug):
         site_description = request.POST.get("site_description")
         site_description = site_description.replace("\n", "")
         try:
-            image_main = request.FILES["image-main"]
-            image_main = compress(image_main)
+            image_main = compress(request.FILES["image-main"])
             no_image = True
         except:
             no_image = False
@@ -403,8 +384,7 @@ def camp_update(request, slug):
             title = request.POST.get(title)
             description = request.POST.get(description)
             try:
-                image = request.FILES[image]
-                image = compress(image)
+                image = compress(request.FILES[image])
                 expr_image = True
             except:
                 expr_image = False

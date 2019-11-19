@@ -7,6 +7,7 @@ from django.contrib import messages
 from datetime import date
 import datetime
 from django.contrib.auth.decorators import login_required
+from app.utils import compress
 
 # Create your views here.
 
@@ -29,10 +30,10 @@ def create(request, pk):
     if request.method == 'POST':
         # Car images
 
-        front = request.FILES['front']
-        back = request.FILES['back']
-        side1 = request.FILES['side1']
-        side2 = request.FILES['side2']
+        front = compress(request.FILES['front'])
+        back = compress(request.FILES['back'])
+        side1 = compress(request.FILES['side1'])
+        side2 = compress(request.FILES['side2'])
 
         # Cleanliness
         inside_tent = request.FILES['inside_tent']

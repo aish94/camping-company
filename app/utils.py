@@ -1,6 +1,10 @@
 import os
 import requests
 
+from io import BytesIO
+from PIL import Image
+from django.core.files import File
+
 
 def message_to_customer(email):
     return requests.post(
@@ -68,3 +72,16 @@ def password_reset(name, email, subject, link):
               "subject": subject,
               "html": '''<p>Dear ''' + name + ''',</p><br><br><p>You have requested password change for your user id ''' + email + '''Now <a href=''' + link + '''>Click here</a> To reset your password</p><p>If you have not requested to change your password you can safely ignore this message</p><br><br><br><p>Regards,</p><img src='https://s3.ap-south-1.amazonaws.com/camping-company/images/favicon/apple-icon-32x32.png' %}'><p>Camping co</p><p style='color: #1ab188'>This is automated generated mail do not reply</p>'''
               })
+
+
+def compress(image):
+    im = Image.open(image)
+    # create a BytesIO object
+    im_io = BytesIO()
+    # save image to BytesIO object
+    im.save(im_io, 'webp', quality=10)
+    # create a django-friendly Files object
+    i = image.name.split('.')
+    i = i[0] + '.webp'
+    new_image = File(im_io, name=i)
+    return new_image
