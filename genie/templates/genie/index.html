@@ -22,8 +22,8 @@
                 <tr>
                 <td>{{ b.user.username }}</td>
                 <td>{{ b.car_name }}</td>
-                <td>{{ b.check_in_date }}</td>
-                <td>{{ b.check_out_date }}</td>
+                <td>{{ b.check_in_date|date:"Y/m/d" }}</td>
+                <td>{{ b.check_out_date|date:"Y/m/d" }}</td>
                 <td>{{ b.duration }}</td>
                 <td><a href="{% url 'genie:show' pk=b.pk %}">Show</a>/<a href="{% url 'genie:create' pk=b.pk %}">Create</a></td>
                 </tr>
