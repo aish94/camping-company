@@ -60,16 +60,12 @@ def destination_detail_page(request, slug):
     experience = Experience.objects.filter(destination=destination).order_by("pk")
     feature = Feature.objects.get(destination=destination)
     pricing = Pricing.objects.get(destination=destination)
-    place = destination.place
-    place = 'kdestinationk' + place
-    place = place.replace(" ", "-")
     context = {
             "experience": experience,
             "destination": destination,
             "amenity": amenity,
             "activity": activity,
             "detail": detail,
-            "place": place,
             "feature": feature,
             "pricing": pricing
            }

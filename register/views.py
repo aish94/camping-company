@@ -79,11 +79,8 @@ def signin(request):
     next_ = request.GET.get('next')
     if request.method == "POST":
         next_post = request.POST.get('next')
-        next_post = next_post.replace("k", "/")
         username = request.POST.get("username")
         password = request.POST.get("password")
-        if next_post is "":
-            next_post = "None"
         if re.search("@", username):
             try:
                 u = User.objects.get(email=username)
@@ -158,10 +155,10 @@ def pass_reset(request):
         try:
             user = User.objects.get(email=email)
         except:
-            return JsonResponse({"error":"User does not exist"})
+            return JsonResponse({"error": "User does not exist"})
         password = Password(email=email)
         password.save()
-        password_reset(name=user.first_name,email=email,subject="Password reset", link=password.reset_link)
+        password_reset(name=user.first_name, email=email, subject="Password reset", link=password.reset_link)
         return JsonResponse({"success": "success"})
 
     slug = request.session.get("slug")
@@ -182,8 +179,8 @@ def pass_reset(request):
         if not pass_resettor.active and pass_resettor.used:
             del request.session["slug"]
     except:
-        return render(request, "register/pass_reset.html",{"pass_resettor":{"used":False}})
-    return render(request, "register/pass_reset.html",{"pass_resettor":pass_resettor})
+        return render(request, "register/pass_reset.html", {"pass_resettor": {"used": False}})
+    return render(request, "register/pass_reset.html", {"pass_resettor": pass_resettor})
 
 
 def pass_rediretor(request,slug):
