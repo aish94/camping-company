@@ -6,6 +6,7 @@ from vehicle.models import Definition
 from django.contrib import messages
 from datetime import date
 import datetime
+from datetime import timedelta
 from django.contrib.auth.decorators import login_required
 from app.utils import compress
 
@@ -14,7 +15,7 @@ from app.utils import compress
 
 @login_required
 def index(request):
-    now = date.today()
+    now = date.today() - timedelta(days=14) # suppose date is 15 subtract 14 and display all books greator than =1
     book = Book.objects.filter(check_in_date__gte=now)
     return render(request, "genie/index.html", {"book": book})
 

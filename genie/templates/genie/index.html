@@ -3,14 +3,7 @@
 
 {% block content_block %}
 <br><br>
-<div class="container my-5">
-{% if messages %}
-    {% for message in messages %}
-        <div class="alert alert-{{message.tags}}" style="text-align: center; margin-top:6.4rem;">
-            <strong>{{message}}</strong>
-        </div>
-    {% endfor %}
-{% endif %}
+<div class="container">
     <p> Upcoming trips</p>
 <table class="table table-striped table-bordered equipment" style="width:100%">
     {% csrf_token %}
