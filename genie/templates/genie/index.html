@@ -33,4 +33,11 @@
     <p>For offline booking click here</p>
         <a class="btn btn-secondary" href="{% url 'genie:offline' %}">Add</a>
 </div>
+<script>
+window.onload = function(){
+    $('.equipment').DataTable( {
+        "order": [[ 3, "desc" ]]
+    });
+}
+</script>
 {% endblock %}
