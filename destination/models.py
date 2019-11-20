@@ -83,7 +83,7 @@ class Booking(models.Model):
     convenient = models.FloatField(blank=True, null=True)
 
     def __str__(self):
-        return str(self.txnid)
+        return "Booked" if self.txnid else "Engaged"
 
 
 class Activity(models.Model):
