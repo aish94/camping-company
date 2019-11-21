@@ -150,3 +150,7 @@ def damage_charges(request):
 
 def sitemap(request):
     return render(request, "app/sitemap.xml")
+
+
+def error_timeout(request):
+    return render(request, "app/503.html")
