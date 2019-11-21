@@ -387,7 +387,7 @@
               <strong><span class="footer-text__heading">Contact Us</span></strong>
               <br><br>
               <span class="footer-text__description">Talk to our experts? +91-6913332761 or Drop us a line, We promise to get back to you in 24 hours.</span>
-              <form class="footer__form" method="POST" action="{% url 'app:findus' %}">
+              <form class="footer__form" method="POST" action="{% url 'app:findus' %}">{% csrf_token %}
                 <br>
                 <input type="text" placeholder="name" name="name" class="footer-text__input">
                 <input type="email" placeholder="email" name="email" class="footer-text__input">
