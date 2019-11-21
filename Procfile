@@ -1,1 +1,2 @@
-web: gunicorn camping.wsgi --timeout 1200
+web: gunicorn camping.wsgi
+worker: python -u run-worker.py

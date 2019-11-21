@@ -16,5 +16,4 @@ urlpatterns = [
     url(r'^faq/$', views.faq, name="faq"),
     url(r'^damage_charges/$', views.damage_charges, name="damage_charges"),
     url(r'^sitemap/$', views.sitemap, name="sitemap"),
-    url(r'^503/$', views.error_timeout, name="error_timeout"),
 ]
