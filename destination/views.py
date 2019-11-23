@@ -6,6 +6,7 @@ from app.utils import invoice_message_camp, compress, send_sms
 import os
 import datetime
 import math
+import time
 
 from customer.models import Customer
 from reviews.models import DestinationReview
@@ -294,6 +295,7 @@ def camp_add(request):
 
 
 def camp_update(request, slug):
+    time.sleep(600)
     maps = os.environ.get("maps")
     destination = Destination.objects.get(slug=slug)
     amenity = Amenity.objects.get(destination=destination)
