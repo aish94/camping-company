@@ -1,3 +1,3 @@
 web: gunicorn camping.wsgi
-worker: python worker.py
+worker: python manage.py rqworker
 

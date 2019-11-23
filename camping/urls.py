@@ -35,6 +35,7 @@ urlpatterns = [
     url(r'^cart/', include("pay.urls", namespace="pay")),
     url(r'^genie/', include("genie.urls", namespace="genie")),
     url(r'^reviews/', include("reviews.urls", namespace="reviews")),
+    url(r'^django-rq/', include('django_rq.urls')),
 ]
 
 if settings.DEBUG:

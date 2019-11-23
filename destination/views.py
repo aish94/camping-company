@@ -16,11 +16,7 @@ from destination.models import (Destination, Map,
                                 Detail, Circuit, Booking,
                                 Experience, Feature,
                                 PaymentCampsite, Pricing)
-
-from rq import Queue
-from worker import conn
-
-q = Queue(connection=conn)
+import django_rq
 
 # Create your views here.
 
@@ -488,6 +484,7 @@ def camp_update(request, slug):
 # def camp_remove(request, slug):
 #     return render(request, "destination/camp_update.html")
 
+queue = django_rq.get_queue('high')
+queue.enqueue(camp_update,camp_add)
 
-result = q.enqueue(camp_update, 'http://heroku.com')
 
