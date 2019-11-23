@@ -143,8 +143,8 @@ def welcome(request):
                                                   license_number=license_number, about=about)
 
         Pay.objects.filter(user=user).update(firstname=fname, phone=number)
-
-        return redirect("app:home")
+        messages.success(request, "Profile fill success welcome " + str(fname))
+        return redirect("customer:user_page")
     return render(request, "register/welcome.html")
 
 

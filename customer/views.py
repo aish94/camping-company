@@ -31,7 +31,10 @@ def user_page(request):
     try:
         customer = Customer.objects.get(user=request.user)
     except:
-        messages.error(request, "Complete sign up")
+        messages.warning(request, "Please log in first")
+        return redirect("app:home")
+    if customer.license_number is None:
+        messages.warning(request, "Please complete sign up")
         return redirect("register:welcome")
     user = User.objects.get(username=customer.user.username)
     referral = Referral.objects.get(user=user)

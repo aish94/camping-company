@@ -60,12 +60,12 @@
                  <img src="{{x.images.url}}" class="card-img-top" alt="destination">
                  <div class="card-body">
                      <h5 class="card-title">{{x.title}}</h5>
-                     <div style="display: block; margin: 0 auto;">
-                         <span class="fa fa-star checked"></span>
-                         <span class="fa fa-star checked"></span>
-                         <span class="fa fa-star checked"></span>
-                         <span class="fa fa-star checked"></span>
-                         <span class="fa fa-star checked"></span>
+                     <div class="rating" style="display: block; margin: 0 auto;">
+                         <span class="fa fa-star"></span>
+                         <span class="fa fa-star"></span>
+                         <span class="fa fa-star"></span>
+                         <span class="fa fa-star"></span>
+                         <span class="fa fa-star"></span>
                      </div>
                    <p class="card-text">{{x.description|truncatechars_html:100}}</p>
                      <div class="card-url">
@@ -236,6 +236,16 @@
    src="https://maps.googleapis.com/maps/api/js?key={{maps}}&callback=initMap"></script>
 <script>
    window.onload = function () {
+   rating = {{list2}}
+   $(".rating").each(function( index ) {
+              $(this).children().each(function( index2 ) {
+              if (index2 == rating[index]){
+                return false;
+              }
+              $(this).addClass("checked")
+          })
+        })
+
    var loc = window.location.origin
        $("#submit").submit(function(e) {
        e.preventDefault();

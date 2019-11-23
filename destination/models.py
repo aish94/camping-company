@@ -20,6 +20,7 @@ class Destination(models.Model):
     season = models.CharField(max_length=64)
     known_for = models.CharField(max_length=128)
     slug = models.SlugField(max_length=40, blank=True, null=True)
+    total_rating = models.IntegerField()
 
     def __str__(self):
         return self.place
@@ -77,8 +78,9 @@ class Booking(models.Model):
     rooftop = models.IntegerField()
     ground = models.IntegerField()
     days = models.IntegerField()
+    room = models.IntegerField()
     date = models.DateField(null=True, blank=True)
-    amount = models.FloatField()
+    amount = models.IntegerField()
     igst = models.FloatField(blank=True, null=True)
     convenient = models.FloatField(blank=True, null=True)
 

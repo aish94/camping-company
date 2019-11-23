@@ -2,11 +2,13 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.contrib import messages
 from datetime import date
-from app.utils import invoice_message_camp
+from app.utils import invoice_message_camp, compress, send_sms
 import os
 import datetime
-from app.utils import compress
+import math
 
+from customer.models import Customer
+from reviews.models import DestinationReview
 
 from destination.models import (Destination, Map,
                                 Region, Amenity, Activity,
@@ -19,6 +21,13 @@ from destination.models import (Destination, Map,
 
 def destination(request):
     list1 = []
+
+    # for rating display
+    list2 = []
+    des = Destination.objects.all()
+    for x in des:
+        rev = DestinationReview.objects.filter(destination=x).count()
+        list2.append(x.total_rating//rev)
     maps = os.environ.get("maps")
     places = Map.objects.all().order_by("pk")
     if request.is_ajax():
@@ -32,10 +41,18 @@ def destination(request):
         data = {"list1": list1}
         return JsonResponse(data)
 
-    return render(request, "destination/destination.html", {"places": places, "maps": maps, "list1": list1})
+    context = {
+        "places": places,
+        "maps": maps,
+        "list1": list1,
+        "list2": list2
+    }
+
+    return render(request, "destination/destination.html", context)
 
 
 def destination_detail_page(request, slug):
+    list1 = []
     # Search.objects.new_or_get(request)
     destination = Destination.objects.get(slug=slug)
     activity = Activity.objects.get(destination=destination)
@@ -44,6 +61,17 @@ def destination_detail_page(request, slug):
     experience = Experience.objects.filter(destination=destination).order_by("pk")
     feature = Feature.objects.get(destination=destination)
     pricing = Pricing.objects.get(destination=destination)
+    reviews = DestinationReview.objects.filter(destination=destination)
+    if reviews.count() > 0:
+        page = 1
+    else:
+        page = 0
+    try:
+        review = DestinationReview.objects.get(user=request.user, destination=destination)
+    except:
+        review = False
+    for x in reviews:
+        list1.append(x.rating)
     context = {
             "experience": experience,
             "destination": destination,
@@ -51,7 +79,11 @@ def destination_detail_page(request, slug):
             "activity": activity,
             "detail": detail,
             "feature": feature,
-            "pricing": pricing
+            "pricing": pricing,
+            "reviews": reviews,
+            "review": review,
+            "page": page,
+            "list1": list1
            }
 
     if request.is_ajax():
@@ -60,15 +92,17 @@ def destination_detail_page(request, slug):
             caravan = int(request.POST.get("Caravan"))
             ground = int(request.POST.get("Ground"))
             rooftop = int(request.POST.get("Rooftop"))
+            room = int(request.POST.get("room"))
             dates = datetime.datetime.strptime(request.POST.get("date"), "%Y-%m-%d").date()
-            amount = caravan + ground + rooftop
+            amount = caravan + ground + rooftop + room
             igst = amount*.18
             convenient = amount*.024
             amount += igst + convenient
+            amount = math.ceil(amount)
             Booking(destination=detail, user=request.user,
                     caravan=caravan, ground=ground, rooftop=rooftop,
                     days=days, date=dates, amount=amount, igst=igst,
-                    convenient=convenient).save()
+                    convenient=convenient, room=room).save()
             return JsonResponse({"amount": amount, "email": request.user.email,
                                  "name": request.user.first_name,
                                  "razor_id": os.environ.get("razor_id")
@@ -95,6 +129,8 @@ def success(request):
     except:
         messages.warning(request, "Book a campsite first")
         return redirect("app:home")
+    customer = Customer.objects.get(user=request.user)
+    payment = PaymentCampsite.objects.get(destination=book.destination.destination)
     if request.is_ajax():
         txnid = request.POST.get("txnid")
         book.txnid = txnid
@@ -109,11 +145,15 @@ def success(request):
         email = book.user.email
         name = book.user.first_name
         igst = book.igst
+        booked_date = book.date
+        days = book.days
+        room = book.room
         convenient = book.convenient
         invoice_message_camp(email,  os.environ.get("email"),
                              txnid=txnid, now=now, name=name, convenient=convenient, total=total, duration=duration,
-                             count=count, igst=igst, caravan=caravan, ground=ground, rooftop=rooftop)
-
+                             count=count, igst=igst, caravan=caravan, ground=ground, rooftop=rooftop, room=room)
+        send_sms(phone_owner=payment.phone, name=request.user, phone_user=customer.phone, RTT=rooftop, tent=ground,
+                 days=days, room=room, date=booked_date)
     return render(request, "destination/success.html", {"book": book})
 
 

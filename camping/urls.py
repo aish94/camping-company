@@ -34,6 +34,7 @@ urlpatterns = [
     url(r'^destination/', include("destination.urls", namespace="destination")),
     url(r'^cart/', include("pay.urls", namespace="pay")),
     url(r'^genie/', include("genie.urls", namespace="genie")),
+    url(r'^reviews/', include("reviews.urls", namespace="reviews")),
 ]
 
 if settings.DEBUG:

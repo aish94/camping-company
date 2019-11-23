@@ -7,22 +7,13 @@
     <title>Profile.</title>
 {% endblock %}
     {% block content_block %}
-<br>
-<br>
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-{{message.tags}}">
-                    <strong>{{message}}</strong>
-                </div>
-            {% endfor %}
-        {% endif %}
 <div class="container">
         <div class="manager">
             <div class="content">
                 <div class="card">
-                    <div class="firstinfo"><img src="https://www.ncc.metu.edu.tr/sites/default/files/user-pro.png"></span>
+                    <div class="firstinfo"><img src="https://www.ncc.metu.edu.tr/sites/default/files/user-pro.png">
                         <div class="profileinfo">
-                            <h1>{{request.user|title}}</h1>
+                            <h1>{{request.user.first_name|title}}</h1>
                             <h3>{{customer.nickname}}</h3>
                             <p class="bio"> {{customer.about}}</p>
                         </div>

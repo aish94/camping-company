@@ -9,13 +9,6 @@
 {% endblock %}
 
 {% block content_block %}
-        {% if messages %}
-            {% for message in messages %}
-                <div style="text-align: center; margin-top:4%;" class="alert alert-warning">
-                    <strong>{{message}}</strong>
-                </div>
-            {% endfor %}
-        {% endif %}
 <br>
 <br>
 
@@ -50,8 +43,7 @@
     </fieldset>
     <fieldset>
       <h2 class="fs-title">Success</h2>
-        <h2 class="fs-subtitle">By clicking Submit, you agree on our <a target="_blank" href="{% url 'app:terms_condition' %}">terms and condition.</a></h2>
-        <h3 class="fs-subtitle">Thank you for registering with us.</h3>
+        <h3 class="fs-subtitle">Thank you for completing profile</h3>
       <input type="submit" name="submit" class="submit action-button" value="Submit" />
     </fieldset>
   </div>

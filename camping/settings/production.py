@@ -68,6 +68,7 @@ INSTALLED_APPS = [
     'referral',
     'pay',
     'genie',
+    'reviews',
     'django_cleanup',
 ]
 
