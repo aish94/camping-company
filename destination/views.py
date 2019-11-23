@@ -291,7 +291,7 @@ def camp_add(request):
 
 
 def camp_update(request, slug):
-    time.sleep(600)
+    # time.sleep(600)
     maps = os.environ.get("maps")
     destination = Destination.objects.get(slug=slug)
     amenity = Amenity.objects.get(destination=destination)
