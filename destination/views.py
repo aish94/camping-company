@@ -26,7 +26,7 @@ def destination(request):
     list2 = []
     des = Destination.objects.all()
     for x in des:
-        rev = DestinationReview.objects.filter(destination=x).count()
+        rev = DestinationReview.objects.filter(destination=x).order_by("pk").count()
         if rev == 0:
             list2.append(0)
         else:
