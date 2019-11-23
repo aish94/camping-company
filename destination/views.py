@@ -28,9 +28,9 @@ def destination(request):
     for x in des:
         try:
             rev = DestinationReview.objects.filter(destination=x).count()
+            list2.append(x.total_rating // rev)
         except:
-            rev = 0
-        list2.append(x.total_rating//rev)
+            pass
     maps = os.environ.get("maps")
     places = Map.objects.all().order_by("pk")
     if request.is_ajax():
