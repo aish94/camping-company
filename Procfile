@@ -1,3 +1,2 @@
 web: gunicorn camping.wsgi
-worker: python manage.py rqworker high default low
-
+worker: python manage.py rqworker high
