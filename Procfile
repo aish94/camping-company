@@ -1,2 +1,3 @@
-web: gunicorn camping.wsgi --log-file=-
-worker: python -u run-worker.py
+web: gunicorn camping.wsgi
+worker: python worker.py
+
