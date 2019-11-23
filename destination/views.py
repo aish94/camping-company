@@ -26,7 +26,10 @@ def destination(request):
     list2 = []
     des = Destination.objects.all()
     for x in des:
-        rev = DestinationReview.objects.filter(destination=x).count()
+        try:
+            rev = DestinationReview.objects.filter(destination=x).count()
+        except:
+            rev = 0
         list2.append(x.total_rating//rev)
     maps = os.environ.get("maps")
     places = Map.objects.all().order_by("pk")
