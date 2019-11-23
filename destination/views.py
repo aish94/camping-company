@@ -30,7 +30,7 @@ def destination(request):
             rev = DestinationReview.objects.filter(destination=x).count()
             list2.append(x.total_rating // rev)
         except:
-            pass
+            list1.append(0)
     maps = os.environ.get("maps")
     places = Map.objects.all().order_by("pk")
     if request.is_ajax():
