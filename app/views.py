@@ -8,6 +8,14 @@ from django.contrib import messages
 from django.http import JsonResponse
 from vehicle.models import Book
 from django.utils import timezone
+import time
+import django_rq
+queue = django_rq.get_queue('high')
+
+
+def func():
+    time.sleep(60)
+
 
 from app.utils import *
 
@@ -48,6 +56,7 @@ def detail_user(request, pk):
 
 
 def terms_condition(request):
+    queue.enqueue(func)
     return render(request, "app/terms_condition.html")
 
 
