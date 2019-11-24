@@ -293,7 +293,7 @@ def camp_add(request):
 
 @job('default')
 def camp_update(request, slug):
-    time.sleep(60)
+    # time.sleep(60)
     maps = os.environ.get("maps")
     destination = Destination.objects.get(slug=slug)
     amenity = Amenity.objects.get(destination=destination)
