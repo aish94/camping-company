@@ -320,7 +320,6 @@ def camp_add(request):
     return render(request, "destination/camp_add.html", {"maps": maps})
 
 
-@job('default')
 def camp_update(request, slug):
     # time.sleep(60)
     maps = os.environ.get("maps")
