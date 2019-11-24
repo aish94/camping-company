@@ -230,7 +230,7 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': 'syslog',
+            'filename': 'syslog.txt',
         },
     },
     'loggers': {
