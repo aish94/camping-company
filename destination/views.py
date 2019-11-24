@@ -6,7 +6,7 @@ from app.utils import invoice_message_camp, compress, send_sms
 import os
 import datetime
 import math
-import time
+import django_rq
 
 from customer.models import Customer
 from reviews.models import DestinationReview
@@ -16,9 +16,47 @@ from destination.models import (Destination, Map,
                                 Detail, Circuit, Booking,
                                 Experience, Feature,
                                 PaymentCampsite, Pricing)
-from django_rq import job
 
 # Create your views here.
+queue = django_rq.get_queue('high')
+
+
+def save_experience(request):
+    for x in range(1, 4):
+        title = "experience_title" + "-" + str(x)
+        description = "experience_description" + "-" + str(x)
+        image = "experience_image" + "-" + str(x)
+        title = request.POST.get(title)
+        description = request.POST.get(description)
+        image = compress(request.FILES[image])
+        Experience(destination=destination, title=title,
+                   description=description, image=image, exp_number=x).save()
+
+
+def update_experience(request):
+    for x in range(1, 4):
+        title = "experience_title" + "-" + str(x)
+        description = "experience_description" + "-" + str(x)
+        image = "experience_image" + "-" + str(x)
+        title = request.POST.get(title)
+        description = request.POST.get(description)
+        try:
+            image = compress(request.FILES[image])
+            expr_image = True
+        except:
+            expr_image = False
+
+        if expr_image:
+            ex = Experience.objects.filter(destination=destination, exp_number=x)[0]
+            ex.title = title
+            ex.description = description
+            ex.image = image
+            ex.save()
+        else:
+            ex = Experience.objects.filter(destination=destination, exp_number=x)[0]
+            ex.title = title
+            ex.description = description
+            ex.save()
 
 
 def destination(request):
@@ -162,7 +200,6 @@ def success(request):
     return render(request, "destination/success.html", {"book": book})
 
 
-@job('default')
 def camp_add(request):
     maps = os.environ.get("maps")
 
@@ -252,16 +289,8 @@ def camp_add(request):
         # Description section save
         Detail(destination=destination, accessible_By=accessible_by, check_in=check_in, check_out=check_out,
                cancellation_policy=cancellation).save()
-        # crazy for loop
-        for x in range(1, 4):
-            title = "experience_title" + "-" + str(x)
-            description = "experience_description" + "-" + str(x)
-            image = "experience_image" + "-" + str(x)
-            title = request.POST.get(title)
-            description = request.POST.get(description)
-            image = compress(request.FILES[image])
-            Experience(destination=destination, title=title,
-                       description=description, image=image, exp_number=x).save()
+        # crazy for loop function sending to rq to save later
+        queue.enqueue(save_experience, request=request)
 
         Feature(destination=destination, off_roading=off_roading, campfire=campfire,
                 cycling=cycling, toilet=toilet).save()
@@ -309,7 +338,7 @@ def camp_update(request, slug):
     map = Map.objects.get(destination=destination)
     reg = region = Region.objects.get(region=map)
     context = {
-        "destination":destination,
+        "destination": destination,
         "maps": maps,
         "amenity": amenity,
         "detail": detail,
@@ -424,30 +453,8 @@ def camp_update(request, slug):
         Detail.objects.filter(destination=destination).update(accessible_By=accessible_by,
                                                               check_in=check_in, check_out=check_out,
                                                               cancellation_policy=cancellation)
-        # crazy for loop
-        for x in range(1, 4):
-            title = "experience_title" + "-" + str(x)
-            description = "experience_description" + "-" + str(x)
-            image = "experience_image" + "-" + str(x)
-            title = request.POST.get(title)
-            description = request.POST.get(description)
-            try:
-                image = compress(request.FILES[image])
-                expr_image = True
-            except:
-                expr_image = False
-
-            if expr_image:
-                ex = Experience.objects.filter(destination=destination, exp_number=x)[0]
-                ex.title = title
-                ex.description = description
-                ex.image = image
-                ex.save()
-            else:
-                ex = Experience.objects.filter(destination=destination, exp_number=x)[0]
-                ex.title = title
-                ex.description = description
-                ex.save()
+        # crazy for loop for updation sending to rq
+        queue.enqueue(update_experience, request=request)
 
         Feature.objects.filter(destination=destination).update(off_roading=off_roading, campfire=campfire,
                                                                cycling=cycling, toilet=toilet)
