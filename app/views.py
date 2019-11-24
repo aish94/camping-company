@@ -13,8 +13,8 @@ import django_rq
 queue = django_rq.get_queue('high')
 
 
-def func():
-    time.sleep(60)
+def func(t):
+    time.sleep(t)
 
 
 from app.utils import *
@@ -56,7 +56,7 @@ def detail_user(request, pk):
 
 
 def terms_condition(request):
-    queue.enqueue(func)
+    queue.enqueue(func, t=10)
     return render(request, "app/terms_condition.html")
 
 
