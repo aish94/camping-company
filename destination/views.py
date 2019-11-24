@@ -27,12 +27,11 @@ def save_experience(destination, title, description, image, exp_number):
                description=description, image=image, exp_number=exp_number).save()
 
 
-def update_experience(destination, title, description, image, exp_number):
-    if image:
+def update_experience(destination, title, description, image, exp_number, expr_image):
+    try:
         image = compress(image)
-        expr_image = True
-    else:
-        expr_image = False
+    except:
+        pass
 
     if expr_image:
         ex = Experience.objects.filter(destination=destination, exp_number=exp_number)[0]
@@ -41,7 +40,7 @@ def update_experience(destination, title, description, image, exp_number):
         ex.image = image
         ex.save()
     else:
-        ex = Experience.objects.filter(destination=destination, exp_number=x)[0]
+        ex = Experience.objects.filter(destination=destination, exp_number=exp_number)[0]
         ex.title = title
         ex.description = description
         ex.save()
@@ -455,9 +454,13 @@ def camp_update(request, slug):
             image = "experience_image" + "-" + str(x)
             title = request.POST.get(title)
             description = request.POST.get(description)
-            image = request.FILES[image]
+            try:
+                image = request.FILES[image]
+                expr_image = True
+            except:
+                expr_image = False
             queue.enqueue(update_experience, destination=destination, title=title, description=description, image=image
-                          , exp_number=x)
+                          , exp_number=x, expr_image=expr_image)
 
         Feature.objects.filter(destination=destination).update(off_roading=off_roading, campfire=campfire,
                                                                cycling=cycling, toilet=toilet)
