@@ -20,7 +20,7 @@ class Destination(models.Model):
     season = models.CharField(max_length=64)
     known_for = models.CharField(max_length=128)
     slug = models.SlugField(max_length=40, blank=True, null=True)
-    total_rating = models.IntegerField()
+    total_rating = models.IntegerField(default=0)
 
     def __str__(self):
         return self.place
@@ -115,7 +115,7 @@ class Experience(models.Model):
     exp_number = models.IntegerField(default=1)
 
     def __str__(self):
-        return str(self.exp_number) + self.destination.place
+        return str(self.exp_number) + " " + self.destination.place
 
 
 class Feature(models.Model):
