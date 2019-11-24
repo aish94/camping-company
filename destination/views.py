@@ -16,7 +16,7 @@ from destination.models import (Destination, Map,
                                 Detail, Circuit, Booking,
                                 Experience, Feature,
                                 PaymentCampsite, Pricing)
-import django_rq
+from django_rq import job
 
 # Create your views here.
 
@@ -162,6 +162,7 @@ def success(request):
     return render(request, "destination/success.html", {"book": book})
 
 
+@job('default')
 def camp_add(request):
     maps = os.environ.get("maps")
 
@@ -290,8 +291,9 @@ def camp_add(request):
     return render(request, "destination/camp_add.html", {"maps": maps})
 
 
+@job('default')
 def camp_update(request, slug):
-    # time.sleep(600)
+    time.sleep(60)
     maps = os.environ.get("maps")
     destination = Destination.objects.get(slug=slug)
     amenity = Amenity.objects.get(destination=destination)
@@ -483,8 +485,5 @@ def camp_update(request, slug):
 
 # def camp_remove(request, slug):
 #     return render(request, "destination/camp_update.html")
-
-queue = django_rq.get_queue('high')
-queue.enqueue(camp_update,camp_add)
 
 
