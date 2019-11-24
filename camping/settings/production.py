@@ -26,7 +26,7 @@ STATIC_ROOT_DIR = os.path.join(BASE_DIR, 'staticfiles')
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [".camping-co.com"]
 # ALLOWED_HOSTS = [".herokuapp.com"]
@@ -70,7 +70,7 @@ INSTALLED_APPS = [
     'genie',
     'reviews',
     'django_cleanup',
-    'django_rq',
+    'django_rq'
 ]
 
 MIDDLEWARE = [
@@ -219,3 +219,6 @@ RQ_QUEUES = {
         'DB': 0,
     }
 }
+
+from django.utils.log import DEFAULT_LOGGING
+DEFAULT_LOGGING['handlers']['console']['filters'] = []
