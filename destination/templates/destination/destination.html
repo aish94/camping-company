@@ -235,8 +235,7 @@
 <script async defer
    src="https://maps.googleapis.com/maps/api/js?key={{maps}}&callback=initMap"></script>
 <script>
-   window.onload = function () {
-   rating = {{list2}}
+function display_star(){
    $(".rating").each(function( index ) {
               $(this).children().each(function( index2 ) {
               if (index2 == rating[index]){
@@ -245,7 +244,10 @@
               $(this).addClass("checked")
           })
         })
-
+}
+   window.onload = function () {
+   rating = {{list2}}
+   display_star();
    var loc = window.location.origin
        $("#submit").submit(function(e) {
        e.preventDefault();
@@ -264,13 +266,14 @@
                for (var z = 0; z < e.list1.length; z++){
                   if ({{x.pk}} == e.list1[z]){
                      var url = loc + '/destination/' + '{{x.title|dash}}'
-                     $(".replace-me").append('<div class="remove col-lg-4 col-md-6 col-sm-6"><div class="card"> <img src="{{x.images.url}}" class="card-img-top" alt="destination"><div class="card-body"><h5 class="card-title">{{x.title}}</h5><div style="display: block; margin: 0 auto;"> <span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span></div><p class="card-text">{{x.description|truncatechars_html:100}}</p><div class="card-url"><h3> <a class="card-url-1" href="{% url 'destination:destination_detail_page' slug=x.destination.slug %}" >Know more</a> <span class="card-url-2">Price starts @ INR {{x.starting}}</span></h3></div></div></div> <br> <br> <br></div></div>')
+                     $(".replace-me").append('<div class="remove col-lg-4 col-md-6 col-sm-6"><div class="card"> <img src="{{x.images.url}}" class="card-img-top" alt="destination"><div class="card-body"><h5 class="card-title">{{x.title}}</h5><div class="rating" style="display: block; margin: 0 auto;"> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span></div><p class="card-text">{{x.description|truncatechars_html:100}}</p><div class="card-url"><h3> <a class="card-url-1" href="{% url 'destination:destination_detail_page' slug=x.destination.slug %}" >Know more</a> <span class="card-url-2">Price starts @ INR {{x.starting}}</span></h3></div></div></div> <br> <br> <br></div></div>')
                      break;
                   }
 
                }
                {% endfor %}
                initMap(e.list1)
+               display_star();
                }
            })
         })
