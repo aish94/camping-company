@@ -16,13 +16,12 @@ queue = django_rq.get_queue('high')
 from app.utils import *
 
 
-def func():
-    time.sleep(60)
+def func(t):
+    time.sleep(t)
 # Create your views here.
 
 
 def home(request):
-    queue.enqueue(func)
     return render(request, "app/home.html")
 
 
@@ -56,6 +55,7 @@ def detail_user(request, pk):
 
 
 def terms_condition(request):
+    queue.enqueue(func,t=60)
     return render(request, "app/terms_condition.html")
 
 

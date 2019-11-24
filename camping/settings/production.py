@@ -26,7 +26,7 @@ STATIC_ROOT_DIR = os.path.join(BASE_DIR, 'staticfiles')
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [".camping-co.com"]
 # ALLOWED_HOSTS = [".herokuapp.com"]
@@ -218,4 +218,25 @@ RQ_QUEUES = {
         'PORT': 6379,
         'DB': 0,
     }
+}
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'syslog.txt',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'file'],
+            'level': 'ERROR',
+        },
+    },
 }
