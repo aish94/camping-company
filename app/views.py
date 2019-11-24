@@ -8,13 +8,21 @@ from django.contrib import messages
 from django.http import JsonResponse
 from vehicle.models import Book
 from django.utils import timezone
+import django_rq
+import time
+
+queue = django_rq.get_queue('high')
 
 from app.utils import *
 
+
+def func():
+    time.sleep(60)
 # Create your views here.
 
 
 def home(request):
+    queue.enqueue(func)
     return render(request, "app/home.html")
 
 
