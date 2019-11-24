@@ -21,28 +21,28 @@ from destination.models import (Destination, Map,
 queue = django_rq.get_queue('high')
 
 
-def save_experience(destination, title, image, exp_number):
+def save_experience(campsite, title, image, exp_number, description):
     image = compress(image)
-    Experience(destination=destination, title=title,
-               description="asd", image=image, exp_number=exp_number).save()
+    Experience(destination=campsite, title=title,
+               description=description, image=image, exp_number=exp_number).save()
 
 
-def update_experience(destination, title, image, exp_number, expr_image):
+def update_experience(campsite, title, image, exp_number, expr_image, description):
     try:
         image = compress(image)
     except:
         pass
 
     if expr_image:
-        ex = Experience.objects.filter(destination=destination, exp_number=exp_number)[0]
+        ex = Experience.objects.filter(destination=campsite, exp_number=exp_number)[0]
         ex.title = title
-        ex.description = "asd"
+        ex.description = description
         ex.image = image
         ex.save()
     else:
-        ex = Experience.objects.filter(destination=destination, exp_number=exp_number)[0]
+        ex = Experience.objects.filter(destination=campsite, exp_number=exp_number)[0]
         ex.title = title
-        ex.description = "asd"
+        ex.description = description
         ex.save()
 
 
@@ -279,13 +279,13 @@ def camp_add(request):
         # crazy for loop function sending to rq to save later
         for x in range(1, 4):
             title = "experience_title" + "-" + str(x)
-            description = "experience_description" + "-" + str(x)
+            campsite = "experience_description" + "-" + str(x)
             image = "experience_image" + "-" + str(x)
             title = request.POST.get(title)
-            description = request.POST.get(description)
+            campsite = request.POST.get(campsite)
             image = request.FILES[image]
             queue.enqueue(save_experience, destination=destination, title=title, image=image,
-                          exp_number=x)
+                          exp_number=x, description=campsite)
 
         Feature(destination=destination, off_roading=off_roading, campfire=campfire,
                 cycling=cycling, toilet=toilet).save()
@@ -450,17 +450,17 @@ def camp_update(request, slug):
         # crazy for loop for updation sending to rq
         for x in range(1, 4):
             title = "experience_title" + "-" + str(x)
-            description = "experience_description" + "-" + str(x)
+            campsite = "experience_description" + "-" + str(x)
             image = "experience_image" + "-" + str(x)
             title = request.POST.get(title)
-            description = request.POST.get(description)
+            campsite = request.POST.get(campsite)
             try:
                 image = request.FILES[image]
                 expr_image = True
             except:
                 expr_image = False
             queue.enqueue(update_experience, destination=destination, title=title, image=image
-                          , exp_number=x, expr_image=expr_image)
+                          , exp_number=x, expr_image=expr_image, description=campsite)
 
         Feature.objects.filter(destination=destination).update(off_roading=off_roading, campfire=campfire,
                                                                cycling=cycling, toilet=toilet)
