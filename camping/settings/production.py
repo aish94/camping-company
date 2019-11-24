@@ -220,5 +220,20 @@ RQ_QUEUES = {
     }
 }
 
-from django.utils.log import DEFAULT_LOGGING
-DEFAULT_LOGGING['handlers']['console']['filters'] = []
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'syslog',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'ERROR',
+        },
+    },
+}
