@@ -285,7 +285,8 @@ def camp_add(request):
             title = request.POST.get(title)
             description = request.POST.get(description)
             image = request.FILES[image]
-            queue.enqueue(save_experience, title=title, description=description, image=image, destination=destination)
+            queue.enqueue(save_experience, destination=destination, title=title, description=description, image=image,
+                          exp_number=x)
 
         Feature(destination=destination, off_roading=off_roading, campfire=campfire,
                 cycling=cycling, toilet=toilet).save()
@@ -455,7 +456,7 @@ def camp_update(request, slug):
             title = request.POST.get(title)
             description = request.POST.get(description)
             image = request.FILES[image]
-            queue.enqueue(update_experience, destination=destination,title=title, description=description, image=image
+            queue.enqueue(update_experience, destination=destination, title=title, description=description, image=image
                           , exp_number=x)
 
         Feature.objects.filter(destination=destination).update(off_roading=off_roading, campfire=campfire,
