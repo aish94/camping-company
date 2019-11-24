@@ -8,16 +8,9 @@ from django.contrib import messages
 from django.http import JsonResponse
 from vehicle.models import Book
 from django.utils import timezone
-import django_rq
-import time
-
-queue = django_rq.get_queue('high')
 
 from app.utils import *
 
-
-def func(t):
-    time.sleep(t)
 # Create your views here.
 
 
@@ -55,7 +48,6 @@ def detail_user(request, pk):
 
 
 def terms_condition(request):
-    queue.enqueue(func,t=60)
     return render(request, "app/terms_condition.html")
 
 

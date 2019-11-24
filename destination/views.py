@@ -21,13 +21,13 @@ from destination.models import (Destination, Map,
 queue = django_rq.get_queue('high')
 
 
-def save_experience(destination, title, description, image, exp_number):
+def save_experience(destination, title, image, exp_number):
     image = compress(image)
     Experience(destination=destination, title=title,
-               description=description, image=image, exp_number=exp_number).save()
+               description="asd", image=image, exp_number=exp_number).save()
 
 
-def update_experience(destination, title, description, image, exp_number, expr_image):
+def update_experience(destination, title, image, exp_number, expr_image):
     try:
         image = compress(image)
     except:
@@ -36,13 +36,13 @@ def update_experience(destination, title, description, image, exp_number, expr_i
     if expr_image:
         ex = Experience.objects.filter(destination=destination, exp_number=exp_number)[0]
         ex.title = title
-        ex.description = description
+        ex.description = "asd"
         ex.image = image
         ex.save()
     else:
         ex = Experience.objects.filter(destination=destination, exp_number=exp_number)[0]
         ex.title = title
-        ex.description = description
+        ex.description = "asd"
         ex.save()
 
 
@@ -284,7 +284,7 @@ def camp_add(request):
             title = request.POST.get(title)
             description = request.POST.get(description)
             image = request.FILES[image]
-            queue.enqueue(save_experience, destination=destination, title=title, description=description, image=image,
+            queue.enqueue(save_experience, destination=destination, title=title, image=image,
                           exp_number=x)
 
         Feature(destination=destination, off_roading=off_roading, campfire=campfire,
@@ -459,7 +459,7 @@ def camp_update(request, slug):
                 expr_image = True
             except:
                 expr_image = False
-            queue.enqueue(update_experience, destination=destination, title=title, description=description, image=image
+            queue.enqueue(update_experience, destination=destination, title=title, image=image
                           , exp_number=x, expr_image=expr_image)
 
         Feature.objects.filter(destination=destination).update(off_roading=off_roading, campfire=campfire,
