@@ -21,16 +21,10 @@ from destination.models import (Destination, Map,
 queue = django_rq.get_queue('high')
 
 
-def save_experience(request, destination):
-    for x in range(1, 4):
-        title = "experience_title" + "-" + str(x)
-        description = "experience_description" + "-" + str(x)
-        image = "experience_image" + "-" + str(x)
-        title = request.POST.get(title)
-        description = request.POST.get(description)
-        image = compress(request.FILES[image])
-        Experience(destination=destination, title=title,
-                   description=description, image=image, exp_number=x).save()
+def save_experience(destination, title, description, image, exp_number):
+    image = compress(image)
+    Experience(destination=destination, title=title,
+               description=description, image=image, exp_number=exp_number).save()
 
 
 def update_experience(request, destination):
@@ -290,7 +284,14 @@ def camp_add(request):
         Detail(destination=destination, accessible_By=accessible_by, check_in=check_in, check_out=check_out,
                cancellation_policy=cancellation).save()
         # crazy for loop function sending to rq to save later
-        queue.enqueue(save_experience, request=request, destination=destination)
+        for x in range(1, 4):
+            title = "experience_title" + "-" + str(x)
+            description = "experience_description" + "-" + str(x)
+            image = "experience_image" + "-" + str(x)
+            title = request.POST.get(title)
+            description = request.POST.get(description)
+            image = request.FILES[image]
+            queue.enqueue(save_experience, title=title, description=description, image=image, destination=destination)
 
         Feature(destination=destination, off_roading=off_roading, campfire=campfire,
                 cycling=cycling, toilet=toilet).save()
