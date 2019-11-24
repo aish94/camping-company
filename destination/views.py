@@ -27,30 +27,24 @@ def save_experience(destination, title, description, image, exp_number):
                description=description, image=image, exp_number=exp_number).save()
 
 
-def update_experience(request, destination):
-    for x in range(1, 4):
-        title = "experience_title" + "-" + str(x)
-        description = "experience_description" + "-" + str(x)
-        image = "experience_image" + "-" + str(x)
-        title = request.POST.get(title)
-        description = request.POST.get(description)
-        try:
-            image = compress(request.FILES[image])
-            expr_image = True
-        except:
-            expr_image = False
+def update_experience(destination, title, description, image, exp_number):
+    if image:
+        image = compress(image)
+        expr_image = True
+    else:
+        expr_image = False
 
-        if expr_image:
-            ex = Experience.objects.filter(destination=destination, exp_number=x)[0]
-            ex.title = title
-            ex.description = description
-            ex.image = image
-            ex.save()
-        else:
-            ex = Experience.objects.filter(destination=destination, exp_number=x)[0]
-            ex.title = title
-            ex.description = description
-            ex.save()
+    if expr_image:
+        ex = Experience.objects.filter(destination=destination, exp_number=exp_number)[0]
+        ex.title = title
+        ex.description = description
+        ex.image = image
+        ex.save()
+    else:
+        ex = Experience.objects.filter(destination=destination, exp_number=x)[0]
+        ex.title = title
+        ex.description = description
+        ex.save()
 
 
 def destination(request):
@@ -454,7 +448,15 @@ def camp_update(request, slug):
                                                               check_in=check_in, check_out=check_out,
                                                               cancellation_policy=cancellation)
         # crazy for loop for updation sending to rq
-        queue.enqueue(update_experience, request=request, destination=destination)
+        for x in range(1, 4):
+            title = "experience_title" + "-" + str(x)
+            description = "experience_description" + "-" + str(x)
+            image = "experience_image" + "-" + str(x)
+            title = request.POST.get(title)
+            description = request.POST.get(description)
+            image = request.FILES[image]
+            queue.enqueue(update_experience, destination=destination,title=title, description=description, image=image
+                          , exp_number=x)
 
         Feature.objects.filter(destination=destination).update(off_roading=off_roading, campfire=campfire,
                                                                cycling=cycling, toilet=toilet)
