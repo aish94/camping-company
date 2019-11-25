@@ -1,5 +1,6 @@
 import os
 import requests
+import uuid
 
 from io import BytesIO
 from PIL import Image
@@ -90,9 +91,9 @@ def compress(image):
     # create a BytesIO object
     im_io = BytesIO()
     # save image to BytesIO object
-    im.save(im_io, 'webp', quality=10)
+    im.save(im_io, 'webp', quality=70)
+    # create a unique name for file
+    unique_filename = str(uuid.uuid4()) + '.webp'
     # create a django-friendly Files object
-    i = image.name.split('.')
-    i = i[0] + '.webp'
-    new_image = File(im_io, name=i)
+    new_image = File(im_io, name=unique_filename)
     return new_image

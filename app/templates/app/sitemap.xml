@@ -5,151 +5,341 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
+
 <url>
   <loc>https://www.camping-co.com/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://www.camping-co.com/about/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
+  <loc>https://www.camping-co.com/vehicles/all/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.camping-co.com/destination/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.camping-co.com/vehicles/vehicle_info/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
+  <loc>https://www.camping-co.com/destination/circuits/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.camping-co.com/blog/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.camping-co.com/blog/event/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.camping-co.com/findus/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.camping-co.com/accounts/login/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.camping-co.com/faq/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.camping-co.com/terms_condition/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.camping-co.com/destination/White-water-village/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
+  <loc>https://www.camping-co.com/faq/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/blog/event/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/Camping-Co-Nongkhnum-Island-Campsite/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.camping-co.com/destination/Umiam-Lake/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
+  <loc>https://www.camping-co.com/destination/Black-Bridge-Resort/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.camping-co.com/destination/Mawphlang-Sacred-Groove/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
+  <loc>https://www.camping-co.com/destination/Saimika-Resort/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.camping-co.com/destination/Shnonpdeng-Dawki/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
+  <loc>https://www.camping-co.com/destination/Mawphanlur-Campsite/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.camping-co.com/destination/Krangsuri/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
+  <loc>https://www.camping-co.com/destination/Lalimou-Camp/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.camping-co.com/destination/Living-Root-Bridge/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
+  <loc>https://www.camping-co.com/destination/Gayboos-Traditional-Lodge/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.camping-co.com/destination/Waterfalls-of-Meghalaya/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
+  <loc>https://www.camping-co.com/destination/Druk-Rafting-Service/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.camping-co.com/destination/Dainthlen-Falls/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
+  <loc>https://www.camping-co.com/destination/Amas-Farmstay/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.camping-co.com/destination/Kynrem-Falls/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
+  <loc>https://www.camping-co.com/destination/Royal-Botanical-Park/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.camping-co.com/destination/Lyngksiar-Waterfall/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
+  <loc>https://www.camping-co.com/destination/Cloudline-Treehouse/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.camping-co.com/destination/Nohsngithiang-Falls/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
+  <loc>https://www.camping-co.com/destination/Travellers-Nest/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.camping-co.com/destination/Caving-in-Meghalaya/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
+  <loc>https://www.camping-co.com/destination/The-Sanctuary-Song-Resort/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.camping-co.com/blog/My-first-overlanding-trip/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
+  <loc>https://www.camping-co.com/destination/Weiing--The-Lakefront-Campsite/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.camping-co.com/blog/Top-10-places-in-Meghalaya/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
+  <loc>https://www.camping-co.com/destination/Serene-Homestay/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.camping-co.com/blog/Christmas-in-Meghalaya/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
+  <loc>https://www.camping-co.com/destination/White-Water-Village/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/High-Winds/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/Travellers-Nest-kongthong/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/Yedhikha-Campsite/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/Bomdila-Monastery/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/3-Guys-Adventure/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/Mishmi-Hill-Camp/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/Longchen-Homestay/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/Nature-hunt-eco-camp/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/Balphakram-National-Park/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/Pechi-Camp/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/D-cloud-guest-house/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/Wild-Heart-Campers/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/Frank-Adventures--Riverside-Camps/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/Encamp-Adventures/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/Camp-Finder-Bridge/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/Jia-Organic-Eco-Resort/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/Wakro-Eco-Resort/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/Baligara-Eco-Camp/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/Roing-Eco-Lodge-Camp/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/Letro-Homestay/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/Sohra-View-Lodge/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/Sapoi-Tea-Estate/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/Ugroshore/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/Pobitora-Wildlife-Sanctuary/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/Dhansiri-Eco-Camp/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/camp-kite-manja/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/circuits/meghalaya/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/circuits/nagaland/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/circuits/arunachal_pradesh/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/circuits/assam/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/destination/circuits/bhutan/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/accounts/login/?next=/user/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/blog/Camping-Co/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/blog/Meghalaya-Tourism/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.camping-co.com/blog/An-Overlanding-Trip/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/blog/Christmas-in-Meghalaya/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/blog/Top-10-places-in-Meghalaya/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.camping-co.com/blog/What-is-overlanding/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.camping-co.com/blog/event_form/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
+  <loc>https://www.camping-co.com/blog/My-first-overlanding-trip/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.camping-co.com/accounts/reset/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.camping-co.com/damage_charges/</loc>
-  <lastmod>2019-03-09T05:33:11+00:00</lastmod>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
   <priority>0.64</priority>
 </url>
-
+<url>
+  <loc>https://www.camping-co.com/blog/event_form/</loc>
+  <lastmod>2019-11-25T04:54:46+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
 
 </urlset>
