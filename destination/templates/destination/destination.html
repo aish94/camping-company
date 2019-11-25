@@ -191,7 +191,7 @@
       {% for x in places %}
         var marker = {
            coords:{lat:{{x.latitude}},lng:{{x.longitude}}},
-           iconImage:'https://cdn4.iconfinder.com/data/icons/camp/96/tend-48.png',
+           iconImage:'{% static 'images/camp_add/location.svg' %}',
           }
       if (typeof list1 == "undefined"){
            addMarker(marker);
