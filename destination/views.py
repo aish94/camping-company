@@ -26,6 +26,10 @@ def save_experience(destination, title, image, exp_number, de):
     Experience(destination=destination, title=title,
                description=de, image=image, exp_number=exp_number).save()
 
+    if exp_number == 3:
+        return redirect("destination:destinations")
+
+
 
 def update_experience(destination, title, image, exp_number, expr_image, de):
     try:
@@ -309,7 +313,7 @@ def camp_add(request):
             reg.region.add(ma)
         else:
             reg[0].region.add(ma)
-        messages.success(request, "Camp site add success")
+        messages.success(request, f"Camp site {destination.place} added")
         return redirect("destination:destinations")
 
     return render(request, "destination/camp_add.html", {"maps": maps})
@@ -459,7 +463,7 @@ def camp_update(request, slug):
                 expr_image = True
             except:
                 expr_image = False
-            queue.enqueue(update_experience, destination=destination, title=title, image=image
+            update_experience(destination=destination, title=title, image=image
                           , exp_number=x, expr_image=expr_image, de=de)
 
         Feature.objects.filter(destination=destination).update(off_roading=off_roading, campfire=campfire,
@@ -490,8 +494,7 @@ def camp_update(request, slug):
             reg.region.add(map)
         else:
             reg[0].region.add(map)
-        messages.success(request, "Camp site update success")
-        return redirect("destination:destinations")
+            messages.success(request, f"Camp site {destination.place} updated.")
 
     return render(request, "destination/camp_update.html", context)
 

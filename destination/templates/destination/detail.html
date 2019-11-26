@@ -673,8 +673,7 @@
       {% if x %}
       <li class="review-item cf">
         <div class="student-details">
-          <img class="avatar" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH0AAAB9CAMAAAC4XpwXAAAAMFBMVEXFxcX////8/Pz5+fm+vr7CwsLPz8/Z2dno6Oje3t7IyMj09PTj4+Pr6+vx8fHV1dWP2zdgAAADAklEQVRoge2a7ZKrIAyGLRjUoHD/d3tsDX60gqikZ3Y375+d2bY+kIQ0Ca0qkUgkEolEItHfFgDgqPHv99Hoe6e1Ulrb3uNXFwCm14+VdGu+xgds1eNdw5f4dfPJfqr7Cn7YZY+y/Gx0C05Z5+wqADRy02e4HkP9tRzT2Xn3vHgIZlfNcsqg8oHvOPHQhAjfnnCAll7oGUMPo+ENnl5q+PBD/GwFvK654CZlXeho80xwcq6O2XY6Do6JjjrtWYoKwwIn09poWNFx5Al7MnwinXtO079SikoYFhVfvp3crhPvAMvneKOO7Eq+8Sz0KccmYorikiXdTfRW6EIXutCF/qvpLkXv+epK+n5P1A6c3+9UsybsOlmHp7Yhu8ZNT8VFqgK4IWom4qULvc5DB5fe/GQbrhlCaNUiUUXNBN8AZdr8fllLvYRi6yKD51M9LOPsiDyvds4UWlavv0Sb/0y3dBy5Ap4gbQRCy+Jqn4P0ru0px+65pKTC3Gib0MJ/2ceVwfabXYbWnpldATWT25RDdM86q4fatFbtJLwwMdKtB54FQOXDSDBKf0VEU/6uALDb3AfE6c8JbtlZPZiP+4AE/ZmOfDEHfLKVfRsHe6vf+K7M/iEk0dmxncGPnQGa5m2NQ4Htb41qe1PHHgpQY+fW7+7vss3qcbo11cF2oML1bZW9Zf55Hv98Upd3kgCb+a7ioW4MLnE54Lo72vaKv9xVPKPvGhtwseEJ9vTZZv6sumT9ldXb89G7PikXvvmWWLfX6hVAu6z+7GfnpbfX0/byjItwdacdBh+8P1yCP+7lyyVwTzR3M/x+kVi7s/j5bm0oUSSevCdc4AXYK0PmRVDwVRn4Cp8VQ+Sp+N3TaTwZP2OoEVaamg6dVT1kR95kd1129EOtzuFDp4ZMFe4GKZYO74uO736uKHeOyETvhf4j6BUWVXWKrnRhqbwTh/s/oiqjw2wD0Z9R3VfGbAPf+8FyykigYJjweSUiYGe1Ki2bXRuP3Whx/YfffopEIpFIJBL9Kf0DuBAe3e3s2NYAAAAASUVORK5CYII=">
-          <h3 class="rating">{{x.user.username}}
+          <h3 data-letters="{{x.user.username.0}}" class="rating">{{x.user.username|title}}
             <span class="fa fa-star"></span>
             <span class="fa fa-star"></span>
             <span class="fa fa-star"></span>
@@ -701,6 +700,16 @@
 <script defer src="{% static 'js/razorpay.js' %}"></script>
 <script>
 window.onload = function(){
+//random color generator
+      function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+
       var countStars=0;
       // coloring stars
       $(".fa-star").click(function(){
@@ -719,6 +728,8 @@ window.onload = function(){
     all_rat = {{list1}}
     // putting desired stars in front of users reviewed
           $(".rating").each(function( index ) {
+              var x = $(this).attr("data-letters").toUpperCase()
+              $(this).attr("data-letters",x)
               $(this).children().each(function( index2 ) {
               if (index2 == all_rat[index]){
                 return false;
