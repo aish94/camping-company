@@ -490,7 +490,7 @@ def camp_update(request, slug):
             reg.region.add(map)
         else:
             reg[0].region.add(map)
-            messages.success(request, f"Camp site {destination.place} updated.")
+            messages.success(request, f"Camp site {destination.place} is being updating changes may reflect in sometime.")
             return redirect("destination:destinations")
 
     return render(request, "destination/camp_update.html", context)
