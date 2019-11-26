@@ -463,7 +463,7 @@ def camp_update(request, slug):
                 expr_image = True
             except:
                 expr_image = False
-            update_experience(destination=destination, title=title, image=image
+            queue.enqueue(update_experience, destination=destination, title=title, image=image
                           , exp_number=x, expr_image=expr_image, de=de)
 
         Feature.objects.filter(destination=destination).update(off_roading=off_roading, campfire=campfire,
