@@ -26,10 +26,6 @@ def save_experience(destination, title, image, exp_number, de):
     Experience(destination=destination, title=title,
                description=de, image=image, exp_number=exp_number).save()
 
-    if exp_number == 3:
-        return redirect("destination:destinations")
-
-
 
 def update_experience(destination, title, image, exp_number, expr_image, de):
     try:
@@ -495,6 +491,7 @@ def camp_update(request, slug):
         else:
             reg[0].region.add(map)
             messages.success(request, f"Camp site {destination.place} updated.")
+            return redirect("destination:destinations")
 
     return render(request, "destination/camp_update.html", context)
 
