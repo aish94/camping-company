@@ -84,7 +84,11 @@ def destination(request):
 def destination_detail_page(request, slug):
     list1 = []
     # Search.objects.new_or_get(request)
-    destination = Destination.objects.get(slug=slug)
+    try:
+        destination = Destination.objects.get(slug=slug)
+    except:
+        messages.warning(request, "Site does not exist please pick the sites from existing list")
+        return redirect("destination:destinations")
     activity = Activity.objects.get(destination=destination)
     detail = Detail.objects.get(destination=destination)
     amenity = Amenity.objects.get(destination=destination)
