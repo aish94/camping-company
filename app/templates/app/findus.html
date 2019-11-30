@@ -9,16 +9,9 @@
 <meta name="keywords" content="camping, camping company, camping co , notheast trip, meghalaya trip,contact camping company, contact camping co, phone number camping co, how to reach camping company, book car northeast, how to book a car in northeast">
 {% endblock %}
     {% block content_block %}
-            {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-success">
-                    <strong>{{message}}</strong>
-                </div>
-            {% endfor %}
-        {% endif %}
   <div class="con">
   <form id="contact" action="{% url 'app:findus' %}" method="post"> {% csrf_token %}
-    <h3>Contact Us</h3>
+      <h1>Contact Us</h1>
     <h4>Talk to our experts? +91-6913332761 or Drop us a line, We promise to get back to you in 24 hours.</h4>
     <fieldset>
       <input placeholder="Your name" type="text" tabindex="1" name="name" required autofocus>

@@ -152,7 +152,11 @@ def circuits(request):
 
 
 def circuit(request, slug):
-    cir = Circuit.objects.get(slug=slug)
+    try:
+        cir = Circuit.objects.get(slug=slug)
+    except:
+        messages.warning(request, "Circuit not available")
+        return redirect("destination:circuits")
     return render(request, "destination/circuit.html", {"cir": cir})
 
 

@@ -16,7 +16,8 @@
 
     {% block content_block %}
         <img class="image" src="{{blog.blog_cover_images.url}}">
-        <div class="container my-5 mr-auto">
+    <h1 style="visibility:hidden;">{{ blog.heading }}</h1>
+        <div class="container mr-auto">
           {% for y in image %}
             <h4 class="">{{y.heading|safe}}</h4>
             <p>{{y.content|safe}}</p>
