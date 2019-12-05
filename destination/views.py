@@ -61,15 +61,21 @@ def destination(request):
     maps = os.environ.get("maps")
     places = Map.objects.all().order_by("pk")
     if request.is_ajax():
-        place = request.POST.get("place").split(" ")[0]
-        place = ''.join(place)
-        region = Region.objects.filter(name__icontains=place)
+        try:
+            place = request.POST.get("place").split(" ")[0]
+            place = ''.join(place)
+            region = Region.objects.filter(name__icontains=place)
 
-        for x in region:
-            for y in x.region.all():
-                list1.append(y.pk)
-        data = {"list1": list1}
-        return JsonResponse(data)
+            for x in region:
+                for y in x.region.all():
+                    list1.append(y.pk)
+            data = {"list1": list1}
+            return JsonResponse(data)
+        except:
+            price = request.POST.get("price")
+            lower_priced_places = Map.objects.all().order_by("starting").values()
+            data = {"lower_priced_places": list(lower_priced_places)}
+            return JsonResponse(data)
 
     context = {
         "places": places,

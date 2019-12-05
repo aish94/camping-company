@@ -31,10 +31,10 @@ def create(request, pk):
     if request.method == 'POST':
         # Car images
 
-        front = compress(request.FILES['front'])
-        back = compress(request.FILES['back'])
-        side1 = compress(request.FILES['side1'])
-        side2 = compress(request.FILES['side2'])
+        front = request.FILES['front']
+        back = request.FILES['back']
+        side1 = request.FILES['side1']
+        side2 = request.FILES['side2']
 
         # Cleanliness
         inside_tent = request.FILES['inside_tent']

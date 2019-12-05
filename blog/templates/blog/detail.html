@@ -12,7 +12,7 @@
     {% block css %}
         <link rel="stylesheet" href="{% static 'css/blog/blog_detail.css' %}">
         <link rel="canonical" href="https://www.camping-co.com">
-    {% if blog.heading == 'Go there, do that!'%}
+    {% if blog.heading == 'Go there, do that!' or blog.heading == 'The Orange festival' %}
     <style>
         body{
             text-align: center;

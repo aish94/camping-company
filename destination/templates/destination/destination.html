@@ -236,8 +236,10 @@
 <script async defer
    src="https://maps.googleapis.com/maps/api/js?key={{maps}}&callback=initMap"></script>
 <script>
+var loc = window.location.origin
 function display_star(){
    $(".rating").each(function( index ) {
+   console.log(rating)
               $(this).children().each(function( index2 ) {
               if (index2 == rating[index]){
                 return false;
@@ -246,10 +248,42 @@ function display_star(){
           })
         })
 }
+function filter_price(){
+    //filtering site with lowest price and vice versa
+    var t = $("input[name=csrfmiddlewaretoken]").val();
+    $(".input-place").change(function(){
+        data = {
+           value: $(this).val(),
+           csrfmiddlewaretoken: t
+           },
+        $.ajax({
+            data: data,
+            url: '/destination/',
+            method: "POST",
+            success: function(e){
+                $(".remove").fadeOut(300, function(){
+                $(".remove").remove();
+                for (var x = 0; x < e.lower_priced_places.length; x++){
+                 i = "/media/" + e.lower_priced_places[x].images
+                 title = e.lower_priced_places[x].title
+                 starting = e.lower_priced_places[x].starting
+                 description = e.lower_priced_places[x].description
+                 var url = loc + '/destination/' + title.replace(/\s+/g, '-')
+                 $(".replace-me").append('<div class="remove col-lg-4 col-md-6 col-sm-6"><div class="card"> <img src="' + i + '" class="card-img-top" alt="destination"><div class="card-body"><h5 class="card-title">' + title + '</h5><div class="rating" style="display: block; margin: 0 auto;"> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span></div><p class="card-text">' + description + '</p><div class="card-url"><h3> <a class="card-url-1" href="'  + url +  '">Know more</a> <span class="card-url-2">Price starts @ INR ' + starting + '</span></h3></div></div></div> <br> <br> <br></div></div>')
+                }
+                 display_star();
+            });
+            },
+            error: function(error){
+                console.log(error)
+            }
+        })
+    })
+}
    window.onload = function () {
    rating = {{list2}}
+   filter_price();
    display_star();
-   var loc = window.location.origin
        $("#submit").submit(function(e) {
        e.preventDefault();
        var t = $("input[name=csrfmiddlewaretoken]").val();
@@ -262,19 +296,20 @@ function display_star(){
            },
            success: function(e) {
                $("#place").val("")
-               $(".remove").remove()
-               {% for x in places %}
+               $(".remove").fadeOut(300,function(){
+                $(".remove").remove();
+                {% for x in places %}
                for (var z = 0; z < e.list1.length; z++){
                   if ({{x.pk}} == e.list1[z]){
-                     var url = loc + '/destination/' + '{{x.title|dash}}'
                      $(".replace-me").append('<div class="remove col-lg-4 col-md-6 col-sm-6"><div class="card"> <img src="{{x.images.url}}" class="card-img-top" alt="destination"><div class="card-body"><h5 class="card-title">{{x.title}}</h5><div class="rating" style="display: block; margin: 0 auto;"> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span></div><p class="card-text">{{x.description|truncatechars_html:100}}</p><div class="card-url"><h3> <a class="card-url-1" href="{% url 'destination:destination_detail_page' slug=x.destination.slug %}" >Know more</a> <span class="card-url-2">Price starts @ INR {{x.starting}}</span></h3></div></div></div> <br> <br> <br></div></div>')
                      break;
                   }
 
                }
-               {% endfor %}
-               initMap(e.list1)
                display_star();
+               {% endfor %}
+               })
+               initMap(e.list1)
                }
            })
         })
