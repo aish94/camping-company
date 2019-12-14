@@ -9,7 +9,7 @@ from datetime import date
 
 # Create your views here.
 
-def single_car_book(name,now,check_in,check_out):
+def single_car_book(name, now, check_in, check_out):
     definition = Definition.objects.filter(car_type=name)
     for _ in definition:
         book = Book.objects.filter(definition=_, check_in_date__gte=now)
@@ -24,8 +24,30 @@ def single_car_book(name,now,check_in,check_out):
                 return {}
 
 
-def vehicles(request):
+def multiple_car_book(name, now, check_in, check_out):
     list1 = []
+    definition = Definition.objects.filter(car_type=name)
+    for _ in definition:
+        book = Book.objects.filter(definition=_, check_in_date__gte=now)
+        if book.count() == 0:
+            return _
+        for b in book:
+            if check_in < b.check_in_date and check_out < b.check_in_date or check_in > b.check_out_date \
+                    and check_out > b.check_out_date:  # here i am checking for booked for range which is booked for,
+                # meaning past dates does not matter it will always make it 1
+                list1.append(1)
+            else:
+                list1.append(0)
+        if 0 in list1:
+            xenon_soft = {}
+        else:
+            xenon_soft = _
+            break
+        list1 = []
+    return xenon_soft
+
+
+def vehicles(request):
     now = date.today()
     try:
         d0 = request.GET.get("tripDay").replace("-", "")
@@ -39,27 +61,9 @@ def vehicles(request):
         messages.warning(request, "cant book the car for past date")
         return redirect("app:home")
 
-    definition = Definition.objects.filter(car_type="xenon_soft")
-    for _ in definition:
-        book = Book.objects.filter(definition=_, check_in_date__gte=now)
-        if book.count() == 0:
-            xenon_soft = _
-            break
-        for b in book:
-            if check_in < b.check_in_date and check_out < b.check_in_date or check_in > b.check_out_date \
-                    and check_out > b.check_out_date:#  here i am checking for booked for range which is booked for, meaning past dates does not matter it will always make it 1
-                list1.append(1)
-            else:
-                list1.append(0)
-        if 0 in list1:
-            xenon_soft = {}
-        else:
-            xenon_soft = _
-            break
-        list1 = []
-
-    thar = single_car_book(name="thar", now=now, check_in=check_in, check_out=check_out)
-    xenon_hard = single_car_book(name="xenon_hard", now=now, check_in=check_in,check_out=check_out)
+    xenon_soft = multiple_car_book(name="xenon_soft", now=now, check_in=check_in, check_out=check_out)
+    thar = multiple_car_book(name="thar", now=now, check_in=check_in, check_out=check_out)
+    xenon_hard = single_car_book(name="xenon_hard", now=now, check_in=check_in, check_out=check_out)
     caravan = single_car_book(name="caravan", now=now, check_in=check_in, check_out=check_out)
     data = {
         "thar": thar,
