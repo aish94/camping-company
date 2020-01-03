@@ -33,6 +33,7 @@
                             <option value="Nagaland">
                             <option value="Sikkim">
                             <option value="Bhutan">
+                            <option value="Himachal Pradesh">
                           </datalist>
                 <button class="input-submit-button"><i class="fas fa-search"></i></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                </div>
@@ -264,7 +265,7 @@ function filter_price(){
                 $(".remove").fadeOut(300, function(){
                 $(".remove").remove();
                 for (var x = 0; x < e.lower_priced_places.length; x++){
-                 i = "/media/" + e.lower_priced_places[x].images
+                 i = "https://camping-company.s3.amazonaws.com/media/" + e.lower_priced_places[x].images
                  title = e.lower_priced_places[x].title
                  starting = e.lower_priced_places[x].starting
                  description = e.lower_priced_places[x].description
