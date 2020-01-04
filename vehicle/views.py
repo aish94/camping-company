@@ -49,6 +49,7 @@ def multiple_car_book(name, now, check_in, check_out):
 
 def vehicles(request):
     now = date.today()
+    place = request.GET.get("place")
     try:
         d0 = request.GET.get("tripDay").replace("-", "")
     except:
@@ -61,16 +62,21 @@ def vehicles(request):
         messages.warning(request, "cant book the car for past date")
         return redirect("app:home")
 
-    xenon_soft = multiple_car_book(name="xenon_soft", now=now, check_in=check_in, check_out=check_out)
-    thar = multiple_car_book(name="thar", now=now, check_in=check_in, check_out=check_out)
-    xenon_hard = single_car_book(name="xenon_hard", now=now, check_in=check_in, check_out=check_out)
-    caravan = single_car_book(name="caravan", now=now, check_in=check_in, check_out=check_out)
-    data = {
-        "thar": thar,
-        "xenon_soft": xenon_soft,
-        "xenon_hard": xenon_hard,
-        "caravan": caravan,
-    }
+    if place != "Himachal Pradesh":
+        xenon_soft = multiple_car_book(name="xenon_soft", now=now, check_in=check_in, check_out=check_out)
+        thar = multiple_car_book(name="thar", now=now, check_in=check_in, check_out=check_out)
+        xenon_hard = single_car_book(name="xenon_hard", now=now, check_in=check_in, check_out=check_out)
+        caravan = single_car_book(name="caravan", now=now, check_in=check_in, check_out=check_out)
+        data = {
+            "thar": thar,
+            "xenon_soft": xenon_soft,
+            "xenon_hard": xenon_hard,
+            "caravan": caravan,
+        }
+    else:
+        thar = single_car_book(name="thar", now=now, check_in=check_in, check_out=check_out)
+        data = {"thar": thar,
+                "price": 3399}
     return render(request, "vehicle/vehicles.html", data)
 
 
