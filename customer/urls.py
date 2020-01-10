@@ -4,7 +4,7 @@ from customer.views import (user_page, book,
                             create_itinerary,
                             delete_itinerary,
                             trip_detail,
-                            form)
+                            form, experience)
 
 app_name = "customer"
 
@@ -16,5 +16,6 @@ urlpatterns = [
     url(r'^itinerary/$', custom_itinerary, name="custom_itinerary"),
     url(r'^trip_detail/$', trip_detail, name="trip_detail"),
     url(r'^form/$', form, name="form"),
+    url(r'^experience/$', experience, name="form"),
 
 ]

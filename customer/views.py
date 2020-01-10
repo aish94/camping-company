@@ -132,3 +132,8 @@ def form(request):
         messages.success(request, "Thanks for filling the form")
         return redirect("customer:user_page")
     return render(request, "customer/user_form.html")
+
+
+@login_required
+def experience(request):
+    return render(request, "customer/experience.html")
