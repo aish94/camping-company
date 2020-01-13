@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from blog.models import Blog, Image, Form
 from django.contrib import messages
+from reviews.models import BlogReview
 
 # Create your views here.
 
@@ -15,12 +16,32 @@ def all_blog(request):
 
 
 def blog_detail(request, slug):
+    list1 = []
     blog = Blog.objects.get(slug=slug)
     # user = User.objects.get(pk=pk)
     image_ = Image.objects.filter(blog=blog).order_by("pk")
+    reviews = BlogReview.objects.filter(blog=blog)
+    if reviews.count() > 0:
+        page = 1
+    else:
+        page = 0
+    try:
+        review = BlogReview.objects.get(user=request.user, blog=blog)
+    except:
+        review = False
+    for x in reviews:
+        list1.append(x.rating)
+    context = {
+        "blog": blog,
+        "image": image_,
+        "reviews": reviews,
+        "list1": list1,
+        "page": page,
+        "review": review,
+    }
     # for x in image_:
     #     print(type(x.blog_image2.url))
-    return render(request, "blog/detail.html", {"blog": blog, "image": image_})
+    return render(request, "blog/detail.html", context)
 
 
 def create_blog(request):

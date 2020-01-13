@@ -11,6 +11,7 @@
 
     {% block css %}
         <link rel="stylesheet" href="{% static 'css/blog/blog_detail.css' %}">
+        <link rel="stylesheet" href="{% static 'css/destination/detail.css' %}">
         <link rel="canonical" href="https://www.camping-co.com">
     {% if blog.heading == 'Go there, do that!' or blog.heading == 'The Orange festival' %}
     <style>
@@ -47,4 +48,240 @@
           {% endfor %}
             </div>
     <br>
+
+<div class="container">
+    {% if not review.rated %}
+    <button type="button" id="rModal" class="btn btn-info btn-lg" data-toggle="modal" data-target="#reviewModal">Add a review</button>
+  {% endif %}
+    <div id="reviewModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4>Write your experiences</h4>
+          </div>
+          <div class="modal-body">
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            <form id="review-form" method="post">{% csrf_token %}
+              <textarea id="review_text" name="review_text" cols="45" rows="5"></textarea>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button id="review-button" class="review__add" type="submit" form="review-form">Add</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-header cf">
+      <h2>What People are saying</h2>
+    </div>
+    <ul class="review-list">
+      {% for x in reviews %}
+      {% if x %}
+      <li class="review-item cf">
+        <div class="student-details">
+          <h3 data-letters="{{x.user.username.0}}" class="rating">{{x.user.username|title}}
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+          </h3>
+          <span class="review__date">{{x.timestamp|timesince}}</span>
+          <span class="review__text">{{x.comment}}</span>
+        </div>
+      </li>
+      {% endif %}
+      {% endfor %}
+
+    </ul>
+    {% if page %}
+    <div class = "pagination">
+      <ul class = "pagination__list">
+
+      </ul>
+
+    </div>
+    {% endif %}
+  </div>
+<script>
+    window.onload = function(){
+//random color generator
+      function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+
+      var countStars=0;
+      // coloring stars
+      $(".fa-star").click(function(){
+        $(".modal-body .fa-star").each(function( index ) {
+          $(this).removeClass("checked")
+        })
+        var x = this;
+         $(".modal-body .fa-star").each(function( index ) {
+          $(this).toggleClass("checked")
+          countStars++;
+          if (x==this){
+          return false;
+          }
+        });
+    })
+    all_rat = {{list1}}
+    // putting desired stars in front of users reviewed
+          $(".rating").each(function( index ) {
+              var x = $(this).attr("data-letters").toUpperCase()
+              $(this).attr("data-letters",x)
+              $(this).children().each(function( index2 ) {
+              if (index2 == all_rat[index]){
+                return false;
+              }
+              $(this).addClass("checked")
+          })
+        })
+
+      const $studentItem = $('.review-item');
+      const $page = $('.page');
+      const $pagination = $('.pagination');
+      const $paginationList = $('.pagination__list');
+      const $studentSearch = $('.student__search');
+      var formSubmit = $('#show-form');
+      const itemTotal = 3;
+
+      //hide/unhide form
+      formSubmit.click(function(){
+      $(this).fadeOut();
+      $("#review__form").fadeIn();
+
+      })
+
+      // hide all
+      function hideAll() {
+        $studentItem.hide();
+      }
+
+      hideAll();
+
+      // display first 10
+      function displayRange(a,b) {
+        hideAll();
+        // display 0 - 1 students
+        $studentItem.slice(a,b).fadeIn();
+
+      }
+
+      displayRange(0, itemTotal);
+
+      // create pagination links
+      let pagination = '';
+    for(var i = 0; i <= $studentItem.length/(itemTotal+1); i ++) {
+        pagination += `
+          <li><span class ="pagination__num">${i+1}</span></li>
+      `;
+      }
+      $paginationList.append(pagination);
+      // click on pagination num
+      // pass into display range
+      // calc and show range
+      $('body').on('click', '.pagination__num', function () {
+
+        hideAll();
+
+        // get text number 1 - 5
+        // get ranges for start and end
+        let paginationText = Number($(this).text()) - 1;
+        let startFrom = paginationText * itemTotal + paginationText;
+        let end = paginationText * itemTotal + paginationText + itemTotal;
+        // display ranges
+        if (paginationText === 0){
+          displayRange(startFrom, end);
+        } else {
+          displayRange(startFrom-1, end);
+        }
+
+      });
+
+
+      $studentSearch.on('input', function () {
+
+       hideAll();
+
+        $studentItem.each(function() {
+          $(this).removeClass("result");
+
+        });
+
+
+          // value of searched
+          var text = $(this).val().toLowerCase();
+          var results = $("ul.review-list li:contains('" + text.toLowerCase() + "')");
+          console.log(results)
+
+           results.addClass("result");
+
+
+        // if student has result class
+        // display
+        // else hide
+
+
+        if($studentItem.hasClass('result')) {
+            $('.result').show();
+            $studentItem.removeClass('result');
+
+           }
+
+
+      });
+
+      $studentSearch.keyup(function()
+      {
+           if (!this.value) {
+             hideAll();
+             displayRange(0, itemTotal);
+          }
+
+      });
+
+      //submitting review and rating and save to db
+document.getElementById('review-button').onclick = function(e){
+    e.preventDefault();
+    var reviewForm = $("#review-form")
+    var data = $('form').serialize();
+        var reviewMethodEndpoint = "{% url 'reviews:reviews_blog' %}"
+        var t = $("input[name=csrfmiddlewaretoken]").val();
+        var data = {
+            "star": countStars,
+            "comment": $("#review_text").val(),
+            'csrfmiddlewaretoken': t,
+            "slug": '{{blog.slug}}'
+        }
+        $.ajax({
+            data: data,
+            url: reviewMethodEndpoint,
+            method: "POST",
+            success: function(data){
+            if (data.saved){
+            window.location.href = '{% url 'blog:blog_detail' slug=blog.slug %}'
+            } else {
+                window.location.href = "{% url 'register:signin' %}" + "?next=/blog/{{blog.slug}}"
+            }
+            },
+            error: function(error){
+                console.log(error)
+            }
+        })
+}
+      }
+</script>
     {% endblock %}
