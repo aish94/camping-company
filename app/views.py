@@ -7,6 +7,7 @@ from trip.models import Trip
 from django.contrib import messages
 from django.http import JsonResponse
 from vehicle.models import Book
+import os
 from django.utils import timezone
 
 from app.utils import *
@@ -78,17 +79,29 @@ def calender(request):
 
 def findus(request):
     if request.method == "POST":
-        email = str(request.POST.get("email"))
-        name = str(request.POST.get("name"))
-        phone = str(request.POST.get("phone"))
-        subject = "Query"
-        message = str(request.POST.get("message"))
-        message_to_company(name, email, subject, message, phone)
-        message_to_customer(email)
-        messages.success(request, "Your message sent")
-        return redirect("app:findus")
+        x = requests.post(
+            "https://www.google.com/recaptcha/api/siteverify",
+            data={"secret": os.environ.get("GOOGLE_SERVER_CAPTCHA"),
+                  "response": request.POST.get('g-recaptcha-response'),
+                  })
+        if x.status_code == 200:
+            x = x.json()
+            if x["success"]:
+                email = str(request.POST.get("email"))
+                name = str(request.POST.get("name"))
+                phone = str(request.POST.get("phone"))
+                subject = "Query"
+                message = str(request.POST.get("message"))
+                message_to_company(name, email, subject, message, phone)
+                message_to_customer(email)
+                messages.success(request, "Your message sent")
+                return redirect("app:findus")
+            else:
+                messages.warning(request, "Captcha incorrect try agian")
+                return redirect("app:findus")
+
     else:
-        return render(request, "app/findus.html")
+        return render(request, "app/findus.html", {"g": os.environ.get("GOOGLE_CLIENT_CAPTCHA")})
 
 
 @login_required
