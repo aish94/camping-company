@@ -29,9 +29,16 @@
       <textarea placeholder="Type your Message Here...." name="message" tabindex="5" required></textarea>
     </fieldset>
     <fieldset>
-      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+      <button style="opacity:0;" name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
     </fieldset>
     <fieldset class="g-recaptcha" data-sitekey="{{g}}"></fieldset>
   </form>
   </div>
+<script>
+window.onload = function(){
+  document.querySelector(".recaptcha-checkbox-border").addEventListener("click", function(){
+      setTimeout(function(){ $("#contact-submit").css("opacity",1); }, 1000);
+})
+}
+</script>
     {% endblock %}
