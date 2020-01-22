@@ -227,7 +227,8 @@ def camp_add(request):
         campfire = request.POST.get("campfire")
         toilet = request.POST.get("toilet")
         known_for = request.POST.get("known_for")
-        region = (request.POST.get("region")).lower()
+        region = (request.POST.get("region")).lower().split(" ")
+        region = region[0]
 
         barbeque = request.POST.get("barbeque")
         kitchen = request.POST.get("kitchen")
@@ -382,7 +383,8 @@ def camp_update(request, slug):
         campfire = request.POST.get("campfire")
         toilet = request.POST.get("toilet")
         known_for = request.POST.get("known_for")
-        region = (request.POST.get("region")).lower()
+        region = (request.POST.get("region")).lower().split(" ")
+        region = region[0]
 
         barbeque = request.POST.get("barbeque")
         kitchen = request.POST.get("kitchen")
