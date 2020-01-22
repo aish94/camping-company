@@ -145,6 +145,6 @@ def filter_sites(request):
     list1 = []
     number = int(request.GET.get("number_of_days"))//1.5
     maps = Map.objects.filter()
-    for x in range(int(number)):
+    for x in range(int(number+1)):
         list1.append(maps[x])
     return render(request, "customer/destination.html",{"map": list1})
