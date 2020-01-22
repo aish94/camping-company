@@ -1,0 +1,45 @@
+{% extends "snippets/base.html" %}
+{% load staticfiles %}
+{% load dash %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/destination/destination.css' %}">
+{% endblock %}
+{% block title %}
+<title>The places Offered By Camping Co</title>
+{% endblock %}
+{% block meta %}
+<meta name="description" content="CBook a sample itinerary for Assam, Meghalaya, Arunachal Pradesh, Nagaland or Bhutan. Book your self-drive overland and camping expeditions in Northeast India and Bhutan with Camping Co.’s off-road campers fitted with rooftop tents and camping gear. Like somewhere? Stay there!">
+<meta name="keywords" content="travel destination, destination for camping, beautiful east india,beautiful notheast,mountains arunachal, mountain meghalaya, caving in meghalaya, caving in meghalaya, waterfall of meghalaya, waterfalls meghalaya ,umiam lake, white water village , mawphlang sacred groove,shnonpdeng, dawki,krangsuri,living root bridge, dainthlen falls, kynrem falls, nohsngithiang falls">
+{% endblock %}
+{% block content_block %}
+    <h1 style="visibility: hidden;">Campsites</h1>
+<div class="container">
+   <div class="row">
+       {% for x in map %}
+      <div class="col-md-4 col-12">
+         <div class="card">
+         <img src="{{x.images.url}}" class="card-img-top" alt="destination">
+         <div class="card-body">
+             <h5 class="card-title">asd</h5>
+             <div class="rating" style="display: block; margin: 0 auto;">
+                 <span class="fa fa-star"></span>
+                 <span class="fa fa-star"></span>
+                 <span class="fa fa-star"></span>
+                 <span class="fa fa-star"></span>
+                 <span class="fa fa-star"></span>
+             </div>
+           <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis minima mollitia placeat quas voluptatum. Aliquid dolore dolorem, laudantium omnis repudiandae ut vero voluptas. Alias consequatur odit porro possimus quod vitae?</p>
+             <div class="card-url">
+                 <h3>
+                    <span class="card-url-2">Price starts @ INR {{x.starting}}</span>
+                 </h3>
+             </div>
+         </div>
+      </div>
+    </div>
+       {% endfor %}
+   </div>
+    <br>
+    <a class="btn btn-secondary" href="{% url 'app:home' %}">Book now</a>
+</div>
+{% endblock %}

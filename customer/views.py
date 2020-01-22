@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from destination.models import Destination
+from destination.models import Destination, Map
 from .models import Customer, Form
 from itinerary.models import Itinerary
 from referral.models import Referral
@@ -8,6 +8,8 @@ from django.contrib.auth.models import User
 import requests
 from django.contrib import messages
 import os
+from django.http import JsonResponse
+
 # Create your views here.
 
 
@@ -137,3 +139,12 @@ def form(request):
 @login_required
 def experience(request):
     return render(request, "customer/experience.html")
+
+
+def filter_sites(request):
+    list1 = []
+    number = int(request.GET.get("number_of_days"))//1.5
+    maps = Map.objects.filter()
+    for x in range(int(number)):
+        list1.append(maps[x])
+    return render(request, "customer/destination.html",{"map": list1})
