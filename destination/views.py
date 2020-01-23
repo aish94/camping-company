@@ -99,6 +99,9 @@ def destination_detail_page(request, slug):
     detail = Detail.objects.get(destination=destination)
     amenity = Amenity.objects.get(destination=destination)
     experience = Experience.objects.filter(destination=destination).order_by("pk")
+    exp = Experience.objects.filter(destination=destination).order_by("pk")[0]
+    maps = Map.objects.get(destination=destination)
+    reg = Region.objects.filter(region=maps)
     feature = Feature.objects.get(destination=destination)
     pricing = Pricing.objects.get(destination=destination)
     reviews = DestinationReview.objects.filter(destination=destination)
@@ -123,7 +126,9 @@ def destination_detail_page(request, slug):
             "reviews": reviews,
             "review": review,
             "page": page,
-            "list1": list1
+            "list1": list1,
+            "exp": exp,
+            "reg": reg
            }
 
     if request.is_ajax():
