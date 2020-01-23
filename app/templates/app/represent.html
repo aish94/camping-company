@@ -1,193 +1,102 @@
 {% extends "snippets/base.html" %}
 {% load staticfiles %}
-    {% block css %}
-        <link rel="stylesheet" href="{% static 'css/all_user.css' %}">
-    {% endblock %}
-
-    {% block content_block %}
-    <br>
-<div class="container my-5">
-    <div class="alert alert-success">
-  <strong>last-activity: {{super_user.last_login}}</strong>
-</div>
-    <br>
-    <br>
-        <form id="tests" action="{% url 'app:represent' %}" method="POST">{% csrf_token %}
-            <div class="form-group">
-                <label for="usr">Email:</label>
-                <input type="text" class="form-control" id="usr">
-                <br>
-                <input class="btn btn-secondary" type="submit" value="Start Adding Status">
-            </div>
-    </form>
-<table class="table table-striped table-bordered equipment" style="width:100%">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Car Type</th>
-                <th>Guests</th>
-                <th>Start-Date</th>
-                <th>End-Date</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for trip in trips %}
-                <tr>
-                    <td><a href="{% url 'app:show_status' pk=trip.user.pk %}">{{ trip.user.first_name|title }}</a></td>
-                    <td>{{ trip.car_type|title }}</td>
-                    <td>{{ trip.guest }}</td>
-                    <td>{{ trip.check_in_date|date:"Y/m/d"  }}</td>
-                    <td>{{ trip.check_out_date|date:"Y/m/d"  }}</td>
-                    <td>{{ trip.trip_status|title }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-
-    </table>
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/all_user.css' %}">
+{% endblock %}
+{% block content_block %}
 <br>
-
-    <h1>Inventory</h1>
-<table class="table table-striped table-bordered" style="width:100%">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>8^* Bag</th>
-                <th>Summer Bag</th>
-                <th>Kettle</th>
-                <th>Stove</th>
-                <th>Plates</th>
-                <th>Charger</th>
-                <th>Chairs</th>
-                <th>Canister</th>
-                <th>Table/chair</th>
-
-            </tr>
-        </thead>
-        <tbody>
-            {% for inventory in inventorys %}
-                <tr>
-                    <td class=""><a href="{% url 'app:show_status' pk=inventory.user.pk %}">{{ inventory.user }}</a></td>
-                    <td class="sum8">{{ inventory.degree_8_sleeping }}</td>
-                    <td class="sumS">{{ inventory.degree_summer_sleeping }}</td>
-                    <td class="kettle">{{ inventory.kettle }}</td>
-                    <td class="stove">{{ inventory.stove }}</td>
-                    <td class="plates">{{ inventory.plates }}</td>
-                    <td class="charger">{{ inventory.charger }}</td>
-                    <td class="chairs">{{ inventory.chairs }}</td>
-                    <td class="canister">{{ inventory.canister }}</td>
-                    <td class="tables">{{ inventory.foldable_table_and_chair }}</td>
-                </tr>
-            {% endfor %}
-                    <tr>
-                        <td>Total</td>
-                        <td class="sums8"></td>
-                        <td class="sumss"></td>
-                        <td class="sumsk"></td>
-                        <td class="sumst"></td>
-                        <td class="sumsp"></td>
-                        <td class="sumscha"></td>
-                        <td class="sumschai"></td>
-                        <td class="sumscan"></td>
-                        <td class="sumstab"></td>
-                    </tr>
-        </tbody>
-
-    </table>
-    <a class="btn btn-secondary" href="{% url 'app:all_user' %}">All Users</a>
+<div class="container my-5">
+   <div class="alert alert-success">
+      <strong>last-activity: {{super_user.last_login}}</strong>
+   </div>
+   <br>
+   <br>
+   <form id="tests" action="{% url 'app:represent' %}" method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+         <label for="usr">Email:</label>
+         <input type="text" class="form-control" id="usr">
+         <br>
+         <input class="btn btn-secondary" type="submit" value="Start Adding Status">
+      </div>
+   </form>
+   <table class="table table-striped table-bordered equipment" style="width:100%">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Car Type</th>
+            <th>Guests</th>
+            <th>Start-Date</th>
+            <th>End-Date</th>
+            <th>Status</th>
+         </tr>
+      </thead>
+      <tbody>
+         {% for trip in trips %}
+         <tr>
+            <td><a href="{% url 'app:show_status' pk=trip.user.pk %}">{{ trip.user.first_name|title }}</a></td>
+            <td>{{ trip.car_type|title }}</td>
+            <td>{{ trip.guest }}</td>
+            <td>{{ trip.check_in_date|date:"Y/m/d"  }}</td>
+            <td>{{ trip.check_out_date|date:"Y/m/d"  }}</td>
+            <td>{{ trip.trip_status|title }}</td>
+         </tr>
+         {% endfor %}
+      </tbody>
+   </table>
+   <br>
+   <h1>Inventory</h1>
+   <table class="table table-striped table-bordered" style="width:100%">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>8^* Bag</th>
+            <th>Summer Bag</th>
+            <th>Kettle</th>
+            <th>Stove</th>
+            <th>Plates</th>
+            <th>Charger</th>
+            <th>Chairs</th>
+            <th>Canister</th>
+            <th>Table/chair</th>
+         </tr>
+      </thead>
+      <tbody>
+         {% for inventory in inventorys %}
+         <tr>
+            <td class=""><a href="{% url 'app:show_status' pk=inventory.user.pk %}">{{ inventory.user }}</a></td>
+            <td class="sum8">{{ inventory.degree_8_sleeping }}</td>
+            <td class="sumS">{{ inventory.degree_summer_sleeping }}</td>
+            <td class="kettle">{{ inventory.kettle }}</td>
+            <td class="stove">{{ inventory.stove }}</td>
+            <td class="plates">{{ inventory.plates }}</td>
+            <td class="charger">{{ inventory.charger }}</td>
+            <td class="chairs">{{ inventory.chairs }}</td>
+            <td class="canister">{{ inventory.canister }}</td>
+            <td class="tables">{{ inventory.foldable_table_and_chair }}</td>
+         </tr>
+         {% endfor %}
+         <tr>
+            <td>Total</td>
+            <td class="sums8"></td>
+            <td class="sumss"></td>
+            <td class="sumsk"></td>
+            <td class="sumst"></td>
+            <td class="sumsp"></td>
+            <td class="sumscha"></td>
+            <td class="sumschai"></td>
+            <td class="sumscan"></td>
+            <td class="sumstab"></td>
+         </tr>
+      </tbody>
+   </table>
+   <a class="btn btn-secondary" href="{% url 'app:all_user' %}">All Users</a>
 </div>
 <br>
 <script>
-   window.onload = function(){
-   var loc = window.location.origin
-            $("#tests").submit(function(e) {
-        e.preventDefault();
-        var t = $("input[name=csrfmiddlewaretoken]").val();
-        return $.ajax({
-            type: "POST",
-            url: "/represent/",
-            data: {
-                email: $("#usr").val(),
-                csrfmiddlewaretoken: t
-            },
-            success: function(e) {
-                if (e.id === 0){
-                    alert("Email not found")
-                    }else{
-                ser = e.id.toString(10)
-                window.location = loc + "/status/"+ser+"/show/"
-            }
-            },
-        })
-    })
-        $('.equipment').DataTable( {
-        "order": [[ 3, "desc" ]]
-    } );
-    }
+   window.onload=function(){var e=window.location.origin;$("#tests").submit(function(t){t.preventDefault();var n=$("input[name=csrfmiddlewaretoken]").val();return $.ajax({type:"POST",url:"/represent/",data:{email:$("#usr").val(),csrfmiddlewaretoken:n},success:function(t){0===t.id?alert("Email not found"):(ser=t.id.toString(10),window.location=e+"/status/"+ser+"/show/")}})}),$(".equipment").DataTable({order:[[3,"desc"]]})};
 </script>
 <script>
-    var sum = 0
-    x = document.getElementsByClassName("sum8")
-    for(var i = 0; i < x.length; i++){
-	    sum = sum + parseInt(x[i].textContent,10)
-    }
-    document.querySelector(".sums8").textContent = sum
-
-    sum = 0
-    x = document.getElementsByClassName("sumS")
-    for(var i = 0; i < x.length; i++){
-        sum = sum + parseInt(x[i].textContent,10)
-    }
-    document.querySelector(".sumss").textContent = sum
-
-    sum=0
-    x = document.getElementsByClassName("kettle")
-    for(var i = 0; i < x.length; i++){
-        sum = sum + parseInt(x[i].textContent,10)
-    }
-    document.querySelector(".sumsk").textContent = sum
-
-    sum=0
-    x = document.getElementsByClassName("stove")
-    for(var i = 0; i < x.length; i++){
-        sum = sum + parseInt(x[i].textContent,10)
-    }
-    document.querySelector(".sumst").textContent = sum
-
-    sum=0
-    x = document.getElementsByClassName("plates")
-    for(var i = 0; i < x.length; i++){
-        sum = sum + parseInt(x[i].textContent,10)
-    }
-    document.querySelector(".sumsp").textContent = sum
-
-    sum=0
-    x = document.getElementsByClassName("charger")
-    for(var i = 0; i < x.length; i++){
-        sum = sum + parseInt(x[i].textContent,10)
-    }
-    document.querySelector(".sumscha").textContent = sum
-
-    sum=0
-    x = document.getElementsByClassName("chairs")
-    for(var i = 0; i < x.length; i++){
-        sum = sum + parseInt(x[i].textContent,10)
-    }
-    document.querySelector(".sumschai").textContent = sum
-
-    sum=0
-    x = document.getElementsByClassName("canister")
-    for(var i = 0; i < x.length; i++){
-        sum = sum + parseInt(x[i].textContent,10)
-    }
-    document.querySelector(".sumscan").textContent = sum
-
-    sum=0
-    x = document.getElementsByClassName("tables")
-    for(var i = 0; i < x.length; i++){
-        sum = sum + parseInt(x[i].textContent,10)
-    }
-    document.querySelector(".sumstab").textContent = sum
-
+   var sum=0;x=document.getElementsByClassName("sum8");for(var i=0;i<x.length;i++)sum+=parseInt(x[i].textContent,10);document.querySelector(".sums8").textContent=sum,sum=0,x=document.getElementsByClassName("sumS");for(i=0;i<x.length;i++)sum+=parseInt(x[i].textContent,10);document.querySelector(".sumss").textContent=sum,sum=0,x=document.getElementsByClassName("kettle");for(i=0;i<x.length;i++)sum+=parseInt(x[i].textContent,10);document.querySelector(".sumsk").textContent=sum,sum=0,x=document.getElementsByClassName("stove");for(i=0;i<x.length;i++)sum+=parseInt(x[i].textContent,10);document.querySelector(".sumst").textContent=sum,sum=0,x=document.getElementsByClassName("plates");for(i=0;i<x.length;i++)sum+=parseInt(x[i].textContent,10);document.querySelector(".sumsp").textContent=sum,sum=0,x=document.getElementsByClassName("charger");for(i=0;i<x.length;i++)sum+=parseInt(x[i].textContent,10);document.querySelector(".sumscha").textContent=sum,sum=0,x=document.getElementsByClassName("chairs");for(i=0;i<x.length;i++)sum+=parseInt(x[i].textContent,10);document.querySelector(".sumschai").textContent=sum,sum=0,x=document.getElementsByClassName("canister");for(i=0;i<x.length;i++)sum+=parseInt(x[i].textContent,10);document.querySelector(".sumscan").textContent=sum,sum=0,x=document.getElementsByClassName("tables");for(i=0;i<x.length;i++)sum+=parseInt(x[i].textContent,10);document.querySelector(".sumstab").textContent=sum;
 </script>
 {% endblock %}

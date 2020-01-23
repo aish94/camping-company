@@ -1,276 +1,240 @@
 {% extends "snippets/base.html" %}
 {% load staticfiles %}
-    {% block css %}
-        <link rel="stylesheet" href="{% static 'css/all_user.css' %}">
-    {% endblock %}
-
-    {% block title %}
-    <title>Damage charges</title>
-    {% endblock %}
-
-    {% block meta %}
-    <meta name="description" content="Read the stories from our adventurous guests’ overland and camping expeditions in Northeast India. Meeting new people, seeing different cultures, trying new food and adventure sports, magnificent road trips etc are some of the elements that make our blogs unique and a comfortable read.">
-    <meta name="keywords" content="camping, camping company, camping co, meghalaya tourism, unique experience in northeast, travel through nature, laitlum grand canyons meghalaya, christmas in meghalaya , overlanding trip to ziro">
-    {% endblock %}
-
-    {% block content_block %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/all_user.css' %}">
+{% endblock %}
+{% block title %}
+<title>Damage charges</title>
+{% endblock %}
+{% block meta %}
+<meta name="description" content="Read the stories from our adventurous guests’ overland and camping expeditions in Northeast India. Meeting new people, seeing different cultures, trying new food and adventure sports, magnificent road trips etc are some of the elements that make our blogs unique and a comfortable read.">
+<meta name="keywords" content="camping, camping company, camping co, meghalaya tourism, unique experience in northeast, travel through nature, laitlum grand canyons meghalaya, christmas in meghalaya , overlanding trip to ziro">
+{% endblock %}
+{% block content_block %}
 <div class="container my-5">
-    <br>
-    <h1>VEHICLE DAMAGE CHARGES</h1>
-    <div class="row">
-        <div class="col-md-7">
-<table class="table table-striped table-bordered">
-    <thead>
-            <tr>
-                <th>Area Name</th>
-                <th>Minor Damage</th>
-                <th>Multiple Scratches</th>
-                <th>Major Damage</th>
-                <th>Severe Damage</th>
-            </tr>
-        </thead>
-        <tbody>
-                <tr>
-                    <td>Front Window</td>
-                    <td>500</td>
-                    <td>1000</td>
-                    <td>2000</td>
-                    <td>3000</td>
-                </tr>
-
-                <tr>
-                    <td>Rear Window</td>
-                    <td>500</td>
-                    <td>1000</td>
-                    <td>2000</td>
-                    <td>3000</td>
-                </tr>
-
-                <tr>
-                    <td>Rear Windshield</td>
-                    <td>1000</td>
-                    <td>2000</td>
-                    <td>4000</td>
-                    <td>6000</td>
-                </tr>
-
-                <tr>
-                    <td>Windshield</td>
-                    <td>1000</td>
-                    <td>2000</td>
-                    <td>4000</td>
-                    <td>6000</td>
-                </tr>
-
-                <tr>
-                    <td>Tail Lights</td>
-                    <td>500</td>
-                    <td>1000</td>
-                    <td>2000</td>
-                    <td>3000</td>
-                </tr>
-
-                <tr>
-                    <td>Front Tyre</td>
-                    <td>1000</td>
-                    <td>2000</td>
-                    <td>4000</td>
-                    <td>6000</td>
-                </tr>
-
-                <tr>
-                    <td>Front Bumper</td>
-                    <td>1500</td>
-                    <td>3000</td>
-                    <td>6000</td>
-                    <td>9000</td>
-                </tr>
-
-                <tr>
-                    <td>Rear Bumper</td>
-                    <td>1500</td>
-                    <td>3000</td>
-                    <td>6000</td>
-                    <td>9000</td>
-                </tr>
-
-                <tr>
-                    <td>Front Door</td>
-                    <td>2000</td>
-                    <td>4000</td>
-                    <td>8000</td>
-                    <td>12000</td>
-                </tr>
-
-                <tr>
-                    <td>Bonnet</td>
-                    <td>2000</td>
-                    <td>4000</td>
-                    <td>8000</td>
-                    <td>12000</td>
-                </tr>
-
-                <tr>
-                    <td>Boot-lid</td>
-                    <td>2000</td>
-                    <td>4000</td>
-                    <td>8000</td>
-                    <td>12000</td>
-                </tr>
-
-                <tr>
-                    <td>Car Keys</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>10000</td>
-                </tr>
-
-                <tr>
-                    <td>Rear Tyre</td>
-                    <td>1000</td>
-                    <td>2000</td>
-                    <td>4000</td>
-                    <td>6000</td>
-                </tr>
-
-                <tr>
-                    <td>Running Board</td>
-                    <td>1000</td>
-                    <td>2000</td>
-                    <td>4000</td>
-                    <td>6000</td>
-                </tr>
-
-                <tr>
-                    <td>Rear Quarter Panel</td>
-                    <td>1000</td>
-                    <td>2000</td>
-                    <td>4000</td>
-                    <td>6000</td>
-                </tr>
-
-                <tr>
-                    <td>Front Quarter Panel</td>
-                    <td>1500</td>
-                    <td>3000</td>
-                    <td>6000</td>
-                    <td>9000</td>
-                </tr>
-
-                <tr>
-                    <td>Rear View Mirror</td>
-                    <td>1000</td>
-                    <td>2000</td>
-                    <td>4000</td>
-                    <td>6000</td>
-                </tr>
-                <tr>
-                    <td>Side Mirror</td>
-                    <td>1625</td>
-                    <td>3250</td>
-                    <td>6500</td>
-                    <td>9750</td>
-                </tr>
-        </tbody>
-
-    </table>
-    </div>
-        <div class="col-4">
-        <table class="table table-striped table-bordered">
-    <thead>
-            <tr>
-                <th>Lost Document</th>
-                <th>Charges</th>
-            </tr>
-        </thead>
-        <tbody>
-                <tr>
-                    <td>All - India Permit</td>
-                    <td>5000</td>
-                </tr>
-
-                <tr>
-                    <td>Authorization Certificate</td>
-                    <td>5000</td>
-                </tr>
-
-                <tr>
-                    <td>Emission Test Certificate</td>
-                    <td>2000</td>
-
-                <tr>
-                    <td>RC Card</td>
-                    <td>5000</td>
-                </tr>
-
-                <tr>
-                    <td>Rent a Cab Scheme</td>
-                    <td>5000</td>
-                </tr>
-
-                <tr>
-                    <td>Valid Road Tax Certificate</td>
-                    <td>2000</td>
-                </tr>
-        </tbody>
-
-    </table>
-    </div>
-    </div>
-<br>
-    <h3>Minor Damage/Single Scratch</h3>
-    <div class="row">
-        <div class="col-6">
-            <img class="img6" src="https://s3.ap-south-1.amazonaws.com/camping-company/media/damage_charges/minor_damage1-624146241c7c3a5e157036ae994ac78e.png">
-        </div>
-
-        <div class="col-6">
-            <img class="img6" src="https://s3.ap-south-1.amazonaws.com/camping-company/media/damage_charges/minor_damage2-8df5b6b71403a1959a3941bb83baa92e.png">
-        </div>
-
-    </div>
-    <br>
-    <h3>Multiple Scratches</h3>
-    <div class="row">
-        <div class="col-4">
-            <img class="img4" src="https://s3.ap-south-1.amazonaws.com/camping-company/media/damage_charges/multiple_scratches1-79306543fa0b2c226882883c0f816de5.png">
-        </div>
-
-        <div class="col-4">
-            <img class="img4" src="https://s3.ap-south-1.amazonaws.com/camping-company/media/damage_charges/multiple_scratches2-d0dc71b088d8f36220809353bd115ebb.png">
-        </div>
-
-        <div class="col-4">
-            <img class="img4" src="https://s3.ap-south-1.amazonaws.com/camping-company/media/damage_charges/multiple_scratches3-9d0221cb7d681d34c1b8c4cf6d311fe8.png">
-        </div>
-
-    </div>
-    <br>
-    <h3>Major Damage - Deep scratches with dents/bends</h3>
-    <div class="row">
-        <div class="col-6">
-            <img class="img6" src="https://s3.ap-south-1.amazonaws.com/camping-company/media/damage_charges/major_damage1-937f871696a975b03831b9d7843a8e3c.png">
-        </div>
-
-        <div class="col-6">
-            <img class="img6" src="https://s3.ap-south-1.amazonaws.com/camping-company/media/damage_charges/major_damage3-b27e7f1c13c319b2ed7139d701794de7.png">
-        </div>
-
-    </div>
-    <br>
-    <h3>Severe Damage - Part Replacement</h3>
-    <div class="row">
-        <div class="col-6">
-            <img class="img6" src="https://s3.ap-south-1.amazonaws.com/camping-company/media/damage_charges/severe_damage2-abcea6f782a443a7a13a6002ca6d035b.png">
-        </div>
-
-        <div class="col-6">
-            <img class="img6" src="https://s3.ap-south-1.amazonaws.com/camping-company/media/damage_charges/severe_damage3-437a9aa78b39668a9d6d3368114a6e61.png">
-        </div>
-
-    </div>
+   <br>
+   <h1>VEHICLE DAMAGE CHARGES</h1>
+   <div class="row">
+      <div class="col-md-7">
+         <table class="table table-striped table-bordered">
+            <thead>
+               <tr>
+                  <th>Area Name</th>
+                  <th>Minor Damage</th>
+                  <th>Multiple Scratches</th>
+                  <th>Major Damage</th>
+                  <th>Severe Damage</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td>Front Window</td>
+                  <td>500</td>
+                  <td>1000</td>
+                  <td>2000</td>
+                  <td>3000</td>
+               </tr>
+               <tr>
+                  <td>Rear Window</td>
+                  <td>500</td>
+                  <td>1000</td>
+                  <td>2000</td>
+                  <td>3000</td>
+               </tr>
+               <tr>
+                  <td>Rear Windshield</td>
+                  <td>1000</td>
+                  <td>2000</td>
+                  <td>4000</td>
+                  <td>6000</td>
+               </tr>
+               <tr>
+                  <td>Windshield</td>
+                  <td>1000</td>
+                  <td>2000</td>
+                  <td>4000</td>
+                  <td>6000</td>
+               </tr>
+               <tr>
+                  <td>Tail Lights</td>
+                  <td>500</td>
+                  <td>1000</td>
+                  <td>2000</td>
+                  <td>3000</td>
+               </tr>
+               <tr>
+                  <td>Front Tyre</td>
+                  <td>1000</td>
+                  <td>2000</td>
+                  <td>4000</td>
+                  <td>6000</td>
+               </tr>
+               <tr>
+                  <td>Front Bumper</td>
+                  <td>1500</td>
+                  <td>3000</td>
+                  <td>6000</td>
+                  <td>9000</td>
+               </tr>
+               <tr>
+                  <td>Rear Bumper</td>
+                  <td>1500</td>
+                  <td>3000</td>
+                  <td>6000</td>
+                  <td>9000</td>
+               </tr>
+               <tr>
+                  <td>Front Door</td>
+                  <td>2000</td>
+                  <td>4000</td>
+                  <td>8000</td>
+                  <td>12000</td>
+               </tr>
+               <tr>
+                  <td>Bonnet</td>
+                  <td>2000</td>
+                  <td>4000</td>
+                  <td>8000</td>
+                  <td>12000</td>
+               </tr>
+               <tr>
+                  <td>Boot-lid</td>
+                  <td>2000</td>
+                  <td>4000</td>
+                  <td>8000</td>
+                  <td>12000</td>
+               </tr>
+               <tr>
+                  <td>Car Keys</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>10000</td>
+               </tr>
+               <tr>
+                  <td>Rear Tyre</td>
+                  <td>1000</td>
+                  <td>2000</td>
+                  <td>4000</td>
+                  <td>6000</td>
+               </tr>
+               <tr>
+                  <td>Running Board</td>
+                  <td>1000</td>
+                  <td>2000</td>
+                  <td>4000</td>
+                  <td>6000</td>
+               </tr>
+               <tr>
+                  <td>Rear Quarter Panel</td>
+                  <td>1000</td>
+                  <td>2000</td>
+                  <td>4000</td>
+                  <td>6000</td>
+               </tr>
+               <tr>
+                  <td>Front Quarter Panel</td>
+                  <td>1500</td>
+                  <td>3000</td>
+                  <td>6000</td>
+                  <td>9000</td>
+               </tr>
+               <tr>
+                  <td>Rear View Mirror</td>
+                  <td>1000</td>
+                  <td>2000</td>
+                  <td>4000</td>
+                  <td>6000</td>
+               </tr>
+               <tr>
+                  <td>Side Mirror</td>
+                  <td>1625</td>
+                  <td>3250</td>
+                  <td>6500</td>
+                  <td>9750</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <div class="col-4">
+         <table class="table table-striped table-bordered">
+            <thead>
+               <tr>
+                  <th>Lost Document</th>
+                  <th>Charges</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td>All - India Permit</td>
+                  <td>5000</td>
+               </tr>
+               <tr>
+                  <td>Authorization Certificate</td>
+                  <td>5000</td>
+               </tr>
+               <tr>
+                  <td>Emission Test Certificate</td>
+                  <td>2000</td>
+               <tr>
+                  <td>RC Card</td>
+                  <td>5000</td>
+               </tr>
+               <tr>
+                  <td>Rent a Cab Scheme</td>
+                  <td>5000</td>
+               </tr>
+               <tr>
+                  <td>Valid Road Tax Certificate</td>
+                  <td>2000</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+   </div>
+   <br>
+   <h3>Minor Damage/Single Scratch</h3>
+   <div class="row">
+      <div class="col-6">
+         <img class="img6" src="https://s3.ap-south-1.amazonaws.com/camping-company/media/damage_charges/minor_damage1-624146241c7c3a5e157036ae994ac78e.png">
+      </div>
+      <div class="col-6">
+         <img class="img6" src="https://s3.ap-south-1.amazonaws.com/camping-company/media/damage_charges/minor_damage2-8df5b6b71403a1959a3941bb83baa92e.png">
+      </div>
+   </div>
+   <br>
+   <h3>Multiple Scratches</h3>
+   <div class="row">
+      <div class="col-4">
+         <img class="img4" src="https://s3.ap-south-1.amazonaws.com/camping-company/media/damage_charges/multiple_scratches1-79306543fa0b2c226882883c0f816de5.png">
+      </div>
+      <div class="col-4">
+         <img class="img4" src="https://s3.ap-south-1.amazonaws.com/camping-company/media/damage_charges/multiple_scratches2-d0dc71b088d8f36220809353bd115ebb.png">
+      </div>
+      <div class="col-4">
+         <img class="img4" src="https://s3.ap-south-1.amazonaws.com/camping-company/media/damage_charges/multiple_scratches3-9d0221cb7d681d34c1b8c4cf6d311fe8.png">
+      </div>
+   </div>
+   <br>
+   <h3>Major Damage - Deep scratches with dents/bends</h3>
+   <div class="row">
+      <div class="col-6">
+         <img class="img6" src="https://s3.ap-south-1.amazonaws.com/camping-company/media/damage_charges/major_damage1-937f871696a975b03831b9d7843a8e3c.png">
+      </div>
+      <div class="col-6">
+         <img class="img6" src="https://s3.ap-south-1.amazonaws.com/camping-company/media/damage_charges/major_damage3-b27e7f1c13c319b2ed7139d701794de7.png">
+      </div>
+   </div>
+   <br>
+   <h3>Severe Damage - Part Replacement</h3>
+   <div class="row">
+      <div class="col-6">
+         <img class="img6" src="https://s3.ap-south-1.amazonaws.com/camping-company/media/damage_charges/severe_damage2-abcea6f782a443a7a13a6002ca6d035b.png">
+      </div>
+      <div class="col-6">
+         <img class="img6" src="https://s3.ap-south-1.amazonaws.com/camping-company/media/damage_charges/severe_damage3-437a9aa78b39668a9d6d3368114a6e61.png">
+      </div>
+   </div>
 </div>
 <br>
-
 {% endblock %}

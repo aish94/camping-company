@@ -178,17 +178,7 @@
       </div>
     </footer>
   </body>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script>
-    window.onload = function(){
-      var $details = $("#image__jeep"),
-      detailsPos = 600;
-      $(window).on("scroll", function() {
-      if ($(window).scrollTop() > detailsPos)
-        $details.css("position", "fixed").css("top",0);
-      else
-        $details.css("position", "static");
-});
-    }
+window.onload=function(){var o=$("#image__jeep");$(window).on("scroll",function(){$(window).scrollTop()>600?o.css("position","fixed").css("top",0):o.css("position","static")})};
   </script>
 {% endblock %}

@@ -1,201 +1,186 @@
 {% extends "snippets/base.html" %}
 {% load staticfiles %}
-    {% block css %}
-        <link rel="stylesheet" href="{% static 'css/show.css' %}">
-    {% endblock %}
-
-    {% block content_block %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/show.css' %}">
+{% endblock %}
+{% block content_block %}
 <br>
 <br>
 <div class="container">
-<div id="item-list">
-<ul>
-  <li>
-    <a class="expand">
-    <div class="right-arrow">+</div>
-    <div class="icon london"></div>
-    <h2>Summary of the user</h2>
-    <span>Info About the User</span>
-    </a>
-
-    <div class="detail">
-        {% if trcount %}<span>(Currently Active Status)</span> {% else %} <span>(Currently Not Active)</span>{% endif %}
-        <p>username: {{users.username}}</p>
-        <p>email: {{users.email}}</p>
-        <p>first_name: {{users.first_name}}</p>
-        <p>last_name: {{users.last_name}}</p>
-        <p>phone_number: {{users.customer_check.phone}}</p>
-        <p>terms_conditions: {{users.customer_check.terms_condition}}</p>
-    </div>
-  </li>
-  <li>
-    <a class="expand">
-    <div class="right-arrow">+</div>
-<div class="icon london"></div>
-        <h2>Trip status</h2>
-    <span>Info About the User's Trip Status</span></a>
-
-    <div class="detail">
-        {% for x in users.trip_check.all %}
-            {% if x.active %}
-            <p>check_in_date: {{ x.check_in_date }}</p>
-            <p>check_out_date: {{x.check_out_date}}</p>
-            <p>check_in_time: {{ x.check_in_time }}</p>
-            <p>check_out_time: {{x.check_out_time}}</p>
-            <p>duration_of_trip: {{x.duration_of_trip}}</p>
-            <p>amount_paid: {{x.amount_paid}}</p>
-            <p>destination: {{x.destination}}</p>
-            <p>Guest: {{x.guest}}</p>
-            <p>residence_address: {{x.residence_address}}</p>
-            <p>trip_status: {{x.trip_status}}</p>
-            <p>car_type: {{x.car_type}}</p>
-            <p>
-                <a href="{% url 'trip:update_trip' pk=x.pk%}" class="btn btn-sm">Update status</a>
-            </p>
-            {% endif %}
-        {% endfor %}
-            {% if trcount < 1 %}
-                <a href="{% url 'trip:create_trip' pk=users.pk %}" class="btn btn-sm">create Status</a>
-            {% endif %}
-    </div>
-  </li>
-  <li>
-    <a class="expand">
-    <div class="right-arrow">+</div>
-<div class="icon london"></div>
-        <h2>Vehicle status</h2>
-    <span>Info About the User's used Vehicle Status</span></a>
-
-    <div class="detail">
-        {% for x in users.vehicle_check.all %}
-        {% if x.active %}
-            <p>engine_oil_level: {{ x.engine_oil_level }}</p>
-            <p>brake_fluid_level: {{x.brake_fluid_level}}</p>
-            <p>water_level: {{x.water_level}}</p>
-            <p>windscreen_washer: {{x.windscreen_washer}}</p>
-            <p>seatbelts_check: {{x.seatbelts_check}}</p>
-            <p>parking_brake: {{x.parking_brake}}</p>
-            <p>clutch_gearshift: {{x.clutch_gearshift}}</p>
-            <p>burning_smell: {{x.burning_smell}}</p>
-            <p>steering_alignment: {{x.steering_alignment}}</p>
-            <p>dashboard: {{x.dashboard}}</p>
-            <p>check_lights: {{x.check_lights}}</p>
-            <p>horn: {{x.horn}}</p>
-            <p>tyres: {{x.tyres}}</p>
-            <p>leakage: {{x.leakage}}</p>
-            <p>
-                <a href="{% url 'vehicle:vehicle_update_check' pk=x.pk%}" class="btn btn-warning btn-sm">Update status</a>
-            </p>
-            {% endif %}
-        {% endfor %}
-    {% if vcount < 1 %}
-        <a href="{% url 'vehicle:vehicle_create_check' pk=users.pk %}" class="btn btn-sm">create Status</a>
-{% endif %}
-    </div>
-  </li>
-
-    <li>
-    <a class="expand">
-    <div class="right-arrow">+</div>
-<div class="icon london"></div>
-        <h2>Tent status</h2>
-    <span>Info About the User's used Tent Status</span></a>
-
-    <div class="detail">
-        {% for x in users.tent_check.all %}
-            {% if x.active %}
-            <p>rod: {{ x.rod }}</p>
-            <p>mattress: {{x.mattress}}</p>
-            <p>zip: {{x.zip}}</p>
-            <p>rain_cover: {{x.rain_cover}}</p>
-            <p>ladder: {{x.ladder}}</p>
-            <p>straps: {{x.straps}}</p>
-            <p>
-                <a href="{% url 'tent:tent_update_check' pk=x.pk %}" class="btn btn-warning btn-sm">Update status</a>
-            </p>
-            {% endif %}
-        {% endfor %}
-            {% if tcount < 1 %}
-                <a href="{% url 'tent:tent_create_check' pk=users.pk %}" class="btn btn-sm">create Status</a>
-            {% endif %}
-    </div>
-  </li>
-    <li>
-    <a class="expand">
-    <div class="right-arrow">+</div>
-<div class="icon london"></div>
-        <h2>Equipment check</h2>
-    <span>Info About the User's used Equipment Status</span></a>
-
-    <div class="detail">
-        {% for x in users.equipment_check.all %}
-        {% if x.active %}
-            <p>yellow_box: {{ x.yellow_box }}</p>
-            <p>kettel: {{x.kettel}}</p>
-            <p>utensils: {{x.utensils}}</p>
-            <p>stove: {{x.stove}}</p>
-            <p>bbq_grill: {{x.bbq_grill}}</p>
-            <p>spare_tyre: {{x.spare_tyre}}</p>
-            <p>shovel: {{x.shovel}}</p>
-            <p>mug_bucket: {{x.mug_bucket}}</p>
-            <p>
-                <a href="{% url 'equipment:equipment_update_check' pk=x.pk %}" class="btn btn-warning btn-sm">Update status</a>
-            </p>
-            {% endif %}
-        {% endfor %}
-    {% if ecount < 1 %}
-                        <a href="{% url 'equipment:equipment_create_check' pk=users.pk %}" class="btn btn-sm">create Status</a>
-{% endif %}
-    </div>
-    </li>
-
-    <li>
-    <a class="expand">
-    <div class="right-arrow">+</div>
-<div class="icon london"></div>
-        <h2>Inventory</h2>
-    <span>Info About the User's used Inventory Status</span></a>
-
-    <div class="detail">
-        {% for x in users.inventory.all %}
-        {% if x.active %}
-            <p>Degree 8 sleeping bag: {{ x.degree_8_sleeping }}</p>
-            <p>degree_summer_sleeping: {{x.degree_summer_sleeping}}</p>
-            <p>kettle: {{x.kettle}}</p>
-            <p>stove: {{x.stove}}</p>
-            <p>plates: {{x.plates}}</p>
-            <p>ground_tent: {{x.ground_tent}}</p>
-            <p>charger: {{x.charger}}</p>
-            <p>chairs: {{x.chairs}}</p>
-            <p>foldable_table_and_chair: {{x.foldable_table_and_chair}}</p>
-            <p>canister: {{x.canister}}</p>
-            <p>
-                <a href="{% url 'equipment:inventory_update' pk=x.pk %}" class="btn btn-warning btn-sm">Update status</a>
-            </p>
-            {% endif %}
-        {% endfor %}
-    {% if icount < 1 %}
-        <a href="{% url 'equipment:inventory_create' pk=users.pk %}" class="btn btn-sm">create Status</a>
-{% endif %}
-    </div>
-    </li>
-</ul>
-<br>
-<br>
+   <div id="item-list">
+      <ul>
+         <li>
+            <a class="expand">
+               <div class="right-arrow">+</div>
+               <div class="icon london"></div>
+               <h2>Summary of the user</h2>
+               <span>Info About the User</span>
+            </a>
+            <div class="detail">
+               {% if trcount %}<span>(Currently Active Status)</span> {% else %} <span>(Currently Not Active)</span>{% endif %}
+               <p>username: {{users.username}}</p>
+               <p>email: {{users.email}}</p>
+               <p>first_name: {{users.first_name}}</p>
+               <p>last_name: {{users.last_name}}</p>
+               <p>phone_number: {{users.customer_check.phone}}</p>
+               <p>terms_conditions: {{users.customer_check.terms_condition}}</p>
+            </div>
+         </li>
+         <li>
+            <a class="expand">
+               <div class="right-arrow">+</div>
+               <div class="icon london"></div>
+               <h2>Trip status</h2>
+               <span>Info About the User's Trip Status</span>
+            </a>
+            <div class="detail">
+               {% for x in users.trip_check.all %}
+               {% if x.active %}
+               <p>check_in_date: {{ x.check_in_date }}</p>
+               <p>check_out_date: {{x.check_out_date}}</p>
+               <p>check_in_time: {{ x.check_in_time }}</p>
+               <p>check_out_time: {{x.check_out_time}}</p>
+               <p>duration_of_trip: {{x.duration_of_trip}}</p>
+               <p>amount_paid: {{x.amount_paid}}</p>
+               <p>destination: {{x.destination}}</p>
+               <p>Guest: {{x.guest}}</p>
+               <p>residence_address: {{x.residence_address}}</p>
+               <p>trip_status: {{x.trip_status}}</p>
+               <p>car_type: {{x.car_type}}</p>
+               <p>
+                  <a href="{% url 'trip:update_trip' pk=x.pk%}" class="btn btn-sm">Update status</a>
+               </p>
+               {% endif %}
+               {% endfor %}
+               {% if trcount < 1 %}
+               <a href="{% url 'trip:create_trip' pk=users.pk %}" class="btn btn-sm">create Status</a>
+               {% endif %}
+            </div>
+         </li>
+         <li>
+            <a class="expand">
+               <div class="right-arrow">+</div>
+               <div class="icon london"></div>
+               <h2>Vehicle status</h2>
+               <span>Info About the User's used Vehicle Status</span>
+            </a>
+            <div class="detail">
+               {% for x in users.vehicle_check.all %}
+               {% if x.active %}
+               <p>engine_oil_level: {{ x.engine_oil_level }}</p>
+               <p>brake_fluid_level: {{x.brake_fluid_level}}</p>
+               <p>water_level: {{x.water_level}}</p>
+               <p>windscreen_washer: {{x.windscreen_washer}}</p>
+               <p>seatbelts_check: {{x.seatbelts_check}}</p>
+               <p>parking_brake: {{x.parking_brake}}</p>
+               <p>clutch_gearshift: {{x.clutch_gearshift}}</p>
+               <p>burning_smell: {{x.burning_smell}}</p>
+               <p>steering_alignment: {{x.steering_alignment}}</p>
+               <p>dashboard: {{x.dashboard}}</p>
+               <p>check_lights: {{x.check_lights}}</p>
+               <p>horn: {{x.horn}}</p>
+               <p>tyres: {{x.tyres}}</p>
+               <p>leakage: {{x.leakage}}</p>
+               <p>
+                  <a href="{% url 'vehicle:vehicle_update_check' pk=x.pk%}" class="btn btn-warning btn-sm">Update status</a>
+               </p>
+               {% endif %}
+               {% endfor %}
+               {% if vcount < 1 %}
+               <a href="{% url 'vehicle:vehicle_create_check' pk=users.pk %}" class="btn btn-sm">create Status</a>
+               {% endif %}
+            </div>
+         </li>
+         <li>
+            <a class="expand">
+               <div class="right-arrow">+</div>
+               <div class="icon london"></div>
+               <h2>Tent status</h2>
+               <span>Info About the User's used Tent Status</span>
+            </a>
+            <div class="detail">
+               {% for x in users.tent_check.all %}
+               {% if x.active %}
+               <p>rod: {{ x.rod }}</p>
+               <p>mattress: {{x.mattress}}</p>
+               <p>zip: {{x.zip}}</p>
+               <p>rain_cover: {{x.rain_cover}}</p>
+               <p>ladder: {{x.ladder}}</p>
+               <p>straps: {{x.straps}}</p>
+               <p>
+                  <a href="{% url 'tent:tent_update_check' pk=x.pk %}" class="btn btn-warning btn-sm">Update status</a>
+               </p>
+               {% endif %}
+               {% endfor %}
+               {% if tcount < 1 %}
+               <a href="{% url 'tent:tent_create_check' pk=users.pk %}" class="btn btn-sm">create Status</a>
+               {% endif %}
+            </div>
+         </li>
+         <li>
+            <a class="expand">
+               <div class="right-arrow">+</div>
+               <div class="icon london"></div>
+               <h2>Equipment check</h2>
+               <span>Info About the User's used Equipment Status</span>
+            </a>
+            <div class="detail">
+               {% for x in users.equipment_check.all %}
+               {% if x.active %}
+               <p>yellow_box: {{ x.yellow_box }}</p>
+               <p>kettel: {{x.kettel}}</p>
+               <p>utensils: {{x.utensils}}</p>
+               <p>stove: {{x.stove}}</p>
+               <p>bbq_grill: {{x.bbq_grill}}</p>
+               <p>spare_tyre: {{x.spare_tyre}}</p>
+               <p>shovel: {{x.shovel}}</p>
+               <p>mug_bucket: {{x.mug_bucket}}</p>
+               <p>
+                  <a href="{% url 'equipment:equipment_update_check' pk=x.pk %}" class="btn btn-warning btn-sm">Update status</a>
+               </p>
+               {% endif %}
+               {% endfor %}
+               {% if ecount < 1 %}
+               <a href="{% url 'equipment:equipment_create_check' pk=users.pk %}" class="btn btn-sm">create Status</a>
+               {% endif %}
+            </div>
+         </li>
+         <li>
+            <a class="expand">
+               <div class="right-arrow">+</div>
+               <div class="icon london"></div>
+               <h2>Inventory</h2>
+               <span>Info About the User's used Inventory Status</span>
+            </a>
+            <div class="detail">
+               {% for x in users.inventory.all %}
+               {% if x.active %}
+               <p>Degree 8 sleeping bag: {{ x.degree_8_sleeping }}</p>
+               <p>degree_summer_sleeping: {{x.degree_summer_sleeping}}</p>
+               <p>kettle: {{x.kettle}}</p>
+               <p>stove: {{x.stove}}</p>
+               <p>plates: {{x.plates}}</p>
+               <p>ground_tent: {{x.ground_tent}}</p>
+               <p>charger: {{x.charger}}</p>
+               <p>chairs: {{x.chairs}}</p>
+               <p>foldable_table_and_chair: {{x.foldable_table_and_chair}}</p>
+               <p>canister: {{x.canister}}</p>
+               <p>
+                  <a href="{% url 'equipment:inventory_update' pk=x.pk %}" class="btn btn-warning btn-sm">Update status</a>
+               </p>
+               {% endif %}
+               {% endfor %}
+               {% if icount < 1 %}
+               <a href="{% url 'equipment:inventory_create' pk=users.pk %}" class="btn btn-sm">create Status</a>
+               {% endif %}
+            </div>
+         </li>
+      </ul>
+      <br>
+      <br>
+   </div>
 </div>
-</div>
-    <script>
-       window.onload = function(){
-  $(".expand").on( "click", function() {
-    $(this).next().slideToggle(100);
-    $expand = $(this).find(">:first-child");
-
-    if($expand.text() == "+") {
-      $expand.text("-");
-    } else {
-      $expand.text("+");
-    }
-  });
-  }
-    </script>
-    {% endblock %}
+<script>
+   window.onload=function(){$(".expand").on("click",function(){$(this).next().slideToggle(100),$expand=$(this).find(">:first-child"),"+"==$expand.text()?$expand.text("-"):$expand.text("+")})};
+</script>
+{% endblock %}

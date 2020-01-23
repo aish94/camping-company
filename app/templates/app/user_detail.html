@@ -3,92 +3,70 @@
 {% block css %}
 <!--<link rel="stylesheet" href="{% static 'css/home/about.css' %}">-->
 {% endblock %}
-
-
 {% block meta %}
 {% endblock %}
-
 {% block content_block %}
 <br/>
-    <h1 class="my-5" style="text-align: center;">Detail</h1>
+<h1 class="my-5" style="text-align: center;">Detail</h1>
 <div class="container">
-    {% if customer is not none %}
-<table class="table table-striped table-bordered equipment" style="width:100%">
-    {% csrf_token %}
-        <thead>
-            <tr>
-                <th>Phone</th>
-                <th>License Number</th>
-                <th>Status</th>
-                <th>City</th>
-                <th>Address</th>
-            </tr>
-        </thead>
-        <tbody>
-                <tr>
-                <td>{{ customer.phone }}</td>
-                <td>{{ customer.license_number }}</td>
-                <td>
-                    <div class="input-group">
-                        <input type="text" class="form-control lead_status" name="status" list="places" autocomplete="false" value="{{customer.lead_status}}">
-                        <input type="button" class="mx-2 btn btn-secondary btn-click-action" value="submit" ussrname="{{ user.username }}">
-                            <datalist id="places">
-                              <option value="Lead Closed">
-                              <option value="Follow Up">
-                            </datalist>
-                    </div>
-                </td>
-                <td>{{ customer.city }}</td>
-                <td>{{ customer.address }}</td>
-                </tr>
-        </tbody>
-    </table>
-    <table class="table table-striped table-bordered equipment" style="width:100%">
-    {% csrf_token %}
-        <thead>
-            <tr>
-                <th>Car name</th>
-                <th>Check in</th>
-                <th>Check out</th>
-                <th>Duration</th>
-                <th>Txnid</th>
-            </tr>
-        </thead>
-        <tbody>
-                <tr>
-                <td>{{ book.car_name }}</td>
-                <td>{{ book.check_in_date }}</td>
-                <td>{{ book.check_out_date }}</td>
-                <td>{{ book.duration }}</td>
-                <td>{{ book.txnid }}</td>
-                </tr>
-        </tbody>
-    </table>
-    {% else %}
-        <h2>User Has not Signed Up :(</h2>
-    {% endif %}
-    <a class="btn btn-secondary" href="{% url 'app:all_user' %}">Back to all User</a>
+   {% if customer is not none %}
+   <table class="table table-striped table-bordered equipment" style="width:100%">
+      {% csrf_token %}
+      <thead>
+         <tr>
+            <th>Phone</th>
+            <th>License Number</th>
+            <th>Status</th>
+            <th>City</th>
+            <th>Address</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr>
+            <td>{{ customer.phone }}</td>
+            <td>{{ customer.license_number }}</td>
+            <td>
+               <div class="input-group">
+                  <input type="text" class="form-control lead_status" name="status" list="places" autocomplete="false" value="{{customer.lead_status}}">
+                  <input type="button" class="mx-2 btn btn-secondary btn-click-action" value="submit" ussrname="{{ user.username }}">
+                  <datalist id="places">
+                     <option value="Lead Closed">
+                     <option value="Follow Up">
+                  </datalist>
+               </div>
+            </td>
+            <td>{{ customer.city }}</td>
+            <td>{{ customer.address }}</td>
+         </tr>
+      </tbody>
+   </table>
+   <table class="table table-striped table-bordered equipment" style="width:100%">
+   {% csrf_token %}
+   <thead>
+   <tr>
+   <th>Car name</th>
+   <th>Check in</th>
+   <th>Check out</th>
+   <th>Duration</th>
+   <th>Txnid</th>
+   </tr>
+   </thead>
+   <tbody>
+   <tr>
+   <td>{{ book.car_name }}</td>
+   <td>{{ book.check_in_date }}</td>
+   <td>{{ book.check_out_date }}</td>
+   <td>{{ book.duration }}</td>
+   <td>{{ book.txnid }}</td>
+   </tr>
+   </tbody>
+   </table>
+   {% else %}
+   <h2>User Has not Signed Up :(</h2>
+   {% endif %}
+   <a class="btn btn-secondary" href="{% url 'app:all_user' %}">Back to all User</a>
 </div>
-
 <script>
-       window.onload = function(){
-   var loc = window.location.origin
-       $(".btn-click-action").click(function() {
-       var t = $("input[name=csrfmiddlewaretoken]").val();
-        return $.ajax({
-            type: "POST",
-            url: "/detail_user/{{customer.user.pk}}",
-            data: {
-                username: $(this).attr("ussrname"),
-                lead_status : $(this).siblings(".lead_status").val(),
-                csrfmiddlewaretoken: t
-            },
-            success: function(data) {
-                alert("Status Stored")
-                window.location.reload()
-            },
-        })
-    })
-}
+   window.onload=function(){window.location.origin;$(".btn-click-action").click(function(){var t=$("input[name=csrfmiddlewaretoken]").val();return $.ajax({type:"POST",url:"/detail_user/{{customer.user.pk}}",data:{username:$(this).attr("ussrname"),lead_status:$(this).siblings(".lead_status").val(),csrfmiddlewaretoken:t},success:function(t){alert("Status Stored"),window.location.reload()}})})};
 </script>
 {% endblock %}

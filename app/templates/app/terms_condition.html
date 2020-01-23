@@ -1,481 +1,456 @@
 {% extends "snippets/base.html" %}
- {% load staticfiles %} {% block css %}
-<link rel="stylesheet" href="{% static 'css/term_condition.css' %}"> {% endblock %}
-
-    {% block title %}
-      <title>Terms and condition</title>
-    {% endblock %}
-
-    {% block meta %}
-      <meta name="description" content="Read the stories from our adventurous guests’ overland and camping expeditions in Northeast India. Meeting new people, seeing different cultures, trying new food and adventure sports, magnificent road trips etc are some of the elements that make our blogs unique and a comfortable read.">
-      <meta name="keywords" content="camping, camping company, camping co, meghalaya tourism, unique experience in northeast, travel through nature, laitlum grand canyons meghalaya, christmas in meghalaya , overlanding trip to ziro">
-    {% endblock %}
-
+{% load staticfiles %} {% block css %}
+<link rel="stylesheet" href="{% static 'css/term_condition.css' %}">
+{% endblock %}
+{% block title %}
+<title>Terms and condition</title>
+{% endblock %}
+{% block meta %}
+<meta name="description" content="Read the stories from our adventurous guests’ overland and camping expeditions in Northeast India. Meeting new people, seeing different cultures, trying new food and adventure sports, magnificent road trips etc are some of the elements that make our blogs unique and a comfortable read.">
+<meta name="keywords" content="camping, camping company, camping co, meghalaya tourism, unique experience in northeast, travel through nature, laitlum grand canyons meghalaya, christmas in meghalaya , overlanding trip to ziro">
+{% endblock %}
 {% block content_block %}
-
 <br>
 <div class="container fix">
-  <h1>Terms and condition</h1>
-  <p>Updated on 10 July 2019</p>
-
-<div class="tab">
-  <button class="tablinks" onclick="openPolicy(event, 'FEE POLICY')">FEE POLICY</button>
-  <!--<button class="tablinks" onclick="openPolicy(event, 'ELIGIBILITY')">ELIGIBILITY</button>-->
-  <button id="default" class="tablinks" onclick="openPolicy(event, 'MEMBER AGREEMENT')">MEMBER AGREEMENT</button>
-  <!--<button class="tablinks" onclick="openPolicy(event, 'PRIVACY POLICY')">PRIVACY POLICY</button>-->
-</div>
-
-<div id="FEE POLICY" class="tabcontent">
-    <style>
-        table, th, td {
-  border: 1px solid #ccc;
-}
-    </style>
-    <p>CampingCo takes pride in being completely transparent with our members. Here is a comprehensive list of fees for certain scenarios after you have confirmed your reservation.</p>
-<table>
-  <tbody>
-    <tr>
-      <td colspan="1" rowspan="1">
-        <p>Cancellation</p>
-      </td>
-      <td colspan="1" rowspan="1">
-        <p>Cancellation made more than 14 days before booking start: Full refund</p>
-        <p>Cancellation made before 7 days of booking start: 50% of Booking Fee</p>
-        <p>Cancellation made after 7 days of booking start: No Refund</p>
-        <p>Cancellation made after booking start: No Refund</p>
-        <p>(Cancellation refund will be done through the original payment method within 7- 10 business days)</p>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="1" rowspan="1">
-        <p>Extension post start # / Late return</p>
-      </td>
-      <td colspan="1" rowspan="1">
-        <p>Extension fees of Rs.220/hr is applicable which is subject to availability</p>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="1" rowspan="1">
-        <p>Shortening post start</p>
-      </td>
-      <td colspan="1" rowspan="1">
-        <p>No charges or refunds applicable</p>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="1" rowspan="1">
-        <p>Pricing plan change</p>
-      </td>
-      <td colspan="1" rowspan="1">
-        <p>Pricing plan (free km per hour) cannot be changed post booking creation. Pricing will be charged on half an hour basis.</p>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="1" rowspan="1">
-        <p>Discounts</p>
-      </td>
-      <td colspan="1" rowspan="1">
-        <p>Discount is applicable only on trips of a duration equal to or greater than INR 10,000 at the time of booking. Discount is applicable only on the booking fee (excluding refundable deposit, if any) paid in advance to book the car. CampingCo reserves the right to cancel a booking if any unwarranted use of a discount coupon is identified.</p>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="1" rowspan="1">
-        <p>Fuel Policy</p>
-      </td>
-      <td colspan="1" rowspan="1">
-        <p>In case of No Fuel bookings, the vehicle should be returned by the Member, upon the completion of the booking, with fuel at the same level as at the start of the booking.</p>
-        <p>If the Vehicle is returned with lesser fuel than the fuel level at the start of the trip then Refuelling penalty will be applicable.</p>
-        <p>No refund will be applicable if car is returned with excess fuel.</p>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="1" rowspan="1">
-        <p>Speed Governor</p>
-      </td>
-      <td colspan="1" rowspan="1">
-        <p>The Vehicle may be enabled with speed governor in compliance with the applicable Government regulations, that limits speed of the Vehicle upto 80 km/h.</p>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="1" rowspan="1">
-        <p>Breakdown of vehicle</p>
-      </td>
-      <td colspan="1" rowspan="1">
-        <p>1. The Member shall be responsible for the costs related to the repair, recovery, and loss of use of any CampingCo vehicle resulting from any of the foregoing, up to the current damage fee, as set forth in the Fee Policy / Rate Schedule (if such costs are because of the fault of the Member or if the fault is not directly established to any other person/ entity, or where any cost is not paid / reimbursed by the insurer of CampingCo vehicles or the insurer of the other vehicle involved in the accident).</p>
-        <p>2. Where the Member is not responsible for the breakdown of the CampingCo vehicle, CampingCo shall refund an amount equal to the cost of the unused hours of such booking. Further, CampingCo shall not be liable for any further costs borne by the Member as a consequence of the breakdown of the CampingCo vehicle</p>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="1" rowspan="1">
-        <p>Usage of Driving Credits</p>
-      </td>
-      <td colspan="1" rowspan="1">
-        <p>Customers will be able to use CampingCo credits upto 30% of Booking amount after adjustment for discounts (excluding refundable deposit, if any) or upto 10,000 whichever is lesser</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<p>Note:</p>
-<ul>
-  <li>Handover pursuant to the original booking, extensions and modifications are subject to availability of the vehicle.</li>
-  <li>All Refunds made shall be through the original payment account only within 7-10 working days.</li>
-  <li>CampingCo reserves the right to charge a fee for specific pre-defined accessories.</li>
-</ul>
-<p>Also, a list of penalties that can be levied if members violate certain CampingCo community rules.</p>
-<table>
-  <tbody>
-    <tr>
-      <td colspan="1" rowspan="1">
-        <p>Returning the vehicle to the wrong location</p>
-      </td>
-      <td colspan="1" rowspan="1">
-        <p>₹10,000 + Full hourly fee for use of the vehicle + Full late fee until the vehicle is returned to the correct location</p>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="1" rowspan="1">
-        <p>Traffic and Parking violations</p>
-      </td>
-      <td colspan="1" rowspan="1">
-        <p>Full payment of fines + ₹500 per 30 days late in payment</p>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="1" rowspan="1">
-        <p>No Show</p>
-      </td>
-      <td colspan="1" rowspan="1">
-        <p>Bookings would stand cancelled if after 4 hours of booking start time the customer still doesn’t show up.</p>
-        <p>No refunds would be applicable</p>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="1" rowspan="1">
-        <p>Overspeeding = 125 km/hr</p>
-      </td>
-      <td colspan="1" rowspan="1">
-        <p>₹2500 (over and above any government fines that may have been levied)</p>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="1" rowspan="1">
-        <p>Cleaning Fees</p>
-      </td>
-      <td colspan="1" rowspan="1">
-        <p>Standard cleaning fees of Rs.350 is applicable in case of intensive cleaning amount charged would be Rs.1000</p>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="1" rowspan="1">
-        <p>Smoking</p>
-      </td>
-      <td colspan="1" rowspan="1">
-        <p>₹1,000 + applicable damage costs related to interiors</p>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="1" rowspan="1">
-        <p>Wrong Fuelling</p>
-      </td>
-      <td colspan="1" rowspan="1">
-        <p>The member will be liable for the full cost of damage to the vehicle + miscellaneous expenses arising out of the damages.</p>
-        <p>Recommendation- CampingCo would recommend that the member consult the RC Documents of the rented vehicle for information as to the correct fuel type.</p>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="1" rowspan="1">
-        <p>Key not returned at end of reservation</p>
-      </td>
-      <td colspan="1" rowspan="1">
-        <p>₹10000 + replacement cost, if not returned within 3 days</p>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="1" rowspan="1">
-        <p>Loss of documents</p>
-      </td>
-      <td colspan="1" rowspan="1">
-        <p>*<a href="{% url 'app:damage_charges' %}">Click here for details</a></p>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="1" rowspan="1">
-        <p>Co-driver</p>
-      </td>
-      <td colspan="1" rowspan="1">
-        <p>₹ 2000 if co-driver has not been added in the booking before booking start time.</p>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="1" rowspan="1">
-        <p>Vehicle Damage (Accidental)</p>
-      </td>
-      <td colspan="1" rowspan="1">
-        <p>Any unintentional/accidental damage will be liable for the damage charges of ₹ 10,000/. For more details click <a href="{% url 'app:damage_charges' %}">here.</a>*</p>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="1" rowspan="1">
-        <p>Vehicle Damage (Intentional or Consequential)</p>
-      </td>
-      <td colspan="1" rowspan="1">
-        <p>In case of any intentional damage or damage caused to the vehicle as consequence of the member driving the car, even after the car is damaged and need urgent repair (Examples include but are not limited to:</p>
-        <p>a. driving in water loggings resulting into engine breakdown,</p>
-        <p>b. driving after under body damages resulting into engine break down because of oil drainage,</p>
-        <p>c. driving while under the influence of alcohol or other intoxicants,</p>
-        <p>d. driving with clutch over pressing etc.</p>
-        <p>E. Driving with flat tyre</p>
-        <p>Member will be liable for the full cost of repair post damage to the vehicle + loss of expected revenue arising out of the damage.</p>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="1" rowspan="1">
-        <p>Towing and Impounding</p>
-      </td>
-      <td colspan="1" rowspan="1">
-        <p>No cost if caused by vehicle failure</p>
-        <p>Full cost if caused by user negligence</p>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="1" rowspan="1">
-        <p>Cleaning required (interiors)</p>
-      </td>
-      <td colspan="1" rowspan="1">
-        <p>Washing of removables (for footmats etc) would be charged at ₹500. Interior Washing / Drycleaning (for seat covers, door panels) would be charged at ₹1,500.</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<p>Note: Payments owed by members will be deducted from the security deposit. If the security deposit does not cover such payments, the balance must be paid by the member electronically.</p>
-<p>*Please note there are four cases where there will be exceptions:</p>
-<ul>
-  <li>In the event the member is found to be under the influence of alcohol during a booking, the member will be held liable for 100% of the vehicle damage bill as per the invoice received from the vehicle workshop.</li>
-  <li>The member will be liable for 100% of the entire vehicle damage bill in the event that the vehicle workshop and/or insurance company deem the damage to be consequential in nature (this will be clearly stated in the accident report). Consequential damage occurs when the member continues driving even after an external vehicle impact, thereby severely undermining the condition of the vehicle.</li>
-  <li>In the event a non CampingCo member is found to be the one driving at the time of accident, then the member will be held liable for 100% of the vehicle damage bill as per the invoice received from the workshop.</li>
-</ul>
-  <h3 class="green">Member's Responsibility</h3>
-  <p>If a CampingCo member is violating the law or CampingCo rules, for example by over speeding or driving drunk, the member will be responsible for all damage, liability, and fines and could face legal action.</p>
-    <h4>Responsibility for Payment:</h4>
-    <ol>
-        <li>Payments by Members shall be made with his/her credit card or direct bank transfer. The Member is under obligation to ensure that the account from which the amounts are to be collected have sufficient funds or credit available to cover any charges. Member is solely responsible for any associated bank or credit card charges or fees. Member may be charged a processing fee for a declined credit or debit card payment.</li>
-        <li>In the event the Member defaults on any payments, CampingCo is entitled to charge reminder fees and default interest in accordance with the provisions of the law. In addition, CampingCo may utilize third parties to collect amounts owed to CampingCo by a Member.</li>
-        <li>With all fees mentioned above, CampingCo reserves the right to prohibit a Member from making a subsequent reservation until all outstanding fees in the Member's account have been paid in full. In the event a fee is incurred, Members will receive an email invoice from CampingCo that will have detailed payment instructions.</li>
-    </ol>
-    <h4 class="green">Collision or other incident:</h4>
-    <ol>
-        <li>CampingCo provides full wrap unlimited third party liability insurance without a maximum cap.</li>
-        <li>If member is involved in an unintentional/non consequential incident/accident (including but not limited to a collision or misuse of the vehicle) Member will be responsible for a standard insurance deductible payment of up to ₹ 10,000. The Member will be obligated to pay the repair cost up to ₹ 10000. The payment owed will be deducted from the security deposit, if any. Should the security deposit not cover the payment (in the case the Member has accrued late return, excess km, etc charges) the balance of the payment owed shall be payable by the Member separately as an additional outstanding.</li>
-        <li>Member will be responsible for all towing and impounding charges associated with a collision.</li>
-        <li>Member will be responsible for all towing and impounding charges caused by member failure.</li>
-        <li>CampingCo will be responsible for all towing and impounding charges caused by vehicle failure.</li>
-        <li>Member will be responsible for all applicable damages and costs, including those in excess of the applicable Damage Fee, arising from the Member's failure to comply with the terms of the Agreement and/or a violation of the law.</li>
-    </ol>
-    <h4 class="green">Tolls</h4>
-    <ol>
-        <li>Members are responsible for paying all tolls at the time they are due.</li>
-        <li>Members must pay all inter-state taxes and fees upon entering into a neighbouring state.</li>
-    </ol>
-    <p>By joining CampingCo, the Member agrees to pay CampingCo the costs, charges, fees and expenses set out in the Agreement, including specifically and without limitation those set forth in this schedule. The following is not exhaustive and other specific fees, costs and charges may apply. Other applicable costs will be communicated to the Member. Capitalized terms used in this schedule shall have the same meaning assigned to such terms in the Agreement.
-CampingCo reserves the right to change the terms of this Policy from time to time and shall give notice of such changes to the Member in a timely manner. Notice to the Members shall be considered given when such notice is indicated and accessible from the first page accessed after the Member log-on to the CampingCo website, or by email to the Member's email address provided to CampingCo in the Member's application or most recently provided to CampingCo. Member agrees that the amended terms and conditions of this Agreement shall be effective and binding the earlier of (1) the effective date indicated in such notice; or (2) on the date posted on CampingCo's website.
-</p>
-</div>
-
-<!--<div id="ELIGIBILITY" class="tabcontent">-->
-  <!--<h3>Paris</h3>-->
-  <!--<p>Paris is the capital of France.</p>-->
-<!--</div>-->
-
-<div id="MEMBER AGREEMENT" class="tabcontent">
-        <p>THIS WEBSITE TERMS OF USE ("MEMBER AGREEMENT") IS AN ELECTRONIC RECORD IN THE FORM OF AN ELECTRONIC CONTRACT FORMED UNDER INFORMATION TECHNOLOGY ACT, 2000 AND RULES MADE THEREUNDER AND THE AMENDED PROVISIONS PERTAINING TO ELECTRONIC DOCUMENTS / RECORDS IN VARIOUS STATUTES AS AMENDED BY THE INFORMATION TECHNOLOGY ACT, 2000. THIS MEMBER AGREEMENT DOES NOT REQUIRE ANY PHYSICAL, ELECTRONIC OR DIGITAL SIGNATURE.</p>
-<p>THIS MEMBER AGREEMENT IS A LEGALLY BINDING DOCUMENT BETWEEN USER AND CAMPINGCO (BOTH TERMS DEFINED BELOW). THIS MEMBER AGREEMENT WILL BE EFFECTIVE UPON YOUR ACCEPTANCE OF THE SAME (DIRECTLY OR INDIRECTLY IN ELECTRONIC FORM OR BY MEANS OF AN ELECTRONIC RECORD) AND WILL GOVERN THE RELATIONSHIP AND TRANSACTION BETWEEN USER AND CampingCo FOR THE USE OF THE SERVICES OFFERED THROUGH WEBSITE (DEFINED BELOW).</p>
-<p>This Member Agreement on the website www.camping-co.com and mobile application under the name and style of "CampingCo" (the Website) is between H&amp;H Overland Expedition India Private Limited (hereinafter referred to as "CampingCo" or “Company” or "We" or "Us" or "Our") and the guest users or registered users of the Website (hereinafter referred to as “Member” or "You" or "Your" or "Yourself" or "User") describe the terms on which CampingCo offers you the access to the Website and such other services as are incidental and ancillary thereto ("Services"). &nbsp;</p>
-<p>PLEASE READ THE TERMS OF MEMBER AGREEMENT CAREFULLY BEFORE USING OR REGISTERING ON THE WEBSITE OR ACCESSING ANY MATERIAL, INFORMATION OR AVAILING SERVICES THROUGH THE WEBSITE. IF YOU DO NOT AGREE WITH THESE TERMS, PLEASE DO NOT USE THE WEBSITE OR AVAIL ANY SERVICES BEING OFFERED THROUGH THE WEBSITE.</p>
-<p>CAMPINGCO RESERVES THE RIGHT TO CHANGE THE TERMS OF THIS MEMBER AGREEMENT FROM TIME TO TIME AND SHALL GIVE NOTICE OF SUCH CHANGES TO THE MEMBER IN A TIMELY MANNER. NOTICE TO THE MEMBERS SHALL BE CONSIDERED GIVEN WHEN SUCH NOTICE IS INDICATED AND ACCESSIBLE FROM THE FIRST PAGE ACCESSED AFTER THE MEMBER LOG-ON TO CAMPINGCO WEBSITE, BY EMAIL TO THE MEMBER’S EMAIL ADDRESS PROVIDED TO CAMPINGCO IN THE MEMBER’S ACCOUNT CREATION OR MOST RECENTLY PROVIDED TO CAMPINGCO, OR BY SMS TO THE MEMBER’S MOBILE NUMBER PROVIDED DURING THE ACCOUNT CREATION. MEMBER AGREES THAT THE AMENDED TERMS AND CONDITIONS OF THIS AGREEMENT SHALL BE EFFECTIVE AND BINDING THE EARLIER OF (1) THE EFFECTIVE DATE INDICATED IN SUCH NOTICE; OR (2) ON THE DATE POSTED ON CAMPINGCO’S WEBSITE.</p>
-<p>IT WILL BE PRESUMED THAT MEMBER HAS RECEIVED ANY SUCH NOTICE IF AND WHEN MEMBER MAKES A RESERVATION FOR A CAMPINGCO VEHICLE AFTER NOTICE OF A CHANGE TO THIS AGREEMENT HAS BEEN PLACED ON CAMPINGCO WEBSITE AND/OR DISTRIBUTED TO MEMBER BY EMAIL OR SMS. BY MAKING A RESERVATION AFTER RECEIVING NOTICE OF ANY CHANGES TO THE AGREEMENT, MEMBER ASSENTS TO AND WILL BE BOUND BY SUCH CHANGES TO THE AGREEMENT. MEMBER MAY DECLINE SUCH CHANGES BY DISCONTINUING TRIPS UNDER CAMPINGCO’S MEMBER AGREEMENT.</p>
-<p>IN THE EVENT OF ANY CONFLICT BETWEEN THIS AGREEMENT AND ANY OTHER DOCUMENT WITH RESPECT TO CAMPINGCO’S OTHER PROGRAMMES, THESE TERMS AND CONDITIONS SHALL GOVERN EXCEPT OTHERWISE SET FORTH FROM CAMPINGCO IN WRITING.</p>
-<p class="green">1. General:</p>
-<p>H&amp;H Overland Expeditions India Private Limited is a company incorporated under the laws of India, with its registered office at L-601,Designarch,Sec-5, Vaishali, Ghaziabad,Uttar Pradesh - 201010, &nbsp;India and having CIN: U74999UP2018PTC111227</p>
-<p class="green">2. Persons Permitted to Drive Vehicles:</p>
-<p>2.1 Only active CampingCo Member in good standing, as decided solely by CampingCo, is allowed to drive CampingCo vehicles. Non-Member is expressly prohibited from driving a CampingCo vehicle at any time. Member holding effective driving license, uploaded on the Website and approved by CampingCo, may drive a CampingCo vehicle that has been reserved by another CampingCo Member with the permission of the Member having carried out the reservation; however, all fees and charges shall be determined in accordance with, and be the responsibility of, the reserving Member while any liability and/or claim arising out of such usage shall be that of all such participant Members. Notwithstanding, anything contrary contained in this Member Agreement, the Member booking the expedition must ensure that any other person having effective driving license drives CampingCo vehicle only with the prior consent of CampingCo, failing which Member originally booking the vehicle shall be solely liable to indemnify CampingCo without any limitation for any loss suffered by CampingCo.</p>
-<p>2.2 Satisfying eligibility criteria required to become a CampingCo Member does not automatically give an applicant the right to become a CampingCo Member. Acceptance of the applicant’s membership is subject to approval by CampingCo at its sole discretion.</p>
-<p>2.3 Should any Member’s driving license expire or be revoked, authorization to drive CampingCo vehicles shall expire immediately. CampingCo shall be notified of such expiry or revocation by the Member by e-mail forthwith upon such expiry or revocation.</p>
-<p>2.4 By applying for membership, each applicant authorizes CampingCo and CampingCo reserves the right on its sole discretion to obtain his/her driving records from the jurisdiction in which the applicant is licensed. Because driving a CampingCo vehicle requires maintaining a good driving record, CampingCo may periodically check Member’s driving records and reserves the right, at its sole discretion, to suspend or terminate the Membership of any Member, who does not meet CampingCo’s driving eligibility requirements. Member agrees to promptly report to CampingCo any suspension or revocation of his/her driving license, or any tickets/citations/conviction related to any traffic violation including but not limited to driving under the influence of drugs or alcohol, driving while intoxicated, reckless driving, exceeding the speed limit, or sending an SMS while driving.</p>
-<p>2.5 Member is responsible for providing and maintaining current e-mail, cell phone, residential address (current/temporary and permanent), and other account information with CampingCo. Member further warrants that information provided to CampingCo shall be absolutely correct and is bound to inform to CampingCo promptly, if any change occurs in the information provided earlier including but not limited to residential address.</p>
-<p>2.6 Member is responsible for keeping any CampingCo related password and/or PIN numbers in strict confidence and to not make passwords or PINs available to third-parties, should a PIN or password be reduced to written or electronic form, the Member will be responsible for any associated costs and/or damages in connection with unauthorized use by third-parties. If a Member has reason to believe a third-party may have obtained unauthorized knowledge of a password and/or PIN, Member agrees to change the compromised password and/or PIN instantly.</p>
-<p class="green">3. Prohibited Uses:</p>
-<p>3.1 The use of a CampingCo vehicle under the following conditions is prohibited:</p>
-<p>a) any speed race or competition;</p>
-<p>b) for the purpose of towing, pushing, or propelling any trailer or any other vehicle;</p>
-<p>c) for the primary business purpose of transporting people or operating a taxi service;</p>
-<p>d) by any person who is under the influence of (i) alcohol or (ii) any drug or medication under the effects of which the operation of a vehicle is prohibited or not recommended. A zero-tolerance policy is adopted.</p>
-<p>e) in the carrying out of any crime or any other illegal activity;</p>
-<p>f) in an imprudent, negligent, or abusive manner or for any abnormal use of this vehicle;</p>
-<p>g) by any person who has provided CampingCo with false information or whose representations are determined to be false (including, without limitation, regarding his name, age, or address);</p>
-<p>h) driving a CampingCo vehicle outside of India or any prohibited areas within India unless authorized by CampingCo in special circumstances such as expeditions in Bhutan;</p>
-<p>i) driving while using a mobile phone or any other mobile communication device in any manner whatsoever, including while sending an SMS, emailing, using a cell phone with or without a hands-free device, otherwise using a mobile communication device that may distract you from driving or otherwise engaging in similar activities that may be prohibited by applicable law;</p>
-<p>j) Using CampingCo vehicle to transport flammable, poisonous, or otherwise hazardous substances for other than legally permissible household use or in amounts greater than what is usually consumed in a household.</p>
-<p>k) Transporting objects with CampingCo vehicle that could – due to their size, shape, or weight adversely impact the vehicle’s handling safety or that could damage the interior of CampingCo vehicle or, by virtue of such object/s protruding outside, affect the safety of vehicles driving in the vicinity of CampingCo vehicle.</p>
-<p>l) Transporting more passengers than the prescribed seating capacity of the vehicle by manufacturer of the vehicle.</p>
-<p>3.2 The foregoing examples are not intended to be an exhaustive list. Any unreasonable, unwarranted, illegal, unethical or inappropriate use of a CampingCo vehicle except the personal use for travel, as determined by CampingCo in its sole discretion, may be deemed a violation of these terms and conditions. CampingCo may report to the authorities any use of a CampingCo vehicle or other activities that are in violation of local, state, and/or national law or in violation of these terms and conditions.</p>
-<p>3.3 CampingCo may immediately suspend or terminate the use of its Service by any Member for a violation of any of the terms and conditions of Member Agreement. Upon suspension or termination, any existing reservations for the Member may be cancelled by CampingCo at its sole discretion. In addition, Member will be absolutely responsible for any and all, losses, damages (direct/indirect), costs, charges, fees and expenses incurred by CampingCo, as a result of a breach of any of these terms and conditions and Member unconditionally and irrevocably agrees that CampingCo reserves the right to pursue the remedial action to recover the losses/damages suffered by CampingCo from Member’s property including but not limited to his/her legal heirs/representative’s properties.</p>
-<p class="green">4. Reserving CampingCo Vehicles:</p>
-<p>4.1 Reservation is required for all potential booking. Member must always reserve a vehicle in advance of use and will be billed for usage fees at the time of reservation. Member is required to fulfil the below mentioned conditions at the time of taking the possession of the Vehicle for scheduled expedition:</p>
-<p>a) Member must carry the original driving licence, which is being shared with CampingCo at the time of start of expedition with CampingCo. Member must show the same to the representative of CampingCo available at location, where the possession of the Vehicle is supposed to be taken by Member;</p>
-<p>b) Member must carry and support CampingCo in capturing the image of any one out of following documents in original, as an additional document to be placed on records of CampingCo to justify his/her identity:</p>
-<p>i) EPIC (Electoral Photo Identity Card), commonly known as Voter ID; or</p>
-<p>ii) Valid Passport</p>
-<p>c) Member must co-operate with the representative of CampingCo in taking a photo of Vehicle along with Member, which is meant for safety of Member and record purposes of CampingCo.</p>
-<p>Member shall be held solely responsible, if any of the above conditions are not being completed successfully at the time when possession of vehicle was supposed to be taken by Member and CampingCo reserves the right not to handover the possession of Vehicle. Consequently, the booking will stand completed without any further onus of CampingCo to refund or return the booking amount.</p>
-<p>4.2 If You wish to cancel a reservation or shorten the period for which a vehicle has been reserved, You must do so in advance, in pursuance of the Fee Policy.</p>
-<p>4.3 If You wish to extend a reservation, You may do so only if following conditions are fulfilled:</p>
-<p>a) the online payment for the extension has been made and successfully receipt by CampingCo; and</p>
-<p>b) the Vehicle is available for use for the extension period (for example, it is not reserved by another Member); and</p>
-<p>c) the request to extend is completed prior to the scheduled expiration time of Your existing reservation.</p>
-<p>In case, any of the above conditions are missing after the expiry of the booking (initial or immediate prior) then you will be deemed to possess the vehicle without authorisation and must hand over the Vehicle to CampingCo’s parking or its representative without fail/ delay. A delay beyond one hour from the expected handover time of vehicle or after the expiry of booking as the case may be, will be making you the guilty of breach of trust and your involvement in theft of Vehicle would be presumed without any doubt.</p>
-<p>4.4 In the event Your reservation is not extended successfully (even if You have put in a request for extending the reservation but which has not been confirmed or has been denied by CampingCo for any reason) and You do not return the car to the correct and designated CampingCo space by the end time of Your reservation, CampingCo reserves the right to initiate the criminal proceedings against You and simultaneously will make all reasonable efforts to take possession of the vehicle from You immediately or any time thereafter, and at any location</p>
-<p>For the avoidance of doubt,</p>
-<p>a) You will be charged late fee, inconvenience fee and any other charges applicable as per Our Fee Policy from the scheduled end time of Your booking till the time the vehicle is actually recovered by CampingCo,</p>
-<p>b) You will be charged any additional costs viz; legal attorney fees, consultants fees, travel costs, etc. incurred by CampingCo in taking possession of the vehicle from You, and</p>
-<p>c) You will not be provided any compensation or alternate means of transportation in such case and will not have the right to ride in CampingCo vehicle any more.You shall hold CampingCo, its officers, employees, agents and affiliates harmless against any claim in connection with the vehicle and/or its re-possession and shall irrevocably and unconditionally indemnify CampingCo against any cost, loss or liability suffered by CampingCo arising out of or in connection with any claim made by a third party against CampingCo in relation to the vehicle and/or its re-possession.</p>
-<p class="green">5. Vehicle Pick-Up and Return/Vehicle Condition/Stolen Vehicles:</p>
-<p>5.1 You must pick up the selected vehicle at its designated CampingCo parking space and return it secured, clean, and in good working order, to the correct and designated CampingCo space by no later than the end time of Your reservation. However, the handover of vehicle pursuant to your booking is subject to the the availability of vehicle. Further, CampingCo reserves the right to cancel any booking at its sole discretion with only consequence to return the fees collected at the time of creation of booking.</p>
-<p>5.2 Prior to taking possession of a vehicle, You must do an exterior walk-around and an interior look-over. Before driving the vehicle, You must advise CampingCo of any damage or abnormality encountered on the vehicle or in the operation of the vehicle. If CampingCo is not notified of a problem at the start of a reservation, You will be deemed to be responsible for any problem with the vehicle discovered or reported after Your reservation, including, without limitation, damage to the vehicle or lack of cleanliness. You may be charged a damage fee, a cleaning fee, or other applicable fees, and CampingCo may suspend, or may even terminate Your membership.</p>
-<p>5.3 You must leave all the original documents including but not limited to registration certificate, insurance policy, tax payment challans, self-drive licenses, pollution clearance certificates, vehicle’s key, key fob, or other starting device to the vehicle in its designated position in the vehicle at the conclusion of Your reservation. You must advise CampingCo immediately if You fail to leave the original documents mentioned hereinabove, key/fob/starting device, parking pass, or toll payment pass (if applicable in the vehicle.) and this causes inconvenience to CampingCo or another Member, You will be charged the hourly rate for the vehicle until the, original documents, key/key fob/starting device/parking pass/toll payment pass is returned safely to CampingCo and You will remain responsible for the payment of charges against the usage of the vehicle during such period. You may also be charged a fee at CampingCo’s sole discretion to replace any of the items missing from the vehicle.</p>
-<p>5.4 The end of the trip is being confirmed by either a) specific completion of closing checklist at the end of trip; or b) an SMS message to CampingCo’s provided number to notify of such intent; or c) by unwarranted breakdown/accident of the vehicle.</p>
-<p>5.5 Reserving Member is responsible for all charges and costs incurred related to CampingCo vehicle for the entire period of the reservation and until the vehicle is returned, secured, closed, locked and serviceable (all accessories off, key out of ignition and in proper place, all windows, doors, hatches, sunroofs and other openings closed, toll payment pass and parking pass and other accessories in the vehicle) to its designated location. CampingCo vehicles must be returned no later than the end time of the reservation and the Member scheduled trip/ride comes to an end automatically and will be governed as per the provisions of clause 4.3 above if extension is sought.</p>
-<p>5.6 Member is required to report to CampingCo immediately any condition that impairs the driving functionality of the vehicle, such as external or internal damage that renders the vehicle unsafe, including but not limited to, missing or inoperable signal or driving lighting, broken or missing rear-view mirrors and windshield glass.</p>
-<p>5.7 Notwithstanding anything contrary contained under this policy, any damage caused to vehicle/CampingCo because of Your wilful misconduct or gross negligence, during such time when the vehicle is not in motion, will attract charges/fees as per the sole discretion of CampingCo.</p>
-<p>5.8 Stolen vehicles or any accidental incidents must be immediately reported to CampingCo and the nearest police station with a detailed written complaint based on actual facts. Member shall ensure that such complaint shall not contain any discrepancy, inconsistencies or distortions from actual facts as the same would be detrimental to a valid insurance or other claim by CampingCo. The Member will be solely liable without any demur, for any loss due to a discrepant, inconsistent or distorted complaint or information by the Member.</p>
-<p class="green">6. Safety:</p>
-<p>6.1 Seat Belts and Child Restraints - Member is responsible for:</p>
-<p>a. Complying with all applicable seat belt, speed limit and child restraint laws. It is being made crystal clear that Member must abide themselves with the maximum speed/ weight limit and any other instructions being displayed/ communicated by the authorities through marks or sign boards in various locations of the concurrent trip</p>
-<p>b. Protecting all children by properly using any child passenger restraint system that complies with the Motor Vehicle Safety Standards in the jurisdiction where the trip is initiated and where CampingCo vehicle is driven during such trip.</p>
-<p class="green">7. Securing CampingCo Vehicles:</p>
-<p>7.1 Each time Member parks a CampingCo Vehicle (either at the end of the reservation or during the reservation period), the Member is responsible for securing the vehicle from external factors including human or general known adverse weather conditions.</p>
-<p>a. Windows must be closed, tent and equipments must be closed and secured properly. Member will be responsible for any fees or charges associated with a failure to perform these steps.</p>
-<p>7.2 CampingCo encourages all its Members to take full responsibility of their belongings. In case of any Member claims to have left back any luggage or any phones or personal music devices inadvertently in CampingCo vehicle after the Member completes his/her reservation, CampingCo shall endeavour to locate the lost belongings on a "best-effort" basis provided the Member notifies CampingCo of the same within 90 (Ninety) minutes of the successful return of the car post completion/termination of the reservation, but CampingCo shall not be held responsible for such loss or damage in any circumstances.</p>
-<p class="green">8. Fees And Eligible (Reimbursable) Expenses:</p>
-<p>8.1 Member is subject to CampingCo’s fees policy being mentioned on the website www.camping-co.com It entails the scenarios which covers all the fees including but not limited to rentals, late fees, late charges, extensions fees, penalties or fines, if any etc.</p>
-<p>8.2 An "Eligible Expense" is defined as;</p>
-<p>(a) any fuel related expense, provided it reconciles reasonably with distance travelled; in pursuance of the standard industry mileage or CampingCo’s internal mileage standard; or</p>
-<p>(b) an expense incurred by the Member for minor (under INR 1000) routine maintenance on CampingCo vehicles, such as new wiper blades, light bulbs, or windshield-washer fluid, etc. or (c) any expense in excess of INR 1000 that is authorized in advance by a CampingCo Representative, via e-mail/sms/phone. If a Member pays for an eligible expense, he or she must keep the invoice which is subject to fuel test more particularly mentioned in the Fee Policy, which conspicuously captures the date and time showing that it was incurred during the reservation period. The Member must print his or her name on the receipt and give a physical original hard copy of the receipt to CampingCo vehicle attendant after his/her reservation. CampingCo will reimburse the Member or credit the Member's account, post the verification of claim and corresponding invoices. No reimbursement or credit will be given without an invoice, or if the invoice is submitted later than 3(Three) days from the reservation date.</p>
-<p class="green">9. Overland Discount and Loyalty Points:</p>
-<p>9.1) &nbsp;Overland points/discount will be credited after the completion of a booking. Completion is defined as successful handover of vehicle back to CampingCo after filling End checklist and payment of all due owed by the Customer</p>
-<p>9.2) Overland points/discount will not be credited in case of cancellation of booking done by either the user or CampingCo</p>
-<p>9.3) &nbsp;Overland points/discount will not be awarded on a trip amount less than INR10000</p>
-<p>9.4) Overland points/discount will not change in case of Upgrade / Downgrade of vehicle. Points calculation will be based on originally booked cargroup</p>
-<p>9.5) The Program will be valid for bookings made through the website www.camping-co.com or its mobile app</p>
-<p>9.6) Overland points/discount shall be credited to the same account through *which* the booking is made non-transferrable to friends or any other account</p>
-<p>9.7) Overland points/discount are non-transferable, non-binding and non-encashable</p>
-<p>9.8) Overland points/discountcannot be utilized against any outstanding amount/charges for previous bookings</p>
-<p>9.9) CampingCo reserves the right to cancel all or partial Overland points/discount granted to the members or change any of the terms and conditions including but not limited to eligibility, redemption rewards, Overland points/discount etc., of this Program, at any point in time without prior notice</p>
-<p>9.10) CampingCo also reserves the right to disqualify any member at any point in time at its sole discretion</p>
-<p>9.11) Any modification in the Program or any *of* its terms and conditions shall be deemed to have been accepted by the member by continuing to use the CampingCo website or mobile application</p>
-<p>9.12) CampingCo also reserves the right to terminate or suspend the Program, temporarily or permanently, at any point in time, at its sole discretion</p>
-<p>9.13) CampingCo shall not be liable for any unauthorized use of member's account and the member shall be solely responsible to ensure security and confidentiality of member's account</p>
-<p>9.14) Overland points/discount will not be awarded if the Customer uses the Vehicle for any purpose which is prohibited in the membership agreement or is involved in any traffic violations.</p>
-<p>CampingCo reserves the right to run any offer/program to provided additional benefits through this Program to a set of identified users based on certain parameter as may be decided by CampingCo from time to time. And such program/offer shall consider only prospective completed booking i.e. bookings made from the date of the launch of such program/offer.</p>
-<p>9.15) In case of any dispute or conflict CampingCo's decision shall be final</p>
-<p class="green">10. Maintenance/Cleanliness:</p>
-<p>10.1 CampingCo will perform all necessary and required routine maintenance on all of its vehicles. However, Member is responsible for the cleanliness of vehicle and are expected to assist in helping CampingCo to maintain the driving safety and performance of the vehicle, in particular during longer reservations or when the vehicle indicates that service or maintenance is required.</p>
-<p>10.2 Vehicle may require Roadside Assistance from time to time. CampingCo makes reasonable best efforts to provide Roadside Assistance support in all cases. If, however, a Member's need for Roadside Assistance results from a breach of these Terms and Conditions, the Member may be charged for the full costs of the towing, repair & maintenance.</p>
-<p>10.3 Use of tobacco, cigarettes, cigars, and alcohol is absolutely prohibited inside CampingCo vehicles. Member is subject to additional fine if evidence of smoking, chewing, drinking or dipping is found inside CampingCo vehicles or complained of by a Member using the vehicle immediately following the Member’s reservation.</p>
-<p>10.4 Burning any substance is absolutely prohibited in CampingCo vehicles. This includes, but is not limited to tobacco, other drugs, and incense.</p>
-<p>10.5 Pets are absolutely prohibited in CampingCo vehicles, except for those vehicles designated “pet friendly”. Member is subject to additional fees, if evidence of pets is found in CampingCo vehicles or complained of by a Member using the vehicle immediately following the Member’s reservation.</p>
-<p class="green">11. Breakdown or Incidents:</p>
-<p>11.1 All breakdowns or incidents involving CampingCo vehicles must be reported to CampingCo immediately by phone to +916913332761 or on the group created at the start of expediton and via email on info@camping-co.com</p>
-<p>11.2 Breakdown and Roadside Assistance. While using a vehicle, You must follow the owner's manual instructions, provided in the vehicle’s glove compartment. If a problem arises that prevents or limits the use of the vehicle or that may compromise people's safety, Member must immediately notify CampingCo on the above mentioned phone number/email id and follow CampingCo’s instructions. Member may have to pay for towing, repairs, and other expenses in some circumstances.</p>
-<p>11.3 Jump start. If You perform a jump start to CampingCo vehicle, You must inform CampingCo immediately by phone. You are fully responsible for any damage that may result from the improper use of jumper cables or other tools. It is strictly forbidden to provide a jump start to any vehicle other than a CampingCo vehicle.</p>
-<p>11.4 Incident. In case of an incident involving property damage or any third party, the Member must fill out an official police report form and, mandatorily provide a jointly agreed-upon statement, complete CampingCo’s incident report form, and obtain the following information:</p>
-<p>a. Date, time, and place of incident;</p>
-<p>b. The license plate numbers of any other vehicles involved, their make and year, their identification number (serial number), and the insurance certificate's number (with name, address and phone number of the insurance agent);</p>
-<p>c. The names, addresses, and driver's license numbers of the persons involved in the incident;</p>
-<p>d. The name, address, and driver's license number of the owner of the vehicle (if he or she is not the driver);</p>
-<p>e. The name, addresses, and phone number of witnesses, passengers, and any other involved persons;</p>
-<p>f. Circumstances of the incident describing immediate surrounding environment and car position prior to the incident; and</p>
-<p>g. A police report is required regardless of liability or fault. Member shall specify in his/her detailed written complaint to the police the actual facts only. Member shall ensure that such complaint shall not contain any discrepancy, inconsistencies or distortions from actual facts as the same would be detrimental to a valid insurance or other claim by CampingCo. Any loss occasioned to CampingCo due to a discrepant, inconsistent or distorted complaint by a Member shall be to the account of such Member.</p>
-<p>11.5 Investigation and procedure. Member must provide to CampingCo and any other claims adjustment service with the findings of any report or any notice relating to a claim or a lawsuit against CampingCo regarding any incident involving a CampingCo vehicle. Member agree to cooperate fully with CampingCo in the investigation and defense of any such claim or lawsuit. A Member's accounts will be suspended until the investigation has been concluded.</p>
-<p>11.6 The Member shall be responsible for the costs related to the repair, recovery, and loss of use of any CampingCo vehicle resulting from any of the foregoing, up to the current damage fee, as set forth in the Fee Policy / Rate Schedule (if such costs are because of the fault of the Member or if the fault is not directly established to any other person/ entity, or where any cost is not paid / reimbursed by the insurer of CampingCo vehicles or the insurer of the other vehicle involved in the accident).</p>
-<p>11.6A Where the Member is not responsible for the breakdown of the CampingCo vehicle, CampingCo shall refund an amount equal to the cost of the unused hours of such booking. Further, CampingCo shall not be liable for any further costs borne by the Member as a consequence of the breakdown of the CampingCo vehicle.</p>
-<p>11.7 In case of any accidents/damages, any out of court settlement initiated or accomplished by Members with the third parties without written consent of CampingCo will be solely borne by the Member.</p>
-<p class="green">12. Traffic Violations:</p>
-<p>12.1 You are responsible for any traffic violations incurred due to Your inappropriate use of a CampingCo vehicle. This includes, but is not limited to: unauthorised parking, excess speeding, breaking red light, photo enforcement, and toll violations. You are solely liable for all costs imposed due to any such violation during the concurrence of Your trip/ride/booking, including fines for late payment and any processing fees added by the respective regulatory authority. You are liable for payment of all tolls and any fines for toll evasion. You must report such violations to a CampingCo representative, as soon as possible, within the prescribed timeline for the violation (for example, if the case is being taken to court). CampingCo will notify the Member immediately by e-mail after it comes to know about any of such violation and Member shall forthwith pay the relevant fine/s to the authority concerned and provide CampingCo with the proof of such payment, failing which CampingCo will pay those amounts and Member shall reimburse the same to CampingCo at earliest. However, where Member has personal knowledge of such violations, CampingCo will not be obligated to provide Member with the notification as above, but Member’s obligation to pay the relevant fine/s and notifying CampingCo of such compliance will continue as aforementioned.</p>
-<p>12.2 You must notify CampingCo of any traffic violation notices found on a vehicle at the time of vehicle pick up.</p>
-<p>12.3 You must not leave a vehicle in a zone which has parking restrictions. If You leave the vehicle in such a restricted zone, You must immediately notify CampingCo, and You will be responsible for any and all violation notices or towing charges incurred by CampingCo. Additionally, financial penalties will be levied against You for any inconvenience caused to other CampingCo member if the vehicle is unavailable for its scheduled reservation because of such parking violations as set out in the fee policy on the website i.e. www.CampingCo.com</p>
-<p class="green">13. Insurance and Liability:</p>
-<p>13.1 MEMBER DEDUCTIBLE OBLIGATION:</p>
-<p>A. IF MEMBER IS IN FULL COMPLIANCE WITH THE TERMS AND CONDITIONS OF CAMPINGCO’S POLICIES BEING MENTIONED AT WWW.CAMPING-CO.COM, CampingCo SHALL PROVIDE PRIMARY THIRD PARTY LIABILITY PROTECTION, WHICH WILL BE TO THE EXTENT OF CLAIMS / LIABILITIES COVERED BY CAMPINGCO’S VEHICLE INSURER, ON CAMPINGCO’S VEHICLES FOR ANY/ ALL CLAIMS AND/OR LIABILITIES ARISING DURING THE USE OR OPERATION OF THE VEHICLE BY THE MEMBER. MEMBER WILL BE RESPONSIBLE FOR ANY ASSOCIATED DEDUCTIBLE CHARGES DIRECTLY/INDIRECTLY PERSONALLY ATTRIBUTABLE TO THE MEMBER’S DEFAULT OR OTHERWISE AS PER DISCRETION OF CAMPINGCO.</p>
-<p>B. IF AT ANY TIME IT IS DETERMINED THAT LOSSES/CLAIMS MENTIONED HEREINABOVE WILL EXCEED THE INSURANCE COVERAGE TAKEN BYCAMPINGCO, MEMBER WILL BE RESPONSIBLE FOR ANY SUCH EXCESS CLAIMS/ LOSS/ DAMAGES.</p>
-<p>13.2 CAMPINGCO IS NOT RESPONSIBLE FOR ANY DAMAGE TO, LOSS OR THEFT OF, ANY PERSONAL PROPERTY BELONGING TO MEMBER OR CO-PASSENGER OR THIRD-PARTIES, REGARDLESS OF FAULT OR NEGLIGENCE.</p>
-<p>13.3 LIABILITY PROTECTION APPLIES ONLY TO CLAIMS OF THIRD-PARTY BODILY INJURY, DEATH OR PROPERTY DAMAGE, OTHER THAN TO THE VEHICLE, ARISING FROM THE USE OF CAMPINGCO VEHICLE AS PERMITTED BY THIS AGREEMENT AND APPLICABLE LAW. ANY SUCH PROTECTION EXCLUDES ANY CLAIM MADE BY MEMBER OR CO-PASSANGER OR MEMBER’S/CO-PASSANGER’S IMMEDIATE FAMILY MEMBERS WHO PERMANENTLY LIVE WITH MEMBER OR IS TRAVELLING WITH MEMBER AT THE TIME OF INCIDENT. THIS OBLIGATION MAY BE LIMITED TO THE EXTENT CampingCo’S COVERAGE APPLIES. CAMPINGCO SHALL NOT BE LIABLE TO MEMBER/CO-PASSANGER FOR ANY INDIRECT, SPECIAL, PUNITIVE, OR CONSEQUENTIAL DAMAGES (INCLUDING LOST PROFITS) ARISING FROM OR RELATED TO CAMPINGCO VEHICLE, ITS USE, OR THIS AGREEMENT.</p>
-<p>13.4 MEMBER INCLUDING BUT NOT LIMITED TO HIS/HER PROPERTIES, LEGAL HEIRS ETC; (IN CASE OF HIS/HER ABSENCE) INDEMNIFIES AND HOLDS CampingCo, ITS PARENT COMPANY AND AFFILIATES AND HIS/HER RESPECTIVE DIRECTORS, OFFICERS, EMPLOYEES, SHAREHOLDERS, AGENTS, ATTORNEYS, ASSIGNS AND SUCCESSORS-IN-INTEREST, HARMLESS WITHOUT DEMUR FOR ALL LOSSES, LIABILITIES, DAMAGES, INJURIES, CLAIMS, DEMANDS, COSTS, ATTORNEY FEES, BUSINESS LOSS AND OTHER EXPENSES INCURRED BY CAMPINGCO (A “LOSS”) ARISING FROM: (1) THE USE OR POSSESSION OF CAMPINGCO VEHICLE BY THE MEMBER AND (2) THE MEMBER’S NON-COMPLIANCE WITH THIS AGREEMENT.</p>
-<p>13.5 MEMBER INCLUDING BUT NOT LIMITED TO HIS/HER LEGAL HEIRS/ REPRSENTATIVES/ GAURDIANS SHALL HAVE FINAL RESPONSIBILITY TO CampingCo FOR ALL SUCH LOSSES.</p>
-<p>13.6 This Agreement is intended for the benefit of Member and CampingCo and no other party may claim rights hereunder, whether as a third-party beneficiary or otherwise. UNDER NO CIRCUMSTANCES WILL CampingCo BE LIABLE TO ANY THIRD-PARTY FOR INDIRECT, INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES ARISING FROM OR RELATED TO THIS AGREEMENT OR USE OF CampingCo VEHICLES AND AVAILING OF SERVICE BY MEMBER.</p>
-<p class="green">14. Data Protection:</p>
-<p>14.1 CampingCo captures, stores, processes and uses the Member’s Personal data, including, but not limited to, name, e-mail id, internet protocol address, copy of driving license image and duly attested colour image of Voter ID or Passport on the letter head of the electoral officer and police officer respectively under whose jurisdiction the address falls), and any other additional address cum identity proof, image of the customer, the usage and vehicle data as they relate to the Member, to the extent this is necessary for the administration and implementation of this Agreement and the Member’s use of CampingCo’s vehicle.</p>
-<p>14.2 Should third-party services be used, CampingCo is entitled to forward to the third-party service provider the Member’s Personal data, to the extent this is required in order to fulfil the objectives of CampingCo.</p>
-<p>14.3 CampingCo is entitled to provide Member’s Personal data to third-parties for the purposes of providing individualized offers, Services, and other customized information to Members.</p>
-<p>14.4 CampingCo shall implement and maintain reasonable procedures for protecting sensitive personal information in compliance with applicable law.</p>
-<p>14.5 CampingCo shall be entitled to disclose information of the Member to CampingCo’s parent company and to all companies controlled by CampingCo or any of its affiliates and to any government body as required by the law/ or by directive/ or request from any government body or to any third party deemed fit and proper by CampingCo, in its absolute discretion.</p>
-<p>14.6 Notwithstanding anything contrary contained herein, Member shall be governed by the privacy policy of CampingCo being mentioned on the website www.CampingCo.com.</p>
-<p class="green">15. Arbitration & Jurisdiction for Disputes:</p>
-<p>15.1 Any Dispute, controversy or claims by or between, CampingCo and Member, hereto arising out of or relating to or in connection with terms and conditions of this Member Agreement or transactions contemplated on Website, or the breach, termination, validity of any term under this agreement shall be finally settled by ‘Arbitration’ in accordance with the Indian Arbitration and Conciliation Act, 1996. There shall be a sole arbitrator, who shall be appointed by CampingCo. Any arbitration proceedings or award rendered hereunder and the validity, effect and interpretation of this agreement to arbitrate shall be governed by the Laws of India. The arbitration proceedings shall be conducted in Bangalore or Jaipur, and the award shall be rendered in the English Language. If either party employs attorneys to enforce any rights arising out of or relating to this Agreement, the prevailing party shall be entitled to recover reasonable attorneys’ fees.</p>
-<p>15.2 (a) Subject to sub-clause (b) the Member irrevocably agree that the courts in Delhi-NCR are to have exclusive jurisdiction for the purpose of hearing and determining any litigation, suit, action or proceedings and/or to settle any disputes arising out of or in any way relating to this Agreement or its formation or validity ("Proceedings") and for the purpose of enforcement of any judgment against its property or assets</p>
-<p>(b) Nothing in this clause shall (or shall be construed so as to) limit the right of CampingCo to initiate proceedings against any of its Members in accordance with mandates contained in Section 20 of the Civil Procedure Code, 1908.</p>
-<p>(c) Notwithstanding anything contained in the foregoing sub clauses, the jurisdiction in relation to criminal proceedings shall be governed in accordance with the provisions contained in Chapter XIII of the Code of Criminal Procedure, 1973. &nbsp;"</p>
-<p>15.3 Member agrees to pay CampingCo’s reasonable attorneys' fees and costs in any legal proceeding relating to this Agreement, including appeals, where the respective court or forum pronounces the order in favour of CampingCo.</p>
-<p>15.4 Member must not aid or encourage the filing of any third-party claim or lawsuit against CampingCo, and Member must cooperate fully with CampingCo and CampingCo’s insurer in the investigation and defense of any claim or lawsuit. In any proceeding involving the Member and CampingCo as co-defendants should CampingCo determine in its sole discretion that the Member’s independent attorney has not aligned his defense similar to that of CampingCo, CampingCo shall be entitled to call upon the Member to change his attorney to one advised by CampingCo and the Member shall accordingly change his attorney at his own cost.</p>
-<p>15.5 Member must immediately notify and deliver to CampingCo every summons, complaint, document, or notice of any kind received by Member in any way relating to an accident, theft, or other circumstances related to CampingCo vehicle.</p>
-<p class="green">16. Integrated Service:</p>
-<p>CampingCo is not liable for any loss or damage while camping outdoors, at a designated campground/overland park or at a resort/homestay. Location where the member parks the vehicle is entirely his/her responsibility. Any incident or injury sustained while performing such activities is entirely member’s responsibility. Camping Co is not liable for any refund in case of weather conditions making it unsuitable for camping or being outdoors </p>
-<p>16. Severability Agreement:</p>
-<p>If any term, provision, covenant or condition of this Agreement is held invalid or unenforceable for any reason, the remainder of the provisions will continue in full force and effect as if this Agreement had been executed with the invalid portion eliminated. The Parties further agree to substitute for the invalid provision a valid provision that most closely approximates the intent and economic effect of the invalid provision. This Agreement, together with the User Guide, Trip Process, Member Application, Fee Policy / Rate Schedule, and any applicable consent forms, along with any amendments hereto, encompasses the entire agreement between Member and CampingCo, and supersedes all previous understandings and agreements between Member and CampingCo. Member acknowledges and represents that he or she has not relied on any representation, assertion, guarantee, warranty, collateral contract or other assurance, except those set out in this Agreement, made by or on behalf of any other party or any other person or entity whatsoever, prior to the execution of this Agreement.</p>
-<p class="green">17. No Waiver:</p>
-<p>No term contained in this Agreement may be changed or waived, except in writing signed by an expressly authorized representative of CampingCo. No waiver of default by Member/ You under any of the Terms or Conditions of this Agreement shall be construed as a waiver of any prior or subsequent default of any of the Terms or Conditions of this Agreement.</p>
-<p class="green">18. Assignment or Transfer:</p>
-<p>The rights granted to the Member under this Agreement are not assignable or transferable, in whole or part. Any attempt to transfer this Agreement without the written consent of CampingCo shall be void and of no force and effect. CampingCo reserves the right and can at its absolute discretion can assign the rights and obligations under this Agreement to an affiliate or to another entity in connection with a corporate transaction or otherwise.</p>
-<p class="green">19. No Agency:</p>
-<p>Member&nbsp;will never be deemed to be CampingCo’s agent, servant, or employee in any manner for any purpose whatsoever.</p>
-<p class="green">20. Terms & Termination:</p>
-<p>20.1 This Member Agreement shall continue to apply until terminated by either You or CampingCo as set forth below. If You want to terminate Your agreement with CampingCo, You may do so by (i) not accessing the Website; or (ii) closing Your Account for all of the Services that You use, where CampingCo has made this option available to You.</p>
-<p>20.2 You agree that CampingCo may, in its sole discretion and without prior notice, terminate Your access to the services and block Your future access to the services if CampingCo determines that You have violated the terms & conditions of this Member Agreement any other Policy(s) of the Website. You also agree that any violation by You of the Agreement(s) will cause irreparable harm to CampingCo, for which monetary damages may be inadequate, and You consent to CampingCo obtaining any injunctive or equitable relief that CampingCo deems necessary or appropriate in such circumstances. These remedies are in addition to any other remedies which CampingCo may have at law or in equity.</p>
-<p>20.3 In addition to Clause 20.2 above, CampingCo may, at any time, with or without notice, terminate these terms of the Member Agreement with You if:</p>
-<p>•&nbsp;&nbsp;&nbsp;&nbsp;CampingCo is required to do so by law (for example, where the provision of the Services to You is, or becomes, unlawful), or upon request by any law enforcement or other government agencies;</p>
-<p>•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The provision of the Services to You by CampingCo is, in CampingCo’ s sole discretion, no longer commercially viable;</p>
-<p>•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CampingCo has elected to discontinue, with or without reason, access to the Website, the Services (or any part thereof); or</p>
-<p>•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the event CampingCo faces any unexpected technical issues or problems that prevent the Website and / or Services from working.</p>
-<p>20.4 CampingCo may also terminate or suspend all or a portion of Your Account or access to the Services with or without reason. Termination of Your Account may include: (i) removal of access to all offerings within the Website or with respect to the Services; (ii) disabling access to the Account Information, including Your personal information, log-in ID and password, and all related information, files and materials associated with or inside Your Account (or any part thereof), and any User Content uploaded by You; and (iii) prohibiting further use of the Services.</p>
-<p>20.5 You agree that all terminations shall be made in CampingCo’s sole discretion and that CampingCo shall not be liable to You or any third party for any termination of Your Account (and accompanying deletion of Your Account Information), or Your access to the Website and Services.</p>
-<p>20.6 Notwithstanding the foregoing, such terms of this Agreement as are meant to survive termination / expiry of this Agreement, will survive indefinitely unless and until CampingCo chooses to terminate them.</p>
-<p class="green">21. Force Majeure:</p>
-<p>If performance of any Service or obligation under the terms and conditions of this Member Agreement or any other provisions of the policies of the Website, or other third parties in fulfilment of transaction (for e.g. home deliveries of vehicles, payment gateways etc.) are, prevented, restricted, delayed or interfered with by reason of labour disputes, strikes, acts of God, floods, lightning, severe weather, shortages of materials, rationing, utility or communication failures, earthquakes, war, revolution, acts of terrorism, civil commotion, acts of public enemies, blockade, embargo or any law, order, proclamation, regulation, ordinance, demand or requirement having legal effect of any government or any judicial authority or representative of any such government, or any other act whatsoever, whether similar or dissimilar to those referred to in this clause, which are beyond the reasonable commercial control of CampingCo or its third parties performing such services as sub-contractor to CampingCo and could not have been prevented by reasonable precautions (each, a "Force Majeure Event"), then CampingCo shall be excused from such performance to the extent of and during the period of such Force Majeure Event. CampingCo shall exercise all reasonable commercial efforts to continue to perform its obligations hereunder.</p>
-<p class="green">22. Communications.</p>
-<p>When You use the Website or send emails or other data, information or communication to CampingCo, You agree and understand that You are communicating with CampingCo through electronic records and You consent to receive communications via electronic records from CampingCo periodically and as and when required. CampingCo will communicate with You by email or by notices on Website or electronic records on the Website or on Your mobile number which will be deemed adequate service of notice / electronic record to the maximum extent permitted under any applicable law, It is further clarified that You can also use the customer support e-mail, facebook page and twitter handle of CampingCo to share your words of appreciation pertaining to ride only.</p>
-<p class="green">23. Feedback and Information:</p>
-<p>23.1 Any feedback You provide to CampingCo shall be deemed to be non-confidential. CampingCo reserves the right to use such information without any restriction. Further, by submitting the feedback, You represent and warrant that (i) Your feedback does not contain confidential or proprietary information of anybody including you and third parties; (ii) CampingCo is not under any obligation of confidentiality, express or implied, with respect to the feedback; (iii) CampingCo may have something similar to the feedback already under consideration or in development; and (iv) You are not entitled to any compensation or reimbursement of any kind from CampingCo for the feedback under any circumstances.</p>
-<p>23.2 To clarify, CampingCo may at its discretion, make any modifications or changes to the Website, Content and / or Services on the basis of such feedback, however CampingCo shall not be obliged to do so. Further, in the event that CampingCo makes any changes or modifications to the Website, Content and / or Services on the basis of any such feedback, You shall not have any rights or title (including any intellectual property rights) in such changes or modifications to the Website, Content and / or Services. You expressly waive any and all rights in such changes or modifications to the Website, Content and / or Services, and assign to CampingCo, all worldwide rights and title (including any intellectual property rights) to such changes or modifications to the Website, Content and / or Services, in perpetuity. You hereby waive all rights under Section 19(4) of the Indian Copyright Act, 1956, or other similar provisions in laws of any jurisdiction, in relation to any such changes or modifications to the Website, Content and / or Services.</p>
-</div>
+   <h1>Terms and condition</h1>
+   <p>Updated on 10 July 2019</p>
+   <div class="tab">
+      <button class="tablinks" onclick="openPolicy(event, 'FEE POLICY')">FEE POLICY</button>
+      <!--<button class="tablinks" onclick="openPolicy(event, 'ELIGIBILITY')">ELIGIBILITY</button>-->
+      <button id="default" class="tablinks" onclick="openPolicy(event, 'MEMBER AGREEMENT')">MEMBER AGREEMENT</button>
+      <!--<button class="tablinks" onclick="openPolicy(event, 'PRIVACY POLICY')">PRIVACY POLICY</button>-->
+   </div>
+   <div id="FEE POLICY" class="tabcontent">
+      <style>
+         table, th, td {
+         border: 1px solid #ccc;
+         }
+      </style>
+      <p>CampingCo takes pride in being completely transparent with our members. Here is a comprehensive list of fees for certain scenarios after you have confirmed your reservation.</p>
+      <table>
+         <tbody>
+            <tr>
+               <td colspan="1" rowspan="1">
+                  <p>Cancellation</p>
+               </td>
+               <td colspan="1" rowspan="1">
+                  <p>Cancellation made more than 14 days before booking start: Full refund</p>
+                  <p>Cancellation made before 7 days of booking start: 50% of Booking Fee</p>
+                  <p>Cancellation made after 7 days of booking start: No Refund</p>
+                  <p>Cancellation made after booking start: No Refund</p>
+                  <p>(Cancellation refund will be done through the original payment method within 7- 10 business days)</p>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="1" rowspan="1">
+                  <p>Extension post start # / Late return</p>
+               </td>
+               <td colspan="1" rowspan="1">
+                  <p>Extension fees of Rs.220/hr is applicable which is subject to availability</p>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="1" rowspan="1">
+                  <p>Shortening post start</p>
+               </td>
+               <td colspan="1" rowspan="1">
+                  <p>No charges or refunds applicable</p>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="1" rowspan="1">
+                  <p>Pricing plan change</p>
+               </td>
+               <td colspan="1" rowspan="1">
+                  <p>Pricing plan (free km per hour) cannot be changed post booking creation. Pricing will be charged on half an hour basis.</p>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="1" rowspan="1">
+                  <p>Discounts</p>
+               </td>
+               <td colspan="1" rowspan="1">
+                  <p>Discount is applicable only on trips of a duration equal to or greater than INR 10,000 at the time of booking. Discount is applicable only on the booking fee (excluding refundable deposit, if any) paid in advance to book the car. CampingCo reserves the right to cancel a booking if any unwarranted use of a discount coupon is identified.</p>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="1" rowspan="1">
+                  <p>Fuel Policy</p>
+               </td>
+               <td colspan="1" rowspan="1">
+                  <p>In case of No Fuel bookings, the vehicle should be returned by the Member, upon the completion of the booking, with fuel at the same level as at the start of the booking.</p>
+                  <p>If the Vehicle is returned with lesser fuel than the fuel level at the start of the trip then Refuelling penalty will be applicable.</p>
+                  <p>No refund will be applicable if car is returned with excess fuel.</p>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="1" rowspan="1">
+                  <p>Speed Governor</p>
+               </td>
+               <td colspan="1" rowspan="1">
+                  <p>The Vehicle may be enabled with speed governor in compliance with the applicable Government regulations, that limits speed of the Vehicle upto 80 km/h.</p>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="1" rowspan="1">
+                  <p>Breakdown of vehicle</p>
+               </td>
+               <td colspan="1" rowspan="1">
+                  <p>1. The Member shall be responsible for the costs related to the repair, recovery, and loss of use of any CampingCo vehicle resulting from any of the foregoing, up to the current damage fee, as set forth in the Fee Policy / Rate Schedule (if such costs are because of the fault of the Member or if the fault is not directly established to any other person/ entity, or where any cost is not paid / reimbursed by the insurer of CampingCo vehicles or the insurer of the other vehicle involved in the accident).</p>
+                  <p>2. Where the Member is not responsible for the breakdown of the CampingCo vehicle, CampingCo shall refund an amount equal to the cost of the unused hours of such booking. Further, CampingCo shall not be liable for any further costs borne by the Member as a consequence of the breakdown of the CampingCo vehicle</p>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="1" rowspan="1">
+                  <p>Usage of Driving Credits</p>
+               </td>
+               <td colspan="1" rowspan="1">
+                  <p>Customers will be able to use CampingCo credits upto 30% of Booking amount after adjustment for discounts (excluding refundable deposit, if any) or upto 10,000 whichever is lesser</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <p>Note:</p>
+      <ul>
+         <li>Handover pursuant to the original booking, extensions and modifications are subject to availability of the vehicle.</li>
+         <li>All Refunds made shall be through the original payment account only within 7-10 working days.</li>
+         <li>CampingCo reserves the right to charge a fee for specific pre-defined accessories.</li>
+      </ul>
+      <p>Also, a list of penalties that can be levied if members violate certain CampingCo community rules.</p>
+      <table>
+         <tbody>
+            <tr>
+               <td colspan="1" rowspan="1">
+                  <p>Returning the vehicle to the wrong location</p>
+               </td>
+               <td colspan="1" rowspan="1">
+                  <p>₹10,000 + Full hourly fee for use of the vehicle + Full late fee until the vehicle is returned to the correct location</p>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="1" rowspan="1">
+                  <p>Traffic and Parking violations</p>
+               </td>
+               <td colspan="1" rowspan="1">
+                  <p>Full payment of fines + ₹500 per 30 days late in payment</p>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="1" rowspan="1">
+                  <p>No Show</p>
+               </td>
+               <td colspan="1" rowspan="1">
+                  <p>Bookings would stand cancelled if after 4 hours of booking start time the customer still doesn’t show up.</p>
+                  <p>No refunds would be applicable</p>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="1" rowspan="1">
+                  <p>Overspeeding = 125 km/hr</p>
+               </td>
+               <td colspan="1" rowspan="1">
+                  <p>₹2500 (over and above any government fines that may have been levied)</p>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="1" rowspan="1">
+                  <p>Cleaning Fees</p>
+               </td>
+               <td colspan="1" rowspan="1">
+                  <p>Standard cleaning fees of Rs.350 is applicable in case of intensive cleaning amount charged would be Rs.1000</p>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="1" rowspan="1">
+                  <p>Smoking</p>
+               </td>
+               <td colspan="1" rowspan="1">
+                  <p>₹1,000 + applicable damage costs related to interiors</p>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="1" rowspan="1">
+                  <p>Wrong Fuelling</p>
+               </td>
+               <td colspan="1" rowspan="1">
+                  <p>The member will be liable for the full cost of damage to the vehicle + miscellaneous expenses arising out of the damages.</p>
+                  <p>Recommendation- CampingCo would recommend that the member consult the RC Documents of the rented vehicle for information as to the correct fuel type.</p>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="1" rowspan="1">
+                  <p>Key not returned at end of reservation</p>
+               </td>
+               <td colspan="1" rowspan="1">
+                  <p>₹10000 + replacement cost, if not returned within 3 days</p>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="1" rowspan="1">
+                  <p>Loss of documents</p>
+               </td>
+               <td colspan="1" rowspan="1">
+                  <p>*<a href="{% url 'app:damage_charges' %}">Click here for details</a></p>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="1" rowspan="1">
+                  <p>Co-driver</p>
+               </td>
+               <td colspan="1" rowspan="1">
+                  <p>₹ 2000 if co-driver has not been added in the booking before booking start time.</p>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="1" rowspan="1">
+                  <p>Vehicle Damage (Accidental)</p>
+               </td>
+               <td colspan="1" rowspan="1">
+                  <p>Any unintentional/accidental damage will be liable for the damage charges of ₹ 10,000/. For more details click <a href="{% url 'app:damage_charges' %}">here.</a>*</p>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="1" rowspan="1">
+                  <p>Vehicle Damage (Intentional or Consequential)</p>
+               </td>
+               <td colspan="1" rowspan="1">
+                  <p>In case of any intentional damage or damage caused to the vehicle as consequence of the member driving the car, even after the car is damaged and need urgent repair (Examples include but are not limited to:</p>
+                  <p>a. driving in water loggings resulting into engine breakdown,</p>
+                  <p>b. driving after under body damages resulting into engine break down because of oil drainage,</p>
+                  <p>c. driving while under the influence of alcohol or other intoxicants,</p>
+                  <p>d. driving with clutch over pressing etc.</p>
+                  <p>E. Driving with flat tyre</p>
+                  <p>Member will be liable for the full cost of repair post damage to the vehicle + loss of expected revenue arising out of the damage.</p>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="1" rowspan="1">
+                  <p>Towing and Impounding</p>
+               </td>
+               <td colspan="1" rowspan="1">
+                  <p>No cost if caused by vehicle failure</p>
+                  <p>Full cost if caused by user negligence</p>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="1" rowspan="1">
+                  <p>Cleaning required (interiors)</p>
+               </td>
+               <td colspan="1" rowspan="1">
+                  <p>Washing of removables (for footmats etc) would be charged at ₹500. Interior Washing / Drycleaning (for seat covers, door panels) would be charged at ₹1,500.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <p>Note: Payments owed by members will be deducted from the security deposit. If the security deposit does not cover such payments, the balance must be paid by the member electronically.</p>
+      <p>*Please note there are four cases where there will be exceptions:</p>
+      <ul>
+         <li>In the event the member is found to be under the influence of alcohol during a booking, the member will be held liable for 100% of the vehicle damage bill as per the invoice received from the vehicle workshop.</li>
+         <li>The member will be liable for 100% of the entire vehicle damage bill in the event that the vehicle workshop and/or insurance company deem the damage to be consequential in nature (this will be clearly stated in the accident report). Consequential damage occurs when the member continues driving even after an external vehicle impact, thereby severely undermining the condition of the vehicle.</li>
+         <li>In the event a non CampingCo member is found to be the one driving at the time of accident, then the member will be held liable for 100% of the vehicle damage bill as per the invoice received from the workshop.</li>
+      </ul>
+      <h3 class="green">Member's Responsibility</h3>
+      <p>If a CampingCo member is violating the law or CampingCo rules, for example by over speeding or driving drunk, the member will be responsible for all damage, liability, and fines and could face legal action.</p>
+      <h4>Responsibility for Payment:</h4>
+      <ol>
+         <li>Payments by Members shall be made with his/her credit card or direct bank transfer. The Member is under obligation to ensure that the account from which the amounts are to be collected have sufficient funds or credit available to cover any charges. Member is solely responsible for any associated bank or credit card charges or fees. Member may be charged a processing fee for a declined credit or debit card payment.</li>
+         <li>In the event the Member defaults on any payments, CampingCo is entitled to charge reminder fees and default interest in accordance with the provisions of the law. In addition, CampingCo may utilize third parties to collect amounts owed to CampingCo by a Member.</li>
+         <li>With all fees mentioned above, CampingCo reserves the right to prohibit a Member from making a subsequent reservation until all outstanding fees in the Member's account have been paid in full. In the event a fee is incurred, Members will receive an email invoice from CampingCo that will have detailed payment instructions.</li>
+      </ol>
+      <h4 class="green">Collision or other incident:</h4>
+      <ol>
+         <li>CampingCo provides full wrap unlimited third party liability insurance without a maximum cap.</li>
+         <li>If member is involved in an unintentional/non consequential incident/accident (including but not limited to a collision or misuse of the vehicle) Member will be responsible for a standard insurance deductible payment of up to ₹ 10,000. The Member will be obligated to pay the repair cost up to ₹ 10000. The payment owed will be deducted from the security deposit, if any. Should the security deposit not cover the payment (in the case the Member has accrued late return, excess km, etc charges) the balance of the payment owed shall be payable by the Member separately as an additional outstanding.</li>
+         <li>Member will be responsible for all towing and impounding charges associated with a collision.</li>
+         <li>Member will be responsible for all towing and impounding charges caused by member failure.</li>
+         <li>CampingCo will be responsible for all towing and impounding charges caused by vehicle failure.</li>
+         <li>Member will be responsible for all applicable damages and costs, including those in excess of the applicable Damage Fee, arising from the Member's failure to comply with the terms of the Agreement and/or a violation of the law.</li>
+      </ol>
+      <h4 class="green">Tolls</h4>
+      <ol>
+         <li>Members are responsible for paying all tolls at the time they are due.</li>
+         <li>Members must pay all inter-state taxes and fees upon entering into a neighbouring state.</li>
+      </ol>
+      <p>By joining CampingCo, the Member agrees to pay CampingCo the costs, charges, fees and expenses set out in the Agreement, including specifically and without limitation those set forth in this schedule. The following is not exhaustive and other specific fees, costs and charges may apply. Other applicable costs will be communicated to the Member. Capitalized terms used in this schedule shall have the same meaning assigned to such terms in the Agreement.
+         CampingCo reserves the right to change the terms of this Policy from time to time and shall give notice of such changes to the Member in a timely manner. Notice to the Members shall be considered given when such notice is indicated and accessible from the first page accessed after the Member log-on to the CampingCo website, or by email to the Member's email address provided to CampingCo in the Member's application or most recently provided to CampingCo. Member agrees that the amended terms and conditions of this Agreement shall be effective and binding the earlier of (1) the effective date indicated in such notice; or (2) on the date posted on CampingCo's website.
+      </p>
+   </div>
+   <!--<div id="ELIGIBILITY" class="tabcontent">-->
+   <!--<h3>Paris</h3>-->
+   <!--<p>Paris is the capital of France.</p>-->
+   <!--</div>-->
+   <div id="MEMBER AGREEMENT" class="tabcontent">
+      <p>THIS WEBSITE TERMS OF USE ("MEMBER AGREEMENT") IS AN ELECTRONIC RECORD IN THE FORM OF AN ELECTRONIC CONTRACT FORMED UNDER INFORMATION TECHNOLOGY ACT, 2000 AND RULES MADE THEREUNDER AND THE AMENDED PROVISIONS PERTAINING TO ELECTRONIC DOCUMENTS / RECORDS IN VARIOUS STATUTES AS AMENDED BY THE INFORMATION TECHNOLOGY ACT, 2000. THIS MEMBER AGREEMENT DOES NOT REQUIRE ANY PHYSICAL, ELECTRONIC OR DIGITAL SIGNATURE.</p>
+      <p>THIS MEMBER AGREEMENT IS A LEGALLY BINDING DOCUMENT BETWEEN USER AND CAMPINGCO (BOTH TERMS DEFINED BELOW). THIS MEMBER AGREEMENT WILL BE EFFECTIVE UPON YOUR ACCEPTANCE OF THE SAME (DIRECTLY OR INDIRECTLY IN ELECTRONIC FORM OR BY MEANS OF AN ELECTRONIC RECORD) AND WILL GOVERN THE RELATIONSHIP AND TRANSACTION BETWEEN USER AND CampingCo FOR THE USE OF THE SERVICES OFFERED THROUGH WEBSITE (DEFINED BELOW).</p>
+      <p>This Member Agreement on the website www.camping-co.com and mobile application under the name and style of "CampingCo" (the Website) is between H&amp;H Overland Expedition India Private Limited (hereinafter referred to as "CampingCo" or “Company” or "We" or "Us" or "Our") and the guest users or registered users of the Website (hereinafter referred to as “Member” or "You" or "Your" or "Yourself" or "User") describe the terms on which CampingCo offers you the access to the Website and such other services as are incidental and ancillary thereto ("Services"). &nbsp;</p>
+      <p>PLEASE READ THE TERMS OF MEMBER AGREEMENT CAREFULLY BEFORE USING OR REGISTERING ON THE WEBSITE OR ACCESSING ANY MATERIAL, INFORMATION OR AVAILING SERVICES THROUGH THE WEBSITE. IF YOU DO NOT AGREE WITH THESE TERMS, PLEASE DO NOT USE THE WEBSITE OR AVAIL ANY SERVICES BEING OFFERED THROUGH THE WEBSITE.</p>
+      <p>CAMPINGCO RESERVES THE RIGHT TO CHANGE THE TERMS OF THIS MEMBER AGREEMENT FROM TIME TO TIME AND SHALL GIVE NOTICE OF SUCH CHANGES TO THE MEMBER IN A TIMELY MANNER. NOTICE TO THE MEMBERS SHALL BE CONSIDERED GIVEN WHEN SUCH NOTICE IS INDICATED AND ACCESSIBLE FROM THE FIRST PAGE ACCESSED AFTER THE MEMBER LOG-ON TO CAMPINGCO WEBSITE, BY EMAIL TO THE MEMBER’S EMAIL ADDRESS PROVIDED TO CAMPINGCO IN THE MEMBER’S ACCOUNT CREATION OR MOST RECENTLY PROVIDED TO CAMPINGCO, OR BY SMS TO THE MEMBER’S MOBILE NUMBER PROVIDED DURING THE ACCOUNT CREATION. MEMBER AGREES THAT THE AMENDED TERMS AND CONDITIONS OF THIS AGREEMENT SHALL BE EFFECTIVE AND BINDING THE EARLIER OF (1) THE EFFECTIVE DATE INDICATED IN SUCH NOTICE; OR (2) ON THE DATE POSTED ON CAMPINGCO’S WEBSITE.</p>
+      <p>IT WILL BE PRESUMED THAT MEMBER HAS RECEIVED ANY SUCH NOTICE IF AND WHEN MEMBER MAKES A RESERVATION FOR A CAMPINGCO VEHICLE AFTER NOTICE OF A CHANGE TO THIS AGREEMENT HAS BEEN PLACED ON CAMPINGCO WEBSITE AND/OR DISTRIBUTED TO MEMBER BY EMAIL OR SMS. BY MAKING A RESERVATION AFTER RECEIVING NOTICE OF ANY CHANGES TO THE AGREEMENT, MEMBER ASSENTS TO AND WILL BE BOUND BY SUCH CHANGES TO THE AGREEMENT. MEMBER MAY DECLINE SUCH CHANGES BY DISCONTINUING TRIPS UNDER CAMPINGCO’S MEMBER AGREEMENT.</p>
+      <p>IN THE EVENT OF ANY CONFLICT BETWEEN THIS AGREEMENT AND ANY OTHER DOCUMENT WITH RESPECT TO CAMPINGCO’S OTHER PROGRAMMES, THESE TERMS AND CONDITIONS SHALL GOVERN EXCEPT OTHERWISE SET FORTH FROM CAMPINGCO IN WRITING.</p>
+      <p class="green">1. General:</p>
+      <p>H&amp;H Overland Expeditions India Private Limited is a company incorporated under the laws of India, with its registered office at L-601,Designarch,Sec-5, Vaishali, Ghaziabad,Uttar Pradesh - 201010, &nbsp;India and having CIN: U74999UP2018PTC111227</p>
+      <p class="green">2. Persons Permitted to Drive Vehicles:</p>
+      <p>2.1 Only active CampingCo Member in good standing, as decided solely by CampingCo, is allowed to drive CampingCo vehicles. Non-Member is expressly prohibited from driving a CampingCo vehicle at any time. Member holding effective driving license, uploaded on the Website and approved by CampingCo, may drive a CampingCo vehicle that has been reserved by another CampingCo Member with the permission of the Member having carried out the reservation; however, all fees and charges shall be determined in accordance with, and be the responsibility of, the reserving Member while any liability and/or claim arising out of such usage shall be that of all such participant Members. Notwithstanding, anything contrary contained in this Member Agreement, the Member booking the expedition must ensure that any other person having effective driving license drives CampingCo vehicle only with the prior consent of CampingCo, failing which Member originally booking the vehicle shall be solely liable to indemnify CampingCo without any limitation for any loss suffered by CampingCo.</p>
+      <p>2.2 Satisfying eligibility criteria required to become a CampingCo Member does not automatically give an applicant the right to become a CampingCo Member. Acceptance of the applicant’s membership is subject to approval by CampingCo at its sole discretion.</p>
+      <p>2.3 Should any Member’s driving license expire or be revoked, authorization to drive CampingCo vehicles shall expire immediately. CampingCo shall be notified of such expiry or revocation by the Member by e-mail forthwith upon such expiry or revocation.</p>
+      <p>2.4 By applying for membership, each applicant authorizes CampingCo and CampingCo reserves the right on its sole discretion to obtain his/her driving records from the jurisdiction in which the applicant is licensed. Because driving a CampingCo vehicle requires maintaining a good driving record, CampingCo may periodically check Member’s driving records and reserves the right, at its sole discretion, to suspend or terminate the Membership of any Member, who does not meet CampingCo’s driving eligibility requirements. Member agrees to promptly report to CampingCo any suspension or revocation of his/her driving license, or any tickets/citations/conviction related to any traffic violation including but not limited to driving under the influence of drugs or alcohol, driving while intoxicated, reckless driving, exceeding the speed limit, or sending an SMS while driving.</p>
+      <p>2.5 Member is responsible for providing and maintaining current e-mail, cell phone, residential address (current/temporary and permanent), and other account information with CampingCo. Member further warrants that information provided to CampingCo shall be absolutely correct and is bound to inform to CampingCo promptly, if any change occurs in the information provided earlier including but not limited to residential address.</p>
+      <p>2.6 Member is responsible for keeping any CampingCo related password and/or PIN numbers in strict confidence and to not make passwords or PINs available to third-parties, should a PIN or password be reduced to written or electronic form, the Member will be responsible for any associated costs and/or damages in connection with unauthorized use by third-parties. If a Member has reason to believe a third-party may have obtained unauthorized knowledge of a password and/or PIN, Member agrees to change the compromised password and/or PIN instantly.</p>
+      <p class="green">3. Prohibited Uses:</p>
+      <p>3.1 The use of a CampingCo vehicle under the following conditions is prohibited:</p>
+      <p>a) any speed race or competition;</p>
+      <p>b) for the purpose of towing, pushing, or propelling any trailer or any other vehicle;</p>
+      <p>c) for the primary business purpose of transporting people or operating a taxi service;</p>
+      <p>d) by any person who is under the influence of (i) alcohol or (ii) any drug or medication under the effects of which the operation of a vehicle is prohibited or not recommended. A zero-tolerance policy is adopted.</p>
+      <p>e) in the carrying out of any crime or any other illegal activity;</p>
+      <p>f) in an imprudent, negligent, or abusive manner or for any abnormal use of this vehicle;</p>
+      <p>g) by any person who has provided CampingCo with false information or whose representations are determined to be false (including, without limitation, regarding his name, age, or address);</p>
+      <p>h) driving a CampingCo vehicle outside of India or any prohibited areas within India unless authorized by CampingCo in special circumstances such as expeditions in Bhutan;</p>
+      <p>i) driving while using a mobile phone or any other mobile communication device in any manner whatsoever, including while sending an SMS, emailing, using a cell phone with or without a hands-free device, otherwise using a mobile communication device that may distract you from driving or otherwise engaging in similar activities that may be prohibited by applicable law;</p>
+      <p>j) Using CampingCo vehicle to transport flammable, poisonous, or otherwise hazardous substances for other than legally permissible household use or in amounts greater than what is usually consumed in a household.</p>
+      <p>k) Transporting objects with CampingCo vehicle that could – due to their size, shape, or weight adversely impact the vehicle’s handling safety or that could damage the interior of CampingCo vehicle or, by virtue of such object/s protruding outside, affect the safety of vehicles driving in the vicinity of CampingCo vehicle.</p>
+      <p>l) Transporting more passengers than the prescribed seating capacity of the vehicle by manufacturer of the vehicle.</p>
+      <p>3.2 The foregoing examples are not intended to be an exhaustive list. Any unreasonable, unwarranted, illegal, unethical or inappropriate use of a CampingCo vehicle except the personal use for travel, as determined by CampingCo in its sole discretion, may be deemed a violation of these terms and conditions. CampingCo may report to the authorities any use of a CampingCo vehicle or other activities that are in violation of local, state, and/or national law or in violation of these terms and conditions.</p>
+      <p>3.3 CampingCo may immediately suspend or terminate the use of its Service by any Member for a violation of any of the terms and conditions of Member Agreement. Upon suspension or termination, any existing reservations for the Member may be cancelled by CampingCo at its sole discretion. In addition, Member will be absolutely responsible for any and all, losses, damages (direct/indirect), costs, charges, fees and expenses incurred by CampingCo, as a result of a breach of any of these terms and conditions and Member unconditionally and irrevocably agrees that CampingCo reserves the right to pursue the remedial action to recover the losses/damages suffered by CampingCo from Member’s property including but not limited to his/her legal heirs/representative’s properties.</p>
+      <p class="green">4. Reserving CampingCo Vehicles:</p>
+      <p>4.1 Reservation is required for all potential booking. Member must always reserve a vehicle in advance of use and will be billed for usage fees at the time of reservation. Member is required to fulfil the below mentioned conditions at the time of taking the possession of the Vehicle for scheduled expedition:</p>
+      <p>a) Member must carry the original driving licence, which is being shared with CampingCo at the time of start of expedition with CampingCo. Member must show the same to the representative of CampingCo available at location, where the possession of the Vehicle is supposed to be taken by Member;</p>
+      <p>b) Member must carry and support CampingCo in capturing the image of any one out of following documents in original, as an additional document to be placed on records of CampingCo to justify his/her identity:</p>
+      <p>i) EPIC (Electoral Photo Identity Card), commonly known as Voter ID; or</p>
+      <p>ii) Valid Passport</p>
+      <p>c) Member must co-operate with the representative of CampingCo in taking a photo of Vehicle along with Member, which is meant for safety of Member and record purposes of CampingCo.</p>
+      <p>Member shall be held solely responsible, if any of the above conditions are not being completed successfully at the time when possession of vehicle was supposed to be taken by Member and CampingCo reserves the right not to handover the possession of Vehicle. Consequently, the booking will stand completed without any further onus of CampingCo to refund or return the booking amount.</p>
+      <p>4.2 If You wish to cancel a reservation or shorten the period for which a vehicle has been reserved, You must do so in advance, in pursuance of the Fee Policy.</p>
+      <p>4.3 If You wish to extend a reservation, You may do so only if following conditions are fulfilled:</p>
+      <p>a) the online payment for the extension has been made and successfully receipt by CampingCo; and</p>
+      <p>b) the Vehicle is available for use for the extension period (for example, it is not reserved by another Member); and</p>
+      <p>c) the request to extend is completed prior to the scheduled expiration time of Your existing reservation.</p>
+      <p>In case, any of the above conditions are missing after the expiry of the booking (initial or immediate prior) then you will be deemed to possess the vehicle without authorisation and must hand over the Vehicle to CampingCo’s parking or its representative without fail/ delay. A delay beyond one hour from the expected handover time of vehicle or after the expiry of booking as the case may be, will be making you the guilty of breach of trust and your involvement in theft of Vehicle would be presumed without any doubt.</p>
+      <p>4.4 In the event Your reservation is not extended successfully (even if You have put in a request for extending the reservation but which has not been confirmed or has been denied by CampingCo for any reason) and You do not return the car to the correct and designated CampingCo space by the end time of Your reservation, CampingCo reserves the right to initiate the criminal proceedings against You and simultaneously will make all reasonable efforts to take possession of the vehicle from You immediately or any time thereafter, and at any location</p>
+      <p>For the avoidance of doubt,</p>
+      <p>a) You will be charged late fee, inconvenience fee and any other charges applicable as per Our Fee Policy from the scheduled end time of Your booking till the time the vehicle is actually recovered by CampingCo,</p>
+      <p>b) You will be charged any additional costs viz; legal attorney fees, consultants fees, travel costs, etc. incurred by CampingCo in taking possession of the vehicle from You, and</p>
+      <p>c) You will not be provided any compensation or alternate means of transportation in such case and will not have the right to ride in CampingCo vehicle any more.You shall hold CampingCo, its officers, employees, agents and affiliates harmless against any claim in connection with the vehicle and/or its re-possession and shall irrevocably and unconditionally indemnify CampingCo against any cost, loss or liability suffered by CampingCo arising out of or in connection with any claim made by a third party against CampingCo in relation to the vehicle and/or its re-possession.</p>
+      <p class="green">5. Vehicle Pick-Up and Return/Vehicle Condition/Stolen Vehicles:</p>
+      <p>5.1 You must pick up the selected vehicle at its designated CampingCo parking space and return it secured, clean, and in good working order, to the correct and designated CampingCo space by no later than the end time of Your reservation. However, the handover of vehicle pursuant to your booking is subject to the the availability of vehicle. Further, CampingCo reserves the right to cancel any booking at its sole discretion with only consequence to return the fees collected at the time of creation of booking.</p>
+      <p>5.2 Prior to taking possession of a vehicle, You must do an exterior walk-around and an interior look-over. Before driving the vehicle, You must advise CampingCo of any damage or abnormality encountered on the vehicle or in the operation of the vehicle. If CampingCo is not notified of a problem at the start of a reservation, You will be deemed to be responsible for any problem with the vehicle discovered or reported after Your reservation, including, without limitation, damage to the vehicle or lack of cleanliness. You may be charged a damage fee, a cleaning fee, or other applicable fees, and CampingCo may suspend, or may even terminate Your membership.</p>
+      <p>5.3 You must leave all the original documents including but not limited to registration certificate, insurance policy, tax payment challans, self-drive licenses, pollution clearance certificates, vehicle’s key, key fob, or other starting device to the vehicle in its designated position in the vehicle at the conclusion of Your reservation. You must advise CampingCo immediately if You fail to leave the original documents mentioned hereinabove, key/fob/starting device, parking pass, or toll payment pass (if applicable in the vehicle.) and this causes inconvenience to CampingCo or another Member, You will be charged the hourly rate for the vehicle until the, original documents, key/key fob/starting device/parking pass/toll payment pass is returned safely to CampingCo and You will remain responsible for the payment of charges against the usage of the vehicle during such period. You may also be charged a fee at CampingCo’s sole discretion to replace any of the items missing from the vehicle.</p>
+      <p>5.4 The end of the trip is being confirmed by either a) specific completion of closing checklist at the end of trip; or b) an SMS message to CampingCo’s provided number to notify of such intent; or c) by unwarranted breakdown/accident of the vehicle.</p>
+      <p>5.5 Reserving Member is responsible for all charges and costs incurred related to CampingCo vehicle for the entire period of the reservation and until the vehicle is returned, secured, closed, locked and serviceable (all accessories off, key out of ignition and in proper place, all windows, doors, hatches, sunroofs and other openings closed, toll payment pass and parking pass and other accessories in the vehicle) to its designated location. CampingCo vehicles must be returned no later than the end time of the reservation and the Member scheduled trip/ride comes to an end automatically and will be governed as per the provisions of clause 4.3 above if extension is sought.</p>
+      <p>5.6 Member is required to report to CampingCo immediately any condition that impairs the driving functionality of the vehicle, such as external or internal damage that renders the vehicle unsafe, including but not limited to, missing or inoperable signal or driving lighting, broken or missing rear-view mirrors and windshield glass.</p>
+      <p>5.7 Notwithstanding anything contrary contained under this policy, any damage caused to vehicle/CampingCo because of Your wilful misconduct or gross negligence, during such time when the vehicle is not in motion, will attract charges/fees as per the sole discretion of CampingCo.</p>
+      <p>5.8 Stolen vehicles or any accidental incidents must be immediately reported to CampingCo and the nearest police station with a detailed written complaint based on actual facts. Member shall ensure that such complaint shall not contain any discrepancy, inconsistencies or distortions from actual facts as the same would be detrimental to a valid insurance or other claim by CampingCo. The Member will be solely liable without any demur, for any loss due to a discrepant, inconsistent or distorted complaint or information by the Member.</p>
+      <p class="green">6. Safety:</p>
+      <p>6.1 Seat Belts and Child Restraints - Member is responsible for:</p>
+      <p>a. Complying with all applicable seat belt, speed limit and child restraint laws. It is being made crystal clear that Member must abide themselves with the maximum speed/ weight limit and any other instructions being displayed/ communicated by the authorities through marks or sign boards in various locations of the concurrent trip</p>
+      <p>b. Protecting all children by properly using any child passenger restraint system that complies with the Motor Vehicle Safety Standards in the jurisdiction where the trip is initiated and where CampingCo vehicle is driven during such trip.</p>
+      <p class="green">7. Securing CampingCo Vehicles:</p>
+      <p>7.1 Each time Member parks a CampingCo Vehicle (either at the end of the reservation or during the reservation period), the Member is responsible for securing the vehicle from external factors including human or general known adverse weather conditions.</p>
+      <p>a. Windows must be closed, tent and equipments must be closed and secured properly. Member will be responsible for any fees or charges associated with a failure to perform these steps.</p>
+      <p>7.2 CampingCo encourages all its Members to take full responsibility of their belongings. In case of any Member claims to have left back any luggage or any phones or personal music devices inadvertently in CampingCo vehicle after the Member completes his/her reservation, CampingCo shall endeavour to locate the lost belongings on a "best-effort" basis provided the Member notifies CampingCo of the same within 90 (Ninety) minutes of the successful return of the car post completion/termination of the reservation, but CampingCo shall not be held responsible for such loss or damage in any circumstances.</p>
+      <p class="green">8. Fees And Eligible (Reimbursable) Expenses:</p>
+      <p>8.1 Member is subject to CampingCo’s fees policy being mentioned on the website www.camping-co.com It entails the scenarios which covers all the fees including but not limited to rentals, late fees, late charges, extensions fees, penalties or fines, if any etc.</p>
+      <p>8.2 An "Eligible Expense" is defined as;</p>
+      <p>(a) any fuel related expense, provided it reconciles reasonably with distance travelled; in pursuance of the standard industry mileage or CampingCo’s internal mileage standard; or</p>
+      <p>(b) an expense incurred by the Member for minor (under INR 1000) routine maintenance on CampingCo vehicles, such as new wiper blades, light bulbs, or windshield-washer fluid, etc. or (c) any expense in excess of INR 1000 that is authorized in advance by a CampingCo Representative, via e-mail/sms/phone. If a Member pays for an eligible expense, he or she must keep the invoice which is subject to fuel test more particularly mentioned in the Fee Policy, which conspicuously captures the date and time showing that it was incurred during the reservation period. The Member must print his or her name on the receipt and give a physical original hard copy of the receipt to CampingCo vehicle attendant after his/her reservation. CampingCo will reimburse the Member or credit the Member's account, post the verification of claim and corresponding invoices. No reimbursement or credit will be given without an invoice, or if the invoice is submitted later than 3(Three) days from the reservation date.</p>
+      <p class="green">9. Overland Discount and Loyalty Points:</p>
+      <p>9.1) &nbsp;Overland points/discount will be credited after the completion of a booking. Completion is defined as successful handover of vehicle back to CampingCo after filling End checklist and payment of all due owed by the Customer</p>
+      <p>9.2) Overland points/discount will not be credited in case of cancellation of booking done by either the user or CampingCo</p>
+      <p>9.3) &nbsp;Overland points/discount will not be awarded on a trip amount less than INR10000</p>
+      <p>9.4) Overland points/discount will not change in case of Upgrade / Downgrade of vehicle. Points calculation will be based on originally booked cargroup</p>
+      <p>9.5) The Program will be valid for bookings made through the website www.camping-co.com or its mobile app</p>
+      <p>9.6) Overland points/discount shall be credited to the same account through *which* the booking is made non-transferrable to friends or any other account</p>
+      <p>9.7) Overland points/discount are non-transferable, non-binding and non-encashable</p>
+      <p>9.8) Overland points/discountcannot be utilized against any outstanding amount/charges for previous bookings</p>
+      <p>9.9) CampingCo reserves the right to cancel all or partial Overland points/discount granted to the members or change any of the terms and conditions including but not limited to eligibility, redemption rewards, Overland points/discount etc., of this Program, at any point in time without prior notice</p>
+      <p>9.10) CampingCo also reserves the right to disqualify any member at any point in time at its sole discretion</p>
+      <p>9.11) Any modification in the Program or any *of* its terms and conditions shall be deemed to have been accepted by the member by continuing to use the CampingCo website or mobile application</p>
+      <p>9.12) CampingCo also reserves the right to terminate or suspend the Program, temporarily or permanently, at any point in time, at its sole discretion</p>
+      <p>9.13) CampingCo shall not be liable for any unauthorized use of member's account and the member shall be solely responsible to ensure security and confidentiality of member's account</p>
+      <p>9.14) Overland points/discount will not be awarded if the Customer uses the Vehicle for any purpose which is prohibited in the membership agreement or is involved in any traffic violations.</p>
+      <p>CampingCo reserves the right to run any offer/program to provided additional benefits through this Program to a set of identified users based on certain parameter as may be decided by CampingCo from time to time. And such program/offer shall consider only prospective completed booking i.e. bookings made from the date of the launch of such program/offer.</p>
+      <p>9.15) In case of any dispute or conflict CampingCo's decision shall be final</p>
+      <p class="green">10. Maintenance/Cleanliness:</p>
+      <p>10.1 CampingCo will perform all necessary and required routine maintenance on all of its vehicles. However, Member is responsible for the cleanliness of vehicle and are expected to assist in helping CampingCo to maintain the driving safety and performance of the vehicle, in particular during longer reservations or when the vehicle indicates that service or maintenance is required.</p>
+      <p>10.2 Vehicle may require Roadside Assistance from time to time. CampingCo makes reasonable best efforts to provide Roadside Assistance support in all cases. If, however, a Member's need for Roadside Assistance results from a breach of these Terms and Conditions, the Member may be charged for the full costs of the towing, repair & maintenance.</p>
+      <p>10.3 Use of tobacco, cigarettes, cigars, and alcohol is absolutely prohibited inside CampingCo vehicles. Member is subject to additional fine if evidence of smoking, chewing, drinking or dipping is found inside CampingCo vehicles or complained of by a Member using the vehicle immediately following the Member’s reservation.</p>
+      <p>10.4 Burning any substance is absolutely prohibited in CampingCo vehicles. This includes, but is not limited to tobacco, other drugs, and incense.</p>
+      <p>10.5 Pets are absolutely prohibited in CampingCo vehicles, except for those vehicles designated “pet friendly”. Member is subject to additional fees, if evidence of pets is found in CampingCo vehicles or complained of by a Member using the vehicle immediately following the Member’s reservation.</p>
+      <p class="green">11. Breakdown or Incidents:</p>
+      <p>11.1 All breakdowns or incidents involving CampingCo vehicles must be reported to CampingCo immediately by phone to +916913332761 or on the group created at the start of expediton and via email on info@camping-co.com</p>
+      <p>11.2 Breakdown and Roadside Assistance. While using a vehicle, You must follow the owner's manual instructions, provided in the vehicle’s glove compartment. If a problem arises that prevents or limits the use of the vehicle or that may compromise people's safety, Member must immediately notify CampingCo on the above mentioned phone number/email id and follow CampingCo’s instructions. Member may have to pay for towing, repairs, and other expenses in some circumstances.</p>
+      <p>11.3 Jump start. If You perform a jump start to CampingCo vehicle, You must inform CampingCo immediately by phone. You are fully responsible for any damage that may result from the improper use of jumper cables or other tools. It is strictly forbidden to provide a jump start to any vehicle other than a CampingCo vehicle.</p>
+      <p>11.4 Incident. In case of an incident involving property damage or any third party, the Member must fill out an official police report form and, mandatorily provide a jointly agreed-upon statement, complete CampingCo’s incident report form, and obtain the following information:</p>
+      <p>a. Date, time, and place of incident;</p>
+      <p>b. The license plate numbers of any other vehicles involved, their make and year, their identification number (serial number), and the insurance certificate's number (with name, address and phone number of the insurance agent);</p>
+      <p>c. The names, addresses, and driver's license numbers of the persons involved in the incident;</p>
+      <p>d. The name, address, and driver's license number of the owner of the vehicle (if he or she is not the driver);</p>
+      <p>e. The name, addresses, and phone number of witnesses, passengers, and any other involved persons;</p>
+      <p>f. Circumstances of the incident describing immediate surrounding environment and car position prior to the incident; and</p>
+      <p>g. A police report is required regardless of liability or fault. Member shall specify in his/her detailed written complaint to the police the actual facts only. Member shall ensure that such complaint shall not contain any discrepancy, inconsistencies or distortions from actual facts as the same would be detrimental to a valid insurance or other claim by CampingCo. Any loss occasioned to CampingCo due to a discrepant, inconsistent or distorted complaint by a Member shall be to the account of such Member.</p>
+      <p>11.5 Investigation and procedure. Member must provide to CampingCo and any other claims adjustment service with the findings of any report or any notice relating to a claim or a lawsuit against CampingCo regarding any incident involving a CampingCo vehicle. Member agree to cooperate fully with CampingCo in the investigation and defense of any such claim or lawsuit. A Member's accounts will be suspended until the investigation has been concluded.</p>
+      <p>11.6 The Member shall be responsible for the costs related to the repair, recovery, and loss of use of any CampingCo vehicle resulting from any of the foregoing, up to the current damage fee, as set forth in the Fee Policy / Rate Schedule (if such costs are because of the fault of the Member or if the fault is not directly established to any other person/ entity, or where any cost is not paid / reimbursed by the insurer of CampingCo vehicles or the insurer of the other vehicle involved in the accident).</p>
+      <p>11.6A Where the Member is not responsible for the breakdown of the CampingCo vehicle, CampingCo shall refund an amount equal to the cost of the unused hours of such booking. Further, CampingCo shall not be liable for any further costs borne by the Member as a consequence of the breakdown of the CampingCo vehicle.</p>
+      <p>11.7 In case of any accidents/damages, any out of court settlement initiated or accomplished by Members with the third parties without written consent of CampingCo will be solely borne by the Member.</p>
+      <p class="green">12. Traffic Violations:</p>
+      <p>12.1 You are responsible for any traffic violations incurred due to Your inappropriate use of a CampingCo vehicle. This includes, but is not limited to: unauthorised parking, excess speeding, breaking red light, photo enforcement, and toll violations. You are solely liable for all costs imposed due to any such violation during the concurrence of Your trip/ride/booking, including fines for late payment and any processing fees added by the respective regulatory authority. You are liable for payment of all tolls and any fines for toll evasion. You must report such violations to a CampingCo representative, as soon as possible, within the prescribed timeline for the violation (for example, if the case is being taken to court). CampingCo will notify the Member immediately by e-mail after it comes to know about any of such violation and Member shall forthwith pay the relevant fine/s to the authority concerned and provide CampingCo with the proof of such payment, failing which CampingCo will pay those amounts and Member shall reimburse the same to CampingCo at earliest. However, where Member has personal knowledge of such violations, CampingCo will not be obligated to provide Member with the notification as above, but Member’s obligation to pay the relevant fine/s and notifying CampingCo of such compliance will continue as aforementioned.</p>
+      <p>12.2 You must notify CampingCo of any traffic violation notices found on a vehicle at the time of vehicle pick up.</p>
+      <p>12.3 You must not leave a vehicle in a zone which has parking restrictions. If You leave the vehicle in such a restricted zone, You must immediately notify CampingCo, and You will be responsible for any and all violation notices or towing charges incurred by CampingCo. Additionally, financial penalties will be levied against You for any inconvenience caused to other CampingCo member if the vehicle is unavailable for its scheduled reservation because of such parking violations as set out in the fee policy on the website i.e. www.CampingCo.com</p>
+      <p class="green">13. Insurance and Liability:</p>
+      <p>13.1 MEMBER DEDUCTIBLE OBLIGATION:</p>
+      <p>A. IF MEMBER IS IN FULL COMPLIANCE WITH THE TERMS AND CONDITIONS OF CAMPINGCO’S POLICIES BEING MENTIONED AT WWW.CAMPING-CO.COM, CampingCo SHALL PROVIDE PRIMARY THIRD PARTY LIABILITY PROTECTION, WHICH WILL BE TO THE EXTENT OF CLAIMS / LIABILITIES COVERED BY CAMPINGCO’S VEHICLE INSURER, ON CAMPINGCO’S VEHICLES FOR ANY/ ALL CLAIMS AND/OR LIABILITIES ARISING DURING THE USE OR OPERATION OF THE VEHICLE BY THE MEMBER. MEMBER WILL BE RESPONSIBLE FOR ANY ASSOCIATED DEDUCTIBLE CHARGES DIRECTLY/INDIRECTLY PERSONALLY ATTRIBUTABLE TO THE MEMBER’S DEFAULT OR OTHERWISE AS PER DISCRETION OF CAMPINGCO.</p>
+      <p>B. IF AT ANY TIME IT IS DETERMINED THAT LOSSES/CLAIMS MENTIONED HEREINABOVE WILL EXCEED THE INSURANCE COVERAGE TAKEN BYCAMPINGCO, MEMBER WILL BE RESPONSIBLE FOR ANY SUCH EXCESS CLAIMS/ LOSS/ DAMAGES.</p>
+      <p>13.2 CAMPINGCO IS NOT RESPONSIBLE FOR ANY DAMAGE TO, LOSS OR THEFT OF, ANY PERSONAL PROPERTY BELONGING TO MEMBER OR CO-PASSENGER OR THIRD-PARTIES, REGARDLESS OF FAULT OR NEGLIGENCE.</p>
+      <p>13.3 LIABILITY PROTECTION APPLIES ONLY TO CLAIMS OF THIRD-PARTY BODILY INJURY, DEATH OR PROPERTY DAMAGE, OTHER THAN TO THE VEHICLE, ARISING FROM THE USE OF CAMPINGCO VEHICLE AS PERMITTED BY THIS AGREEMENT AND APPLICABLE LAW. ANY SUCH PROTECTION EXCLUDES ANY CLAIM MADE BY MEMBER OR CO-PASSANGER OR MEMBER’S/CO-PASSANGER’S IMMEDIATE FAMILY MEMBERS WHO PERMANENTLY LIVE WITH MEMBER OR IS TRAVELLING WITH MEMBER AT THE TIME OF INCIDENT. THIS OBLIGATION MAY BE LIMITED TO THE EXTENT CampingCo’S COVERAGE APPLIES. CAMPINGCO SHALL NOT BE LIABLE TO MEMBER/CO-PASSANGER FOR ANY INDIRECT, SPECIAL, PUNITIVE, OR CONSEQUENTIAL DAMAGES (INCLUDING LOST PROFITS) ARISING FROM OR RELATED TO CAMPINGCO VEHICLE, ITS USE, OR THIS AGREEMENT.</p>
+      <p>13.4 MEMBER INCLUDING BUT NOT LIMITED TO HIS/HER PROPERTIES, LEGAL HEIRS ETC; (IN CASE OF HIS/HER ABSENCE) INDEMNIFIES AND HOLDS CampingCo, ITS PARENT COMPANY AND AFFILIATES AND HIS/HER RESPECTIVE DIRECTORS, OFFICERS, EMPLOYEES, SHAREHOLDERS, AGENTS, ATTORNEYS, ASSIGNS AND SUCCESSORS-IN-INTEREST, HARMLESS WITHOUT DEMUR FOR ALL LOSSES, LIABILITIES, DAMAGES, INJURIES, CLAIMS, DEMANDS, COSTS, ATTORNEY FEES, BUSINESS LOSS AND OTHER EXPENSES INCURRED BY CAMPINGCO (A “LOSS”) ARISING FROM: (1) THE USE OR POSSESSION OF CAMPINGCO VEHICLE BY THE MEMBER AND (2) THE MEMBER’S NON-COMPLIANCE WITH THIS AGREEMENT.</p>
+      <p>13.5 MEMBER INCLUDING BUT NOT LIMITED TO HIS/HER LEGAL HEIRS/ REPRSENTATIVES/ GAURDIANS SHALL HAVE FINAL RESPONSIBILITY TO CampingCo FOR ALL SUCH LOSSES.</p>
+      <p>13.6 This Agreement is intended for the benefit of Member and CampingCo and no other party may claim rights hereunder, whether as a third-party beneficiary or otherwise. UNDER NO CIRCUMSTANCES WILL CampingCo BE LIABLE TO ANY THIRD-PARTY FOR INDIRECT, INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES ARISING FROM OR RELATED TO THIS AGREEMENT OR USE OF CampingCo VEHICLES AND AVAILING OF SERVICE BY MEMBER.</p>
+      <p class="green">14. Data Protection:</p>
+      <p>14.1 CampingCo captures, stores, processes and uses the Member’s Personal data, including, but not limited to, name, e-mail id, internet protocol address, copy of driving license image and duly attested colour image of Voter ID or Passport on the letter head of the electoral officer and police officer respectively under whose jurisdiction the address falls), and any other additional address cum identity proof, image of the customer, the usage and vehicle data as they relate to the Member, to the extent this is necessary for the administration and implementation of this Agreement and the Member’s use of CampingCo’s vehicle.</p>
+      <p>14.2 Should third-party services be used, CampingCo is entitled to forward to the third-party service provider the Member’s Personal data, to the extent this is required in order to fulfil the objectives of CampingCo.</p>
+      <p>14.3 CampingCo is entitled to provide Member’s Personal data to third-parties for the purposes of providing individualized offers, Services, and other customized information to Members.</p>
+      <p>14.4 CampingCo shall implement and maintain reasonable procedures for protecting sensitive personal information in compliance with applicable law.</p>
+      <p>14.5 CampingCo shall be entitled to disclose information of the Member to CampingCo’s parent company and to all companies controlled by CampingCo or any of its affiliates and to any government body as required by the law/ or by directive/ or request from any government body or to any third party deemed fit and proper by CampingCo, in its absolute discretion.</p>
+      <p>14.6 Notwithstanding anything contrary contained herein, Member shall be governed by the privacy policy of CampingCo being mentioned on the website www.CampingCo.com.</p>
+      <p class="green">15. Arbitration & Jurisdiction for Disputes:</p>
+      <p>15.1 Any Dispute, controversy or claims by or between, CampingCo and Member, hereto arising out of or relating to or in connection with terms and conditions of this Member Agreement or transactions contemplated on Website, or the breach, termination, validity of any term under this agreement shall be finally settled by ‘Arbitration’ in accordance with the Indian Arbitration and Conciliation Act, 1996. There shall be a sole arbitrator, who shall be appointed by CampingCo. Any arbitration proceedings or award rendered hereunder and the validity, effect and interpretation of this agreement to arbitrate shall be governed by the Laws of India. The arbitration proceedings shall be conducted in Bangalore or Jaipur, and the award shall be rendered in the English Language. If either party employs attorneys to enforce any rights arising out of or relating to this Agreement, the prevailing party shall be entitled to recover reasonable attorneys’ fees.</p>
+      <p>15.2 (a) Subject to sub-clause (b) the Member irrevocably agree that the courts in Delhi-NCR are to have exclusive jurisdiction for the purpose of hearing and determining any litigation, suit, action or proceedings and/or to settle any disputes arising out of or in any way relating to this Agreement or its formation or validity ("Proceedings") and for the purpose of enforcement of any judgment against its property or assets</p>
+      <p>(b) Nothing in this clause shall (or shall be construed so as to) limit the right of CampingCo to initiate proceedings against any of its Members in accordance with mandates contained in Section 20 of the Civil Procedure Code, 1908.</p>
+      <p>(c) Notwithstanding anything contained in the foregoing sub clauses, the jurisdiction in relation to criminal proceedings shall be governed in accordance with the provisions contained in Chapter XIII of the Code of Criminal Procedure, 1973. &nbsp;"</p>
+      <p>15.3 Member agrees to pay CampingCo’s reasonable attorneys' fees and costs in any legal proceeding relating to this Agreement, including appeals, where the respective court or forum pronounces the order in favour of CampingCo.</p>
+      <p>15.4 Member must not aid or encourage the filing of any third-party claim or lawsuit against CampingCo, and Member must cooperate fully with CampingCo and CampingCo’s insurer in the investigation and defense of any claim or lawsuit. In any proceeding involving the Member and CampingCo as co-defendants should CampingCo determine in its sole discretion that the Member’s independent attorney has not aligned his defense similar to that of CampingCo, CampingCo shall be entitled to call upon the Member to change his attorney to one advised by CampingCo and the Member shall accordingly change his attorney at his own cost.</p>
+      <p>15.5 Member must immediately notify and deliver to CampingCo every summons, complaint, document, or notice of any kind received by Member in any way relating to an accident, theft, or other circumstances related to CampingCo vehicle.</p>
+      <p class="green">16. Integrated Service:</p>
+      <p>CampingCo is not liable for any loss or damage while camping outdoors, at a designated campground/overland park or at a resort/homestay. Location where the member parks the vehicle is entirely his/her responsibility. Any incident or injury sustained while performing such activities is entirely member’s responsibility. Camping Co is not liable for any refund in case of weather conditions making it unsuitable for camping or being outdoors </p>
+      <p>16. Severability Agreement:</p>
+      <p>If any term, provision, covenant or condition of this Agreement is held invalid or unenforceable for any reason, the remainder of the provisions will continue in full force and effect as if this Agreement had been executed with the invalid portion eliminated. The Parties further agree to substitute for the invalid provision a valid provision that most closely approximates the intent and economic effect of the invalid provision. This Agreement, together with the User Guide, Trip Process, Member Application, Fee Policy / Rate Schedule, and any applicable consent forms, along with any amendments hereto, encompasses the entire agreement between Member and CampingCo, and supersedes all previous understandings and agreements between Member and CampingCo. Member acknowledges and represents that he or she has not relied on any representation, assertion, guarantee, warranty, collateral contract or other assurance, except those set out in this Agreement, made by or on behalf of any other party or any other person or entity whatsoever, prior to the execution of this Agreement.</p>
+      <p class="green">17. No Waiver:</p>
+      <p>No term contained in this Agreement may be changed or waived, except in writing signed by an expressly authorized representative of CampingCo. No waiver of default by Member/ You under any of the Terms or Conditions of this Agreement shall be construed as a waiver of any prior or subsequent default of any of the Terms or Conditions of this Agreement.</p>
+      <p class="green">18. Assignment or Transfer:</p>
+      <p>The rights granted to the Member under this Agreement are not assignable or transferable, in whole or part. Any attempt to transfer this Agreement without the written consent of CampingCo shall be void and of no force and effect. CampingCo reserves the right and can at its absolute discretion can assign the rights and obligations under this Agreement to an affiliate or to another entity in connection with a corporate transaction or otherwise.</p>
+      <p class="green">19. No Agency:</p>
+      <p>Member&nbsp;will never be deemed to be CampingCo’s agent, servant, or employee in any manner for any purpose whatsoever.</p>
+      <p class="green">20. Terms & Termination:</p>
+      <p>20.1 This Member Agreement shall continue to apply until terminated by either You or CampingCo as set forth below. If You want to terminate Your agreement with CampingCo, You may do so by (i) not accessing the Website; or (ii) closing Your Account for all of the Services that You use, where CampingCo has made this option available to You.</p>
+      <p>20.2 You agree that CampingCo may, in its sole discretion and without prior notice, terminate Your access to the services and block Your future access to the services if CampingCo determines that You have violated the terms & conditions of this Member Agreement any other Policy(s) of the Website. You also agree that any violation by You of the Agreement(s) will cause irreparable harm to CampingCo, for which monetary damages may be inadequate, and You consent to CampingCo obtaining any injunctive or equitable relief that CampingCo deems necessary or appropriate in such circumstances. These remedies are in addition to any other remedies which CampingCo may have at law or in equity.</p>
+      <p>20.3 In addition to Clause 20.2 above, CampingCo may, at any time, with or without notice, terminate these terms of the Member Agreement with You if:</p>
+      <p>•&nbsp;&nbsp;&nbsp;&nbsp;CampingCo is required to do so by law (for example, where the provision of the Services to You is, or becomes, unlawful), or upon request by any law enforcement or other government agencies;</p>
+      <p>•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The provision of the Services to You by CampingCo is, in CampingCo’ s sole discretion, no longer commercially viable;</p>
+      <p>•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CampingCo has elected to discontinue, with or without reason, access to the Website, the Services (or any part thereof); or</p>
+      <p>•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the event CampingCo faces any unexpected technical issues or problems that prevent the Website and / or Services from working.</p>
+      <p>20.4 CampingCo may also terminate or suspend all or a portion of Your Account or access to the Services with or without reason. Termination of Your Account may include: (i) removal of access to all offerings within the Website or with respect to the Services; (ii) disabling access to the Account Information, including Your personal information, log-in ID and password, and all related information, files and materials associated with or inside Your Account (or any part thereof), and any User Content uploaded by You; and (iii) prohibiting further use of the Services.</p>
+      <p>20.5 You agree that all terminations shall be made in CampingCo’s sole discretion and that CampingCo shall not be liable to You or any third party for any termination of Your Account (and accompanying deletion of Your Account Information), or Your access to the Website and Services.</p>
+      <p>20.6 Notwithstanding the foregoing, such terms of this Agreement as are meant to survive termination / expiry of this Agreement, will survive indefinitely unless and until CampingCo chooses to terminate them.</p>
+      <p class="green">21. Force Majeure:</p>
+      <p>If performance of any Service or obligation under the terms and conditions of this Member Agreement or any other provisions of the policies of the Website, or other third parties in fulfilment of transaction (for e.g. home deliveries of vehicles, payment gateways etc.) are, prevented, restricted, delayed or interfered with by reason of labour disputes, strikes, acts of God, floods, lightning, severe weather, shortages of materials, rationing, utility or communication failures, earthquakes, war, revolution, acts of terrorism, civil commotion, acts of public enemies, blockade, embargo or any law, order, proclamation, regulation, ordinance, demand or requirement having legal effect of any government or any judicial authority or representative of any such government, or any other act whatsoever, whether similar or dissimilar to those referred to in this clause, which are beyond the reasonable commercial control of CampingCo or its third parties performing such services as sub-contractor to CampingCo and could not have been prevented by reasonable precautions (each, a "Force Majeure Event"), then CampingCo shall be excused from such performance to the extent of and during the period of such Force Majeure Event. CampingCo shall exercise all reasonable commercial efforts to continue to perform its obligations hereunder.</p>
+      <p class="green">22. Communications.</p>
+      <p>When You use the Website or send emails or other data, information or communication to CampingCo, You agree and understand that You are communicating with CampingCo through electronic records and You consent to receive communications via electronic records from CampingCo periodically and as and when required. CampingCo will communicate with You by email or by notices on Website or electronic records on the Website or on Your mobile number which will be deemed adequate service of notice / electronic record to the maximum extent permitted under any applicable law, It is further clarified that You can also use the customer support e-mail, facebook page and twitter handle of CampingCo to share your words of appreciation pertaining to ride only.</p>
+      <p class="green">23. Feedback and Information:</p>
+      <p>23.1 Any feedback You provide to CampingCo shall be deemed to be non-confidential. CampingCo reserves the right to use such information without any restriction. Further, by submitting the feedback, You represent and warrant that (i) Your feedback does not contain confidential or proprietary information of anybody including you and third parties; (ii) CampingCo is not under any obligation of confidentiality, express or implied, with respect to the feedback; (iii) CampingCo may have something similar to the feedback already under consideration or in development; and (iv) You are not entitled to any compensation or reimbursement of any kind from CampingCo for the feedback under any circumstances.</p>
+      <p>23.2 To clarify, CampingCo may at its discretion, make any modifications or changes to the Website, Content and / or Services on the basis of such feedback, however CampingCo shall not be obliged to do so. Further, in the event that CampingCo makes any changes or modifications to the Website, Content and / or Services on the basis of any such feedback, You shall not have any rights or title (including any intellectual property rights) in such changes or modifications to the Website, Content and / or Services. You expressly waive any and all rights in such changes or modifications to the Website, Content and / or Services, and assign to CampingCo, all worldwide rights and title (including any intellectual property rights) to such changes or modifications to the Website, Content and / or Services, in perpetuity. You hereby waive all rights under Section 19(4) of the Indian Copyright Act, 1956, or other similar provisions in laws of any jurisdiction, in relation to any such changes or modifications to the Website, Content and / or Services.</p>
+   </div>
 </div>
 <script>
-        document.getElementById("default").click();
-    function openPolicy(evt, cityName) {
-  var i, tabcontent, tablinks;
-
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
-
-
-}
+   function openPolicy(e,t){var l,a,n;for(a=document.getElementsByClassName("tabcontent"),l=0;l<a.length;l++)a[l].style.display="none";for(n=document.getElementsByClassName("tablinks"),l=0;l<n.length;l++)n[l].className=n[l].className.replace(" active","");document.getElementById(t).style.display="block",e.currentTarget.className+=" active"}document.getElementById("default").click();
 </script>
 {% endblock %}
