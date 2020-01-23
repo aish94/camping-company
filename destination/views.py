@@ -101,7 +101,7 @@ def destination_detail_page(request, slug):
     experience = Experience.objects.filter(destination=destination).order_by("pk")
     exp = Experience.objects.filter(destination=destination).order_by("pk")[0]
     maps = Map.objects.get(destination=destination)
-    reg = Region.objects.filter(region=maps)
+    reg = Region.objects.filter(region=maps)[0]
     feature = Feature.objects.get(destination=destination)
     pricing = Pricing.objects.get(destination=destination)
     reviews = DestinationReview.objects.filter(destination=destination)
