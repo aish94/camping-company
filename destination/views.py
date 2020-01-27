@@ -100,7 +100,6 @@ def destination_detail_page(request, slug):
     detail = Detail.objects.get(destination=destination)
     amenity = Amenity.objects.get(destination=destination)
     experience = Experience.objects.filter(destination=destination).order_by("pk")
-    maps = Map.objects.get(destination=destination)
     feature = Feature.objects.get(destination=destination)
     pricing = Pricing.objects.get(destination=destination)
     reviews = DestinationReview.objects.filter(destination=destination)
@@ -108,6 +107,7 @@ def destination_detail_page(request, slug):
         if x is not ".":
             meta_des+=x
         else:
+            meta_des += '.'
             break
     if reviews.count() > 0:
         page = 1
@@ -176,6 +176,7 @@ def circuit(request, slug):
         if x is not ".":
             meta_des+=x
         else:
+            meta_des+='.'
             break
     return render(request, "destination/circuit.html", {"cir": cir,"meta_des": meta_des})
 

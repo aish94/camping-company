@@ -32,6 +32,17 @@ def blog_detail(request, slug):
         review = False
     for x in reviews:
         list1.append(x.rating)
+
+    for y in image_:
+        if y.content:
+            for x in y.content:
+                if x is not ".":
+                    meta_des += x
+                else:
+                    meta_des += '.'
+                    break
+        else:
+            break
     context = {
         "blog": blog,
         "image": image_,
@@ -39,6 +50,7 @@ def blog_detail(request, slug):
         "list1": list1,
         "page": page,
         "review": review,
+        "meta_des": meta_des,
     }
     # for x in image_:
     #     print(type(x.blog_image2.url))
