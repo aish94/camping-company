@@ -107,6 +107,8 @@ def destination_detail_page(request, slug):
     for x in destination.description:
         if x is not ".":
             meta_des+=x
+        else:
+            break
     if reviews.count() > 0:
         page = 1
     else:
@@ -173,6 +175,8 @@ def circuit(request, slug):
     for x in cir.para13:
         if x is not ".":
             meta_des+=x
+        else:
+            break
     return render(request, "destination/circuit.html", {"cir": cir,"meta_des": meta_des})
 
 
