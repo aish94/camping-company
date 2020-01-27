@@ -89,6 +89,7 @@ def destination(request):
 
 def destination_detail_page(request, slug):
     list1 = []
+    meta_des = ''
     # Search.objects.new_or_get(request)
     try:
         destination = Destination.objects.get(slug=slug)
@@ -99,12 +100,13 @@ def destination_detail_page(request, slug):
     detail = Detail.objects.get(destination=destination)
     amenity = Amenity.objects.get(destination=destination)
     experience = Experience.objects.filter(destination=destination).order_by("pk")
-    exp = Experience.objects.filter(destination=destination).order_by("pk")[0]
     maps = Map.objects.get(destination=destination)
-    reg = Region.objects.filter(region=maps)[0]
     feature = Feature.objects.get(destination=destination)
     pricing = Pricing.objects.get(destination=destination)
     reviews = DestinationReview.objects.filter(destination=destination)
+    for x in destination.description:
+        if x is not ".":
+            meta_des+=x
     if reviews.count() > 0:
         page = 1
     else:
@@ -127,8 +129,7 @@ def destination_detail_page(request, slug):
             "review": review,
             "page": page,
             "list1": list1,
-            "exp": exp,
-            "reg": reg
+            "meta_des": meta_des
            }
 
     if request.is_ajax():
@@ -163,12 +164,16 @@ def circuits(request):
 
 
 def circuit(request, slug):
+    meta_des = ''
     try:
         cir = Circuit.objects.get(slug=slug)
     except:
         messages.warning(request, "Circuit not available")
         return redirect("destination:circuits")
-    return render(request, "destination/circuit.html", {"cir": cir})
+    for x in cir.para13:
+        if x is not ".":
+            meta_des+=x
+    return render(request, "destination/circuit.html", {"cir": cir,"meta_des": meta_des})
 
 
 def success(request):

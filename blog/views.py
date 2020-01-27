@@ -17,6 +17,7 @@ def all_blog(request):
 
 def blog_detail(request, slug):
     list1 = []
+    meta_des = ''
     blog = Blog.objects.get(slug=slug)
     # user = User.objects.get(pk=pk)
     image_ = Image.objects.filter(blog=blog).order_by("pk")
