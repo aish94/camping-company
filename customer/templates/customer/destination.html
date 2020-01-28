@@ -13,7 +13,7 @@
 {% endblock %}
 {% block content_block %}
     <h1 style="visibility: hidden;">Campsites</h1>
-<div class="container">
+<div class="container content">
    <div class="row">
        {% for x in map %}
       <div class="col-md-4 col-12">
@@ -41,5 +41,21 @@
    </div>
     <br>
     <a class="btn btn-secondary" href="{% url 'app:home' %}">Book now</a>
+        <button class="print btn btn-secondary">Save as pdf</button>
+
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+<script>
+window.onload = function(){
+    $(".print").click(function(){
+    let doc = new jsPDF('p','pt','a4');
+
+        doc.addHTML(document.body,function() {
+        doc.save('itinerary.pdf');
+    });
+});
+}
+
+</script>
 {% endblock %}
