@@ -1,6 +1,6 @@
 {% extends "snippets/base.html" %}
 {% load staticfiles %}
-    {% block css %}<link rel="stylesheet" href="{% static 'css/home/circuit.css' %}">{% endblock %}
+    {% block css %}<link rel="stylesheet" href="{% static 'css/home/circuit.css' %}?v=1.0.0">{% endblock %}
 
 {% block title %}
     <title>{{cir.para12}} | Camping Co</title>
@@ -11,9 +11,6 @@
 {% endblock %}
 
     {% block content_block %}
-  <body>
-
-
     <header class="heador mb-5" style="background-image: url({{cir.main_image.url}})">
 <!--      <nav class="heador__nav">-->
 <!--        <ul class="navigation__list">-->
@@ -39,26 +36,28 @@
             <img id="image__jeep" class="image__jeep" src="{% static 'images/circuits/camper.png' %}" alt="">
             <div class="image__jeep--vertical"></div>
         </div>
-        <div class="row">
-          <div class="col-11 col-md-7 mar-left">
-            <div class="heading-secondary">
+<div class="row no-gutters">
+            <div class="col-md-6 mar-left">
+              <div class="heading-secondary">
               <p class="heading-secondary__day">{{cir.para11}}</p>
               <p class="heading-secondary__main">{{cir.para12}}</p>
               <p class="heading-secondary__sub">{{cir.para13}}</p>
-                <div class="view">
+                  <div class="view">
                     <a class="view__button" href="{% url 'destination:destinations' %}">view more</a>
                 </div>
+              </div>
             </div>
-          </div>
-
-          <div class="col-4">
-            <img class="image-right" src="{{cir.image1.url}}" alt="">
-          </div>
-          
+              <div class="col-md-4 mar-left">
+                <table class="wrapper">
+                <tr>
+                    <td><img class="image-right" src="{{cir.image1.url}}" alt=""></td>
+                </tr>
+                </table>
+              </div>
         </div>
 
-        <div class="row">
-            <div class="col-11 col-md-7 mar-left mb-5">
+        <div class="row no-gutters">
+            <div class="col-md-6 mar-left">
               <div class="heading-secondary">
               <p class="heading-secondary__day">{{cir.para21}}</p>
               <p class="heading-secondary__main">{{cir.para22}}</p>
@@ -68,122 +67,149 @@
                 </div>
               </div>
             </div>
-            <div class="col-4">
-                <img class="image-right" src="{{cir.image2.url}}" alt="">
+              <div class="col-md-4 mar-left">
+                <table class="wrapper">
+                <tr>
+                    <td><img class="image-right" src="{{cir.image2.url}}" alt=""></td>
+                </tr>
+                </table>
               </div>
-          </div>
+        </div>
 
-
-          <div class="row">
-              <div class="col-11 col-md-7 mar-left mb-5">
-                <div class="heading-secondary">
+<div class="row no-gutters">
+            <div class="col-md-6 mar-left">
+              <div class="heading-secondary">
               <p class="heading-secondary__day">{{cir.para31}}</p>
               <p class="heading-secondary__main">{{cir.para32}}</p>
               <p class="heading-secondary__sub">{{cir.para33}}</p>
-                    <div class="view">
+                  <div class="view">
                     <a class="view__button" href="{% url 'destination:destinations' %}">view more</a>
                 </div>
-                </div>
               </div>
-              <div class="col-4">
-                  <img class="image-right" src="{{cir.image3.url}}" alt="">
-                </div>
             </div>
-
-
-            <div class="row">
-                <div class="col-11 col-md-7 mar-left mb-5">
-                  <div class="heading-secondary">
-                  <p class="heading-secondary__day">{{cir.para41}}</p>
-                <p class="heading-secondary__main">{{cir.para42}}</p>
-                <p class="heading-secondary__sub">{{cir.para43}}</p><div class="view">
-                    <a class="view__button" href="{% url 'destination:destinations' %}">view more</a>
-                </div>
-                  </div>
-                </div>
-                <div class="col-4">
-                    <img class="image-right" src="{{cir.image4.url}}" alt="">
-                  </div>
+              <div class="col-md-4 mar-left">
+                <table class="wrapper">
+                <tr>
+                    <td><img class="image-right" src="{{cir.image3.url}}" alt=""></td>
+                </tr>
+                </table>
               </div>
+        </div>
 
 
-
-              <div class="row">
-                  <div class="col-11 col-md-7 mar-left mb-5">
-                    <div class="heading-secondary">
-                        <p class="heading-secondary__day">{{cir.para51}}</p>
-                        <p class="heading-secondary__main">{{cir.para52}}</p>
-                        <p class="heading-secondary__sub">{{cir.para53}}</p>
-                        <div class="view">
+<div class="row no-gutters">
+            <div class="col-md-6 mar-left">
+              <div class="heading-secondary">
+              <p class="heading-secondary__day">{{cir.para41}}</p>
+              <p class="heading-secondary__main">{{cir.para42}}</p>
+              <p class="heading-secondary__sub">{{cir.para43}}</p>
+                  <div class="view">
                     <a class="view__button" href="{% url 'destination:destinations' %}">view more</a>
                 </div>
-                    </div>
-                  </div>
-                  <div class="col-4">
-                      <img class="image-right" src="{{cir.image5.url}}" alt="">
-                    </div>
+              </div>
+            </div>
+              <div class="col-md-4 mar-left">
+                <table class="wrapper">
+                <tr>
+                    <td><img class="image-right" src="{{cir.image4.url}}" alt=""></td>
+                </tr>
+                </table>
+              </div>
+        </div>
+
+
+
+<div class="row no-gutters">
+            <div class="col-md-6 mar-left">
+              <div class="heading-secondary">
+              <p class="heading-secondary__day">{{cir.para51}}</p>
+              <p class="heading-secondary__main">{{cir.para52}}</p>
+              <p class="heading-secondary__sub">{{cir.para53}}</p>
+                  <div class="view">
+                    <a class="view__button" href="{% url 'destination:destinations' %}">view more</a>
                 </div>
+              </div>
+            </div>
+              <div class="col-md-4 mar-left">
+                <table class="wrapper">
+                <tr>
+                    <td><img class="image-right" src="{{cir.image5.url}}" alt=""></td>
+                </tr>
+                </table>
+              </div>
+        </div>
   
-
+<br>
     </section>
-    <footer class="footer">
-      <div class="row">
-        <div class="col-4">
-            <img src="{% static 'images/main_v2/logo 400x400.png' %}" class="header__logo">
-            <br><br><br>
-            <span class="footer-text__description">Nature has a subtle way of enhancing consciousness,
-                mindfulness, and awareness. With this belief, The
-                Camping Company was created to provide a platform
-                to have an immersive experience with nature. It enables
-                travelers to explore the unexplored with the help of
-                SUVs, jeeps equipped with rooftop tents and camping
-                gears for a comfortable overlanding expedition. We are
-                the creators and believers of an alternate way of travel.</span>
-                <br><br><br><br><br><br><br>
-                <hr>
-                <br><br>
-                <span class="footer-text__follow">Follow Us:
-                    <a href="https://www.facebook.com/thecampingco"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/camping_co"><i class="fab fa-instagram"></i></a>
-                  <i class="fab fa-twitter"></i>
-                </span>
-                <br><br><br>
-                <hr>
-        </div>
-        <div class="col-4">
-          <h5>
-              <strong><span class="footer-text__heading">Contact Us</span></strong>
-              <br><br>
-              <span class="footer-text__description">Talk to our experts? +91-6913332761 or Drop us a line, We promise to get back to you in 24 hours.</span>
-              <form class="footer__form">
-                <br>
-                <input type="text" placeholder="name" class="footer-text__input">
-                <input type="email" placeholder="email" class="footer-text__input">
-                <input type="text" placeholder="phone" class="footer-text__input">
-                <input type="text" placeholder="city" class="footer-text__input">
-                <textarea class="footer-text__area" name="" id="" cols="40" rows="10" placeholder="Enter Your Message Here..."></textarea>
-                <div class="footer-button-box">
-                  <br>
-                    <a href="#" class="footer-button-box__button">Submit</a>
-                </div>
-              </form>
-              <br>
-              <span>@2019 Camping <col></span>
-            </h5>
-        </div>
+<footer class="footer">
+<div class="row">
+<div class="col-sm-4">
+<div>
+<img src="{% static 'images/main_v2/logo-400x400.webp' %}" class="header__logo lozad">
+<br><br><br>
+<span class="footer-text__description">Nature has a subtle way of enhancing consciousness,
+mindfulness, and awareness. With this belief, The
+Camping Company was created to provide a platform
+to have an immersive experience with nature. It enables
+travelers to explore the unexplored with the help of
+SUVs, jeeps equipped with rooftop tents and camping
+gears for a comfortable overlanding expedition. We are
+the creators and believers of an alternate way of travel.</span>
+<hr>
+<br><br>
+<span class="footer-text__follow">Follow Us:
+<a href="https://www.facebook.com/thecampingco"><i class="fab fa-facebook-f"></i></a>
+<a href="https://www.instagram.com/camping_co"><i class="fab fa-instagram"></i></a>
+<a href="https://www.youtube.com/channel/UC6mvUrWd2m4KbokMSALM0Hw"><i class="fab fa-youtube"></i></a>
+</span>
+<br><br><br>
+<hr>
+</div>
+</div>
+<div class="col-sm-4">
+<div>
+<strong><span class="footer-text__heading">Contact Us</span></strong>
+<br><br>
+<span class="footer-text__description">Talk to our experts? +91-6913332761 or Drop us a line, We promise to get back to you in 24 hours.</span>
+<form class="footer__form" method="POST" action="{% url 'app:findus' %}">{% csrf_token %}
+<br>
+<input type="text" placeholder="name" name="name" class="footer-text__input">
+<input type="email" placeholder="email" name="email" class="footer-text__input">
+<input type="text" placeholder="phone" name="phone" class="footer-text__input">
+<input type="text" placeholder="city" name="city" class="footer-text__input">
+<textarea class="footer-text__area" name="message" id="" cols="40" rows="10" placeholder="Enter Your Message Here..."></textarea>
+<div class="footer-button-box">
+<br>
+<button class="footer-button-box__button">Submit</button>
 
-        <div class="col-4">
-           <div class="tertiary-text__box">
-                <a href="#" class="footer-text__heading">Careers</a>
-                <a href="{% url 'app:terms_condition' %}" class="footer-text__heading">Policy</a>
-                <a href="#" class="footer-text__heading">Media</a>
-                <a href="{% url 'app:faq' %}" class="footer-text__heading">FAQ</a>
-           </div>
-        </div>
-      </div>
-    </footer>
-  </body>
+<div style="width:300px;" class="g-recaptcha" data-sitekey="6Lf07dAUAAAAAGYJvqrlu78u_cpgvIBijE0OUHfr"></div>
+</div>
+</form>
+<span>@2019 Camping co</span>
+</div>
+</div>
+<div class="col-sm-4">
+<div class="tertiary-text__box">
+<a href="#" class="footer-text__heading">Careers</a>
+<a href="{% url 'app:terms_condition' %}" class="footer-text__heading">Policy</a>
+<a href="#" class="footer-text__heading">Media</a>
+<a href="{% url 'app:faq' %}" class="footer-text__heading">FAQ</a>
+<a class="footer-text__heading" href="{% url 'blog:event' %}">Event</a>
+</div>
+</div>
+</div>
+</footer>
   <script>
-window.onload=function(){var o=$("#image__jeep");$(window).on("scroll",function(){$(window).scrollTop()>600?o.css("position","fixed").css("top",0):o.css("position","static")})};
-  </script>
+window.onload = function() {
+    var o = $("#image__jeep");
+    if (window.screen.availWidth > 767){
+    $(window).on("scroll", function() {
+        $(window).scrollTop() > 600 && $(window).scrollTop() < 2000 ? o.css("position", "fixed").css("top", 0) : o.css("position", "static")
+    })
+    } else {
+    $(window).on("scroll", function() {
+        $(window).scrollTop() > 600 && $(window).scrollTop() < 3500 ? o.css("position", "fixed").css("top", 0) : o.css("position", "static")
+    })
+    }
+};  </script>
 {% endblock %}
