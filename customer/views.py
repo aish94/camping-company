@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from destination.models import Destination, Map
+from destination.models import Destination, Map, Region
 from .models import Customer, Form
 from itinerary.models import Itinerary
 from referral.models import Referral
@@ -143,8 +143,33 @@ def experience(request):
 
 def filter_sites(request):
     list1 = []
-    number = int(request.GET.get("number_of_days"))//1.5
-    maps = Map.objects.filter()
-    for x in range(int(number+1)):
-        list1.append(maps[x])
-    return render(request, "customer/destination.html",{"map": list1})
+    list2 = []
+    re = ''
+    comma = 0
+    number = int(int(request.GET.get("number_of_days"))//1.5+1)
+    q = request.GET.get('q')
+    for x in q:
+        if x == ',' or x == ' ':
+            comma += 1
+            list1.append(re)
+            re = ''
+            continue
+        re += x
+    if comma == 0:
+        list1.append(q)
+    for x in list1:
+        reg = Region.objects.filter(name=x)
+        list2.append(reg)
+    list1=[]
+    for z in list2:
+        for x in z:
+            for y in x.region.all():
+                list1.append(y)
+    list2 = []
+    print(list1)
+    try:
+        for x in range(number):
+            list2.append(list1[x])
+    except:
+        messages.warning(request, "No site available")
+    return render(request, "customer/destination.html",{"map": list2})
