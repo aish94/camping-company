@@ -146,17 +146,21 @@ def filter_sites(request):
     list2 = []
     re = ''
     comma = 0
-    number = int(int(request.GET.get("number_of_days"))//1.5+1)
     q = request.GET.get('q')
-    for x in q:
-        if x == ',' or x == ' ':
-            comma += 1
-            list1.append(re)
-            re = ''
-            continue
-        re += x
-    if comma == 0:
-        list1.append(q)
+
+    try:
+        number = int(int(request.GET.get("number_of_days")) // 1.5 + 1)
+        for x in q:
+            if x == ',' or x == ' ':
+                comma += 1
+                list1.append(re)
+                re = ''
+                continue
+            else:
+                re += x
+    except:
+        messages.warning(request, "Oh no you are lost")
+        return redirect("app:home")
     for x in list1:
         reg = Region.objects.filter(name=x)
         list2.append(reg)
@@ -166,7 +170,6 @@ def filter_sites(request):
             for y in x.region.all():
                 list1.append(y)
     list2 = []
-    print(list1)
     try:
         for x in range(number):
             list2.append(list1[x])
