@@ -8,8 +8,7 @@ from django.contrib.auth.models import User
 import requests
 from django.contrib import messages
 import os
-from .render import Render
-from django.views.generic import View
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -142,81 +141,38 @@ def experience(request):
     return render(request, "customer/experience.html")
 
 
-# def filter_sites(request):
-#     list1 = []
-#     list2 = []
-#     re = ''
-#     comma = 0
-#     q = request.GET.get('q')
-#
-#     try:
-#         number = int(int(request.GET.get("number_of_days")) // 1.5 + 1)
-#         for x in q:
-#             if x == ',' or x == ' ':
-#                 comma += 1
-#                 list1.append(re)
-#                 re = ''
-#                 continue
-#             else:
-#                 re += x
-#     except:
-#         messages.warning(request, "Oh no you are lost")
-#         return redirect("app:home")
-#     for x in list1:
-#         reg = Region.objects.filter(name=x)
-#         list2.append(reg)
-#     list1=[]
-#     for z in list2:
-#         for x in z:
-#             for y in x.region.all():
-#                 list1.append(y)
-#     list2 = []
-#     try:
-#         for x in range(number):
-#             list2.append(list1[x])
-#     except:
-#         messages.warning(request, "No site available")
-#     return render(request, "customer/destination.html",{"map": list2})
+def filter_sites(request):
+    list1 = []
+    list2 = []
+    re = ''
+    comma = 0
+    q = request.GET.get('q')
 
-
-class Pdf(View):
-
-    def get(self, request):
-        list1 = []
-        list2 = []
-        re = ''
-        comma = 0
-        q = request.GET.get('q')
-
-        try:
-            number = int(int(request.GET.get("number_of_days")) // 1.5 + 1)
-            for x in q:
-                if x == ',' or x == ' ':
-                    comma += 1
-                    list1.append(re)
-                    re = ''
-                    continue
-                else:
-                    re += x
-        except:
-            messages.warning(request, "Oh no you are lost")
-            return redirect("app:home")
-        for x in list1:
-            reg = Region.objects.filter(name=x)
-            list2.append(reg)
-        list1 = []
-        for z in list2:
-            for x in z:
-                for y in x.region.all():
-                    list1.append(y)
-        list2 = []
-        try:
-            for x in range(number):
-                list2.append(list1[x])
-        except:
-            messages.warning(request, "No site available")
-        params = {
-            'map': list2,
-            'request': request
-        }
-        return Render.render('customer/destination.html', params)
+    try:
+        number = int(int(request.GET.get("number_of_days")) // 1.5 + 1)
+        for x in q:
+            if x == ',' or x == ' ':
+                comma += 1
+                list1.append(re)
+                re = ''
+                continue
+            else:
+                re += x
+    except:
+        messages.warning(request, "Oh no you are lost")
+        return redirect("app:home")
+    for x in list1:
+        reg = Region.objects.filter(name=x)
+        list2.append(reg)
+    list1=[]
+    for z in list2:
+        for x in z:
+            for y in x.region.all():
+                list1.append(y)
+    list2 = []
+    try:
+        for x in range(number):
+            list2.append(list1[x])
+    except:
+        messages.warning(request, "No site available")
+    return render(request, "customer/destination.html",{"map": list2})
