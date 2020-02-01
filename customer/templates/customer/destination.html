@@ -11,7 +11,218 @@
 {% endblock %}
 {% block content_block %}
 <style>
-    *{margin:0;padding:0;box-sizing:border-box}body{font-size:62.5%}html{position:relative}#map{position:absolute;height:100%;width:100%;transition:all,1s;transition-timing-function:ease-out}.ico{top:30%;float:left;position:fixed;font-size:2rem;color:#faaf23;cursor:pointer;padding:4px;display:inline-block;z-index:1000000000}.card{padding:.8rem!important;width:100%;border-radius:.5rem;transition:all .3s}.card:hover{z-index:10000;cursor:pointer;box-shadow:0 .6rem 1.2rem rgba(0,0,0,.5)}.card-body{padding:0;padding-top:3px}.card-img-top{height:16rem;margin:0 auto}.card-title{font-size:.9rem}.posi{opacity:1!important;visibility:visible!important}.ico{opacity:0;visibility:hidden}.card-url{text-align:center}.card-url-1,.card-url-1:hover,.card-url-1:visited{text-align:center;color:#0eac8d;display:inline-block;text-decoration:none;background-color:#fff;font-size:.8rem}.card-url-2,.card-url-2:hover,.card-url-2:visited{text-align:center;width:100%;display:inline-block;color:#0eac8d;text-decoration:none;background-color:rgba(158,255,235,.2);padding:.5rem 1rem;font-size:.8rem}.destination-back{padding:1rem;max-width:80rem;height:100%;box-shadow:0 .6rem 1.2rem rgba(0,0,0,.5)}.scrollbar{height:120vh;overflow-y:scroll}.scrollbar::-webkit-scrollbar{display:none}#submit{position:relative}.input-submit{width:80%;height:2rem}.input-submit:focus{outline-color:#0eac8d}.input-place{height:2rem;width:10rem}.input-place:focus{outline-color:#0eac8d}.input-submit-button{top:0;left:80%;position:absolute;height:2rem;width:3rem;background:#0eac8d;border:none;cursor:pointer}.fa-search{color:#fff;font-size:1.4rem}.checked{color:#ff4500}@media only screen and (min-width:1200px){html{font-size:100%}}@media only screen and (max-width:767px){#map{opacity:0;width:400%;left:-300%;visibility:hidden;z-index:10000000}.ico{opacity:1;visibility:visible}}@media only screen and (max-width:991px){.input-submit{text-align:center;margin-bottom:1rem}.input-place{width:92%;margin-bottom:1rem;text-align:center}.camp__add{top:.1rem;width:92%;text-align:center;display:block}}.camp__add{padding:.5rem 1rem;cursor:pointer;border:2px solid #0eac8d;background:linear-gradient(45deg,#fff 50%,#0eac8d 50%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;position:relative;top:.5rem;color:#fff}.camp__add:after{content:"";position:absolute;top:0;bottom:0;left:0;right:0;background:linear-gradient(45deg,#0eac8d 50%,transparent 50%);z-index:-1}.camp__add,.camp__add:after{background-size:300%;background-position:100%;transition:1s,font-size .2s}.camp__add:hover,.camp__add:hover:after{background-position:0;font-size:1.1em}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box
+}
+
+body {
+	font-size: 62.5%
+}
+
+html {
+	position: relative
+}
+
+#map {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	transition: all, 1s;
+	transition-timing-function: ease-out
+}
+
+.ico {
+	top: 30%;
+	float: left;
+	position: fixed;
+	font-size: 2rem;
+	color: #faaf23;
+	cursor: pointer;
+	padding: 4px;
+	display: inline-block;
+	z-index: 1000000000
+}
+
+.card {
+	padding: .8rem!important;
+	width: 100%;
+	border-radius: .5rem;
+	transition: all .3s
+}
+
+.card:hover {
+	z-index: 10000;
+	cursor: pointer;
+	box-shadow: 0 .6rem 1.2rem rgba(0, 0, 0, .5)
+}
+
+.card-body {
+	padding: 0;
+	padding-top: 3px
+}
+
+.card-img-top {
+	height: 16rem;
+	margin: 0 auto
+}
+
+.card-title {
+	font-size: .9rem
+}
+
+.posi {
+	opacity: 1!important;
+	visibility: visible!important
+}
+
+.ico {
+	opacity: 0;
+	visibility: hidden
+}
+
+.card-url {
+	text-align: center
+}
+
+.card-url-1,
+.card-url-1:hover,
+.card-url-1:visited {
+	text-align: center;
+	color: #0eac8d;
+	display: inline-block;
+	text-decoration: none;
+	background-color: #fff;
+	font-size: .8rem
+}
+
+.card-url-2,
+.card-url-2:hover,
+.card-url-2:visited {
+	text-align: center;
+	width: 100%;
+	display: inline-block;
+	color: #0eac8d;
+	text-decoration: none;
+	background-color: rgba(158, 255, 235, .2);
+	padding: .5rem 1rem;
+	font-size: .8rem
+}
+
+.destination-back {
+	padding: 1rem;
+	max-width: 80rem;
+	height: 100%;
+	box-shadow: 0 .6rem 1.2rem rgba(0, 0, 0, .5)
+}
+
+.scrollbar {
+	height: 120vh;
+	overflow-y: scroll
+}
+
+.scrollbar::-webkit-scrollbar {
+	display: none
+}
+
+#submit {
+	position: relative
+}
+
+.input-submit {
+	width: 80%;
+	height: 2rem
+}
+
+.input-submit:focus {
+	outline-color: #0eac8d
+}
+
+.input-place {
+	height: 2rem;
+	width: 10rem
+}
+
+.input-place:focus {
+	outline-color: #0eac8d
+}
+
+.input-submit-button {
+	top: 0;
+	left: 80%;
+	position: absolute;
+	height: 2rem;
+	width: 3rem;
+	background: #0eac8d;
+	border: none;
+	cursor: pointer
+}
+
+.fa-search {
+	color: #fff;
+	font-size: 1.4rem
+}
+
+.checked {
+	color: #ff4500
+}
+
+@media only screen and (min-width:1200px) {
+	html {
+		font-size: 100%
+	}
+}
+
+@media only screen and (max-width:767px) {
+	#map {
+		opacity: 0;
+		width: 400%;
+		left: -300%;
+		visibility: hidden;
+		z-index: 10000000
+	}
+	.ico {
+		opacity: 1;
+		visibility: visible
+	}
+}
+.camp__add {
+	padding: .5rem 1rem;
+	cursor: pointer;
+	border: 2px solid #0eac8d;
+	background: linear-gradient(45deg, #fff 50%, #0eac8d 50%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	position: relative;
+	top: .5rem;
+	color: #fff
+}
+
+.camp__add:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: linear-gradient(45deg, #0eac8d 50%, transparent 50%);
+	z-index: -1
+}
+
+.camp__add,
+.camp__add:after {
+	background-size: 300%;
+	background-position: 100%;
+	transition: 1s, font-size .2s
+}
+
+.camp__add:hover,
+.camp__add:hover:after {
+	background-position: 0;
+	font-size: 1.1em
+}
+
 </style>
     <h1 style="visibility: hidden;">Campsites</h1>
 <div class="container content">
