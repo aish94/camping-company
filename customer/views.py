@@ -217,5 +217,5 @@ class GeneratePdf(View):
                 list2.append(list1[x])
         except:
             messages.warning(request, "No site available")
-        pdf = render_to_pdf('customer/pdf.html', {"map": list1})
+        pdf = render_to_pdf('customer/pdf.html', {"map": list2})
         return HttpResponse(pdf, content_type='application/pdf')
