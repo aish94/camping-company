@@ -1,0 +1,20 @@
+<html lang="en">
+<head>
+    <title>The places Offered By Camping Co</title>
+    <style>
+        .card-img-top,.card-title,.card-url-2,.card-text{
+            width:100%;
+            font-size: 20px;
+            height: 1000px;
+            text-align: center;
+        }
+    </style>
+    </head>
+    <body>
+        {% for x in map %}
+            <img src="{{x.images.url}}" class="card-img-top" alt="destination">
+            <h5 class="card-title">{{x.title}}</h5>
+            <h3 class="card-url-2">Price starts @ INR {{x.starting}}</h3>
+        {% endfor %}
+    </body>
+</html>
