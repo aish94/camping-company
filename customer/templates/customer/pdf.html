@@ -12,7 +12,7 @@
     </head>
     <body>
         {% for x in map %}
-        <img src="/Users/kanishk/Downloads/tauraus/z.webp" class="card-img-top" alt="destination">
+        <img src="{{x.images.url}}" class="card-img-top" alt="destination">
         <h5 class="card-title">{{x.title}}</h5>
             <h3 class="card-url-2">Price starts @ INR {{x.starting}}</h3>
         {% endfor %}
