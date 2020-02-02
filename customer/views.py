@@ -221,5 +221,5 @@ class GeneratePdf(View):
         except:
             messages.warning(request, "No site available")
         queue.enqueue(render_to_pdf,'customer/pdf.html', {"map": list2})
-        messages.success("Your pdf is generating...")
+        messages.success(request, "Your pdf is generating...")
         return redirect("app:home")
