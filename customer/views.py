@@ -220,6 +220,6 @@ class GeneratePdf(View):
                 list2.append(list1[x])
         except:
             messages.warning(request, "No site available")
-            queue.enqueue(render_to_pdf, 'customer/pdf.html', {"map": list2})
-            messages.success(request, "pdf is generating...")
+        queue.enqueue(render_to_pdf,'customer/pdf.html', {"map": list2})
+        messages.success("Your pdf is generating...")
         return redirect("app:home")
