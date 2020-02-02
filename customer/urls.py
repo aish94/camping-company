@@ -4,7 +4,8 @@ from customer.views import (user_page, book,
                             create_itinerary,
                             delete_itinerary,
                             trip_detail,
-                            form, experience,filter_sites)
+                            form, experience,
+                            filter_sites, GeneratePdf)
 
 app_name = "customer"
 
@@ -18,5 +19,5 @@ urlpatterns = [
     url(r'^form/$', form, name="form"),
     url(r'^experience/$', experience, name="experience"),
     url(r'^filter_sites/$', filter_sites, name="filter_sites"),
-
+    url(r'^pdf/$', GeneratePdf.as_view(), name="pdf"),
 ]
