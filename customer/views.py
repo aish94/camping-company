@@ -12,6 +12,9 @@ from django.http import HttpResponse
 from django.views.generic import View
 from customer.utils import render_to_pdf
 
+import django_rq
+
+queue = django_rq.get_queue('high')
 
 # Create your views here.
 # def helper_filter():
@@ -217,5 +220,6 @@ class GeneratePdf(View):
                 list2.append(list1[x])
         except:
             messages.warning(request, "No site available")
-        pdf = render_to_pdf('customer/pdf.html', {"map": list2})
-        return HttpResponse(pdf, content_type='application/pdf')
+            queue.enqueue(render_to_pdf, 'customer/pdf.html', {"map": list2})
+            messages.success(request, "pdf is generating...")
+        return redirect("app:home")
