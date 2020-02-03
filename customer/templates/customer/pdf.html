@@ -1,12 +1,15 @@
 <html lang="en">
 <head>
     <title>The places Offered By Camping Co</title>
-    <style>
-        .card-img-top,.card-title,.card-url-2,.card-text{
-            width:100%;
-            font-size: 18px;
-            height: 700px;
+    <style >
+        .card-img-top{
+            width:600px;
+            height: 100px;
             text-align: center;
+        }
+        .card-title,.card-url-2{
+        font-size: 18px;
+        text-align: center;
         }
     </style>
     </head>
@@ -14,7 +17,7 @@
         {% for x in map %}
         <img src="{{x.images.url}}" class="card-img-top" alt="destination">
         <h5 class="card-title">{{x.title}}</h5>
-            <h3 class="card-url-2">Price starts @ INR {{x.starting}}</h3>
+        <h3 class="card-url-2">Price starts @ INR {{x.starting}}</h3>
         {% endfor %}
     </body>
 </html>
