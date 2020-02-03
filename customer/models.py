@@ -35,10 +35,3 @@ class Form(models.Model):
 
     def __str__(self):
         return self.user.username
-
-
-class Pdf(models.Model):
-    pdf = models.TextField()
-
-    def __str__(self):
-        return str(self.pk)
