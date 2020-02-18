@@ -76,4 +76,14 @@
         <button class="btn btn-secondary">Submit</button>
     </div>
 </form>
+<script>
+window.onload = function(){
+    $('.form-control-file').bind('change', function() {
+        if(Math.ceil(this.files[0].size/1000) > 200){
+            alert("File size should be less than 200 Kb");
+            $(this).val('');
+        }
+});
+}
+</script>
 {% endblock %}
