@@ -90,7 +90,16 @@
                     <label>
                       Password<span class="req">*</span>
                     </label>
-                    <input type="password"required name="password"/>
+                    <input id="myInput" type="password"required name="password"/>
+
+                  </div>
+
+                  <div class="field-wrap">
+                    <label style="left: 22px; top: -3px; font-size: 14px;">
+                     Show Password <span class="req"></span>
+                    </label>
+                    <input style="display: inline-block;" type="checkbox" onclick="myFunction()">
+
                   </div>
 
                   <p class="forgot"><a href="{% url 'register:pass_reset' %}">Forgot Password?</a></p>
@@ -107,6 +116,14 @@
 
         </div>
 <script>
+    function myFunction() {
+          var x = document.getElementById("myInput");
+          if (x.type === "password") {
+            x.type = "text";
+          } else {
+            x.type = "password";
+          }
+      }
     window.onload = function(){
         var password = document.getElementById("password1")
       , confirm_password = document.getElementById("password2");
@@ -121,62 +138,15 @@
 
     password.onchange = validatePassword;
     confirm_password.onkeyup = validatePassword;
-    };
-</script>
-<script>
-  window.onload = function(){
-  function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
-    console.log('statusChangeCallback');
-    console.log(response);                   // The current login status of the person.
-    if (response.status === 'connected') {   // Logged into your webpage and Facebook.
-      testAPI();
-    } else {                                 // Not logged into your webpage or we are unable to tell.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this webpage.';
-    }
-  }
-
-
-  function checkLoginState() {               // Called when a person is finished with the Login Button.
-    FB.getLoginStatus(function(response) {   // See the onlogin handler
-      statusChangeCallback(response);
-    });
-  }
-
-
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '1242611962608372',
-      cookie     : true,                     // Enable cookies to allow the server to access the session.
-      xfbml      : true,                     // Parse social plugins on this webpage.
-      version    : 'v5.0'           // Use this Graph API version for this call.
-    });
-
-
-    FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
-      statusChangeCallback(response);        // Returns the login status.
-    });
-  };
-
-
-  (function(d, s, id) {                      // Load the SDK asynchronously
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "https://connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-
-
-  function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
-    });
+    function myFunction() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
   }
 }
+    };
 </script>
 
     {% endblock %}
