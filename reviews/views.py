@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from reviews.models import DestinationReview, BlogReview
 from destination.models import Destination
+from django.contrib.auth.decorators import login_required
 from blog.models import Blog
 from django.http import JsonResponse
 from datetime import date, timedelta
@@ -10,6 +11,7 @@ from django.contrib import messages
 # Create your views here.
 
 
+@login_required
 def destination_add_review(request):
     if request.is_ajax():
         if request.user.is_authenticated:
@@ -24,6 +26,7 @@ def destination_add_review(request):
     return render("app:home")
 
 
+@login_required
 def blog_add_review(request):
     if request.is_ajax():
         if request.user.is_authenticated:
