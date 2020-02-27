@@ -8,9 +8,6 @@ from django.contrib.auth.models import User
 import requests
 from django.contrib import messages
 import os
-from django.http import HttpResponse
-from django.views.generic import View
-from customer.utils import render_to_pdf
 import math
 
 import django_rq
@@ -184,41 +181,3 @@ def filter_sites(request):
     except:
         messages.warning(request, "No site available")
     return render(request, "customer/destination.html",{"map": list2, "no": number, "q": q})
-
-
-class GeneratePdf(View):
-    def get(self, request, *args, **kwargs):
-        list1 = []
-        list2 = []
-        re = ''
-        comma = 0
-        q = request.GET.get('q')
-
-        try:
-            number = math.ceil(float(request.GET.get("number_of_days")) / 1.5)
-            for x in q:
-                if x == ',' or x == ' ':
-                    comma += 1
-                    list1.append(re)
-                    re = ''
-                    continue
-                else:
-                    re += x
-        except:
-            messages.warning(request, "Oh no you are lost")
-            return redirect("app:home")
-        for x in list1:
-            reg = Region.objects.filter(name=x)
-            list2.append(reg)
-        list1 = []
-        for z in list2:
-            for x in z:
-                for y in x.region.all():
-                    list1.append(y)
-        list2 = []
-        try:
-            for x in range(number):
-                list2.append(list1[x])
-        except:
-            messages.warning(request, "No site available")
-        return render_to_pdf('customer/pdf.html', {"map": list2})

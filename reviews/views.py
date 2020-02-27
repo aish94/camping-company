@@ -1,10 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from reviews.models import DestinationReview, BlogReview
 from destination.models import Destination
 from blog.models import Blog
 from django.http import JsonResponse
-from datetime import date, timedelta
-import datetime
 from django.contrib import messages
 
 # Create your views here.

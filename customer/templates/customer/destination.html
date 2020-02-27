@@ -41,6 +41,13 @@
    </div>
     <br>
     <a class="btn btn-secondary" href="{% url 'app:home' %}">Book now</a>
-    <a href="{% url 'customer:pdf' %}?number_of_days={{no}}&q={{q}}" class="print btn btn-secondary">Save as pdf</a>
+    <a href="" class="print btn btn-secondary">Save as pdf</a>
 </div>
+<script>
+    window.onload = function(){
+        $(".print").click(function(){
+            window.print()
+        })
+    }
+</script>
 {% endblock %}
