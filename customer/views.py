@@ -157,7 +157,7 @@ def filter_sites(request):
     q = request.GET.get('q')
 
     try:
-        number = math.ceil(float(request.GET.get("number_of_days")) // 1.5)
+        number = math.ceil(float(request.GET.get("number_of_days")) / 1.5)
         for x in q:
             if x == ',' or x == ' ':
                 comma += 1
@@ -195,7 +195,7 @@ class GeneratePdf(View):
         q = request.GET.get('q')
 
         try:
-            number = math.ceil(float(request.GET.get("number_of_days")) // 1.5)
+            number = math.ceil(float(request.GET.get("number_of_days")) / 1.5)
             for x in q:
                 if x == ',' or x == ' ':
                     comma += 1
