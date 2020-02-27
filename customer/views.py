@@ -11,6 +11,7 @@ import os
 from django.http import HttpResponse
 from django.views.generic import View
 from customer.utils import render_to_pdf
+import math
 
 import django_rq
 
@@ -156,7 +157,7 @@ def filter_sites(request):
     q = request.GET.get('q')
 
     try:
-        number = int(int(request.GET.get("number_of_days")) // 1.5 + 1)
+        number = math.ceil(float(request.GET.get("number_of_days")) // 1.5)
         for x in q:
             if x == ',' or x == ' ':
                 comma += 1
@@ -194,7 +195,7 @@ class GeneratePdf(View):
         q = request.GET.get('q')
 
         try:
-            number = int(int(request.GET.get("number_of_days")) // 1.5 + 1)
+            number = math.ceil(float(request.GET.get("number_of_days")) // 1.5)
             for x in q:
                 if x == ',' or x == ' ':
                     comma += 1
