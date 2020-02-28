@@ -186,14 +186,15 @@ def filter_sites(request):
     for z in list2:
         for x in z:
             for y in x.region.all():
+                list4.append(y)
                 for i in list3:
-                    if y.destination.state_city.find(i) == 0:
+                    if y.destination.state_city.lower().find(i) == 0:
                         list1.append(y)
-                    else:
-                        list4.append(y)
+                        break
     list2 = []
-    print(list1)
-    print(list4)
+    for x in list4:
+        if x in list1:
+            list4.remove(x)
     try:
         for x in list1:
             list2.append(x)
