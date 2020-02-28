@@ -186,7 +186,7 @@ def filter_sites(request):
     for z in list2:
         for x in z:
             for y in x.region.all():
-                for i in y:
+                for i in list3:
                     if y.destination.state_city.find(i) == 0:
                         list1.append(y)
                     else:
