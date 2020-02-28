@@ -150,6 +150,7 @@ def filter_sites(request):
     list1 = []
     list2 = []
     list3 = []
+    list4 = []
     re = ''
     comma = 0
     q = request.GET.get('q')
@@ -189,14 +190,13 @@ def filter_sites(request):
                     if y.destination.state_city.find(i) == 0:
                         list1.append(y)
                     else:
-                        list3.append(y)
+                        list4.append(y)
     list2 = []
-    list3 = []
     try:
         for x in list1:
             list2.append(x)
         for x in range(number-len(list1)):
-            list2.append(list3[x])
+            list2.append(list4[x])
     except:
         messages.warning(request, "Available campsites")
     return render(request, "customer/destination.html",{"map": list2})
