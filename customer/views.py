@@ -149,9 +149,11 @@ def experience(request):
 def filter_sites(request):
     list1 = []
     list2 = []
+    list3 = []
     re = ''
     comma = 0
     q = request.GET.get('q')
+    q1 = request.GET.get('q1')
 
     try:
         number = math.ceil(float(request.GET.get("number_of_days")) / 1.5)
@@ -163,21 +165,38 @@ def filter_sites(request):
                 continue
             else:
                 re += x
+
+        for x in q1:
+            if x == ',' or x == ' ':
+                comma += 1
+                list3.append(re)
+                re = ''
+                continue
+            else:
+                re += x
     except:
         messages.warning(request, "Oh no you are lost")
         return redirect("app:home")
+    print(list3)
     for x in list1:
         reg = Region.objects.filter(name=x)
         list2.append(reg)
-    list1=[]
+    list1 = []
+    list3 = []
     for z in list2:
         for x in z:
             for y in x.region.all():
-                list1.append(y)
+                for i in y:
+                    if y.destination.state_city.find(i) == 0:
+                        list1.append(y)
+                    else:
+                        list3.append(y)
     list2 = []
     try:
-        for x in range(number):
-            list2.append(list1[x])
+        for x in list1:
+            list2.append(x)
+        for x in range(number-len(list1)):
+            list2.append(list3[x])
     except:
-        messages.warning(request, "No site available")
-    return render(request, "customer/destination.html",{"map": list2, "no": number, "q": q})
+        messages.warning(request, "Available campsites")
+    return render(request, "customer/destination.html",{"map": list2})
