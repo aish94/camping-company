@@ -151,7 +151,6 @@ def filter_sites(request):
     list2 = []
     list3 = []
     list4 = []
-    list5 = []
     re = ''
     comma = 0
     q = request.GET.get('q')
@@ -193,9 +192,8 @@ def filter_sites(request):
                         list1.append(y)
                         break
     list2 = []
-    list5 = list4
-    for x in list5:
-        if x in list1:
+    for x in list1:
+        if x in list4:
             list4.remove(x)
     try:
         for x in list1:
