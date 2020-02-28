@@ -193,6 +193,7 @@ def filter_sites(request):
                         list4.append(y)
     list2 = []
     print(list1)
+    print(list4)
     try:
         for x in list1:
             list2.append(x)
