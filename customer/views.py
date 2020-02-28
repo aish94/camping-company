@@ -182,7 +182,6 @@ def filter_sites(request):
         reg = Region.objects.filter(name=x)
         list2.append(reg)
     list1 = []
-    list3 = []
     for z in list2:
         for x in z:
             for y in x.region.all():
@@ -192,6 +191,7 @@ def filter_sites(request):
                     else:
                         list3.append(y)
     list2 = []
+    list3 = []
     try:
         for x in list1:
             list2.append(x)
