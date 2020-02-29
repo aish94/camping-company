@@ -178,7 +178,6 @@ def filter_sites(request):
     except:
         messages.warning(request, "Oh no you are lost")
         return redirect("app:home")
-    print(list3)
     for x in list1:
         reg = Region.objects.filter(name=x)
         list2.append(reg)

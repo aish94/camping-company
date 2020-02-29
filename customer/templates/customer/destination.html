@@ -17,7 +17,8 @@
    <div class="row">
        {% for x in map %}
       <div class="col-md-4">
-         <div class="card">
+          <a class="card-detail-1" href="{% url 'destination:destination_detail_page' slug=x.destination.slug %}" target="_blank">
+                <div class="card">
          <img src="{{x.images.url}}" class="card-img-top" alt="destination">
          <div class="card-body">
              <h5 class="card-title">{{x.title}}</h5>
@@ -36,6 +37,7 @@
              </div>
          </div>
       </div>
+          </a>
     </div>
        {% endfor %}
    </div>
