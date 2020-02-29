@@ -157,7 +157,11 @@ def filter_sites(request):
     q1 = request.GET.get('q1')
 
     try:
-        number = math.ceil(float(request.GET.get("number_of_days")) / 1.5)
+        number = float(request.GET.get("number_of_days"))
+        if number > 16:
+            messages.warning(request, "Dates of travel should be less than 16")
+            return redirect("app:home")
+        number = math.ceil(number / 1.5)
         for x in q:
             if x == ',' or x == ' ':
                 comma += 1
@@ -195,8 +199,7 @@ def filter_sites(request):
         if x in list4:
             list4.remove(x)
     try:
-        for x in list1:
-            list2.append(x)
+        list2 = list1[0:number]
         for x in range(number-len(list1)):
             list2.append(list4[x])
     except:
