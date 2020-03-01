@@ -16,9 +16,9 @@
 <div class="container content">
    <div class="row">
        {% for x in map %}
-      <div class="col-md-4">
+      <div class="col-md-4" >
           <a class="card-detail-1" href="{% url 'destination:destination_detail_page' slug=x.destination.slug %}" target="_blank">
-                <div class="card">
+                        <div class="card" style="margin-top:75px;">
         <img src="{{x.images.url}}" class="card-img-top" alt="destination" id="{{forloop.counter}}">
         <canvas style="display:none;" width="240" height="250" id="canvas-{{forloop.counter}}"></canvas>
          <div class="card-body">
