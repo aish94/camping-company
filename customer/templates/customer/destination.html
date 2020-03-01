@@ -19,7 +19,8 @@
       <div class="col-md-4">
           <a class="card-detail-1" href="{% url 'destination:destination_detail_page' slug=x.destination.slug %}" target="_blank">
                 <div class="card">
-         <img src="{{x.images.url}}" class="card-img-top" alt="destination">
+        <img src="{{x.images.url}}" class="card-img-top" alt="destination" id="{{forloop.counter}}">
+        <canvas style="display:none;" width="240" height="250" id="canvas-{{forloop.counter}}"></canvas>
          <div class="card-body">
              <h5 class="card-title">{{x.title}}</h5>
              <div class="rating" style="display: block; margin: 0 auto;">
@@ -46,10 +47,23 @@
     <a href="#" class="print btn btn-secondary">Save as pdf</a>
 </div>
 <script>
-    window.onload = function(){
-        $(".print").click(function(){
-            window.print()
-        })
-    }
+  window.onload = function(){
+    $('.print').click(function(){
+    var l = document.querySelectorAll(".card img")
+        for(var x = 1; x <= l.length; x++){
+          var c = document.getElementById("canvas-"+x);
+          c.style.display = "block"
+          var ctx = c.getContext("2d");
+          var img = document.getElementById(x);
+          ctx.drawImage(img, 0, 0,250,250);
+          img.parentNode.removeChild(img);
+        }
+
+        setTimeout(
+        () => window.print()
+        ,2000)
+
+    })
+  }
 </script>
 {% endblock %}
