@@ -18,7 +18,11 @@ def all_blog(request):
 def blog_detail(request, slug):
     list1 = []
     meta_des = ''
-    blog = Blog.objects.get(slug=slug)
+    try:
+        blog = Blog.objects.get(slug=slug)
+    except:
+        messages.warning(request, "Blog Does not exist")
+        return redirect("app:home")
     # user = User.objects.get(pk=pk)
     image_ = Image.objects.filter(blog=blog).order_by("pk")
     reviews = BlogReview.objects.filter(blog=blog)
