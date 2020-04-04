@@ -19,12 +19,13 @@
                 <li class="nav-item {% if request.path == circuits_url  %}active{% endif %}"><a class="nav-link" href="{{circuits_url}}">Circuits</a></li>
                 <li class="nav-item {% if request.path == blog_url  %}active{% endif %}"><a class="nav-link" href="{{blog_url}}">Journal</a></li>
                 <li class="nav-item {% if request.path == findus_url  %}active{% endif %}"><a class="nav-link" href="{{findus_url}}">Contact</a></li>
-                <li class="nav-item {% if request.path == experience_url %}active{% endif %} experience"><a style="color: black;" class="nav-link" href="{{experience_url}}">Customize</a></li>
                 {% if user.is_authenticated %}
                 <li class="nav-item {% if request.path == signout_url  %}active{% endif %}"><a class="nav-link" href="{{signout_url}}">Logout</a></li>
                 {% else %}
                 <li class="nav-item {% if request.path == register_url  %}active{% endif %}"><a class="nav-link" href="{{register_url}}">Login</a></li>
                 {% endif %}
+                <li class="nav-item {% if request.path == experience_url %}active{% endif %} experience"><a style="color: black;" class="nav-link" href="{{experience_url}}">Customize</a></li>
+
             </ul>
         </div>
     </nav>

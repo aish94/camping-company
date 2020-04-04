@@ -1,5 +1,5 @@
 {% extends "snippets/base.html" %} {% load staticfiles %} {% block css %}
-<link rel="stylesheet" href="{% static 'css/home/home_v2.css' %}?v=1.1.0">
+<link rel="stylesheet" href="{% static 'css/home/home_v2.css' %}?v=1.0.4">
 {% endblock %}
 {% block title %}
 <title>Wild Camping in India and Bhutan | Camping Co</title>
@@ -18,6 +18,7 @@
          <span class="heading-primary__sub">Northeast India and Bhutan</span>
       </h1>
    </div>
+            <video id="fix" height="100%" autoplay loop muted><source src="{% static 'images/main_v2/Stop Motion Thar.mp4' %}" type="video/mp4"></video>
    <div class="heador__form-box">
       <form class="form-inline" action="{% url 'vehicle:vehicles' %}" method="GET" autocomplete="off">
          <div class="row no-gutters">
@@ -65,19 +66,19 @@
    <p class="primary-text__main">Alternative Tourism, Kayaking, Rafting, Caving, Fishing, Trekking, Boating, Swimming, Community Sharing, Over-Landing, Camping</p>
    </div>
    </div>
-   <div id="fix" class="carousel slide" data-ride="carousel" data-interval="4000">
-   <div class="carousel-inner">
-   <div class="carousel-item active">
-   <img class="d-block w-100 lozad" data-src="{% static 'images/main_v2/DSC05726v3.webp' %}" alt="First slide">
-   </div>
-   <div class="carousel-item">
-   <img class="d-block w-100 lozad" data-src="{% static 'images/main_v2/SSS04205-compressor.webp' %}" alt="Second slide">
-   </div>
-   <div class="carousel-item">
-   <img class="d-block w-100 lozad" data-src="{% static 'images/main_v2/front_image.webp' %}" alt="Third slide">
-   </div>
-   </div>
-   </div>
+<!--   <div id="fix" class="carousel slide" data-ride="carousel" data-interval="4000">-->
+<!--   <div class="carousel-inner">-->
+<!--   <div class="carousel-item active">-->
+<!--   <img class="d-block w-100 lozad" data-src="{% static 'images/main_v2/DSC05726v3.webp' %}" alt="First slide">-->
+<!--   </div>-->
+<!--   <div class="carousel-item">-->
+<!--   <img class="d-block w-100 lozad" data-src="{% static 'images/main_v2/SSS04205-compressor.webp' %}" alt="Second slide">-->
+<!--   </div>-->
+<!--   <div class="carousel-item">-->
+<!--   <img class="d-block w-100 lozad" data-src="{% static 'images/main_v2/front_image.webp' %}" alt="Third slide">-->
+<!--   </div>-->
+<!--   </div>-->
+<!--   </div>-->
 </header>
 <section class="section-features">
 <div class="heading-secondary centered">
@@ -146,25 +147,28 @@ The only trace we leave behind are tyre marks.
 <div class="row">
 <div class="col-sm-3">
 <div class="">
-<div class="image">
+<div class="image" style="margin-bottom: 40px;">
 <a href="https://www.vogue.in/culture-and-living/content/unique-airbnb-stays-in-india-international-holiday-moveable-properties"><img class="image__container lozad" data-src="{% static 'images/main_v2/vogue.webp' %}"></a>
 </div>
 </div>
 </div>
+   <br>
 <div class="col-sm-3">
-<div class="image">
+<div class="image" style="margin-bottom: 200px;">
 <div class="image--2">
 <a href="https://www.responsibletourismindia.com/stay/309"><img class="image__container lozad" data-src="{% static 'images/main_v2/responsibility.webp' %}"></a>
 </div>
 </div>
 </div>
+      <br>
 <div class="col-sm-3">
 <div class="">
-<div class="image">
+<div class="image" style="margin-bottom: 200px;">
 <a href="http://theguwahatitimes.info/2019/06/12/overlanding-through-north-east-india-in-cars-with-rooftop-tents/"><img class="image__container lozad" data-src="{% static 'images/main_v2/guwahatitimes.webp' %}"></a>
 </div>
 </div>
 </div>
+      <br>
 <div class="col-sm-3">
 <div class="">
 <div class="image">
@@ -173,10 +177,25 @@ The only trace we leave behind are tyre marks.
 </div>
 </div>
 </div>
-</div>
+<!--   <div class="row">-->
+<!--      <div class="col-sm-3">-->
+<!--         <a href="https://www.vogue.in/culture-and-living/content/unique-airbnb-stays-in-india-international-holiday-moveable-properties"><img class="image__container lozad" data-src="{% static 'images/main_v2/vogue.webp' %}"></a>-->
+<!--      </div>-->
+
+<!--      <div class="col-md-3">-->
+<!--         <a href="https://www.vogue.in/culture-and-living/content/unique-airbnb-stays-in-india-international-holiday-moveable-properties"><img class="image__container lozad" data-src="{% static 'images/main_v2/responsibility.webp' %}"></a>-->
+<!--      </div>-->
+
+<!--      <div class="col-md-3">-->
+<!--         <a href="https://www.vogue.in/culture-and-living/content/unique-airbnb-stays-in-india-international-holiday-moveable-properties"><img class="image__container lozad" data-src="{% static 'images/main_v2/guwahatitimes.webp' %}"></a>-->
+<!--      </div>-->
+
+<!--      <div class="col-md-3">-->
+<!--         <a href="https://www.vogue.in/culture-and-living/content/unique-airbnb-stays-in-india-international-holiday-moveable-properties"><img class="image__container lozad" data-src="{% static 'images/main_v2/tribune.gif' %}"></a>-->
+<!--      </div>-->
+<!--   </div>-->
+<!--</div>-->
 </section>
-
-
 
 <section class="section-blog contain">
 <div class="heading-secondary">
@@ -222,9 +241,6 @@ The only trace we leave behind are tyre marks.
 </div>
 </section>
 
-
-
-
 <section id="testim" class="testim">
 <div class="wrap">
 <span id="right-arrow" class="arrow right fa fa-chevron-right"></span>
@@ -242,53 +258,6 @@ The only trace we leave behind are tyre marks.
 </ul>
 <div id="testim-content" class="cont">
 <div class="active">
-<div class="img"><img class="lozad" data-src="https://s3.ap-south-1.amazonaws.com/camping-company/media/Reviewers/rana.webp" alt=""></div>
-<h2>Rana <br>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-</h2>
-<p>Had an amazing time in the truck. Harsh was very prompt and clear about communications. This camping experience took my trip to meghalaya a step further for sure! Absolutely loved it!</p>
-</div>
-<div>
-<div class="img"><img class="lozad" data-src="https://s3.ap-south-1.amazonaws.com/camping-company/media/Reviewers/shaswat.webp" alt=""></div>
-<h2>Shashwat
-<br>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-</h2>
-<p>If you want to experience something extraordinary and memorable in your life, then go on a trip in this beast.</p>
-</div>
-<div>
-<div class="img"><img class="lozad" data-src="https://s3.ap-south-1.amazonaws.com/camping-company/media/Reviewers/shanmuga.webp" alt=""></div>
-<h2>Shanmuga
-<br>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-</h2>
-<p>It was a great adventure trip , we loved it .Harsh was a great host and helped us to plan the trip well, the places suggested by him was awesome. We had a great time</p>
-</div>
-<div>
-<div class="img"><img class="lozad" data-src="https://s3.ap-south-1.amazonaws.com/camping-company/media/Reviewers/roopshre.webp" alt=""></div>
-<h2>Roopshree Chauhan
-<br>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-</h2>
-<p>Great way to explore and experience a place. Friendly and well informed host. Comfortable vehicle on all terrain.</p>
-</div>
-<div>
 <div class="img"><img class="lozad" data-src="https://s3.ap-south-1.amazonaws.com/camping-company/media/Reviewers/ira.webp" alt=""></div>
 <h2>Ira
 <br>
@@ -347,6 +316,53 @@ The only trace we leave behind are tyre marks.
 <span class="fa fa-star checked"></span>
 </h2>
 <p>Harsh and Heena have started a wonderful venture of camping on wheels. We loved the whole experience. They also prepared a customised itenary for us which was very thoughtful. Would highly recommend this for backpackers.</p>
+</div>
+   <div class="active">
+<div class="img"><img class="lozad" data-src="https://s3.ap-south-1.amazonaws.com/camping-company/media/Reviewers/rana.webp" alt=""></div>
+<h2>Rana <br>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+</h2>
+<p>Had an amazing time in the truck. Harsh was very prompt and clear about communications. This camping experience took my trip to meghalaya a step further for sure! Absolutely loved it!</p>
+</div>
+<div>
+<div class="img"><img class="lozad" data-src="https://s3.ap-south-1.amazonaws.com/camping-company/media/Reviewers/shaswat.webp" alt=""></div>
+<h2>Shashwat
+<br>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+</h2>
+<p>If you want to experience something extraordinary and memorable in your life, then go on a trip in this beast.</p>
+</div>
+<div>
+<div class="img"><img class="lozad" data-src="https://s3.ap-south-1.amazonaws.com/camping-company/media/Reviewers/shanmuga.webp" alt=""></div>
+<h2>Shanmuga
+<br>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+</h2>
+<p>It was a great adventure trip , we loved it .Harsh was a great host and helped us to plan the trip well, the places suggested by him was awesome. We had a great time</p>
+</div>
+<div>
+<div class="img"><img class="lozad" data-src="https://s3.ap-south-1.amazonaws.com/camping-company/media/Reviewers/roopshre.webp" alt=""></div>
+<h2>Roopshree Chauhan
+<br>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+</h2>
+<p>Great way to explore and experience a place. Friendly and well informed host. Comfortable vehicle on all terrain.</p>
 </div>
 </div>
 </div>
