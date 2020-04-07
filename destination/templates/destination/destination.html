@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% load dash %}
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/destination/destination.css' %}">
+<link rel="stylesheet" href="{% static 'css/destination/destination.css?v=1.0.0' %}">
 {% endblock %}
 {% block title %}
 <title>Best Places for Camping in India and Bhutan | Camping Co</title>
@@ -12,16 +12,13 @@
 <meta name="keywords" content="travel destination, destination for camping, beautiful east india,beautiful notheast,mountains arunachal, mountain meghalaya, caving in meghalaya, caving in meghalaya, waterfall of meghalaya, waterfalls meghalaya ,umiam lake, white water village , mawphlang sacred groove,shnonpdeng, dawki,krangsuri,living root bridge, dainthlen falls, kynrem falls, nohsngithiang falls">
 {% endblock %}
 {% block content_block %}
-<div class="">
-    <h1 style="visibility: hidden;">Campsites</h1>
-   <div class="row no-gutters">
-      <div class="col-md-7 col-10 some">
-          <div class="destination-back">
+<div id="map"></div>
+    <h1 style="display: none;">Campsites</h1>
          <div class="ico">
             <i class="fas fa-map-marked-alt"></i>
          </div>
-
-         <form id="submit" method="POST" autocomplete="off">
+        <div class="scrolling-wrapper destination-back">
+            <form id="submit" method="POST" autocomplete="off">
             {% csrf_token %}
              <div class="row no-gutters">
                  <div class="col-md-12 col-lg-6">
@@ -35,7 +32,7 @@
                             <option value="Bhutan">
                             <option value="Himachal Pradesh">
                           </datalist>
-                <button class="input-submit-button"><i class="fas fa-search"></i></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button class="input-submit-button"><i class="fas fa-search"></i></button>
                </div>
                  <div class="col-md-12 col-lg-3">
                      <input list="sort" class="input-place" type="text" placeholder="sort-by">
@@ -53,46 +50,25 @@
              </div>
          </form>
               <br>
-
-        <div class="scrollbar">
-           <div class="row remove">
+           <div class="remove">
              {% for x in places %}
-              <div class="col-lg-4 col-md-6 col-sm-6">
-                 <div class="card">
-                 <img src="{{x.images.url}}" class="card-img-top" alt="destination">
-                 <div class="card-body">
-                     <h5 class="card-title">{{x.title}}</h5>
-                     <div class="rating" style="display: block; margin: 0 auto;">
-                         <span class="fa fa-star"></span>
-                         <span class="fa fa-star"></span>
-                         <span class="fa fa-star"></span>
-                         <span class="fa fa-star"></span>
-                         <span class="fa fa-star"></span>
-                     </div>
-                   <p class="card-text">{{x.description|truncatechars_html:100}}</p>
-                     <div class="card-url">
+                 <div class="card" style="width: 18rem;">
+                     <a href="{% url 'destination:destination_detail_page' slug=x.destination.slug %}" ><img class="card-img-top" src="{{x.images.url}}" alt="Card image cap"></a>
+                  <div class="card-body">
+                    <h5 class="card-title">{{x.title}}</h5>
+                    <p class="card-text">{{x.description|truncatechars_html:40}}</p>
+                    <div class="card-url">
                          <h3>
                             <a class="card-url-1" href="{% url 'destination:destination_detail_page' slug=x.destination.slug %}" >Know more</a>
                             <span class="card-url-2">Price starts @ INR {{x.starting}}</span>
                          </h3>
                      </div>
-                 </div>
-              </div>
-                 <br>
-                 <br>
-                 <br>
-            </div>
-          {% endfor %}
+                  </div>
+                </div>
+            {% endfor %}
          </div>
            <div class="row replace-me"></div>
         </div>
-          </div>
-         </div>
-      <div class="col-md-5 col-2">
-         <div id="map"></div>
-      </div>
-      </div>
-   </div>
 <script>
    function initMap(list1){
        var st = []
@@ -194,6 +170,8 @@
         var marker = {
            coords:{lat:{{x.latitude}},lng:{{x.longitude}}},
            iconImage:'{% static 'images/camp_add/location.svg' %}',
+          content:'<div class="py-4"><div class="card-deck"><div class="card"><img class="card-img-top" src="{{x.images.url}}" alt="Card image cap"><div class="card-body"><h5 class="card-title" prikey="{{x.pk}}">{{x.title}}</h5><p class="card-text">{{x.description}}</p></div></div></div></div>',
+
           }
       if (typeof list1 == "undefined"){
            addMarker(marker);
@@ -240,7 +218,6 @@
 var loc = window.location.origin
 function display_star(){
    $(".rating").each(function( index ) {
-   console.log(rating)
               $(this).children().each(function( index2 ) {
               if (index2 == rating[index]){
                 return false;
@@ -302,7 +279,7 @@ function filter_price(){
                 {% for x in places %}
                for (var z = 0; z < e.list1.length; z++){
                   if ({{x.pk}} == e.list1[z]){
-                     $(".replace-me").append('<div class="remove col-lg-4 col-md-6 col-sm-6"><div class="card"> <img src="{{x.images.url}}" class="card-img-top" alt="destination"><div class="card-body"><h5 class="card-title">{{x.title}}</h5><div class="rating" style="display: block; margin: 0 auto;"> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span></div><p class="card-text">{{x.description|truncatechars_html:100}}</p><div class="card-url"><h3> <a class="card-url-1" href="{% url 'destination:destination_detail_page' slug=x.destination.slug %}" >Know more</a> <span class="card-url-2">Price starts @ INR {{x.starting}}</span></h3></div></div></div> <br> <br> <br></div></div>')
+                     $(".replace-me").append('<div class="remove col-lg-4 col-md-6 col-sm-6"><div class="card"> <img src="{{x.images.url}}" class="card-img-top" alt="destination"><div class="card-body"><h5 class="card-title">{{x.title}}</h5><div class="rating" style="display: block; margin: 0 auto;"> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span></div><p class="card-text">{{x.description|truncatechars_html:40}}</p><div class="card-url"><h3> <a class="card-url-1" href="{% url 'destination:destination_detail_page' slug=x.destination.slug %}" >Know more</a> <span class="card-url-2">Price starts @ INR {{x.starting}}</span></h3></div></div></div> <br> <br> <br></div></div>')
                      break;
                   }
 
