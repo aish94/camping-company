@@ -169,7 +169,7 @@
 
 
        var options = {
-       zoom:8,
+       zoom:4,
        center:{lat:25.1445,lng:91.7362},
        styles: st
 
@@ -214,7 +214,7 @@
        if(props.content){
          var infoWindow = new google.maps.InfoWindow({
            content:props.content,
-           maxWidth: 200
+           maxWidth: 600
          });
 
          marker.addListener('click', function(){
