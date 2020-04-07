@@ -14,9 +14,6 @@
 {% block content_block %}
 <div id="map"></div>
     <h1 style="display: none;">Campsites</h1>
-         <div class="ico">
-            <i class="fas fa-map-marked-alt"></i>
-         </div>
         <div class="scrolling-wrapper destination-back">
             <form id="submit" method="POST" autocomplete="off">
             {% csrf_token %}
@@ -51,11 +48,25 @@
          </form>
               <br>
            <div class="remove">
+               <div class="right-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+
+                <div class="left-arrow">
+                    <i class="fas fa-arrow-left"></i>
+                 </div>
              {% for x in places %}
                  <div class="card" style="width: 18rem;">
                      <a href="{% url 'destination:destination_detail_page' slug=x.destination.slug %}" ><img class="card-img-top" src="{{x.images.url}}" alt="Card image cap"></a>
                   <div class="card-body">
                     <h5 class="card-title">{{x.title}}</h5>
+                      <div class="rating" style="display: block; margin: 0 auto;">
+                         <span class="fa fa-star"></span>
+                         <span class="fa fa-star"></span>
+                         <span class="fa fa-star"></span>
+                         <span class="fa fa-star"></span>
+                         <span class="fa fa-star"></span>
+                     </div>
                     <p class="card-text">{{x.description|truncatechars_html:40}}</p>
                     <div class="card-url">
                          <h3>
@@ -159,7 +170,7 @@
 
        var options = {
        zoom:8,
-       center:{lat:25.4670,lng:91.3662},
+       center:{lat:25.1445,lng:91.7362},
        styles: st
 
      }
@@ -170,7 +181,7 @@
         var marker = {
            coords:{lat:{{x.latitude}},lng:{{x.longitude}}},
            iconImage:'{% static 'images/camp_add/location.svg' %}',
-          content:'<div class="py-4"><div class="card-deck"><div class="card"><img class="card-img-top" src="{{x.images.url}}" alt="Card image cap"><div class="card-body"><h5 class="card-title" prikey="{{x.pk}}">{{x.title}}</h5><p class="card-text">{{x.description}}</p></div></div></div></div>',
+           content:'<div class="py-4"><div class="card-deck"><div class="card"><img class="card-img-top" src="{{x.images.url}}" alt="Card image cap"><div class="card-body"><h5 class="card-title" prikey="{{x.pk}}">{{x.title}}</h5><p class="card-text">{{x.description}}</p></div></div></div></div>',
 
           }
       if (typeof list1 == "undefined"){
@@ -202,7 +213,8 @@
 
        if(props.content){
          var infoWindow = new google.maps.InfoWindow({
-           content:props.content
+           content:props.content,
+           maxWidth: 200
          });
 
          marker.addListener('click', function(){
@@ -291,9 +303,13 @@ function filter_price(){
                }
            })
         })
-       $(".ico").click(function(){
-         $("#map").toggleClass("posi")
-       })
+        $(".right-arrow").click(function(){
+           document.querySelector(".scrolling-wrapper").scrollBy(1000,0);
+        })
+
+        $(".left-arrow").click(function(){
+           document.querySelector(".scrolling-wrapper").scrollBy(-1000,0);
+        })
    }
 </script>
 {% endblock %}
