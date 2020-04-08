@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% load dash %}
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/destination/destination.css' %}">
+<link rel="stylesheet" href="{% static 'css/destination/destination.css' %}?v=1.0.0">
 {% endblock %}
 {% block title %}
 <title>Best Places for Camping in India and Bhutan | Camping Co</title>
@@ -15,7 +15,7 @@
 <div id="map"></div>
     <h1 style="display: none;">Campsites</h1>
         <div class="scrolling-wrapper destination-back">
-            <form id="submit" method="POST" autocomplete="off">
+           <form id="submit" method="POST" autocomplete="off">
             {% csrf_token %}
              <div class="row no-gutters">
                  <div class="col-md-12 col-lg-6">
@@ -29,7 +29,7 @@
                             <option value="Bhutan">
                             <option value="Himachal Pradesh">
                           </datalist>
-                <button class="input-submit-button"><i class="fas fa-search"></i></button>
+                <button class="input-submit-button"><i class="fas fa-search"></i></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                </div>
                  <div class="col-md-12 col-lg-3">
                      <input list="sort" class="input-place" type="text" placeholder="sort-by">
@@ -47,14 +47,14 @@
              </div>
          </form>
               <br>
-           <div class="remove">
-               <div class="right-arrow">
+            <div class="right-arrow">
                     <i class="fas fa-arrow-right"></i>
                 </div>
 
                 <div class="left-arrow">
                     <i class="fas fa-arrow-left"></i>
                  </div>
+           <div class="remove">
              {% for x in places %}
                  <div class="card" style="width: 18rem;">
                      <a href="{% url 'destination:destination_detail_page' slug=x.destination.slug %}" ><img class="card-img-top" src="{{x.images.url}}" alt="Card image cap"></a>
@@ -78,7 +78,7 @@
                 </div>
             {% endfor %}
          </div>
-           <div class="row replace-me"></div>
+           <div class="replace-me"></div>
         </div>
 <script>
    function initMap(list1){
@@ -258,8 +258,9 @@ function filter_price(){
                  title = e.lower_priced_places[x].title
                  starting = e.lower_priced_places[x].starting
                  description = e.lower_priced_places[x].description
+                 description = description.substring(0, 40) + '...';
                  var url = loc + '/destination/' + title.replace(/\s+/g, '-')
-                 $(".replace-me").append('<div class="remove col-lg-4 col-md-6 col-sm-6"><div class="card"> <img src="' + i + '" class="card-img-top" alt="destination"><div class="card-body"><h5 class="card-title">' + title + '</h5><div class="rating" style="display: block; margin: 0 auto;"> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span></div><p class="card-text">' + description + '</p><div class="card-url"><h3> <a class="card-url-1" href="'  + url +  '">Know more</a> <span class="card-url-2">Price starts @ INR ' + starting + '</span></h3></div></div></div> <br> <br> <br></div></div>')
+                 $(".replace-me").append('<div class="card" style="width: 18rem;"> <img src="' + i + '" class="card-img-top" alt="destination"><div class="card-body"><h5 class="card-title">' + title + '</h5><div class="rating" style="display: block; margin: 0 auto;"> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span></div><p class="card-text">' + description + '</p><div class="card-url"><h3> <a class="card-url-1" href="'  + url +  '">Know more</a> <span class="card-url-2">Price starts @ INR ' + starting + '</span></h3></div></div></div>')
                 }
                  display_star();
             });
@@ -291,7 +292,7 @@ function filter_price(){
                 {% for x in places %}
                for (var z = 0; z < e.list1.length; z++){
                   if ({{x.pk}} == e.list1[z]){
-                     $(".replace-me").append('<div class="remove col-lg-4 col-md-6 col-sm-6"><div class="card"> <img src="{{x.images.url}}" class="card-img-top" alt="destination"><div class="card-body"><h5 class="card-title">{{x.title}}</h5><div class="rating" style="display: block; margin: 0 auto;"> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span></div><p class="card-text">{{x.description|truncatechars_html:40}}</p><div class="card-url"><h3> <a class="card-url-1" href="{% url 'destination:destination_detail_page' slug=x.destination.slug %}" >Know more</a> <span class="card-url-2">Price starts @ INR {{x.starting}}</span></h3></div></div></div> <br> <br> <br></div></div>')
+                     $(".replace-me").append('<div class="card" style="width: 18rem;"> <a href="{% url 'destination:destination_detail_page' slug=x.destination.slug %}" ><img class="card-img-top" src="{{x.images.url}}" alt="Card image cap"></a><div class="card-body"><h5 class="card-title">{{x.title}}</h5><div class="rating" style="display: block; margin: 0 auto;"> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span></div><p class="card-text">{{x.description|truncatechars_html:40}}</p><div class="card-url"><h3> <a class="card-url-1" href="{% url 'destination:destination_detail_page' slug=x.destination.slug %}" >Know more</a> <span class="card-url-2">Price starts @ INR {{x.starting}}</span></h3></div></div></div>')
                      break;
                   }
 
@@ -310,6 +311,16 @@ function filter_price(){
         $(".left-arrow").click(function(){
            document.querySelector(".scrolling-wrapper").scrollBy(-1000,0);
         })
+
+        $(document).scroll(function(){
+          var left = document.querySelector(".right-arrow")
+          var right = document.querySelector(".left-arrow")
+          left.style.position = 'absolute';
+          right.style.position = 'absolute';
+        })
+        //clicking card open map marker 55-102
+        //var z = document.querySelectorAll('#map div img')
+        //document.querySelectorAll('#map div img')[55].click()
    }
 </script>
 {% endblock %}
