@@ -209,6 +209,7 @@
 <script defer src="{% static 'js/razorpay.js' %}"></script>
 <script>
   window.onload = function(){
+  localStorage.setItem("reload-me", 1);
   function couponCode(a){
         coupon = (pri * a).toFixed(2);
         $("#cart-discount").html(-coupon)
