@@ -33,12 +33,12 @@ def all_user(request):
 
 
 def detail_user(request, pk):
-    user = User.objects.get(pk=pk)
     try:
+        user = User.objects.get(pk=pk)
         customer = Customer.objects.get(user=user)
     except:
-        messages.warning("something went wrong report to kan")
-        return redirect("app:home")
+        messages.warning("This user is before initial signup/because of new signup not available")
+        return redirect("app:all_user")
     if request.is_ajax():
         lead_status = request.POST.get("lead_status")
         Customer.objects.filter(user=user).update(
