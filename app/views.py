@@ -36,16 +36,15 @@ def detail_user(request, pk):
     user = User.objects.get(pk=pk)
     try:
         customer = Customer.objects.get(user=user)
-        book = Book.objects.get(user=user)
     except:
-        return render(request, "app/user_detail.html")
-
+        messages.warning("something went wrong report to kan")
+        return redirect("app:home")
     if request.is_ajax():
         lead_status = request.POST.get("lead_status")
         Customer.objects.filter(user=user).update(
             lead_status=lead_status)
         return JsonResponse({"data": lead_status})
-    return render(request, "app/user_detail.html", {"customer": customer, "book": book})
+    return render(request, "app/user_detail.html", {"customer": customer})
 
 
 def terms_condition(request):
