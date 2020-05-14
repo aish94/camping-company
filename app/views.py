@@ -37,7 +37,7 @@ def detail_user(request, pk):
         user = User.objects.get(pk=pk)
         customer = Customer.objects.get(user=user)
     except:
-        messages.warning("This user is before initial signup/because of new signup not available")
+        messages.warning(request, "This user has incomplete signup/user info is corrupted")
         return redirect("app:all_user")
     if request.is_ajax():
         lead_status = request.POST.get("lead_status")
