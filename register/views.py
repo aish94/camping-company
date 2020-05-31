@@ -137,7 +137,11 @@ def welcome(request):
         user.first_name = fname
         user.last_name = lname
         user.save()
-        customer = Customer.objects.get(user=user)
+        try:
+            customer = Customer.objects.get(user=user)
+        except:
+            messages.warning(request, "Something went wrong try again/ask the admin for help")
+            return redirect("app:home")
         number = customer.phone
         Customer.objects.filter(user=user).update(city=city, address=address, nickname=nickname,
                                                   license_number=license_number, about=about)
