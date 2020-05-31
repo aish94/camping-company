@@ -352,6 +352,12 @@ function updateQuantity(quantityInput)
         } else if($("#coupon-code").val() == "NOTM25"){
         couponCode(.25);
 
+       }else if($("#coupon-code").val() == "UNLOCK33" && duration==3){
+        couponCode(.33);
+
+       }else if($("#coupon-code").val() == "UNLOCK50" && duration>=4){
+        couponCode(.50);
+
        } else {
           alert("Invalid code");
        }
