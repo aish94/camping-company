@@ -65,17 +65,19 @@ def vehicles(request):
     if place != "Himachal Pradesh":
         xenon_soft = multiple_car_book(name="xenon_soft", now=now, check_in=check_in, check_out=check_out)
         thar = multiple_car_book(name="thar", now=now, check_in=check_in, check_out=check_out)
-        xenon_hard = single_car_book(name="xenon_hard", now=now, check_in=check_in, check_out=check_out)
+        # xenon_hard = single_car_book(name="xenon_hard", now=now, check_in=check_in, check_out=check_out)
         caravan = single_car_book(name="caravan", now=now, check_in=check_in, check_out=check_out)
         xenon_soft_annex = single_car_book(name="xenon_soft_annex", now=now, check_in=check_in, check_out=check_out)
         overlanding_truck = single_car_book(name="overlanding_truck", now=now, check_in=check_in, check_out=check_out)
+        force_gurkha = single_car_book(name="force_gurkha", now=now, check_in=check_in, check_out=check_out)
         data = {
             "thar": thar,
             "xenon_soft": xenon_soft,
-            "xenon_hard": xenon_hard,
+            # "xenon_hard": xenon_hard,
             "caravan": caravan,
             "xenon_soft_annex": xenon_soft_annex,
-            "overlanding_truck": overlanding_truck
+            "overlanding_truck": overlanding_truck,
+            "force_gurkha": force_gurkha,
         }
     else:
         thar = single_car_book(name="thar", now=now, check_in=check_in, check_out=check_out)

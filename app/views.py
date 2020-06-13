@@ -25,11 +25,12 @@ def about(request):
 
 def all_user(request):
     users = User.objects.all()
+    customer = Customer.objects.all()
     if request.method == "POST":
         email = request.POST.get("email")
         user = User.objects.filter(email=email)
-        return render(request, "app/all_user.html", {"users": user})
-    return render(request, "app/all_user.html", {"users": users})
+        return render(request, "app/all_user.html", {"users": user, "cust":customer})
+    return render(request, "app/all_user.html", {"users": users, "cust":customer})
 
 
 def detail_user(request, pk):
