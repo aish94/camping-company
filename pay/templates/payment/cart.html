@@ -211,11 +211,17 @@
   window.onload = function(){
   localStorage.setItem("reload-me", 1);
   function couponCode(a){
-        coupon = (pri * a).toFixed(2);
+        if(a<=100)
+          coupon = (pri * a).toFixed(2);
+        else
+          coupon = a;
         $("#cart-discount").html(-coupon)
         pri = pri - coupon
         $(".product-line-price")[1].textContent = pri;
-        var iine = "You got " + 100*a.toString() + "% discount";
+        if(a<=100)
+          var iine = "You got " + 100*a.toString() + "% discount";
+        else
+            var iine = "You got " + a + " instant discount";
         $("#coupon-text").html(iine);
         recalculateCart()
         x = $("input")
@@ -351,6 +357,9 @@ function updateQuantity(quantityInput)
 
         } else if($("#coupon-code").val() == "NOTM25"){
         couponCode(.25);
+
+       }else if($("#coupon-code").val() == "CAMPINGCO5000"){
+        couponCode(5000);
 
        } else {
           alert("Invalid code");
