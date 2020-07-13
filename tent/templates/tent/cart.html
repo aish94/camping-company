@@ -1,0 +1,222 @@
+{% extends "snippets/base.html" %}
+{% load staticfiles %}
+    {% block css %}
+        <link rel="stylesheet" href="{% static 'css/customer/payment.css' %}">
+    {% endblock %}
+
+
+    {% block content_block %}
+<br>
+
+<div class="shopping-cart my-5 container">
+<h1>Shopping Cart</h1>
+<form id="payment-form" method="POST">{% csrf_token %}
+  <div class="column-labels">
+    <label class="product-image">Image</label>
+    <label class="product-details">Product</label>
+    <label class="product-price">Price</label>
+    <label class="product-quantity">Quantity</label>
+    <label class="product-line-price">Total</label>
+  </div>
+
+  <div class="product">
+    <div class="product-image">
+      <img src="{{vehicle.car_image.url}}">
+    </div>
+    <div class="product-details">
+      <div class="product-title">Tent</div>
+    </div>
+    <div class="product-price">{{price}}</div>
+    <div class="product-quantity">
+      <input type="number" value="1" min="1">
+    </div>
+    <div class="product-line-price">{{price}}</div>
+  </div>
+    <hr>
+  <div class="product">
+    <div class="product-image">
+      <img src="{{vehicle.car_image.url}}">
+    </div>
+    <div class="product-details">
+      <div class="product-title">Shipping charges</div>
+    </div>
+    <div class="product-price">5500</div>
+    <div class="product-quantity">
+      <input type="number" value="1" min="1" disabled>
+    </div>
+    <div class="product-line-price">5500</div>
+  </div>
+    <hr>
+  <div class="totals">
+    <div class="totals-item">
+      <label>Subtotal(GST included)</label>
+      <div class="totals-value" id="cart-subtotal">71.97</div>
+    </div>
+    <div class="totals-item">
+    </div>
+    <div class="totals-item">
+    </div>
+    <div style="opacity:0;" class="totals-item totals-item-total">
+      <label>Grand Total</label>
+      <div class="totals-value" id="cart-total">90.57</div>
+    </div>
+  </div>
+
+      <button id="rzp-button1" class="checkout">Pay</button>
+</form>
+</div>
+<br>
+<script defer src="{% static 'js/razorpay.js' %}"></script>
+<script>
+  window.onload = function(){
+var taxRate = 0.05;
+var shippingRate = 15.00;
+var fadeTime = 300;
+var pri = {{price}};
+var totals = 0;
+
+$(".totals-value")[0].textContent = pri+5500;
+$(".totals-value")[1].textContent = pri+5500;
+var total = pri+5500;
+
+/* Assign actions */
+$('.product-quantity input').change( function() {
+  updateQuantity(this);
+});
+
+$('.product-removal button').click( function() {
+  removeItem(this);
+});
+
+
+/* Recalculate cart */
+function recalculateCart()
+{
+  var subtotal = 0;
+
+  /* Sum up row totals */
+  $('.product').each(function () {
+    subtotal += parseInt($(this).children('.product-line-price').text());
+  });
+
+  /* Calculate totals */
+  var tax = subtotal * taxRate;
+  var shipping = (subtotal > 0 ? shippingRate : 0);
+  var total = subtotal;
+  totals = total
+
+  /* Update totals display */
+  $('.totals-value').fadeOut(fadeTime, function() {
+    $('#cart-subtotal').html(subtotal.toFixed(2));
+    $('#cart-tax').html(tax.toFixed(2));
+    $('#cart-shipping').html(shipping.toFixed(2));
+    $('#cart-total').html(total.toFixed(2));
+    if(total == 0){
+      $('.checkout').fadeOut(fadeTime);
+    }else{
+      $('.checkout').fadeIn(fadeTime);
+    }
+    $('.totals-value').fadeIn(fadeTime);
+  });
+}
+
+
+/* Update quantity */
+function updateQuantity(quantityInput)
+{
+  /* Calculate line price */
+  var productRow = $(quantityInput).parent().parent();
+  var price = parseFloat(productRow.children('.product-price').text());
+  var quantity = $(quantityInput).val();
+  var linePrice = price * quantity;
+
+  /* Update line price display and recalc cart totals */
+  productRow.children('.product-line-price').each(function () {
+    $(this).fadeOut(fadeTime, function() {
+      $(this).text(linePrice.toFixed(2));
+      recalculateCart();
+      $(this).fadeIn(fadeTime);
+    });
+  });
+}
+
+
+/* Remove item from cart */
+function removeItem(removeButton)
+{
+  /* Remove row from DOM and recalc cart total */
+  var productRow = $(removeButton).parent().parent();
+  productRow.slideUp(fadeTime, function() {
+    productRow.remove();
+    recalculateCart();
+  });
+}
+      if (totals == 0){
+          totals = total
+        }
+
+  var options = {
+    "currency": "INR",
+    "name": "Camping co",
+    "description": "Overlanding expedition booked",
+    "image": "{% static 'images/favi/apple-icon-72x72.png' %}",
+    "handler": function (response){
+            var end_point = "{% url 'tent_check:success' %}"
+            var end = end_point;//success/faliure
+            var t = $("input[name=csrfmiddlewaretoken]").val();
+            data = {
+              "txnid": response.razorpay_payment_id,
+              "csrfmiddlewaretoken": t
+            }
+            $.ajax({
+              data: data,
+              url: end,
+              method: "POST",
+              success: function(data){
+                localStorage.clear();
+                window.location.href = end;
+              },
+              error: function(error){
+                  console.log(error)
+              }
+          })
+    },
+    "prefill": {
+    },
+    "notes": {
+        "address": "note value"
+    },
+    "theme": {
+        "color": "#1ab188"
+    }
+};
+document.getElementById('rzp-button1').onclick = function(e){
+    e.preventDefault();
+    var paymentForm = $("#payment-form")
+    var data = $('form').serialize();
+        var paymentMethodEndpoint = "{% url 'tent_check:cart' %}"
+        var t = $("input[name=csrfmiddlewaretoken]").val();
+        var data = {
+            "total": totals,
+            'csrfmiddlewaretoken': t
+        }
+        $.ajax({
+            data: data,
+            url: paymentMethodEndpoint,
+            method: "POST",
+            success: function(data){
+            options.amount = (data.amount) * 100
+            options.prefill.email = data.email
+            options.prefill.name = data.name
+            options.key = data.razor_id
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+            },
+            error: function(error){
+                console.log(error)
+            }
+        })
+}
+}
+</script>
+    {% endblock %}

@@ -1,10 +1,16 @@
 from django.conf.urls import url
-from tent.views import tent_create_check, tent_update_check
+from tent.views import (tent_create_check,
+                        tent_update_check,
+                        tents, payment_failure,
+                        payment_success, cart)
 
 app_name = "tent_check"
 
 urlpatterns = [
+    url(r'^all/$', tents, name="all"),
+    url(r'^cart/$', cart, name="cart"),
+    url(r'^success/$', payment_success, name="success"),
+    url(r'^failure/$', payment_failure, name="failure"),
     url(r'^(?P<pk>\d+)/create/$', tent_create_check, name="tent_create_check"),
     url(r'^(?P<pk>\d+)/update/$', tent_update_check, name="tent_update_check"),
-
 ]
