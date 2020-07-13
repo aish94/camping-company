@@ -99,3 +99,7 @@ def payment_success(request):
         pay.save()
 
     return render(request, "payment/success.html", {"pay": pay})
+
+
+def tent_info(request):
+    return render(request,"tent/tent_info.html")
