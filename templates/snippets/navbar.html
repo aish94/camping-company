@@ -15,7 +15,6 @@
                 <li class="nav-item {% if request.path == represent_url  %}active{% endif %}"><a class="nav-link" href="{{represent_url}}">Represent</a></li>
                 {% endif %}
                 <li class="nav-item {% if request.path == vehicle_url  %}active{% endif %}"><a class="nav-link" href="{{vehicle_url}}">Campers</a></li>
-                <li class="nav-item {% if request.path == rtt_url  %}active{% endif %}"><a class="nav-link" href="{{rtt_url}}">Rtt</a></li>
                 <li class="nav-item {% if request.path == destination_url  %}active{% endif %}"><a class="nav-link" href="{{destination_url}}">Campsites</a></li>
                 <li class="nav-item {% if request.path == circuits_url  %}active{% endif %}"><a class="nav-link" href="{{circuits_url}}">Circuits</a></li>
                 <li class="nav-item {% if request.path == blog_url  %}active{% endif %}"><a class="nav-link" href="{{blog_url}}">Journal</a></li>
@@ -26,7 +25,7 @@
                 <li class="nav-item {% if request.path == register_url  %}active{% endif %}"><a class="nav-link" href="{{register_url}}">Login</a></li>
                 {% endif %}
                 <li class="nav-item {% if request.path == experience_url %}active{% endif %} experience__header"><a style="color: black;" class="nav-link" href="{{experience_url}}">Customize</a></li>
-
+                <li class="nav-item {% if request.path == rtt_url  %}active{% endif %}"><a class="nav-link" href="{{rtt_url}}">Buy rooftop tent</a></li>
             </ul>
         </div>
     </nav>
