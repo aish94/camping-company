@@ -24,7 +24,7 @@ def about(request):
 
 
 def all_user(request):
-    list1=[]
+    list1 = []
     users = User.objects.all()
     customer = Customer.objects.all()
     for x in users:
@@ -32,13 +32,23 @@ def all_user(request):
             if x.username == y.user.username:
                 if not y.phone:
                     y.user.phone = 1
-                list1.append({"pk": x.pk, "username": x.username, "email": x.email, "first": x.first_name, "last": x.last_name, "date": x.date_joined,
+                list1.append({"pk": x.pk, "username": x.username, "email": x.email, "first_name": x.first_name,
+                              "last_name": x.last_name, "date_joined": x.date_joined,
                               "phone": y.phone})
 
     if request.method == "POST":
         email = request.POST.get("email")
-        user = User.objects.filter(email=email)
-        return render(request, "app/all_user.html", {"users": user, "cust":customer})
+        try:
+            user = User.objects.filter(email=email)
+            cust = Customer.objects.get(user=user[0])
+        except:
+            messages.warning(request, "user does not exist")
+            return redirect("app:all_user")
+        list2 = [{"pk": user[0].pk, "username": user[0].username, "email": user[0].email,
+                  "first_name": user[0].first_name,
+                  "last_name": user[0].last_name, "date_joined": user[0].date_joined,
+                  "phone": cust.phone}]
+        return render(request, "app/all_user.html", {"user": list2})
     return render(request, "app/all_user.html", {"user": list1})
 
 

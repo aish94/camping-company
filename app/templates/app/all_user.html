@@ -36,9 +36,9 @@
                     <tr>
                         <td><a href="{% url 'app:detail_user' pk=x.pk %}">{{ x.username }}</a></td>
                         <td>{{ x.email }}</td>
-                        <td>{{ x.first }}</td>
-                        <td>{{ x.last }}</td>
-                        <td>{{ x.date }}</td>
+                        <td>{{ x.first_name }}</td>
+                        <td>{{ x.last_name }}</td>
+                        <td>{{ x.date_joined }}</td>
                         <td>{{ x.phone }}</td>
                     </tr>
                 {% endfor %}
