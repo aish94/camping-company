@@ -24,13 +24,22 @@ def about(request):
 
 
 def all_user(request):
+    list1=[]
     users = User.objects.all()
     customer = Customer.objects.all()
+    for x in users:
+        for y in customer:
+            if x.username == y.user.username:
+                if not y.phone:
+                    y.user.phone = 1
+                list1.append({"pk": x.pk, "username": x.username, "email": x.email, "first": x.first_name, "last": x.last_name, "date": x.date_joined,
+                              "phone": y.phone})
+
     if request.method == "POST":
         email = request.POST.get("email")
         user = User.objects.filter(email=email)
         return render(request, "app/all_user.html", {"users": user, "cust":customer})
-    return render(request, "app/all_user.html", {"users": users, "cust":customer})
+    return render(request, "app/all_user.html", {"user": list1})
 
 
 def detail_user(request, pk):
