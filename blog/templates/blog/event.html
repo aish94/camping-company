@@ -14,7 +14,10 @@
     {% endblock %}
 
     {% block content_block %}
-    <img style="cursor: pointer" class="img-fluid img-fluid__1" data-toggle="modal" data-target="#exampleModal" src="{% static 'images/event/PICNIC_20200731_155137626.jpg' %}" alt="">
+        <div class="center_know">
+            <img style="cursor: pointer" class="img-fluid img-fluid__1" data-toggle="modal" data-target="#exampleModal" src="{% static 'images/event/PICNIC_20200731_155137626.jpg' %}" alt="">
+            <button data-toggle="modal" class="btn btn-camping know" data-target="#exampleModal">Show more</button>
+        </div>
         <div style="z-index:11111111111;" class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-full" role="document">
             <div class="modal-content">
@@ -106,7 +109,7 @@
             <p>Rs.89000 per person - 28 days (Dome tent)</p>
         <br>
         <h5>Enhanced Clean</h5>
-            <p>This host committed to a rigorous cleaning protocol developed with leading health and hospitality experts.</p>
+            <p>Camping co is committed to a rigorous cleaning protocol developed with leading health and hospitality experts.</p>
             <a style="cursor: pointer; text-decoration:underline;" data-toggle="modal" data-target="#enhamcedModal">
                 Learn more
             </a><br><br><br>
