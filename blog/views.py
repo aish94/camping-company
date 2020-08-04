@@ -1,7 +1,14 @@
 from django.shortcuts import render, redirect
-from blog.models import Blog, Image, Form
+from blog.models import Blog, Image, Form, EventCart
 from django.contrib import messages
+from django.contrib.auth.models import User
+from customer.models import Customer
+import os
 from reviews.models import BlogReview
+from django.http import JsonResponse
+from datetime import date, timedelta
+import datetime
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -89,3 +96,49 @@ def event_form(request):
         messages.success(request, "Thanks for filling the form")
         return redirect("app:home")
     return render(request, "blog/event_form.html")
+
+
+def event_pay(request):
+    if request.is_ajax():
+        try:
+            user = User.objects.get(pk=request.user.pk)
+        except:
+            return JsonResponse({"signed": "false"})
+        try:
+            customer = Customer.objects.get(user=user)
+        except:
+            return JsonResponse({"customer": "false"})
+        razor_id = os.environ.get("razor_id")
+        amount = request.POST.get("total")
+        duration = int(request.POST.get("duration"))
+        check_in = request.POST.get("check_in").replace("-", "")
+        check_in = datetime.datetime.strptime(check_in, "%Y%m%d").date()
+        check_out = check_in + timedelta(duration)
+        person_dome = request.POST.get("person_dome")
+        person_roof = request.POST.get("person_roof")
+        EventCart(user=user, amount=amount, email=user.email,
+                  check_in=check_in,check_out=check_out,
+                  person_dome=person_dome,person_roof=person_roof).save()
+        name = user.username
+        email = user.email
+        return JsonResponse({"amount": amount, "email": email,
+                             "name": name,
+                             "razor_id": razor_id
+                             })
+    return redirect("app:home")
+
+
+@login_required
+def payment_failure(request):
+    return render(request, "payment/failure.html")
+
+
+@login_required
+def payment_success(request):
+    pay = EventCart.objects.filter(user=request.user).last()
+    if request.is_ajax():
+        txnid = request.POST.get("txnid")
+        pay.txnid = txnid
+        pay.save()
+
+    return render(request, "payment/success.html", {"pay": pay})

@@ -167,13 +167,76 @@
           <div class="modal-dialog modal-full" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="paymentModalLabel">Booking goes here?</h5>
+                <h5 class="modal-title" id="paymentModalLabel">Cart</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
+                  <form action="POST">{%csrf_token%}
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-6">
+                        <div class="form-group">
+                        <input class="form__input" type="text" name="tripDay" class="form-control date" id="datetimepicker" placeholder="DD/MM/YYYY" required>
+                        </div>
+                        </div>
+                        <div class="col-6">
+                        <div class="form-group">
+                        <input class="form__input" type="text" list="Duration" name="Duration" class="form-control" id="list" placeholder="Days" required>
+                        <datalist id="Duration">
+                        <option value="14">
+                        <option value="28">
+                        </datalist>
+                        </div>
+                        </div>
+                     </div>
+                        <hr>
+                      <div class="row tableHeading">
+                        <div class="col-4">
+                          <strong>Item</strong>
+                        </div>
 
+                        <div class="col-4">
+                          <strong>Price</strong>
+                        </div>
+                          <div class="col-4">
+                          <strong>Person</strong>
+                        </div>
+                      </div>
+                        <br><br>
+                      <div class="row">
+                        <div class="col-4">
+                            <img src="{% static 'images/destination-detail/camper.svg' %}"><span>Rooftop Tent</span>
+                        </div>
+
+                        <div class="col-4">
+                            <p class="roof_price">INR 0</p>
+                        </div>
+                          <div class="col-4">
+                          <input class="person" id="person_roof" type="number" value="0" min="0">
+                        </div>
+                      </div>
+                        <br><br>
+                      <div class="row">
+                        <div class="col-4">
+                            <img src="{% static 'images/destination-detail/tent.svg' %}"><span>Dome Tent</span>
+                        </div>
+
+                        <div class="col-4">
+                           <p class="dome_price">INR 0</p>
+                        </div>
+                          <div class="col-4">
+                          <input class="person" id="person_dome" type="number" value="0" min="0">
+                        </div>
+                      </div>
+
+                      </div>
+                    <div class="modal-footer" >
+                      <span  id="total" style="font-size: 24px;">Total INR 0</span>
+                      <button type="button" id="rzp-button1" class="btn btn-camping book">Checkout</button>
+                    </div>
+                    </form>
               </div>
             </div>
           </div>
@@ -237,8 +300,167 @@
         </div>
         </footer>
         <div class="bottom">
-            <button style="margin-left: 80%; padding: 10px 20px;" type="button" class="btn btn-camping price" data-toggle="modal" data-target="#paymen">
+            <button style="margin-left: 80%; padding: 10px 20px;" type="button" class="btn btn-camping price" data-toggle="modal" data-target="#payment">
                Book
             </button>
         </div>
+    <script defer src="{% static 'js/razorpay.js' %}"></script>
+    <script>
+    window.onload = function() {
+        $("#datetimepicker").datetimepicker({
+         timepicker:false,
+         format:'Y-m-d',
+         minDate:0,
+         });
+         document.querySelector(".xdsoft_datetimepicker").style.zIndex=111111111111;
+         var temp1=0,temp2=0,price1=59000,price2=49000,price3=99000,price4=89000;
+         $("#list").change(function(){
+            var x = parseInt($("#list").val());
+            $("#person_roof").val(1);
+            $("#person_dome").val(1);
+            if(x==14){
+                $(".roof_price").text("INR "+price1)
+                $(".dome_price").text("INR "+price2)
+                var t = price1+price2
+                temp1=price1;temp2=price2
+                $("#total").text("Total INR "+t)
+
+            }else if(x==28){
+                $(".roof_price").text("INR "+price3)
+                $(".dome_price").text("INR "+price4)
+                var t = price3+price4
+                temp1=price3;temp2=price4;
+                $("#total").text("Total INR "+t)
+            }else {
+            alert("invalid input please select 14 or 28")
+                $(".roof_price").text("INR 0")
+                $(".dome_price").text("INR 0")
+
+            }
+         })
+
+         $("#person_roof").change(function(){
+            var x = parseInt($("#person_roof").val());
+            if($("#list").val()!=""){
+                if(x<0)alert("put valid number of people")
+                else{
+                if($("#list").val()==14)
+                    temp1 = price1*x;
+                else
+                    temp1 = price3*x;
+                $(".roof_price").text("INR "+temp1)
+                var t = temp1+temp2
+                $("#total").text("Total INR "+t)
+                }
+            }else {
+                alert("Please select days first")
+                $("#person_roof").val(0);
+
+            }
+         })
+
+         $("#person_dome").change(function(){
+            var x = parseInt($("#person_dome").val());
+            if($("#list").val()!=""){
+                if(x<0)alert("give valid number of people")
+                else{
+                if($("#list").val()==14){
+                        temp2 = price2*x;
+                    }
+                else{
+                        temp2 = price4*x;
+                    }
+                $(".dome_price").text("INR "+temp2)
+                var t = temp1+temp2
+                $("#total").text("Total INR "+t)
+                }
+            }else {
+                alert("Please select days first")
+                $("#person_dome").val(0);
+            }
+         })
+
+           var options = {
+            "currency": "INR",
+            "name": "Camping co",
+            "description": "Overlanding expedition booked",
+            "image": "{% static 'images/favi/apple-icon-72x72.png' %}",
+            "handler": function (response){
+                    var end_point = "{% url 'blog:success' %}"
+                    var end = end_point;//success/faliure
+                    var t = $("input[name=csrfmiddlewaretoken]").val();
+                    data = {
+                      "txnid": response.razorpay_payment_id,
+                      "csrfmiddlewaretoken": t
+                    }
+                    $.ajax({
+                      data: data,
+                      url: end,
+                      method: "POST",
+                      success: function(data){
+                        localStorage.clear();
+                        window.location.href = end;
+                      },
+                      error: function(error){
+                          console.log(error)
+                      }
+                  })
+            },
+            "prefill": {
+            },
+            "notes": {
+                "address": "note value"
+            },
+            "theme": {
+                "color": "#1ab188"
+            }
+        };
+        document.getElementById('rzp-button1').onclick = function(e){
+            e.preventDefault();
+            if($("input[name=tripDay]").val()==""){alert("PLEASE PUT DATE ALSO");}
+            else {
+            document.querySelector(".razorpay-container").style.zIndex=111111111111;
+            var paymentForm = $("#payment-form")
+            var data = $('form').serialize();
+                var paymentMethodEndpoint = "{% url 'blog:pay' %}"
+                var t = $("input[name=csrfmiddlewaretoken]").val();
+                var data = {
+                    "total": temp1+temp2,
+                    "duration": $("#list").val(),
+                    "check_in": $("input[name=tripDay]").val(),
+                    "person_dome": parseInt($("#person_dome").val()),
+                    "person_roof": parseInt($("#person_roof").val()),
+                    'csrfmiddlewaretoken': t
+                }
+                $.ajax({
+                data: data,
+                url: paymentMethodEndpoint,
+                method: "POST",
+                success: function(data) {
+                  if (data.signed == "false") {
+                    alert("Please sign in first")
+                    window.location.href = "https://www.camping-co.com/accounts/login/"
+                  } else if (data.customer == "false") {
+                    alert("Complete sign up")
+                    window.location.href = "https://www.camping-co.com/accounts/welcome/"
+                  } else {
+                    options.amount = (data.amount) * 100
+                    options.prefill.email = data.email
+                    options.prefill.name = data.name
+                    options.key = data.razor_id
+                    var rzp1 = new Razorpay(options);
+                    rzp1.open();
+                }
+                  },
+                  error: function(error) {
+                    console.log(error)
+                  }
+                })
+        }
+    }
+
+
+    }
+
+    </script>
 {% endblock %}
