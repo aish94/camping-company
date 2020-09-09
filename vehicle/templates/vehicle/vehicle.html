@@ -109,10 +109,8 @@
                             <div class="flex items-center pt-2">
                                 <div>
                                     <input class="sib" hidden="" name="id" value="8">
-                                    <form style="display:inline-block" action="/cart/" method="POST"><input type="hidden" name="csrfmiddlewaretoken" value="HhSN97YLXtkLOc9hmYf1mjnvbavrGOy6X4spL0N47Hqm0y5aJUtpewfraVACZANd">
-                                        <input hidden="" name="status" value="true" class="status">
-                                        <input hidden="" name="price" value="3499">
-                                        <button id="btn-xenon-soft-annex" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Book Now</button>
+                                    <form style="display:inline-block" action="{% url 'pay:pay' %}" method="POST">{% csrf_token %}
+                                        <button id="btn-xnenon" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Book Now</button>
                                     </form>
                                     <button onclick="location.href = '/vehicles/vehicle_info/';" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">More Info</button>
                                 </div>
@@ -138,18 +136,16 @@
                                 <div class="flex items-center pt-2">
                                     <div>
                                         <input class="sib" hidden="" name="id" value="8">
-                                        <form style="display:inline-block" action="/cart/" method="POST"><input type="hidden" name="csrfmiddlewaretoken" value="HhSN97YLXtkLOc9hmYf1mjnvbavrGOy6X4spL0N47Hqm0y5aJUtpewfraVACZANd">
-                                            <input hidden="" name="status" value="true" class="status">
-                                            <input hidden="" name="price" value="11000">
-                                            <button id="btn-overlanding_truck" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Book Now</button>
-                                        </form>
+                                        <form style="display:inline-block" action="{% url 'pay:pay' %}" method="POST">{% csrf_token %}
+                                            <button id="btn-overlanding-truck" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Book Now</button>
+                                    </form>
                                         <button onclick="location.href = '/vehicles/vehicle_info/';" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">More Info</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-             <div class="col-sm-12 col-md-6 col-lg-4 pt-6 p-6">
+<div class="col-sm-12 col-md-6 col-lg-4 pt-6 p-6">
                             <div class="bg-white shadow-xl rounded-lg overflow-hidden">
                                 <div class="bg-cover bg-center h-56 p-4" style="background-image: url(https://camping-company.s3.ap-south-1.amazonaws.com/media/cars/images_2.jpeg);">
                                     <div class="flex justify-end">
@@ -168,8 +164,6 @@
                                         <div>
                                             <input class="sib" hidden name="id" value="{{xenon_soft_annex.pk}}">
                                             <form style="display:inline-block" action="{% url 'pay:pay' %}" method="POST">{% csrf_token %}
-                                                <input hidden name="status" value="true" class="status">
-                                                <input hidden name="price" value="4999">
                                                 <button id="btn-force_gurkha" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Book Now</button>
                                             </form>
                                             <button onclick= "location.href = '{% url 'vehicle:vehicle_info'%}';" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">More Info</button>
