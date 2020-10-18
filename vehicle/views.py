@@ -54,9 +54,12 @@ def vehicles(request):
         d0 = request.GET.get("tripDay").replace("-", "")
     except:
         return redirect("app:home")
-    duration = request.GET.get("Duration")
+    duration = int(request.GET.get("Duration"))
+    if duration <= 0:
+        messages.warning(request, "Woops!! days should be greater than 0")
+        return redirect("app:home")
     check_in = datetime.datetime.strptime(d0, "%Y%m%d").date()
-    check_out = check_in + datetime.timedelta(int(duration))
+    check_out = check_in + datetime.timedelta(duration)
 
     if check_in < now:
         messages.warning(request, "cant book the car for past date")
