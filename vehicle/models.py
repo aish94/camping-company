@@ -35,9 +35,19 @@ class Definition(models.Model):
     year = models.CharField(max_length=4, blank=True, null=True)
     color = models.CharField(max_length=12, blank=True, null=True)
     car_image = models.ImageField(upload_to="cars", blank=True, null=True)
+    price = models.IntegerField()
+    drive_train = models.CharField(max_length=64, blank=True, null=True)
 
     def __str__(self):
         return self.car_name
+
+
+class Region(models.Model):
+    cars = models.ManyToManyField(Definition, related_name="Region")
+    name = models.CharField(max_length=128, blank=True, null=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Book(models.Model):

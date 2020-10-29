@@ -52,6 +52,7 @@ def destination(request):
     # for rating display
     list2 = []
     des = Destination.objects.all().order_by("pk")
+    reg = Region.objects.all()
     for x in des:
         rev = DestinationReview.objects.filter(destination=x).count()
         if rev == 0:
@@ -81,7 +82,8 @@ def destination(request):
         "places": places,
         "maps": maps,
         "list1": list1,
-        "list2": list2
+        "list2": list2,
+        "region": reg
     }
 
     return render(request, "destination/destination.html", context)

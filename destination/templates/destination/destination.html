@@ -21,14 +21,10 @@
                  <div class="col-md-12 col-lg-6">
                 <input list="places" class="input-submit" id="place" type="text" placeholder="filter camp sites with location">
                  <datalist id="places">
-                            <option value="Meghalaya">
-                            <option value="Assam">
-                            <option value="Arunachal Pradesh">
-                            <option value="Nagaland">
-                            <option value="Sikkim">
-                            <option value="Bhutan">
-                            <option value="Himachal Pradesh">
-                          </datalist>
+                     {% for x in region %}
+                        <option value="{{x.name|title}}">
+                     {% endfor %}
+                  </datalist>
                 <button class="input-submit-button"><i class="fas fa-search"></i></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                </div>
                  <div class="col-md-12 col-lg-3">

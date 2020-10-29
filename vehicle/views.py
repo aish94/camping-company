@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from vehicle.models import VehicleCheck
-from vehicle.models import Definition, Book
+from vehicle.models import Definition, Book, Region
 from django.contrib import messages
 import datetime
 from datetime import date
@@ -94,7 +94,17 @@ def vehicle_info(request):
 
 
 def vehicle(request):
-    return render(request, "vehicle/vehicle.html")
+    cars = Definition.objects.all()
+    if request.method == "POST":
+        r = request.POST.get("region")
+        try:
+            region = Region.objects.get(name__icontains=r)
+            cars = region.cars.all()
+        except:
+            messages.warning(request, "Invalid region/region does not exist")
+            return redirect("vehicle:vehicle")
+        return render(request, "vehicle/vehicle.html", {"cars": cars, "region": "region"})
+    return render(request, "vehicle/vehicle.html",{"cars": cars,"region": "region"})
 
 
 def vehicle_create_check(request, pk):
