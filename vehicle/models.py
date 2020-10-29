@@ -37,6 +37,7 @@ class Definition(models.Model):
     car_image = models.ImageField(upload_to="cars", blank=True, null=True)
     price = models.IntegerField()
     drive_train = models.CharField(max_length=64, blank=True, null=True)
+    available = models.BooleanField(default=True)
 
     def __str__(self):
         return self.car_name
