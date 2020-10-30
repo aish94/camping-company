@@ -205,10 +205,26 @@
 </div>
 </form>
 </div>
+<div class="loading-bro">
+</div>
 <br>
 <script defer src="{% static 'js/razorpay.js' %}"></script>
 <script>
   window.onload = function(){
+    function addRow () {
+    $(".shopping-cart").addClass("change");
+    document.querySelector('.loading-bro').insertAdjacentHTML(
+      'afterbegin',
+      `<h1>Processing</h1>
+        <svg id="load" x="0px" y="0px" viewBox="0 0 150 150">
+          <circle id="loading-inner" cx="75" cy="75" r="60"/>
+       </svg>`
+    )
+  }
+
+  function removeRow (input) {
+    document.querySelector('.loading-bro').parentNode.remove()
+  }
   localStorage.setItem("reload-me", 1);
   function couponCode(a){
         if(a<=100)
@@ -370,6 +386,7 @@ function updateQuantity(quantityInput)
     "description": "Overlanding expedition booked",
     "image": "{% static 'images/favi/apple-icon-72x72.png' %}",
     "handler": function (response){
+            addRow()
             var end_point = "{% url 'pay:pay' %}"
             var end = end_point + "success/";//success/faliure
             var t = $("input[name=csrfmiddlewaretoken]").val();
@@ -386,6 +403,7 @@ function updateQuantity(quantityInput)
               url: end,
               method: "POST",
               success: function(data){
+                removeRow()
                 localStorage.clear();
                 window.location.href = end;
               },
@@ -433,7 +451,7 @@ document.getElementById('rzp-button1').onclick = function(e){
             options.amount = (data.amount) * 100
             options.prefill.email = data.email
             options.prefill.name = data.name
-            options.key = data.razor_id
+            options.key = "rzp_test_ehMxKdWNNGvedj"
             var rzp1 = new Razorpay(options);
             rzp1.open();
             },
