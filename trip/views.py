@@ -75,7 +75,6 @@ def trip_update(request, pk):
             inventory.active = False
             # itinerary.active = False
             # itinerary.save() problem when itinerary not created
-            # let it be like this for now ye error sab mein aayega must use try except
             trip.save()
             tent.save()
             vehicle.save()

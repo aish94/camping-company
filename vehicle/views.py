@@ -5,9 +5,8 @@ from vehicle.models import Definition, Book, Region
 from django.contrib import messages
 import datetime
 from datetime import date
+from app.utils import get_fields, get_val
 
-
-# Create your views here.
 
 def single_car_book(name, now, check_in, check_out):
     definition = Definition.objects.filter(car_type=name)
@@ -111,63 +110,26 @@ def vehicle(request):
 
 def vehicle_create_check(request, pk):
     users = User.objects.get(id=pk)
+    input_data = get_fields(VehicleCheck())
+    input_data_list = input_data[2:len(input_data)-1]
     if request.method == "POST":
-        engine_oil_level = request.POST.get("engine_oil")
-        brake_fluid_level = request.POST.get("brake_fluid")
-        water_level = request.POST.get("water_level")
-        windscreen_washer = request.POST.get("windscreen")
-        seatbelts_check = request.POST.get("seatbelts")
-        parking_brake = request.POST.get("parking")
-        clutch_gearshift = request.POST.get("clutch")
-        burning_smell = request.POST.get("burning")
-        steering_alignment = request.POST.get("steering")
-        dashboard = request.POST.get("dashboard")
-        check_lights = request.POST.get("check_lights")
-        horn = request.POST.get("horn")
-        tyres = request.POST.get("tyres")
-        leakage = request.POST.get("leakage")
-
-        vehicle = VehicleCheck(user=users, engine_oil_level=engine_oil_level,
-                               brake_fluid_level=brake_fluid_level, water_level=water_level,
-                               windscreen_washer=windscreen_washer, seatbelts_check=seatbelts_check,
-                               parking_brake=parking_brake, clutch_gearshift=clutch_gearshift,
-                               burning_smell=burning_smell, steering_alignment=steering_alignment,
-                               dashboard=dashboard, check_lights=check_lights, horn=horn, tyres=tyres,
-                               leakage=leakage)
-        vehicle.save()
+        data = get_val(request=request, body=input_data_list)
+        VehicleCheck(user=users, **data).save()
         return redirect("app:show_status", pk=users.pk)
     else:
         return render(request, "vehicle/vehicle_create_check.html")
 
 
 def vehicle_update_check(request, pk):
-    vehicle = VehicleCheck.objects.get(pk=pk, active=True)
+    v = VehicleCheck.objects.get(pk=pk, active=True)
     if request.method == "POST":
-        users = User.objects.get(pk=vehicle.user.pk)
-        engine_oil_level = request.POST.get("engine_oil")
-        brake_fluid_level = request.POST.get("water_level")
-        water_level = request.POST.get("brake_fluid")
-        windscreen_washer = request.POST.get("windscreen")
-        seatbelts_check = request.POST.get("seatbelts")
-        parking_brake = request.POST.get("parking")
-        clutch_gearshift = request.POST.get("clutch")
-        burning_smell = request.POST.get("burning")
-        steering_alignment = request.POST.get("steering")
-        dashboard = request.POST.get("dashboard")
-        check_lights = request.POST.get("check_lights")
-        horn = request.POST.get("horn")
-        tyres = request.POST.get("tyres")
-        leakage = request.POST.get("leakage")
-
-        VehicleCheck.objects.filter(pk=pk).update(user=users, engine_oil_level=engine_oil_level,
-                                                  brake_fluid_level=brake_fluid_level, water_level=water_level,
-                                                  windscreen_washer=windscreen_washer, seatbelts_check=seatbelts_check,
-                                                  parking_brake=parking_brake, clutch_gearshift=clutch_gearshift,
-                                                  burning_smell=burning_smell, steering_alignment=steering_alignment,
-                                                  dashboard=dashboard, check_lights=check_lights, horn=horn, tyres=tyres,
-                                                  leakage=leakage)
+        users = User.objects.get(pk=v.user.pk)
+        input_data = get_fields(VehicleCheck())
+        input_data_list = input_data[2:len(input_data) - 1]
+        data = get_val(request=request, body=input_data_list)
+        VehicleCheck.objects.filter(pk=pk).update(user=users, **data)
 
         return redirect("app:show_status", pk=users.pk)
 
     else:
-        return render(request, "vehicle/vehicle_update_check.html", {"vehicle": vehicle})
+        return render(request, "vehicle/vehicle_update_check.html", {"vehicle": v})

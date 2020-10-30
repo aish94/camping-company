@@ -97,3 +97,15 @@ def compress(image):
     # create a django-friendly Files object
     new_image = File(im_io, name=unique_filename)
     return new_image
+
+
+def get_fields(obj):
+    return [field.name for field in obj._meta.get_fields()]
+
+
+def get_val(body, request):
+    input_data = {}
+    for x in body:
+        input_data[x] = request.POST.get(x)
+
+    return input_data
