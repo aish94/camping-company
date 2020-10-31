@@ -386,7 +386,6 @@ function updateQuantity(quantityInput)
     "description": "Overlanding expedition booked",
     "image": "{% static 'images/favi/apple-icon-72x72.png' %}",
     "handler": function (response){
-            document.querySelector('.shopping-cart').remove()
             addRow()
             var end_point = "{% url 'pay:pay' %}"
             var end = end_point + "success/";//success/faliure
