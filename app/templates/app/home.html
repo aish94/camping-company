@@ -1,5 +1,5 @@
 {% extends "snippets/base.html" %} {% load staticfiles %} {% block css %}
-<link rel="stylesheet" href="{% static 'css/home/home_v2.css' %}?v=1.0.6">
+<link rel="stylesheet" href="{% static 'css/home/home_v2.css' %}?v=1.0.7">
 {% endblock %}
 {% block title %}
 <title>Wild Camping in India and Bhutan | Camping Co</title>
@@ -18,7 +18,9 @@
          <span class="heading-primary__sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;India and Bhutan</span>
       </h1>
    </div>
-            <img id="fix" height="100%" src="{% static 'images/main_v2/home.webp' %}">
+<!--        <div id="fix">-->
+<!--            <img src="{% static 'images/main_v2/home.webp' %}">-->
+<!--        </div>-->
    <div class="heador__form-box">
       <form class="form-inline" action="{% url 'vehicle:vehicles' %}" method="GET" autocomplete="off">
          <div class="row no-gutters">
@@ -81,6 +83,7 @@
 <!--   </div>-->
 <!--   </div>-->
 </header>
+<br><br><br><br><br><br><br><br><br><br>
 <section class="section-features">
 <div class="heading-secondary centered">
    <br>
