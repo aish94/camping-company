@@ -30,7 +30,7 @@ def payment_success(request):
         check_out = check_in + timedelta(duration)
         car_name = request.POST.get("car_name")
         car_type = request.POST.get("car_type")
-        definition = Definition.objects.get(car_name=car_name)
+        definition = Definition.objects.get(pk=car_name)
         txnid = request.POST.get("txnid")
         pay.txnid = txnid
         pay.save()
