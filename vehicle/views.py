@@ -8,42 +8,23 @@ from datetime import date
 from app.utils import get_fields, get_val
 
 
-def single_car_book(name, now, check_in, check_out):
-    definition = Definition.objects.filter(car_type=name)
+def car_book(now, check_in, check_out):
+    car_ids = []
+    definition = Definition.objects.all()
     for _ in definition:
+        if not _.available:
+            continue
         book = Book.objects.filter(definition=_, check_in_date__gte=now)
         if book.count() == 0:
-            return _
+            car_ids.append(_.pk)
+            continue
         for b in book:
             if check_in < b.check_in_date and check_out < b.check_in_date or check_in > b.check_out_date \
                     and check_out > b.check_out_date:
-                return _
+                car_ids.append(_.pk)
+                break
 
-            else:
-                return {}
-
-
-def multiple_car_book(name, now, check_in, check_out):
-    list1 = []
-    definition = Definition.objects.filter(car_type=name)
-    for _ in definition:
-        book = Book.objects.filter(definition=_, check_in_date__gte=now)
-        if book.count() == 0:
-            return _
-        for b in book:
-            if check_in < b.check_in_date and check_out < b.check_in_date or check_in > b.check_out_date \
-                    and check_out > b.check_out_date:  # here i am checking for booked for range which is booked for,
-                # meaning past dates does not matter it will always make it 1
-                list1.append(1)
-            else:
-                list1.append(0)
-        if 0 in list1:
-            xenon_soft = {}
-        else:
-            xenon_soft = _
-            break
-        list1 = []
-    return xenon_soft
+    return car_ids
 
 
 def vehicles(request):
@@ -64,28 +45,9 @@ def vehicles(request):
         messages.warning(request, "cant book the car for past date")
         return redirect("app:home")
 
-    if place != "Himachal Pradesh":
-        xenon_soft = multiple_car_book(name="xenon_soft", now=now, check_in=check_in, check_out=check_out)
-        thar = multiple_car_book(name="thar", now=now, check_in=check_in, check_out=check_out)
-        # xenon_hard = single_car_book(name="xenon_hard", now=now, check_in=check_in, check_out=check_out)
-        caravan = single_car_book(name="caravan", now=now, check_in=check_in, check_out=check_out)
-        xenon_soft_annex = single_car_book(name="xenon_soft_annex", now=now, check_in=check_in, check_out=check_out)
-        overlanding_truck = single_car_book(name="overlanding_truck", now=now, check_in=check_in, check_out=check_out)
-        force_gurkha = single_car_book(name="force_gurkha", now=now, check_in=check_in, check_out=check_out)
-        data = {
-            "thar": thar,
-            "xenon_soft": xenon_soft,
-            # "xenon_hard": xenon_hard,
-            "caravan": caravan,
-            "xenon_soft_annex": xenon_soft_annex,
-            "overlanding_truck": overlanding_truck,
-            "force_gurkha": force_gurkha,
-        }
-    else:
-        thar = single_car_book(name="thar", now=now, check_in=check_in, check_out=check_out)
-        data = {"thar": thar,
-                "price": 3399}
-    return render(request, "vehicle/vehicles.html", data)
+    car_ids = car_book(now, check_in, check_out)
+    cars = Definition.objects.filter(pk__in=car_ids)
+    return render(request, "vehicle/vehicles.html", {"cars": cars})
 
 
 def vehicle_info(request):

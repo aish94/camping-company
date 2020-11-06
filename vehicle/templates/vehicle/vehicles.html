@@ -13,13 +13,12 @@
 <br>
 <br>
 <br>
-{% if xenon_soft or thar or xenon_hard or caravan %}
     <div class="max-w-6xl mx-auto">
         <div class="row">
-            {% if thar %}
+            {% for car in cars %}
             <div class="col-sm-12 col-md-6 col-lg-4 pt-6 p-6">
                 <div class="bg-white shadow-xl rounded-lg overflow-hidden">
-                    <div class="bg-cover bg-center h-56 p-4" style="background-image: url({{thar.car_image.url}});">
+                    <div class="bg-cover bg-center h-56 p-4" style="background-image: url({{car.car_image.url}});">
                         <div class="flex justify-end">
                             <svg class="h-6 w-6 text-white fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <path d="M12.76 3.76a6 6 0 0 1 8.48 8.48l-8.53 8.54a1 1 0 0 1-1.42 0l-8.53-8.54a6 6 0 0 1 8.48-8.48l.76.75.76-.75zm7.07 7.07a4 4 0 1 0-5.66-5.66l-1.46 1.47a1 1 0 0 1-1.42 0L9.83 5.17a4 4 0 1 0-5.66 5.66L12 18.66l7.83-7.83z"></path>
@@ -27,26 +26,16 @@
                         </div>
                     </div>
                     <div class="p-4">
-                        <p class="uppercase tracking-wide text-sm font-bold text-gray-700">{{thar.car_type}}</p>
-                        {% if price %}
-                        <p class="text-3xl text-gray-900">INR {{price}}*</p>
-                        {% else %}
-                            <p class="text-3xl text-gray-900">INR 2999*</p>
-                        {% endif %}
-                        <p class="text-gray-700">4x4</p>
+                        <p class="uppercase tracking-wide text-sm font-bold text-gray-700">{{car.car_name}}</p>
+                        <p class="text-3xl text-gray-900">INR {{car.price}}*</p>
+                        <p class="text-gray-700">{{car.drive_train}}</p>
                     </div>
                     <div class="px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100">
                         <div class="flex items-center pt-2">
                             <div>
-                                <input class="sib" hidden name="id" value="{{thar.pk}}">
                                 <form style="display:inline-block" action="{% url 'pay:pay' %}" method="POST">{% csrf_token %}
-                                    <input hidden name="status" value="true" class="status">
-                                    {% if price %}
-                                        <input hidden name="price" value="{{price}}">
-                                    {% else %}
-                                        <input hidden name="price" value="2999">
-                                    {% endif %}
-                                    <button id="btn-thar" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Book Now</button>
+                                    <input hidden name="price" value="{{car.price}}">
+                                    <button id="btn-{{car.pk}}-{{car.seat}}" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Book Now</button>
                                 </form>
                                 <button onclick= "location.href = '{% url 'vehicle:vehicle_info'%}';" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">More Info</button>
                             </div>
@@ -54,274 +43,22 @@
                     </div>
                 </div>
             </div>
-            {% endif %}
-            {% if xenon_soft %}
-            <div class="col-sm-12 col-md-6 col-lg-4 pt-6 p-6">
-                <div class="bg-white shadow-xl rounded-lg overflow-hidden">
-                    <div class="bg-cover bg-center h-56 p-4" style="background-image: url({{xenon_soft.car_image.url}});">
-                        <div class="flex justify-end">
-                            <svg class="h-6 w-6 text-white fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M12.76 3.76a6 6 0 0 1 8.48 8.48l-8.53 8.54a1 1 0 0 1-1.42 0l-8.53-8.54a6 6 0 0 1 8.48-8.48l.76.75.76-.75zm7.07 7.07a4 4 0 1 0-5.66-5.66l-1.46 1.47a1 1 0 0 1-1.42 0L9.83 5.17a4 4 0 1 0-5.66 5.66L12 18.66l7.83-7.83z"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <p class="uppercase tracking-wide text-sm font-bold text-gray-700">Xenon soft top tent</p>
-                        <p class="text-3xl text-gray-900">INR 2999*</p>
-                        <p class="text-gray-700">4x2</p>
-                    </div>
-                    <div class="px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100">
-                        <div class="flex items-center pt-2">
-                            <div>
-                                <input class="sib" hidden name="id" value="{{xenon_soft.pk}}">
-                                <form style="display:inline-block" action="{% url 'pay:pay' %}" method="POST">{% csrf_token %}
-                                    <input hidden name="status" value="true" class="status">
-                                    <input hidden name="price" value="2999">
-                                    <button id="btn-xenon-soft" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Book Now</button>
-                                </form>
-                                <button onclick= "location.href = '{% url 'vehicle:vehicle_info'%}';" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">More Info</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endif %}
-
-            {% if xenon_hard %}
-            <div class="col-sm-12 col-md-6 col-lg-4 pt-6 p-6">
-                <div class="bg-white shadow-xl rounded-lg overflow-hidden">
-                    <div class="bg-cover bg-center h-56 p-4" style="background-image: url({{xenon_hard.car_image.url}});">
-                        <div class="flex justify-end">
-                            <svg class="h-6 w-6 text-white fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M12.76 3.76a6 6 0 0 1 8.48 8.48l-8.53 8.54a1 1 0 0 1-1.42 0l-8.53-8.54a6 6 0 0 1 8.48-8.48l.76.75.76-.75zm7.07 7.07a4 4 0 1 0-5.66-5.66l-1.46 1.47a1 1 0 0 1-1.42 0L9.83 5.17a4 4 0 1 0-5.66 5.66L12 18.66l7.83-7.83z"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <p class="uppercase tracking-wide text-sm font-bold text-gray-700">Xenon hard top tent</p>
-                        <p class="text-3xl text-gray-900">INR 3299*</p>
-                        <p class="text-gray-700">4x2</p>
-                    </div>
-                    <div class="px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100">
-                        <div class="flex items-center pt-2">
-                            <div>
-                                <input class="sib" hidden name="id" value="{{xenon_hard.pk}}">
-                                <form style="display:inline-block" action="{% url 'pay:pay' %}" method="POST">{% csrf_token %}
-                                    <input hidden name="status" value="true" class="status">
-                                    <input hidden name="price" value="3299">
-                                    <button id="btn-xenon-hard" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Book Now</button>
-                                </form>
-                                <button onclick= "location.href = '{% url 'vehicle:vehicle_info'%}';" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">More Info</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endif %}
-
-            {% if caravan %}
-            <div class="col-sm-12 col-md-6 col-lg-4 pt-6 p-6">
-                <div class="bg-white shadow-xl rounded-lg overflow-hidden">
-                    <div class="bg-cover bg-center h-56 p-4" style="background-image: url({{caravan.car_image.url}});">
-                        <div class="flex justify-end">
-                            <svg class="h-6 w-6 text-white fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M12.76 3.76a6 6 0 0 1 8.48 8.48l-8.53 8.54a1 1 0 0 1-1.42 0l-8.53-8.54a6 6 0 0 1 8.48-8.48l.76.75.76-.75zm7.07 7.07a4 4 0 1 0-5.66-5.66l-1.46 1.47a1 1 0 0 1-1.42 0L9.83 5.17a4 4 0 1 0-5.66 5.66L12 18.66l7.83-7.83z"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <p class="uppercase tracking-wide text-sm font-bold text-gray-700">Caravan</p>
-                        <p class="text-3xl text-gray-900">INR 11760*</p>
-                        <p class="text-gray-700">4x2</p>
-                    </div>
-                    <div class="px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100">
-                        <div class="flex items-center pt-2">
-                            <div>
-                                <input class="sib" hidden name="id" value="{{caravan.pk}}">
-                                <form style="display:inline-block" action="{% url 'pay:pay' %}" method="POST">{% csrf_token %}
-                                    <input hidden name="status" value="true" class="status">
-                                    <input hidden name="price" value="11760">
-                                    <button id="btn-caravan" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Book Now</button>
-                                </form>
-                                <button onclick= "location.href = '{% url 'vehicle:vehicle_info'%}';" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">More Info</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endif %}
-            {% if xenon_soft_annex %}
-            <div class="col-sm-12 col-md-6 col-lg-4 pt-6 p-6">
-                <div class="bg-white shadow-xl rounded-lg overflow-hidden">
-                    <div class="bg-cover bg-center h-56 p-4" style="background-image: url({{xenon_soft_annex.car_image.url}});">
-                        <div class="flex justify-end">
-                            <svg class="h-6 w-6 text-white fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M12.76 3.76a6 6 0 0 1 8.48 8.48l-8.53 8.54a1 1 0 0 1-1.42 0l-8.53-8.54a6 6 0 0 1 8.48-8.48l.76.75.76-.75zm7.07 7.07a4 4 0 1 0-5.66-5.66l-1.46 1.47a1 1 0 0 1-1.42 0L9.83 5.17a4 4 0 1 0-5.66 5.66L12 18.66l7.83-7.83z"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <p class="uppercase tracking-wide text-sm font-bold text-gray-700">Xenon Soft Top Tent with Annex Room</p>
-                        <p class="text-3xl text-gray-900">INR 3499*</p>
-                        <p class="text-gray-700">4x2</p>
-                    </div>
-                    <div class="px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100">
-                        <div class="flex items-center pt-2">
-                            <div>
-                                <input class="sib" hidden name="id" value="{{xenon_soft_annex.pk}}">
-                                <form style="display:inline-block" action="{% url 'pay:pay' %}" method="POST">{% csrf_token %}
-                                    <input hidden name="status" value="true" class="status">
-                                    <input hidden name="price" value="3499">
-                                    <button id="btn-xenon-soft-annex" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Book Now</button>
-                                </form>
-                                <button onclick= "location.href = '{% url 'vehicle:vehicle_info'%}';" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">More Info</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endif %}
-
-            {% if overlanding_truck %}
-            <div class="col-sm-12 col-md-6 col-lg-4 pt-6 p-6">
-                <div class="bg-white shadow-xl rounded-lg overflow-hidden">
-                    <div class="bg-cover bg-center h-56 p-4" style="background-image: url({{overlanding_truck.car_image.url}});">
-                        <div class="flex justify-end">
-                            <svg class="h-6 w-6 text-white fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M12.76 3.76a6 6 0 0 1 8.48 8.48l-8.53 8.54a1 1 0 0 1-1.42 0l-8.53-8.54a6 6 0 0 1 8.48-8.48l.76.75.76-.75zm7.07 7.07a4 4 0 1 0-5.66-5.66l-1.46 1.47a1 1 0 0 1-1.42 0L9.83 5.17a4 4 0 1 0-5.66 5.66L12 18.66l7.83-7.83z"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <p class="uppercase tracking-wide text-sm font-bold text-gray-700">Overlanding Truck (Group expedition)</p>
-                        <p class="text-3xl text-gray-900">INR 11000*</p>
-                        <p class="text-gray-700">4x2</p>
-                    </div>
-                    <div class="px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100">
-                        <div class="flex items-center pt-2">
-                            <div>
-                                <input class="sib" hidden name="id" value="{{xenon_soft_annex.pk}}">
-                                <form style="display:inline-block" action="{% url 'pay:pay' %}" method="POST">{% csrf_token %}
-                                    <input hidden name="status" value="true" class="status">
-                                    <input hidden name="price" value="11000">
-                                    <button id="btn-overlanding_truck" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Book Now</button>
-                                </form>
-                                <button onclick= "location.href = '{% url 'vehicle:vehicle_info'%}';" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">More Info</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endif %}
-            {% if force_gurkha %}
-            <div class="col-sm-12 col-md-6 col-lg-4 pt-6 p-6">
-                <div class="bg-white shadow-xl rounded-lg overflow-hidden">
-                    <div class="bg-cover bg-center h-56 p-4" style="background-image: url({{force_gurkha.car_image.url}});">
-                        <div class="flex justify-end">
-                            <svg class="h-6 w-6 text-white fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M12.76 3.76a6 6 0 0 1 8.48 8.48l-8.53 8.54a1 1 0 0 1-1.42 0l-8.53-8.54a6 6 0 0 1 8.48-8.48l.76.75.76-.75zm7.07 7.07a4 4 0 1 0-5.66-5.66l-1.46 1.47a1 1 0 0 1-1.42 0L9.83 5.17a4 4 0 1 0-5.66 5.66L12 18.66l7.83-7.83z"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <p class="uppercase tracking-wide text-sm font-bold text-gray-700">Force Gurkha</p>
-                        <p class="text-3xl text-gray-900">INR 4999*</p>
-                        <p class="text-gray-700">4x2</p>
-                    </div>
-                    <div class="px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100">
-                        <div class="flex items-center pt-2">
-                            <div>
-                                <input class="sib" hidden name="id" value="{{xenon_soft_annex.pk}}">
-                                <form style="display:inline-block" action="{% url 'pay:pay' %}" method="POST">{% csrf_token %}
-                                    <input hidden name="status" value="true" class="status">
-                                    <input hidden name="price" value="4999">
-                                    <button id="btn-force_gurkha" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Book Now</button>
-                                </form>
-                                <button onclick= "location.href = '{% url 'vehicle:vehicle_info'%}';" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">More Info</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endif %}
+            {% endfor %}
         </div>
     </div>
-{% else %}
-<h1 style="text-align: center">No car available</h1>
-{% endif %}
+
 <br>
 <script>
 window.onload = function() {
-    if(localStorage.getItem("reload-me")==1){
-        window.location.reload();
-        localStorage.removeItem("reload-me");
-    }
     var queryDict = {}
-    var check_in;
-
-    var x1 = "{{thar.car_type}}";
-    var x2 = "{{thar.pk}}";
-
-    var y1 = "{{xenon_soft.car_type}}";
-    var y2 = "{{xenon_soft.pk}}";
-
-    var z1 = "{{xenon_hard.car_type}}";
-    var z2 = "{{xenon_hard.pk}}";
-
-    var c1 = "{{caravan.car_type}}";
-    var c2 = "{{caravan.pk}}";
-
-    var xse1 = "{{xenon_soft_annex.car_type}}";
-    var xse2 = "{{xenon_soft_annex.pk}}";
-
-    var o1 = "{{overlanding_truck.car_type}}";
-    var o2 = "{{overlanding_truck.pk}}";
-
-    var fg1 = "{{force_gurkha.car_type}}";
-    var fg2 = "{{force_gurkha.pk}}";
-
-
-    //only add these fields if new car_type is add
-
     location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]})
     localStorage.setItem("duration", queryDict["Duration"]);
     localStorage.setItem("check_in", queryDict["tripDay"]);
 
-    $("#btn-thar").click(function(){
-        localStorage.setItem("car_type", x1);
-        localStorage.setItem("car_name", x2);
-    })
-
-    $("#btn-xenon-soft").click(function(){
-        localStorage.setItem("car_type", y1);
-        localStorage.setItem("car_name", y2);
-    })
-
-    $("#btn-xenon-hard").click(function(){
-        localStorage.setItem("car_type", z1);
-        localStorage.setItem("car_name", z2);
-    })
-
-    $("#btn-caravan").click(function(){
-        localStorage.setItem("car_type", c1);
-        localStorage.setItem("car_name", c2);
-    })
-
-    $("#btn-xenon-soft-annex").click(function(){
-        localStorage.setItem("car_type", xse1);
-        localStorage.setItem("car_name", xse2);
-    })
-    $("#btn-overlanding_truck").click(function(){
-        localStorage.setItem("car_type", o1);
-        localStorage.setItem("car_name", o2);
-    })
-    }
+        $("button[id^='btn-']").click(function(){
+            localStorage.setItem("car_id", parseInt(this.id.split('-')[1]))
+            localStorage.setItem("car_seat", parseInt(this.id.split('-')[2]))
+        })
+}
 </script>
 {% endblock %}
-
-<!--<script>-->
-    <!--$(".datetimepicker").datetimepicker({-->
-     <!--timepicker:false,-->
-     <!--format:'d.m.Y'-->
-     <!--});-->
-<!--</script>-->

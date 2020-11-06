@@ -7,6 +7,7 @@ from trip.models import Trip
 from django.contrib import messages
 from django.http import JsonResponse
 from vehicle.models import Book
+from vehicle.models import Region
 import os
 from django.utils import timezone
 
@@ -16,7 +17,8 @@ from app.utils import *
 
 
 def home(request):
-    return render(request, "app/home.html")
+    region = Region.objects.all()
+    return render(request, "app/home.html", {"region": region})
 
 
 def about(request):

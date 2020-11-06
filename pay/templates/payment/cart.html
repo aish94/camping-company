@@ -229,7 +229,6 @@
   function removeRow (input) {
     document.querySelector('.loading-bro').parentNode.remove()
   }
-  localStorage.setItem("reload-me", 1);
   function couponCode(a){
         if(a<=100)
           coupon = (pri * a).toFixed(2);
@@ -250,7 +249,11 @@
             }
   }
 
-  let duration = localStorage.getItem("duration")
+  let duration = parseInt(localStorage.getItem("duration"))
+  let car_seat = parseInt(localStorage.getItem('car_seat'))-2
+  let check_in = localStorage.getItem("check_in")
+  let car_id = localStorage.getItem("car_id")
+  if(!duration || !car_seat|| !check_in || !car_id)window.location.href = '../../../'
   var totals = 0;
   var taxs = 0;
   var shippings = 0;
@@ -258,22 +261,13 @@
   var shippingRate = .024;
   var fadeTime = 300;
   var coupon = 0;
-  var pri = {{price}} * parseInt(duration);
+  var pri = {{price}} * duration;
 
 if (duration >= 4){
 $('.product-price')[3].textContent = 2000
 }
-if(localStorage.getItem("car_type") === "thar"){
-  $("#quant").attr("max",4)
-} else {
-  $("#quant").attr("max",3)
-  }
-
-  if(localStorage.getItem("car_type") === "caravan"){
-    $("input")[1].value = 6
-    document.getElementById("quant").disabled = true
-    }
-
+  $("#quant").attr("max",car_seat)
+  if(car_seat>=5){document.getElementById("quant").disabled = true}
 
 $('#car-price').html(pri)
 
@@ -397,10 +391,9 @@ function updateQuantity(quantityInput)
             var t = $("input[name=csrfmiddlewaretoken]").val();
             data = {
               "txnid": response.razorpay_payment_id,
-              "duration": localStorage.getItem("duration"),
-              "check_in": localStorage.getItem("check_in"),
-              "car_name": localStorage.getItem("car_name"),
-              "car_type": localStorage.getItem("car_type"),
+              "duration": duration,
+              "check_in": check_in,
+              "car_id": car_id,
               "csrfmiddlewaretoken": t
             }
             $.ajax({

@@ -28,14 +28,12 @@ def payment_success(request):
         check_in = request.POST.get("check_in").replace("-", "")
         check_in = datetime.datetime.strptime(check_in, "%Y%m%d").date()
         check_out = check_in + timedelta(duration)
-        car_name = request.POST.get("car_name")
-        car_type = request.POST.get("car_type")
-        definition = Definition.objects.get(pk=car_name)
+        car_id = request.POST.get("car_id")
+        definition = Definition.objects.get(pk=car_id)
         txnid = request.POST.get("txnid")
         pay.txnid = txnid
         pay.save()
         Book(user=request.user,
-             car_name=car_type,
              definition=definition,
              check_out_date=check_out,
              check_in_date=check_in,
@@ -116,4 +114,4 @@ def cart(request):
                              "name": name,
                              "razor_id": razor_id
                              })
-    return render(request, "payment/cart.html",{"price":price})
+    return render(request, "payment/cart.html", {"price": price})
