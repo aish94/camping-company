@@ -316,7 +316,7 @@ def camp_add(request):
             title = request.POST.get(title)
             de = request.POST.get(de)
             image = request.FILES[image]
-            queue.enqueue(save_experience, destination=destination, title=title, image=image,
+            queue.enqueue(save_experience, destination=destination, title=title, image=list(image)[0],
                           exp_number=x, de=de)
 
         Feature(destination=destination, off_roading=off_roading, campfire=campfire,
