@@ -243,5 +243,3 @@ LOGGING = {
         },
     },
 }
-
-FILE_UPLOAD_MAX_MEMORY_SIZE = 10621440
