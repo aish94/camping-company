@@ -19,7 +19,7 @@ from destination.models import (Destination, Map,
                                 PaymentCampsite, Pricing)
 
 # Create your views here.
-queue = django_rq.get_queue('high')
+queue = django_rq.get_queue('default')
 
 
 def save_experience(destination, title, image, exp_number, de):
