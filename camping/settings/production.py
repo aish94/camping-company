@@ -243,3 +243,5 @@ LOGGING = {
         },
     },
 }
+
+FILE_UPLOAD_MAX_MEMORY_SIZE = 2621440 * 10
