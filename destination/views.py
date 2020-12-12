@@ -21,7 +21,7 @@ from destination.models import (Destination, Map,
                                 PaymentCampsite, Pricing)
 
 # Create your views here.
-queue = django_rq.get_queue('low')
+queue = django_rq.get_queue('high')
 
 
 def save_experience(destination, title, image, exp_number, de):
@@ -46,12 +46,12 @@ def update_experience(destination, title, image, exp_number, expr_image, de):
         ex.description = de
         ex.image = c
         ex.save()
+        image.close()
     else:
         ex = Experience.objects.filter(destination=destination, exp_number=exp_number)[0]
         ex.title = title
         ex.description = de
         ex.save()
-    image.close()
 
 
 def destination(request):
