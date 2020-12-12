@@ -8,7 +8,6 @@ import datetime
 import math
 import django_rq
 import django.core.files.uploadedfile as up
-import base64
 
 
 from customer.models import Customer
@@ -25,7 +24,6 @@ queue = django_rq.get_queue('high')
 
 
 def save_experience(destination, title, image, exp_number, de):
-    image = up.SimpleUploadedFile(content=image, name='a')
     image = compress(image)
     Experience(destination=destination, title=title,
                description=de, image=image, exp_number=exp_number).save()
@@ -33,7 +31,6 @@ def save_experience(destination, title, image, exp_number, de):
 
 def update_experience(destination, title, image, exp_number, expr_image, de):
     try:
-        image = up.SimpleUploadedFile(content=image, name='a')
         image = compress(image)
     except:
         pass
@@ -320,7 +317,7 @@ def camp_add(request):
             image = "experience_image" + "-" + str(x)
             title = request.POST.get(title)
             de = request.POST.get(de)
-            image = request.FILES[image].read()
+            image = request.FILES[image]
             queue.enqueue(save_experience, destination=destination, title=title, image=image,
                           exp_number=x, de=de)
 
@@ -493,7 +490,7 @@ def camp_update(request, slug):
             title = request.POST.get(title)
             de = request.POST.get(de)
             try:
-                image = request.FILES[image].read()
+                image = request.FILES[image]
                 expr_image = True
             except:
                 expr_image = False
