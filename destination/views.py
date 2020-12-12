@@ -98,12 +98,12 @@ def destination_detail_page(request, slug):
     except:
         messages.warning(request, "Site does not exist please pick the sites from existing list")
         return redirect("destination:destinations")
-    activity = Activity.objects.get(destination=destination)
-    detail = Detail.objects.get(destination=destination)
-    amenity = Amenity.objects.get(destination=destination)
+    activity = Activity.objects.filter(destination=destination)[0]
+    detail = Detail.objects.filter(destination=destination)[0]
+    amenity = Amenity.objects.filter(destination=destination)[0]
     experience = Experience.objects.filter(destination=destination).order_by("pk")
-    feature = Feature.objects.get(destination=destination)
-    pricing = Pricing.objects.get(destination=destination)
+    feature = Feature.objects.filter(destination=destination)[0]
+    pricing = Pricing.objects.filter(destination=destination)[0]
     reviews = DestinationReview.objects.filter(destination=destination)
     for x in destination.description:
         if x is not ".":
