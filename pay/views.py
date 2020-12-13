@@ -63,7 +63,8 @@ def payment_success(request):
                         now=now, name=name, person=person, campkit=campkit,
                         gas=gas, torch=torch, table=table,
                         igst=igst, convenient=convenient, chair=chair,total=total,
-                        count=count, coupon=coupon, shillong=shillong, airport=airport)
+                        count=count, coupon=coupon, shillong=shillong, airport=airport,
+                        check_in=check_in.strftime("%d-%m-%Y"), check_out=check_out.strftime("%d-%m-%Y"))
 
     return render(request, "payment/success.html", {"pay": pay})
 
