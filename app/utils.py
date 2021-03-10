@@ -25,7 +25,7 @@ def message_to_company(name, email, subject, message, phone):
         data={"from": os.environ.get("MAILGUN_FROM"),
               "to": os.environ.get("email"),
               "subject": subject,
-              "text": "Name of the person queried : {} \n phone number of person {} \nEmail of the person queried : "
+              "text": "Name of the person queried : {} \nphone number of person {} \nEmail of the person queried : "
                       "{} \nQuery : {}".format(name, phone, email, message)
               })
 

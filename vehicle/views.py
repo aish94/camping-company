@@ -12,6 +12,7 @@ def car_book(now, check_in, check_out):
     car_ids = []
     definition = Definition.objects.all()
     for _ in definition:
+        t = 0
         if not _.available:
             continue
         book = Book.objects.filter(definition=_, check_in_date__gte=now)
@@ -19,11 +20,10 @@ def car_book(now, check_in, check_out):
             car_ids.append(_.pk)
             continue
         for b in book:
-            if check_in < b.check_in_date and check_out < b.check_in_date or check_in > b.check_out_date \
-                    and check_out > b.check_out_date:
-                car_ids.append(_.pk)
-                break
-
+            if check_out < b.check_in_date or check_in > b.check_out_date:
+                t += 1
+        if t == book.count():
+            car_ids.append(_.pk)
     return car_ids
 
 
