@@ -7,7 +7,6 @@
 {% endblock %}
 {% block meta %}
 <meta name="google-site-verification" content="7dK3EX_sVGOdmb1ombYbMUa7ZTVS8D7FKcomxf_gE1s" />
-<meta name="google-site-verification" content="qZs2LS4lfb7iBUeFfjwszEzAz1fLYpegzWDvswqXM-o" />
 <meta name="description" content="Camping Co. is aligning the world of responsible and rural tourism with adventure and exploration in Northeast India and Bhutan.">
 <meta name="keywords" content="camping, camping company, camping co , nature tourism, overlanding, northeast tourism,northeast, car rental , guwahati , meghalaya tourism, car rental, rooftop tent">
 {% endblock %}
@@ -16,12 +15,9 @@
    <div class="heador__text-box">
       <h1 class="heading-primary">
          <span class="heading-primary__main">Like Somewhere? Stay There!</span>
-         <span class="heading-primary__sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;India and Bhutan</span>
+         <span class="heading-primary__sub">India and Bhutan</span>
       </h1>
    </div>
-<!--        <div id="fix">-->
-<!--            <img src="{% static 'images/main_v2/home.webp' %}">-->
-<!--        </div>-->
    <div class="heador__form-box">
       <form class="form-inline" action="{% url 'vehicle:vehicles' %}" method="GET" autocomplete="off">
          <div class="row no-gutters">
@@ -37,7 +33,7 @@
             </div>
             <div class="col-sm-3">
             <div class="form-group">
-            <input class="form__input" type="text" name="tripDay" class="form-control date" id="datetimepicker" placeholder="DD/MM/YYYY" required>
+            <input class="form__input" type="text" name="tripDay" class="form-control datepicker" id="datetimepicker" placeholder="DD/MM/YYYY" required>
             </div>
             </div>
             <div class="col-sm-3">
@@ -65,19 +61,6 @@
    <p class="primary-text__main">Alternative Tourism, Kayaking, Rafting, Caving, Fishing, Trekking, Boating, Swimming, Community Sharing, Over-Landing, Camping</p>
    </div>
    </div>
-<!--   <div id="fix" class="carousel slide" data-ride="carousel" data-interval="4000">-->
-<!--   <div class="carousel-inner">-->
-<!--   <div class="carousel-item active">-->
-<!--   <img class="d-block w-100 lozad" data-src="{% static 'images/main_v2/DSC05726v3.webp' %}" alt="First slide">-->
-<!--   </div>-->
-<!--   <div class="carousel-item">-->
-<!--   <img class="d-block w-100 lozad" data-src="{% static 'images/main_v2/SSS04205-compressor.webp' %}" alt="Second slide">-->
-<!--   </div>-->
-<!--   <div class="carousel-item">-->
-<!--   <img class="d-block w-100 lozad" data-src="{% static 'images/main_v2/front_image.webp' %}" alt="Third slide">-->
-<!--   </div>-->
-<!--   </div>-->
-<!--   </div>-->
 </header>
 <section class="section-features">
 <div class="heading-secondary centered">
@@ -97,15 +80,15 @@ The only trace we leave behind are tyre marks.
 </div>
 <div class="contain row">
 <div class="col-sm-4">
-<a class="products__image" href="{% url 'vehicle:vehicle' %}"><img data-src="{% static 'images/main_v2/camper1.webp' %}" class="image-box__image lozad" alt="Photo 1">
+<a class="products__image" href="{% url 'vehicle:vehicle' %}"><img width="290px" height="200px" data-src="{% static 'images/main_v2/camper1.webp' %}" class="image-box__image lozad" alt="Camper">
 <p class="image-box__text">Campers</p></a>
 </div>
 <div class="col-sm-4">
-<a class="products__image" href="{% url 'destination:destinations' %}"><img data-src="{% static 'images/main_v2/campsite.webp' %}" class="image-box__image lozad" alt="Photo 1">
+<a class="products__image" href="{% url 'destination:destinations' %}"><img width="290px" height="200px" data-src="{% static 'images/main_v2/campsite.webp' %}" class="image-box__image lozad" alt="Campsite">
 <p class="image-box__text">Campsites</p></a>
 </div>
 <div class="col-sm-4">
-<a class="products__image" href="{% url 'destination:circuits' %}"><img data-src="{% static 'images/main_v2/circuit.webp' %}" class="image-box__image lozad" alt="Photo 1"></a>
+<a class="products__image" href="{% url 'destination:circuits' %}"><img width="290px" height="200px" data-src="{% static 'images/main_v2/circuit.webp' %}" class="image-box__image lozad" alt="Circuit"></a>
 <p class="image-box__text">Circuits</p>
 </div>
 </div>
@@ -118,17 +101,17 @@ The only trace we leave behind are tyre marks.
 <div class="margin-bottom">
 <div class="row">
 <div class="col-sm-4">
-<img data-src="{% static 'images/main_v2/journey.webp' %}" class="process__image lozad" alt="Photo 1">
+<img data-src="{% static 'images/main_v2/journey.webp' %}" class="process__image lozad" alt="Journey">
 <span class="tertiary-text__heading">The Journey</span>
 <span class="tertiary-text__description">Pick your dates,destination and travel circuit</span>
 </div>
 <div class="col-sm-4">
-<img data-src="{% static 'images/main_v2/camper.webp' %}" class="process__image lozad" alt="Photo 1">
+<img data-src="{% static 'images/main_v2/camper.webp' %}" class="process__image lozad" alt="Camper">
 <span class="tertiary-text__heading">The camper</span>
 <span class="tertiary-text__description">Book a car for your journey with camping co</span>
 </div>
 <div class="col-sm-4">
-<img data-src="{% static 'images/main_v2/expert.webp' %}" class="process__image lozad" alt="Photo 1">
+<img data-src="{% static 'images/main_v2/expert.webp' %}" class="process__image lozad" alt="Experience">
 <span class="tertiary-text__heading">The expert</span>
 <span class="tertiary-text__description">Our Overland expert will contact you post booking</span>
 </div>
@@ -219,7 +202,8 @@ The only trace we leave behind are tyre marks.
 </div>
 </section>
 
-<section id="testim" class="testim">
+<section id="testim" class="testim lozad" data-background-image="../../../static/images/main_v2/review.webp">
+<img>
 <div class="wrap">
 <span id="right-arrow" class="arrow right fa fa-chevron-right"></span>
 <span id="left-arrow" class="arrow left fa fa-chevron-left "></span>
@@ -403,10 +387,6 @@ the creators and believers of an alternate way of travel.</span>
 </div>
 </div>
 </footer>
-<script>
-   function labnolThumb(e){return'<img src="https://i.ytimg.com/vi/ID/hqdefault.jpg">'.replace("ID",e)+'<div class="play"></div>'}function labnolIframe(){var e=document.createElement("iframe");e.setAttribute("src","https://www.youtube.com/embed/ID".replace("ID",this.dataset.id)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),this.parentNode.replaceChild(e,this)}document.addEventListener("DOMContentLoaded",function(){var e,t,a=document.getElementsByClassName("youtube-player");for(t=0;t<a.length;t++)(e=document.createElement("div")).setAttribute("data-id",a[t].dataset.id),e.innerHTML=labnolThumb(a[t].dataset.id),e.onclick=labnolIframe,a[t].appendChild(e)});
-</script>
-<script>
-   var testimTimer,touchStartPos,touchEndPos,touchPosDiff,testim=document.getElementById("testim"),testimDots=Array.prototype.slice.call(document.getElementById("testim-dots").children),testimContent=Array.prototype.slice.call(document.getElementById("testim-content").children),testimLeftArrow=document.getElementById("left-arrow"),testimRightArrow=document.getElementById("right-arrow"),testimSpeed=4500,currentSlide=0,currentActive=0,ignoreTouch=30;window.onload=function(){function t(e){for(var i=0;i<testimDots.length;i++)testimContent[i].classList.remove("active"),testimContent[i].classList.remove("inactive"),testimDots[i].classList.remove("active");e<0&&(e=currentSlide=testimContent.length-1),e>testimContent.length-1&&(e=currentSlide=0),currentActive!=currentSlide&&testimContent[currentActive].classList.add("inactive"),testimContent[e].classList.add("active"),testimDots[e].classList.add("active"),currentActive=currentSlide,clearTimeout(testimTimer),testimTimer=setTimeout(function(){t(currentSlide+=1)},testimSpeed)}lozad().observe(),$("#datetimepicker").datetimepicker({timepicker:!1,format:"Y-m-d",minDate:0}),testimLeftArrow.addEventListener("click",function(){t(currentSlide-=1)}),testimRightArrow.addEventListener("click",function(){t(currentSlide+=1)});for(var e=0;e<testimDots.length;e++)testimDots[e].addEventListener("click",function(){t(currentSlide=testimDots.indexOf(this))});t(currentSlide),document.addEventListener("keyup",function(t){switch(t.keyCode){case 37:testimLeftArrow.click();break;case 39:case 39:testimRightArrow.click()}}),testim.addEventListener("touchstart",function(t){touchStartPos=t.changedTouches[0].clientX}),testim.addEventListener("touchend",function(t){if(touchEndPos=t.changedTouches[0].clientX,(touchPosDiff=touchStartPos-touchEndPos)>0+ignoreTouch)testimLeftArrow.click();else{if(!(touchPosDiff<0-ignoreTouch))return;testimRightArrow.click()}})};
-</script>
+<script>function labnolThumb(e){return'<img src="https://i.ytimg.com/vi/ID/hqdefault.jpg">'.replace("ID",e)+'<div class="play"></div>'}function labnolIframe(){var e=document.createElement("iframe");e.setAttribute("src","https://www.youtube.com/embed/ID".replace("ID",this.dataset.id)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),this.parentNode.replaceChild(e,this)}document.addEventListener("DOMContentLoaded",function(){var e,t,a=document.getElementsByClassName("youtube-player");for(t=0;t<a.length;t++)(e=document.createElement("div")).setAttribute("data-id",a[t].dataset.id),e.innerHTML=labnolThumb(a[t].dataset.id),e.onclick=labnolIframe,a[t].appendChild(e)});</script>
+<script>var testimTimer,touchStartPos,touchEndPos,touchPosDiff,testim=document.getElementById("testim"),testimDots=Array.prototype.slice.call(document.getElementById("testim-dots").children),testimContent=Array.prototype.slice.call(document.getElementById("testim-content").children),testimLeftArrow=document.getElementById("left-arrow"),testimRightArrow=document.getElementById("right-arrow"),testimSpeed=4500,currentSlide=0,currentActive=0,ignoreTouch=30;window.onload=function(){function t(e){for(var i=0;i<testimDots.length;i++)testimContent[i].classList.remove("active"),testimContent[i].classList.remove("inactive"),testimDots[i].classList.remove("active");e<0&&(e=currentSlide=testimContent.length-1),e>testimContent.length-1&&(e=currentSlide=0),currentActive!=currentSlide&&testimContent[currentActive].classList.add("inactive"),testimContent[e].classList.add("active"),testimDots[e].classList.add("active"),currentActive=currentSlide,clearTimeout(testimTimer),testimTimer=setTimeout(function(){t(currentSlide+=1)},testimSpeed)}lozad().observe(),$("#datetimepicker").datetimepicker({timepicker:!1,format:"Y-m-d",minDate:0}),testimLeftArrow.addEventListener("click",function(){t(currentSlide-=1)}),testimRightArrow.addEventListener("click",function(){t(currentSlide+=1)});for(var e=0;e<testimDots.length;e++)testimDots[e].addEventListener("click",function(){t(currentSlide=testimDots.indexOf(this))});t(currentSlide),document.addEventListener("keyup",function(t){switch(t.keyCode){case 37:testimLeftArrow.click();break;case 39:case 39:testimRightArrow.click()}}),testim.addEventListener("touchstart",function(t){touchStartPos=t.changedTouches[0].clientX}),testim.addEventListener("touchend",function(t){if(touchEndPos=t.changedTouches[0].clientX,(touchPosDiff=touchStartPos-touchEndPos)>0+ignoreTouch)testimLeftArrow.click();else{if(!(touchPosDiff<0-ignoreTouch))return;testimRightArrow.click()}})};</script>
 {% endblock %}
