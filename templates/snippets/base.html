@@ -29,11 +29,13 @@
       {% endblock %}
    </head>
    <body>
+         {% if messages %} {% for message in messages %}
+            <div class="alert alert-{{message.tags}}" style="text-align: center;"> <strong>{{message}}</strong></div>
+         {% endfor %} {% endif %}
 
          {% block content_block %}
 
          {% endblock %}
          {% include "snippets/js.html" %}
-<!--      <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-149832658-1"></script> <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga("create","UA-149837617-1","auto");ga("send","pageview");</script>-->
    </body>
 </html>
