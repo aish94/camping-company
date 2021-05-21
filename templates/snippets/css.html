@@ -1,7 +1,19 @@
 {% load staticfiles %}
-<link rel="stylesheet"  href="{% static 'css/bootstrap.css' %}">
-<link rel="stylesheet" href="{% static 'css/monster.css' %}">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
-<link rel="stylesheet" href="{% static 'css/table.css' %}">
-<link rel="stylesheet"  href="{% static 'css/calender/jquery.datetimepicker.css' %}">
+<link rel="preload" href="{% static 'css/bootstrap.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"></noscript>
+
+<link rel="preload" href="{% static 'css/monster.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{% static 'css/monster.css' %}"></noscript>
+
+<link rel="preload" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="styles.css"></noscript>
+
+<link rel="preload" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="styles.css"></noscript>
+
+<link rel="preload" href="{% static 'css/table.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{% static 'css/table.css' %}"></noscript>
+
+<link rel="preload" href="{% static 'css/calender/jquery.datetimepicker.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{% static 'css/calender/jquery.datetimepicker.css' %}"></noscript>
 
