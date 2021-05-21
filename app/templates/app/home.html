@@ -1,5 +1,6 @@
 {% extends "snippets/base.html" %} {% load staticfiles %} {% block css %}
-<link rel="stylesheet" href="{% static 'css/home/home_v2.css' %}?v=1.0.7">
+<link rel="preload" href="{% static 'css/home/home_v2.css' %}?v=1.0.7" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{% static 'css/home/home_v2.css' %}?v=1.0.7"></noscript>
 {% endblock %}
 {% block title %}
 <title>Wild Camping in India and Bhutan | Camping Co</title>
