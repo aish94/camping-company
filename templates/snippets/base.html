@@ -2,9 +2,9 @@
 <html lang=en>
    {% load staticfiles %}
    <head>
-      <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-149832658-1"></script> <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga("create","UA-149837617-1","auto");ga("send","pageview");</script>
+      {% include "snippets/navbar.html" %}
       {% block title %} {% endblock %} {% block meta %} {% endblock %}
-      <meta charset=UTF-8>
+      <meta charset="UTF-8">
       <meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
       <link rel=apple-touch-icon sizes=57x57 href="{% static 'images/favi/apple-icon-57x57.png' %}">
       <link rel=apple-touch-icon sizes=60x60 href="{% static 'images/favi/apple-icon-60x60.png' %}">
@@ -23,11 +23,17 @@
       <meta name=msapplication-TileColor content=#ffffff>
       <meta name=msapplication-TileImage content="{% static 'images/favi/ms-icon-144x144.png' %}">
       <meta name=theme-color content=#0EAC8D>
-      {% include "snippets/css.html" %} {% block css %} {% endblock %}
+      {% include "snippets/css.html" %}
+      {% block css %}
+
+      {% endblock %}
    </head>
    <body>
-      {% include "snippets/navbar.html" %} {% if messages %} {% for message in messages %}
-      <div class="alert alert-{{message.tags}}" style="text-align: center;"> <strong>{{message}}</strong></div>
-      {% endfor %} {% endif %} {% block content_block %}{% endblock %}{% include "snippets/js.html" %}
+
+         {% block content_block %}
+
+         {% endblock %}
+         {% include "snippets/js.html" %}
+<!--      <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-149832658-1"></script> <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga("create","UA-149837617-1","auto");ga("send","pageview");</script>-->
    </body>
 </html>
