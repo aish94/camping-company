@@ -18,7 +18,7 @@ from app.utils import *
 
 def home(request):
     region = Region.objects.all()
-    return render(request, "app/home.html", {"region": region})
+    return render(request, "app/home.html", {"region": region, "g": os.environ.get("GOOGLE_CLIENT_CAPTCHA")})
 
 
 def about(request):
