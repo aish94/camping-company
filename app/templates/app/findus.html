@@ -34,7 +34,20 @@
       <fieldset>
          <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
       </fieldset>
-      <fieldset class="g-recaptcha" data-sitekey="{{g}}"></fieldset>
+      <fieldset id="html_element"></fieldset>
    </form>
 </div>
+{% endblock %}
+
+{% block js %}
+   <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+    async defer>
+</script>
+<script type="text/javascript">
+      var onloadCallback = function() {
+        grecaptcha.render('html_element', {
+          'sitekey' : '{{g}}'
+        });
+      };
+    </script>
 {% endblock %}

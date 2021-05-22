@@ -332,7 +332,7 @@ The only trace we leave behind are tyre marks.
 <div class="row">
 <div class="col-sm-4">
 <div>
-<img data-src="{% static 'images/main_v2/logo-400x400.webp' %}" class="header__logo lozad">
+<img width="80" height="80" data-src="{% static 'images/main_v2/logo-400x400.webp' %}" class="header__logo lozad">
 <br><br><br>
 <span class="footer-text__description">Nature has a subtle way of enhancing consciousness,
 mindfulness, and awareness. With this belief, The
@@ -368,6 +368,7 @@ the creators and believers of an alternate way of travel.</span>
 <div class="footer-button-box">
 <br>
 <button class="footer-button-box__button">Submit</button>
+<div style="width:300px;" id="html_element"></div>
 </div>
 </form>
 <span>@2019 Camping co</span>
@@ -386,4 +387,14 @@ the creators and believers of an alternate way of travel.</span>
 </footer>
 <script>function labnolThumb(e){return'<img src="{% static 'images/main_v2/youtube.png' %}">'.replace("ID",e)+'<div class="play"></div>'}function labnolIframe(){var e=document.createElement("iframe");e.setAttribute("src","https://www.youtube.com/embed/ID".replace("ID",this.dataset.id)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),this.parentNode.replaceChild(e,this)}document.addEventListener("DOMContentLoaded",function(){var e,t,a=document.getElementsByClassName("youtube-player");for(t=0;t<a.length;t++)(e=document.createElement("div")).setAttribute("data-id",a[t].dataset.id),e.innerHTML=labnolThumb(a[t].dataset.id),e.onclick=labnolIframe,a[t].appendChild(e)});</script>
 <script>var testimTimer,touchStartPos,touchEndPos,touchPosDiff,testim=document.getElementById("testim"),testimDots=Array.prototype.slice.call(document.getElementById("testim-dots").children),testimContent=Array.prototype.slice.call(document.getElementById("testim-content").children),testimLeftArrow=document.getElementById("left-arrow"),testimRightArrow=document.getElementById("right-arrow"),testimSpeed=4500,currentSlide=0,currentActive=0,ignoreTouch=30;window.onload=function(){function t(e){for(var i=0;i<testimDots.length;i++)testimContent[i].classList.remove("active"),testimContent[i].classList.remove("inactive"),testimDots[i].classList.remove("active");e<0&&(e=currentSlide=testimContent.length-1),e>testimContent.length-1&&(e=currentSlide=0),currentActive!=currentSlide&&testimContent[currentActive].classList.add("inactive"),testimContent[e].classList.add("active"),testimDots[e].classList.add("active"),currentActive=currentSlide,clearTimeout(testimTimer),testimTimer=setTimeout(function(){t(currentSlide+=1)},testimSpeed)}lozad().observe(),$("#datetimepicker").datetimepicker({timepicker:!1,format:"Y-m-d",minDate:0}),testimLeftArrow.addEventListener("click",function(){t(currentSlide-=1)}),testimRightArrow.addEventListener("click",function(){t(currentSlide+=1)});for(var e=0;e<testimDots.length;e++)testimDots[e].addEventListener("click",function(){t(currentSlide=testimDots.indexOf(this))});t(currentSlide),document.addEventListener("keyup",function(t){switch(t.keyCode){case 37:testimLeftArrow.click();break;case 39:case 39:testimRightArrow.click()}}),testim.addEventListener("touchstart",function(t){touchStartPos=t.changedTouches[0].clientX}),testim.addEventListener("touchend",function(t){if(touchEndPos=t.changedTouches[0].clientX,(touchPosDiff=touchStartPos-touchEndPos)>0+ignoreTouch)testimLeftArrow.click();else{if(!(touchPosDiff<0-ignoreTouch))return;testimRightArrow.click()}})};</script>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+    async defer>
+</script>
+<script type="text/javascript">
+      var onloadCallback = function() {
+        grecaptcha.render('html_element', {
+          'sitekey' : '{{g}}'
+        });
+      };
+    </script>
 {% endblock %}
