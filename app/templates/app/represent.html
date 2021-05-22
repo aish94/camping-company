@@ -2,6 +2,8 @@
 {% load staticfiles %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/all_user.css' %}">
+<link rel="preload" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"></noscript>
 {% endblock %}
 {% block content_block %}
 <br>
@@ -94,10 +96,14 @@
    <a class="btn btn-secondary" href="{% url 'genie:index' %}">To genie</a>
 </div>
 <br>
-<script>
-   window.onload=function(){var e=window.location.origin;$("#tests").submit(function(t){t.preventDefault();var n=$("input[name=csrfmiddlewaretoken]").val();return $.ajax({type:"POST",url:"/represent/",data:{email:$("#usr").val(),csrfmiddlewaretoken:n},success:function(t){0===t.id?alert("Email not found"):(ser=t.id.toString(10),window.location=e+"/status/"+ser+"/show/")}})}),$(".equipment").DataTable({order:[[3,"desc"]]})};
-</script>
-<script>
-   var sum=0;x=document.getElementsByClassName("sum8");for(var i=0;i<x.length;i++)sum+=parseInt(x[i].textContent,10);document.querySelector(".sums8").textContent=sum,sum=0,x=document.getElementsByClassName("sumS");for(i=0;i<x.length;i++)sum+=parseInt(x[i].textContent,10);document.querySelector(".sumss").textContent=sum,sum=0,x=document.getElementsByClassName("kettle");for(i=0;i<x.length;i++)sum+=parseInt(x[i].textContent,10);document.querySelector(".sumsk").textContent=sum,sum=0,x=document.getElementsByClassName("stove");for(i=0;i<x.length;i++)sum+=parseInt(x[i].textContent,10);document.querySelector(".sumst").textContent=sum,sum=0,x=document.getElementsByClassName("plates");for(i=0;i<x.length;i++)sum+=parseInt(x[i].textContent,10);document.querySelector(".sumsp").textContent=sum,sum=0,x=document.getElementsByClassName("charger");for(i=0;i<x.length;i++)sum+=parseInt(x[i].textContent,10);document.querySelector(".sumscha").textContent=sum,sum=0,x=document.getElementsByClassName("chairs");for(i=0;i<x.length;i++)sum+=parseInt(x[i].textContent,10);document.querySelector(".sumschai").textContent=sum,sum=0,x=document.getElementsByClassName("canister");for(i=0;i<x.length;i++)sum+=parseInt(x[i].textContent,10);document.querySelector(".sumscan").textContent=sum,sum=0,x=document.getElementsByClassName("tables");for(i=0;i<x.length;i++)sum+=parseInt(x[i].textContent,10);document.querySelector(".sumstab").textContent=sum;
-</script>
+{% endblock %}
+
+{% block js %}
+   <script defer src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+   <script>
+      window.onload=function(){var e=window.location.origin;$("#tests").submit(function(t){t.preventDefault();var n=$("input[name=csrfmiddlewaretoken]").val();return $.ajax({type:"POST",url:"/represent/",data:{email:$("#usr").val(),csrfmiddlewaretoken:n},success:function(t){0===t.id?alert("Email not found"):(ser=t.id.toString(10),window.location=e+"/status/"+ser+"/show/")}})}),$(".equipment").DataTable({order:[[3,"desc"]]})};
+   </script>
+   <script>
+      var sum=0;x=document.getElementsByClassName("sum8");for(var i=0;i<x.length;i++)sum+=parseInt(x[i].textContent,10);document.querySelector(".sums8").textContent=sum,sum=0,x=document.getElementsByClassName("sumS");for(i=0;i<x.length;i++)sum+=parseInt(x[i].textContent,10);document.querySelector(".sumss").textContent=sum,sum=0,x=document.getElementsByClassName("kettle");for(i=0;i<x.length;i++)sum+=parseInt(x[i].textContent,10);document.querySelector(".sumsk").textContent=sum,sum=0,x=document.getElementsByClassName("stove");for(i=0;i<x.length;i++)sum+=parseInt(x[i].textContent,10);document.querySelector(".sumst").textContent=sum,sum=0,x=document.getElementsByClassName("plates");for(i=0;i<x.length;i++)sum+=parseInt(x[i].textContent,10);document.querySelector(".sumsp").textContent=sum,sum=0,x=document.getElementsByClassName("charger");for(i=0;i<x.length;i++)sum+=parseInt(x[i].textContent,10);document.querySelector(".sumscha").textContent=sum,sum=0,x=document.getElementsByClassName("chairs");for(i=0;i<x.length;i++)sum+=parseInt(x[i].textContent,10);document.querySelector(".sumschai").textContent=sum,sum=0,x=document.getElementsByClassName("canister");for(i=0;i<x.length;i++)sum+=parseInt(x[i].textContent,10);document.querySelector(".sumscan").textContent=sum,sum=0,x=document.getElementsByClassName("tables");for(i=0;i<x.length;i++)sum+=parseInt(x[i].textContent,10);document.querySelector(".sumstab").textContent=sum;
+   </script>
 {% endblock %}

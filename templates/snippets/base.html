@@ -28,14 +28,18 @@
 
       {% endblock %}
    </head>
-   <body>
-         {% if messages %} {% for message in messages %}
-            <div class="alert alert-{{message.tags}}" style="text-align: center;"> <strong>{{message}}</strong></div>
-         {% endfor %} {% endif %}
+      <body>
+            {% if messages %} {% for message in messages %}
+               <div class="alert alert-{{message.tags}}" style="text-align: center;"> <strong>{{message}}</strong></div>
+            {% endfor %} {% endif %}
 
-         {% block content_block %}
+            {% block content_block %}
+
+            {% endblock %}
+            {% include "snippets/js.html" %}
+
+              {% block js %}
 
          {% endblock %}
-         {% include "snippets/js.html" %}
-   </body>
+      </body>
 </html>

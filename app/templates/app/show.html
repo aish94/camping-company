@@ -2,6 +2,8 @@
 {% load staticfiles %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/show.css' %}">
+<link rel="preload" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"></noscript>
 {% endblock %}
 {% block content_block %}
 <br>
@@ -180,6 +182,11 @@
       <br>
    </div>
 </div>
+{% endblock %}
+
+
+{% block js %}
+<script defer src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 <script>
    window.onload=function(){$(".expand").on("click",function(){$(this).next().slideToggle(100),$expand=$(this).find(">:first-child"),"+"==$expand.text()?$expand.text("-"):$expand.text("+")})};
 </script>

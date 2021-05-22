@@ -2,6 +2,8 @@
 {% load staticfiles %}
 {% block css %}
 <!--<link rel="stylesheet" href="{% static 'css/home/about.css' %}">-->
+<link rel="preload" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"></noscript>
 {% endblock %}
 {% block meta %}
 {% endblock %}
@@ -62,7 +64,11 @@
 <!--   </table>-->
    <a class="btn btn-secondary" href="{% url 'app:all_user' %}">Back to all User</a>
 </div>
+{% endblock %}
 
+
+{% block js %}
+<script defer src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 <script>
    window.onload=function(){window.location.origin;$(".btn-click-action").click(function(){var t=$("input[name=csrfmiddlewaretoken]").val();return $.ajax({type:"POST",url:"/detail_user/{{customer.user.pk}}",data:{username:$(this).attr("ussrname"),lead_status:$(this).siblings(".lead_status").val(),csrfmiddlewaretoken:t},success:function(t){alert("Status Stored"),window.location.reload()}})})};
 </script>
