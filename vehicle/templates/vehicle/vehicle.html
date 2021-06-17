@@ -1,6 +1,6 @@
 {% extends "snippets/base.html" %}
     {% load staticfiles %} {% block css %}
-        <link rel="stylesheet" href="{% static 'css/vehicles/vehicles.css' %}?v=1.0.1">
+        <link rel="stylesheet" href="{% static 'css/vehicles/vehicles.css' %}?v=1.0.2">
     {% endblock %}
 {% block title %}
     <title>Self Driving Camper Rentals in India | Camping Co</title>
@@ -11,54 +11,87 @@
 {% endblock %}
 {% block content_block %}
 <!--<h1 style="visibility:hidden;">Our Campers</h1>-->
-    <form class="form" method="POST" action="{% url 'vehicle:vehicle' %}" autocomplete="off">{% csrf_token %}
-      <div class="container">
-        <input list="cars" class="form__input" name="region" type="text" placeholder="Enter Region" aria-label="Full name">
-          <datalist id="cars">
-             {% for x in region %}
-                <option value="{{x.name|title}}">
-             {% endfor %}
-          </datalist>
-        <button class="btn btn--green" type="submit">Submit</button>
-      </div>
-    </form>
+<div style="margin:3rem;"></div>
     <div class="container">
         <div class="row">
-        {% for car in cars %}
-            {% if car.available %}
-                    <div class="col-md-4 col-12">
+            <div class="col-md-4 col-12">
+               <div class="card">
+                   <div class="card__side card__side--front">
+                        <div class="card__picture card__picture--2" style="background-image: url(https://camping-company.s3.amazonaws.com/media/cars/IMG_20200606_150629_141-compressor.jpg)">
+                            &nbsp;
+                        </div>
+                        <h4 class="card__heading">
+                            <span class="card__heading-span card__heading-span--2">Thar 4X4</span>
+                        </h4>
+                        <div class="card__details">
+                            <p>The Thar is equipped with a foldable rooftop tent that comfortably sleeps two travellers. The foldable tents are made of premium quality, breathable poly-cotton canvas with pop up window awning and flyscreen windows. The retractable ladder is attached to the tent. Set up time: 2-3 minutes</p>
+                        </div>
+                   </div>
+                   <div class="card__side card__side--back card__side--back-2">
+                        <div class="card__cta">
+                            <div class="card__price-box">
+                                <p class="card__price-only">Only</p>
+                                <p class="card__price-value">INR 2999</p>
+                            </div>
+                            <a href="{% url 'pay:pay' %}" class="btn btn--white">Book now!</a>
+                        </div>
+                    </div>
+               </div>
+            </div>
+
+
+            <div class="col-md-4 col-12">
                        <div class="card">
                            <div class="card__side card__side--front">
-                                <div class="card__picture card__picture--2" style="background-image: linear-gradient(to right bottom, #7ed56f, #0fac8c), url({{car.car_image.url}})">
+                                <div class="card__picture card__picture--2" style="background-image:url(https://camping-company.s3.amazonaws.com/media/cars/WhatsApp_Image_2020-05-09_at_2.44.23_PM.jpeg);background-size: cover;">
                                     &nbsp;
                                 </div>
                                 <h4 class="card__heading">
-                                    <span class="card__heading-span card__heading-span--2">{{car.car_name|title}} {{car.drive_train}}</span>
+                                    <span class="card__heading-span card__heading-span--2">Xenon Annex 4X2</span>
                                 </h4>
                                 <div class="card__details">
-                                    <ul>
-                                        <li>3 day tours</li>
-                                        <li>Up to 30 people</li>
-                                        <li>2 tour guides</li>
-                                        <li>Sleep in cozy hotels</li>
-                                        <li>Difficulty: easy</li>
-                                    </ul>
+                                   <p>The Xenon come equipped with a retractable (hydraulic suspension) rooftop tent that comfortably sleeps two travellers. The hard shell top provides four vertical walls which means extra space in the tent. The retractable ladder can be attached to the tent to get on and off.Set up time: 2-3 minutes</p>
+
                                 </div>
                            </div>
                            <div class="card__side card__side--back card__side--back-2">
                                 <div class="card__cta">
                                     <div class="card__price-box">
                                         <p class="card__price-only">Only</p>
-                                        <p class="card__price-value">INR {{car.price}}</p>
+                                        <p class="card__price-value">INR 3499</p>
                                     </div>
                                     <a href="{% url 'pay:pay' %}" class="btn btn--white">Book now!</a>
                                 </div>
                             </div>
                        </div>
                     </div>
-            {% endif %}
-        {% endfor %}
-    </div>
+
+
+                <div class="col-md-4 col-12">
+                       <div class="card">
+                           <div class="card__side card__side--front">
+                                <div class="card__picture card__picture--2" style="background-image: url(https://camping-company.s3.amazonaws.com/media/cars/whi.jpg)">
+                                    &nbsp;
+                                </div>
+                                <h4 class="card__heading">
+                                    <span class="card__heading-span card__heading-span--2">Xenon 4X2</span>
+                                </h4>
+                                <div class="card__details">
+                                    <p>The Xenon come equipped with a retractable (hydraulic suspension) rooftop tent that comfortably sleeps two travellers. The hard shell top provides four vertical walls which means extra space in the tent. The retractable ladder can be attached to the tent to get on and off.Set up time: 2-3 minutes</p>
+                                </div>
+                           </div>
+                           <div class="card__side card__side--back card__side--back-2">
+                                <div class="card__cta">
+                                    <div class="card__price-box">
+                                        <p class="card__price-only">Only</p>
+                                        <p class="card__price-value">INR 2999</p>
+                                    </div>
+                                    <a href="{% url 'pay:pay' %}" class="btn btn--white">Book now!</a>
+                                </div>
+                            </div>
+                       </div>
+                    </div>
+        </div>
     </div>
 
 <footer class="footer">
