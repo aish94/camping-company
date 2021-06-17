@@ -1,6 +1,6 @@
 {% extends "snippets/base.html" %}
     {% load staticfiles %} {% block css %}
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.0.1/tailwind.min.css">
+        <link rel="stylesheet" href="{% static 'css/vehicles/vehicles.css' %}?v=1.0.1">
     {% endblock %}
 {% block title %}
     <title>Self Driving Camper Rentals in India | Camping Co</title>
@@ -10,52 +10,112 @@
 <meta name="keywords" content="vehicles for camping, vehicles for camping company, camping vehicles northeast, rooftop tent vehicle , rent a vehicle meghalaya, overlanding car thar, modified vehicles northeast, cheapest camping vehicle, guwahati camping vehicle rent">
 {% endblock %}
 {% block content_block %}
-<div class="max-w-6xl mx-auto">
-<h1 style="visibility:hidden;">Our Campers</h1>
-    <form class="w-full max-w-sm" method="POST" action="{% url 'vehicle:vehicle' %}" autocomplete="off">{% csrf_token %}
-      <div class="flex items-center border-b border-teal-500 py-2">
-        <input list="cars" name="region" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Enter Region" aria-label="Full name">
+<!--<h1 style="visibility:hidden;">Our Campers</h1>-->
+    <form class="form" method="POST" action="{% url 'vehicle:vehicle' %}" autocomplete="off">{% csrf_token %}
+      <div class="container">
+        <input list="cars" class="form__input" name="region" type="text" placeholder="Enter Region" aria-label="Full name">
           <datalist id="cars">
              {% for x in region %}
                 <option value="{{x.name|title}}">
              {% endfor %}
           </datalist>
-        <button class="flex-shrink-0 bg-green-500 hover:bg-green-700 border-green-500 hover:border-green-700 text-sm border-4 text-white py-1 px-2 rounded" type="submit">
-          Submit
-        </button>
+        <button class="btn btn--green" type="submit">Submit</button>
       </div>
     </form>
-    <div class="row">
+    <div class="container">
+        <div class="row">
         {% for car in cars %}
             {% if car.available %}
-                <div class="col-sm-12 col-md-6 col-lg-4 pt-6 p-6">
-                    <div class="bg-white shadow-xl rounded-lg overflow-hidden">
-                        <div class="bg-cover bg-center h-56 p-4" style="background-image: url({{car.car_image.url}});">
-                            <div class="flex justify-end">
-                                <svg class="h-6 w-6 text-white fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                    <path d="M12.76 3.76a6 6 0 0 1 8.48 8.48l-8.53 8.54a1 1 0 0 1-1.42 0l-8.53-8.54a6 6 0 0 1 8.48-8.48l.76.75.76-.75zm7.07 7.07a4 4 0 1 0-5.66-5.66l-1.46 1.47a1 1 0 0 1-1.42 0L9.83 5.17a4 4 0 1 0-5.66 5.66L12 18.66l7.83-7.83z"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <p class="uppercase tracking-wide text-sm font-bold text-gray-700">{{car.car_name|title}}</p>
-                            <p class="text-3xl text-gray-900">INR {{car.price}}*</p>
-                            <p class="text-gray-700">{{car.drive_train}}</p>
-                        </div>
-                        <div class="px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100">
-                            <div class="flex items-center pt-2">
-                                <div>
-                                    <form style="display:inline-block" action="{% url 'pay:pay' %}" method="POST">{% csrf_token %}
-                                        <button id="btn-thar" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Book Now</button>
-                                    </form>
-                                    <button onclick= "location.href = '{% url 'vehicle:vehicle_info'%}';" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">More Info</button>
+                    <div class="col-md-4 col-12">
+                       <div class="card">
+                           <div class="card__side card__side--front">
+                                <div class="card__picture card__picture--2" style="background-image: linear-gradient(to right bottom, #7ed56f, #0fac8c), url({{car.car_image.url}})">
+                                    &nbsp;
+                                </div>
+                                <h4 class="card__heading">
+                                    <span class="card__heading-span card__heading-span--2">{{car.car_name|title}} {{car.drive_train}}</span>
+                                </h4>
+                                <div class="card__details">
+                                    <ul>
+                                        <li>3 day tours</li>
+                                        <li>Up to 30 people</li>
+                                        <li>2 tour guides</li>
+                                        <li>Sleep in cozy hotels</li>
+                                        <li>Difficulty: easy</li>
+                                    </ul>
+                                </div>
+                           </div>
+                           <div class="card__side card__side--back card__side--back-2">
+                                <div class="card__cta">
+                                    <div class="card__price-box">
+                                        <p class="card__price-only">Only</p>
+                                        <p class="card__price-value">INR {{car.price}}</p>
+                                    </div>
+                                    <a href="{% url 'pay:pay' %}" class="btn btn--white">Book now!</a>
                                 </div>
                             </div>
-                        </div>
+                       </div>
                     </div>
-                </div>
             {% endif %}
         {% endfor %}
     </div>
+    </div>
+
+<footer class="footer">
+<div class="row">
+<div class="col-sm-4">
+<div>
+<img width="80" height="80" src="{% static 'images/main_v2/logo-400x400.webp' %}" class="header__logo">
+<br><br><br>
+<span class="footer-text__description">Nature has a subtle way of enhancing consciousness,
+mindfulness, and awareness. With this belief, The
+Camping Company was created to provide a platform
+to have an immersive experience with nature. It enables
+travelers to explore the unexplored with the help of
+SUVs, jeeps equipped with rooftop tents and camping
+gears for a comfortable overlanding expedition. We are
+the creators and believers of an alternate way of travel.</span>
+<hr>
+<br><br>
+<span class="footer-text__follow">Follow Us:
+<a href="https://www.facebook.com/thecampingco"><i class="fab fa-facebook-f"></i></a>
+<a href="https://www.instagram.com/camping_co"><i class="fab fa-instagram"></i></a>
+<a href="https://www.youtube.com/channel/UC6mvUrWd2m4KbokMSALM0Hw"><i class="fab fa-youtube"></i></a>
+</span>
+<br><br><br>
+<hr>
 </div>
+</div>
+<div class="col-sm-4">
+<div>
+<strong><span class="footer-text__heading">Contact Us</span></strong>
+<br><br>
+<span class="footer-text__description">Talk to our experts? +91-6913332761 or Drop us a line, We promise to get back to you in 24 hours.</span>
+<form class="footer__form" method="POST" action="{% url 'app:findus' %}">{% csrf_token %}
+<br>
+<input type="text" placeholder="name" name="name" class="footer-text__input">
+<input type="email" placeholder="email" name="email" class="footer-text__input">
+<input type="text" placeholder="phone" name="phone" class="footer-text__input">
+<input type="text" placeholder="city" name="city" class="footer-text__input">
+<textarea class="footer-text__area" name="message" id="" cols="40" rows="10" placeholder="Enter Your Message Here..."></textarea>
+<div class="footer-button-box">
+<br>
+<button class="footer-button-box__button">Submit</button>
+<div style="width:300px;" id="html_element"></div>
+</div>
+</form>
+<span>@2019 Camping co</span>
+</div>
+</div>
+<div class="col-sm-4">
+<div class="tertiary-text__box">
+<a href="#" class="footer-text__heading">Careers</a>
+<a href="{% url 'app:terms_condition' %}" class="footer-text__heading">Policy</a>
+<a href="#" class="footer-text__heading">Media</a>
+<a href="{% url 'app:faq' %}" class="footer-text__heading">FAQ</a>
+<a class="footer-text__heading" href="{% url 'blog:event' %}">Event</a>
+</div>
+</div>
+</div>
+</footer>
 {% endblock %}
