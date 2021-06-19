@@ -1,3 +1,4 @@
+
 {% extends "snippets/base.html" %} {% load staticfiles %} {% block css %}
 <link rel="preload" href="{% static 'css/home/home_v2.css' %}?v=1.0.7" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="{% static 'css/home/home_v2.css' %}?v=1.0.7"></noscript>
@@ -10,7 +11,7 @@
 <meta name="keywords" content="camping, camping company, camping co , nature tourism, overlanding, northeast tourism,northeast, car rental , guwahati , meghalaya tourism, car rental, rooftop tent">
 {% endblock %}
 {% block content_block %}
-<header class="heador" style="background-image:url({% static 'images/main_v2/home.webp' %})">
+<header class="heador lozad" data-background-image="{% static 'images/main_v2/home.webp' %}">
    <div class="heador__text-box">
       <h1 class="heading-primary">
          <span class="heading-primary__main">Like Somewhere? Stay There!</span>
@@ -79,15 +80,15 @@ The only trace we leave behind are tyre marks.
 </div>
 <div class="contain row">
 <div class="col-sm-4">
-<a class="products__image" href="{% url 'vehicle:vehicle' %}"><img width="290px" height="290px" src="{% static 'images/main_v2/camper1.webp' %}" class="image-box__image" alt="Camper">
+<a class="products__image" href="{% url 'vehicle:vehicle' %}"><img width="290px" height="290px" data-src="{% static 'images/main_v2/camper1.webp' %}" class="image-box__image lozad" alt="Camper">
 <p class="image-box__text">Campers</p></a>
 </div>
 <div class="col-sm-4">
-<a class="products__image" href="{% url 'destination:destinations' %}"><img width="290px" height="290px" src="{% static 'images/main_v2/campsite.webp' %}" class="image-box__image" alt="Campsite">
+<a class="products__image" href="{% url 'destination:destinations' %}"><img width="290px" height="290px" data-src="{% static 'images/main_v2/campsite.webp' %}" class="image-box__image lozad" alt="Campsite">
 <p class="image-box__text">Campsites</p></a>
 </div>
 <div class="col-sm-4">
-<a class="products__image" href="{% url 'destination:circuits' %}"><img width="290px" height="290px" src="{% static 'images/main_v2/circuit.webp' %}" class="image-box__image" alt="Circuit"></a>
+<a class="products__image" href="{% url 'destination:circuits' %}"><img width="290px" height="290px" data-src="{% static 'images/main_v2/circuit.webp' %}" class="image-box__image lozad" alt="Circuit"></a>
 <p class="image-box__text">Circuits</p>
 </div>
 </div>
@@ -100,17 +101,17 @@ The only trace we leave behind are tyre marks.
 <div class="margin-bottom">
 <div class="row">
 <div class="col-sm-4">
-<img width="150px" height="150px" src="{% static 'images/main_v2/journey.webp' %}" class="process__image" alt="Journey">
+<img width="150px" height="150px" data-src="{% static 'images/main_v2/journey.webp' %}" class="process__image lozad" alt="Journey">
 <span class="tertiary-text__heading">The Journey</span>
 <span class="tertiary-text__description">Pick your dates,destination and travel circuit</span>
 </div>
 <div class="col-sm-4">
-<img width="150px" height="150px" src="{% static 'images/main_v2/camper.webp' %}" class="process__image" alt="Camper">
+<img width="150px" height="150px" data-src="{% static 'images/main_v2/camper.webp' %}" class="process__image lozad" alt="Camper">
 <span class="tertiary-text__heading">The camper</span>
 <span class="tertiary-text__description">Book a car for your journey with camping co</span>
 </div>
 <div class="col-sm-4">
-<img width="150px" height="150px" src="{% static 'images/main_v2/expert.webp' %}" class="process__image" alt="Experience">
+<img width="150px" height="150px" data-src="{% static 'images/main_v2/expert.webp' %}" class="process__image lozad" alt="Experience">
 <span class="tertiary-text__heading">The expert</span>
 <span class="tertiary-text__description">Our Overland expert will contact you post booking</span>
 </div>
@@ -129,23 +130,23 @@ The only trace we leave behind are tyre marks.
    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <a href="https://www.vogue.in/culture-and-living/content/unique-airbnb-stays-in-india-international-holiday-moveable-properties"><img class="d-block image" src="{% static 'images/main_v2/vogue.webp' %}"></a>
+      <a href="https://www.vogue.in/culture-and-living/content/unique-airbnb-stays-in-india-international-holiday-moveable-properties"><img class="d-block lozad image" data-src="{% static 'images/main_v2/vogue.webp' %}"></a>
     </div>
     <div class="carousel-item">
-      <a href="https://www.responsibletourismindia.com/stay/309"><img class="d-block image--2" src="{% static 'images/main_v2/responsibility.webp' %}"></a>
+      <a href="https://www.responsibletourismindia.com/stay/309"><img class="d-block lozad image--2" data-src="{% static 'images/main_v2/responsibility.webp' %}"></a>
     </div>
     <div class="carousel-item">
-      <a href="https://indianexpress.com/article/north-east-india/young-travel-entrepreneurs-in-the-northeast-are-rerouting-after-pandemic-slowdown-6469249/"><img class="d-block image" src="https://indianexpress.com/wp-content/themes/indianexpress/images/indian-express-logo-n.svg"></a>
+      <a href="https://indianexpress.com/article/north-east-india/young-travel-entrepreneurs-in-the-northeast-are-rerouting-after-pandemic-slowdown-6469249/"><img class="d-block lozad image" data-src="https://indianexpress.com/wp-content/themes/indianexpress/images/indian-express-logo-n.svg"></a>
     </div>
       <div class="carousel-item">
-      <a href="http://www.assamtribune.com/scripts/at.asp?id=dec2718/Page11"><img class="d-block image" src="{% static 'images/main_v2/tribune.gif' %}"></a>
+      <a href="http://www.assamtribune.com/scripts/at.asp?id=dec2718/Page11"><img class="d-block lozad image" data-src="{% static 'images/main_v2/tribune.gif' %}"></a>
     </div>
 
       <div class="carousel-item">
-      <a href="https://www.thehindu.com/life-and-style/travel/as-road-trips-garner-interest-caravans-could-be-an-option/article31923214.ece"><img class="d-block image" src="https://www.thehindu.com/static/theme/default/base/img/logo.png"></a>
+      <a href="https://www.thehindu.com/life-and-style/travel/as-road-trips-garner-interest-caravans-could-be-an-option/article31923214.ece"><img class="d-block lozad image" data-src="https://www.thehindu.com/static/theme/default/base/img/logo.png"></a>
     </div>
       <div class="carousel-item">
-      <a href="http://overdrive.in/news-cars-auto/features/counter-to-covid-self-drive-suv-camper-tourism/"><img class="d-block image" src="https://stat.overdrive.in/wp-content/uploads/images/logo.png"></a>
+      <a href="http://overdrive.in/news-cars-auto/features/counter-to-covid-self-drive-suv-camper-tourism/"><img class="d-block lozad image" data-src="https://stat.overdrive.in/wp-content/uploads/images/logo.png"></a>
     </div>
   </div>
   <a style="color:black;" class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -166,7 +167,7 @@ The only trace we leave behind are tyre marks.
 <div class="borders-bottom"></div>
 <div class="row contain">
 <div class="col-sm-4">
-<a href="https://www.camping-co.com/blog/Meghalaya-Tourism/"><img width="290" height="200" src="{% static 'images/main_v2/meghalaya-tourism.webp' %}" class="image-box__image" alt="Photo 1"></a>
+<a href="https://www.camping-co.com/blog/Meghalaya-Tourism/"><img width="290" height="200" data-src="{% static 'images/main_v2/meghalaya-tourism.webp' %}" class="image-box__image lozad" alt="Photo 1"></a>
 <h6 class="timestamps--1">
 <span class="timestamps__date">11</span>
 <span class="timestamps__month">Mar</span>
@@ -184,7 +185,7 @@ The only trace we leave behind are tyre marks.
 <span class="tertiary-text__description">Camping Co. is aligning the world of responsible and rural tourism...</span>
 </div>
 <div class="col-sm-4">
-<a href="https://www.camping-co.com/blog/What-is-overlanding/"><img width="290" height="200" src="{% static 'images/main_v2/what-is-overlanding.webp' %}" class="image-box__image" alt="Photo 1"></a>
+<a href="https://www.camping-co.com/blog/What-is-overlanding/"><img width="290" height="200" data-src="{% static 'images/main_v2/what-is-overlanding.webp' %}" class="image-box__image lozad" alt="Photo 1"></a>
 <h6 class="timestamps--3">
 <span class="timestamps__date">25</span>
 <span class="timestamps__month">Dec</span>
@@ -201,12 +202,12 @@ The only trace we leave behind are tyre marks.
 </div>
 </section>
 
-<section id="testim" class="testim" style="background-image:url({% static 'images/main_v2/review.webp' %});">
+<section id="testim" class="testim lozad" data-background-image="{% static 'images/main_v2/review.webp' %}">
 <img>
 <div class="wrap">
 <span id="right-arrow" class="arrow right fa fa-chevron-right"></span>
 <span id="left-arrow" class="arrow left fa fa-chevron-left "></span>
-<ul id="testim-dots" class="dots" style="display:none;">
+<ul id="testim-dots" class="dots">
 <li class="dot active"></li>
 <li class="dot"></li>
 <li class="dot"></li>
@@ -219,7 +220,7 @@ The only trace we leave behind are tyre marks.
 </ul>
 <div id="testim-content" class="cont">
 <div class="active">
-<div class="img"><img src="https://s3.ap-south-1.amazonaws.com/camping-company/media/Reviewers/ira.webp" alt=""></div>
+<div class="img"><img class="lozad" data-src="https://s3.ap-south-1.amazonaws.com/camping-company/media/Reviewers/ira.webp" alt=""></div>
 <h2>Ira
 <br>
 <span class="fa fa-star checked"></span>
@@ -231,7 +232,7 @@ The only trace we leave behind are tyre marks.
 <p>We are 3 girls and this was our first camping trip. It was surprisingly easy! Harsh and Heena were very responsive and helpful with all he planning and with our questions. Meghalaya was so beautiful in all the crazy rain and thunder, and it’s definitely something I want to do again. Good car and thoughtful amenities. :D a must experience!</p>
 </div>
 <div>
-<div class="img"><img src="https://s3.ap-south-1.amazonaws.com/camping-company/media/Reviewers/taran.webp" alt=""></div>
+<div class="img"><img class="lozad" data-src="https://s3.ap-south-1.amazonaws.com/camping-company/media/Reviewers/taran.webp" alt=""></div>
 <h2>Taran
 <br>
 <span class="fa fa-star checked"></span>
@@ -243,7 +244,7 @@ The only trace we leave behind are tyre marks.
 <p>This was so far the best experience of my life and words can't do justice. One must take this trip to truly understand what we felt. All thanks to harsh for being a wonderful host and friend.</p>
 </div>
 <div>
-<div class="img"><img src="https://s3.ap-south-1.amazonaws.com/camping-company/media/Reviewers/jyoti.jpg" alt=""></div>
+<div class="img"><img class="lozad" data-src="https://s3.ap-south-1.amazonaws.com/camping-company/media/Reviewers/jyoti.jpg" alt=""></div>
 <h2>Jyoti
 <br>
 <span class="fa fa-star checked"></span>
@@ -255,7 +256,7 @@ The only trace we leave behind are tyre marks.
 <p>Fantastic, fun filled and unique experience. Don’t expect any lavishness, but expect a rustic, adventure filled experience. Really loved the experience. Partner resort shouod provide better toilet facilities, specially for ladies. Family really enjoyed the experience.</p>
 </div>
 <div>
-<div class="img"><img src="https://s3.ap-south-1.amazonaws.com/camping-company/media/Reviewers/vikram.jpg" alt=""></div>
+<div class="img"><img class="lozad" data-src="https://s3.ap-south-1.amazonaws.com/camping-company/media/Reviewers/vikram.jpg" alt=""></div>
 <h2>Vikram
 <br>
 <span class="fa fa-star checked"></span>
@@ -267,7 +268,7 @@ The only trace we leave behind are tyre marks.
 <p>Harsh and Heena are amazing host. They have great in proactive communications . It was our first time camping however they made sure we were quite comfortable breaking out comfort zone. Their itenary recommendations were great and were available on call/chat all through out our trip for support. Highly recommended even if it would be your first time.</p>
 </div>
 <div>
-<div class="img"><img src="https://s3.ap-south-1.amazonaws.com/camping-company/media/Reviewers/anupriya.jpg" alt=""></div>
+<div class="img"><img class="lozad" data-src="https://s3.ap-south-1.amazonaws.com/camping-company/media/Reviewers/anupriya.jpg" alt=""></div>
 <h2>Anupriya
 <br>
 <span class="fa fa-star checked"></span>
@@ -279,7 +280,7 @@ The only trace we leave behind are tyre marks.
 <p>Harsh and Heena have started a wonderful venture of camping on wheels. We loved the whole experience. They also prepared a customised itenary for us which was very thoughtful. Would highly recommend this for backpackers.</p>
 </div>
    <div class="active">
-<div class="img"><img src="https://s3.ap-south-1.amazonaws.com/camping-company/media/Reviewers/rana.webp" alt=""></div>
+<div class="img"><img class="lozad" data-src="https://s3.ap-south-1.amazonaws.com/camping-company/media/Reviewers/rana.webp" alt=""></div>
 <h2>Rana <br>
 <span class="fa fa-star checked"></span>
 <span class="fa fa-star checked"></span>
@@ -290,7 +291,7 @@ The only trace we leave behind are tyre marks.
 <p>Had an amazing time in the truck. Harsh was very prompt and clear about communications. This camping experience took my trip to meghalaya a step further for sure! Absolutely loved it!</p>
 </div>
 <div>
-<div class="img"><img src="https://s3.ap-south-1.amazonaws.com/camping-company/media/Reviewers/shaswat.webp" alt=""></div>
+<div class="img"><img class="lozad" data-src="https://s3.ap-south-1.amazonaws.com/camping-company/media/Reviewers/shaswat.webp" alt=""></div>
 <h2>Shashwat
 <br>
 <span class="fa fa-star checked"></span>
@@ -302,7 +303,7 @@ The only trace we leave behind are tyre marks.
 <p>If you want to experience something extraordinary and memorable in your life, then go on a trip in this beast.</p>
 </div>
 <div>
-<div class="img"><img src="https://s3.ap-south-1.amazonaws.com/camping-company/media/Reviewers/shanmuga.webp" alt=""></div>
+<div class="img"><img class="lozad" data-src="https://s3.ap-south-1.amazonaws.com/camping-company/media/Reviewers/shanmuga.webp" alt=""></div>
 <h2>Shanmuga
 <br>
 <span class="fa fa-star checked"></span>
@@ -314,7 +315,7 @@ The only trace we leave behind are tyre marks.
 <p>It was a great adventure trip , we loved it .Harsh was a great host and helped us to plan the trip well, the places suggested by him was awesome. We had a great time</p>
 </div>
 <div>
-<div class="img"><img src="https://s3.ap-south-1.amazonaws.com/camping-company/media/Reviewers/roopshre.webp" alt=""></div>
+<div class="img"><img class="lozad" data-src="https://s3.ap-south-1.amazonaws.com/camping-company/media/Reviewers/roopshre.webp" alt=""></div>
 <h2>Roopshree Chauhan
 <br>
 <span class="fa fa-star checked"></span>
@@ -332,7 +333,7 @@ The only trace we leave behind are tyre marks.
 <div class="row">
 <div class="col-sm-4">
 <div>
-<img width="80" height="80" src="{% static 'images/main_v2/logo-400x400.webp' %}" class="header__logo">
+<img width="80" height="80" data-src="{% static 'images/main_v2/logo-400x400.webp' %}" class="header__logo lozad">
 <br><br><br>
 <span class="footer-text__description">Nature has a subtle way of enhancing consciousness,
 mindfulness, and awareness. With this belief, The
@@ -386,7 +387,7 @@ the creators and believers of an alternate way of travel.</span>
 </div>
 </footer>
 <script>function labnolThumb(e){return'<img src="{% static 'images/main_v2/youtube.png' %}">'.replace("ID",e)+'<div class="play"></div>'}function labnolIframe(){var e=document.createElement("iframe");e.setAttribute("src","https://www.youtube.com/embed/ID".replace("ID",this.dataset.id)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),this.parentNode.replaceChild(e,this)}document.addEventListener("DOMContentLoaded",function(){var e,t,a=document.getElementsByClassName("youtube-player");for(t=0;t<a.length;t++)(e=document.createElement("div")).setAttribute("data-id",a[t].dataset.id),e.innerHTML=labnolThumb(a[t].dataset.id),e.onclick=labnolIframe,a[t].appendChild(e)});</script>
-<script>var testimTimer,touchStartPos,touchEndPos,touchPosDiff,testim=document.getElementById("testim"),testimDots=Array.prototype.slice.call(document.getElementById("testim-dots").children),testimContent=Array.prototype.slice.call(document.getElementById("testim-content").children),testimLeftArrow=document.getElementById("left-arrow"),testimRightArrow=document.getElementById("right-arrow"),testimSpeed=4500,currentSlide=0,currentActive=0,ignoreTouch=30;window.onload=function(){function t(e){for(var i=0;i<testimDots.length;i++)testimContent[i].classList.remove("active"),testimContent[i].classList.remove("inactive"),testimDots[i].classList.remove("active");e<0&&(e=currentSlide=testimContent.length-1),e>testimContent.length-1&&(e=currentSlide=0),currentActive!=currentSlide&&testimContent[currentActive].classList.add("inactive"),testimContent[e].classList.add("active"),testimDots[e].classList.add("active"),currentActive=currentSlide,clearTimeout(testimTimer),testimTimer=setTimeout(function(){t(currentSlide+=1)},testimSpeed)}$("#datetimepicker").datetimepicker({timepicker:!1,format:"Y-m-d",minDate:0}),testimLeftArrow.addEventListener("click",function(){t(currentSlide-=1)}),testimRightArrow.addEventListener("click",function(){t(currentSlide+=1)});for(var e=0;e<testimDots.length;e++)testimDots[e].addEventListener("click",function(){t(currentSlide=testimDots.indexOf(this))});t(currentSlide),document.addEventListener("keyup",function(t){switch(t.keyCode){case 37:testimLeftArrow.click();break;case 39:case 39:testimRightArrow.click()}}),testim.addEventListener("touchstart",function(t){touchStartPos=t.changedTouches[0].clientX}),testim.addEventListener("touchend",function(t){if(touchEndPos=t.changedTouches[0].clientX,(touchPosDiff=touchStartPos-touchEndPos)>0+ignoreTouch)testimLeftArrow.click();else{if(!(touchPosDiff<0-ignoreTouch))return;testimRightArrow.click()}})};</script>
+<script>var testimTimer,touchStartPos,touchEndPos,touchPosDiff,testim=document.getElementById("testim"),testimDots=Array.prototype.slice.call(document.getElementById("testim-dots").children),testimContent=Array.prototype.slice.call(document.getElementById("testim-content").children),testimLeftArrow=document.getElementById("left-arrow"),testimRightArrow=document.getElementById("right-arrow"),testimSpeed=4500,currentSlide=0,currentActive=0,ignoreTouch=30;window.onload=function(){function t(e){for(var i=0;i<testimDots.length;i++)testimContent[i].classList.remove("active"),testimContent[i].classList.remove("inactive"),testimDots[i].classList.remove("active");e<0&&(e=currentSlide=testimContent.length-1),e>testimContent.length-1&&(e=currentSlide=0),currentActive!=currentSlide&&testimContent[currentActive].classList.add("inactive"),testimContent[e].classList.add("active"),testimDots[e].classList.add("active"),currentActive=currentSlide,clearTimeout(testimTimer),testimTimer=setTimeout(function(){t(currentSlide+=1)},testimSpeed)}lozad().observe(),$("#datetimepicker").datetimepicker({timepicker:!1,format:"Y-m-d",minDate:0}),testimLeftArrow.addEventListener("click",function(){t(currentSlide-=1)}),testimRightArrow.addEventListener("click",function(){t(currentSlide+=1)});for(var e=0;e<testimDots.length;e++)testimDots[e].addEventListener("click",function(){t(currentSlide=testimDots.indexOf(this))});t(currentSlide),document.addEventListener("keyup",function(t){switch(t.keyCode){case 37:testimLeftArrow.click();break;case 39:case 39:testimRightArrow.click()}}),testim.addEventListener("touchstart",function(t){touchStartPos=t.changedTouches[0].clientX}),testim.addEventListener("touchend",function(t){if(touchEndPos=t.changedTouches[0].clientX,(touchPosDiff=touchStartPos-touchEndPos)>0+ignoreTouch)testimLeftArrow.click();else{if(!(touchPosDiff<0-ignoreTouch))return;testimRightArrow.click()}})};</script>
 <script>
     document.write('<script async defer type="text/javascript" src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"><\/script>');
       var onloadCallback = function() {
