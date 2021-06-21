@@ -2,7 +2,7 @@
 <html lang=en>
    {% load staticfiles %}
    <head>
-      {% include "snippets/navbar.html" %}
+
       {% block title %} {% endblock %} {% block meta %} {% endblock %}
       <meta charset="UTF-8">
       <meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -29,6 +29,7 @@
       {% endblock %}
    </head>
       <body>
+            {% include "snippets/navbar.html" %}
             {% if messages %} {% for message in messages %}
                <div class="alert alert-{{message.tags}}" style="text-align: center;"> <strong>{{message}}</strong></div>
             {% endfor %} {% endif %}
@@ -38,8 +39,8 @@
             {% endblock %}
             {% include "snippets/js.html" %}
 
-              {% block js %}
+           {% block js %}
 
-         {% endblock %}
+            {% endblock %}
       </body>
 </html>
