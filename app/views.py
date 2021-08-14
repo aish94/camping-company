@@ -114,7 +114,7 @@ def findus(request):
                 subject = "Query"
                 message = str(request.POST.get("message"))
                 message_to_company(name, email, subject, message, phone)
-                message_to_customer(email)
+                #message_to_customer(email)
                 messages.success(request, "Your message sent")
                 return redirect("app:findus")
             else:
