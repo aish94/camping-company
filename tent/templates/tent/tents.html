@@ -26,14 +26,14 @@
                     </div>
                     <div class="p-4">
                         <p class="uppercase tracking-wide text-sm font-bold text-gray-700">Hard Shell Rooftop Tent</p>
-                        <p class="text-3xl text-gray-900">INR 110000*</p>
+                        <p class="text-3xl text-gray-900">INR 55000*</p>
                         <p class="text-gray-700"></p>
                     </div>
                     <div class="px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100">
                         <div class="flex items-center pt-2">
                             <div>
                                 <form style="display:inline-block" action="{% url 'tent:cart' %}" method="POST">{% csrf_token %}
-                                    <input hidden name="price" value="110000">
+                                    <input hidden name="price" value="55000">
                                     <button id="hard-top" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Buy</button>
                                 </form>
                               <button onclick= "location.href = '{% url 'tent_check:tent_info'%}';" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">More Info</button>
@@ -53,14 +53,14 @@
                     </div>
                     <div class="p-4">
                         <p class="uppercase tracking-wide text-sm font-bold text-gray-700">Soft Top tent</p>
-                        <p class="text-3xl text-gray-900">INR 99000*</p>
+                        <p class="text-3xl text-gray-900">INR 49000*</p>
                         <p class="text-gray-700"></p>
                     </div>
                     <div class="px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100">
                         <div class="flex items-center pt-2">
                           <div>
                               <form style="display:inline-block" action="{% url 'tent_check:cart' %}" method="POST">{% csrf_token %}
-                                  <input hidden name="price" value="99000">
+                                  <input hidden name="price" value="49000">
                                   <button id="soft-top" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Buy</button>
                               </form>
                               <button onclick= "location.href = '{% url 'tent:tent_info'%}';" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">More Info</button>

@@ -82,7 +82,7 @@ def cart(request):
                              "name": name,
                              "razor_id": razor_id
                              })
-    if price not in [99000, 110000]:
+    if price not in [49000, 55000]:
         messages.warning(request, "NO HACKY HACKY")
         return redirect("tent_check:all")
     return render(request, "tent/cart.html", {"price": price})
