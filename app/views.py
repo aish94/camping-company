@@ -113,7 +113,8 @@ def findus(request):
                 phone = str(request.POST.get("phone"))
                 subject = "Query"
                 message = str(request.POST.get("message"))
-                message_to_company(name, email, subject, message, phone)
+                if not ("<a" in message or message == " "):
+                    message_to_company(name, email, subject, message, phone)
                 #message_to_customer(email)
                 messages.success(request, "Your message sent")
                 return redirect("app:findus")
