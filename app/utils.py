@@ -1,7 +1,7 @@
 import os
 import requests
 import uuid
-
+import re
 from io import BytesIO
 from PIL import Image
 from django.core.files import File
@@ -110,3 +110,8 @@ def get_val(body, request):
         input_data[x] = request.POST.get(x)
 
     return input_data
+
+
+def has_cyrillic(text):
+    return bool(re.search('[а-яА-Я]', text))
+

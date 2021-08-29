@@ -113,7 +113,7 @@ def findus(request):
                 phone = str(request.POST.get("phone"))
                 subject = "Query"
                 message = str(request.POST.get("message"))
-                if not ("<a" in message or message == " "):
+                if not has_cyrillic(message):
                     message_to_company(name, email, subject, message, phone)
                 #message_to_customer(email)
                 messages.success(request, "Your message sent")
