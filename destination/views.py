@@ -535,3 +535,8 @@ def camp_update(request, slug):
 #     return render(request, "destination/camp_update.html")
 
 
+def experiences(request):
+    return render(request, "destination/experiences.html")
+
+
+

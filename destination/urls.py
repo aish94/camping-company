@@ -1,12 +1,13 @@
 from django.conf.urls import url
 from destination.views import (destination, destination_detail_page,
                                circuits, circuit, success, camp_add,
-                               camp_update)
+                               camp_update, experiences)
 
 app_name = "destination"
 
 urlpatterns = [
     url(r'^$', destination, name="destinations"),
+    url(r'^experiences/$', experiences, name="experiences"),
     url(r'circuits/$', circuits, name="circuits"),
     url(r'success/$', success, name="success"),
     url(r'camp-add/$', camp_add, name="camp_add"),
