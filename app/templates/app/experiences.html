@@ -5,28 +5,28 @@
 {% endblock %}
 {% block content_block %}
 
-<section class="head">
+<section class="header">
     <h1 class="heading-primary">
       <span class="heading-primary--main">Introducing experiences</span>
       <span class="heading-primary--sub">One-of-a-kind activities hosted by our network of guides</span>
     </h1>
-    <div class="change">
-      <p class="change__text">where are you going?</p>
-       <a href="#" style="font-size:1.6rem;">Change</a>
-    </div>
     <div class="search">
-      <input type="text" class="search__input" placeholder="Enter to search">
-      <a href="#" class="btn btn--orange">Search</a>
+      <input type="text" class="search__input" placeholder="Where are you going">
+            <div class="header__vertical-bar"></div>
+        <input type="text" class="search__input" placeholder="Date">
+      <a href="#" class="btn btn--orange">&#x1F50D;</a>
     </div>
 </section>
 <section class="intro">
-  <p>At Camping Co we believe that travel is more than just sightseeing. Hence we are introducing experiences that are one-of-a-kind activities hosted by our handpicked network of guides. These experiences are guaranteed to elevate your Overlanding journey with us.</p>
+  <p>At Camping Co we believe that travel is more than just sightseeing. Hence we are introducing experiences that are
+      one-of-a-kind activities hosted by our handpicked network of guides. These experiences are guaranteed to elevate
+      your Overlanding journey with us.</p>
 </section>
 <section class="destinations">
   <h2 class="destinations__heading">Incredible destinations</h2>
   <div class="wrapper">
     <div class="card" style="background-image: url({% static 'images/experiences/1.jpg' %})">
-      <p class="card__text">Goa</p>
+      <p class="card__text">The Jungle Book</p>
     </div>
 
   <div class="card" style="background-image: url({% static 'images/experiences/2.jpg' %})">
@@ -78,14 +78,17 @@ the creators and believers of an alternate way of travel.</span>
 <div>
 <strong><span class="footer-text__heading">Contact Us</span></strong>
 <br><br>
-<span class="footer-text__description">Talk to our experts? +91-6913332761 or Drop us a line, We promise to get back to you in 24 hours.</span>
+<span class="footer-text__description">Talk to our experts? +91-6913332761 or Drop us a line, We promise to get back to
+    you in 24 hours.</span>
 <form class="footer__form" method="POST" action="{% url 'app:findus' %}">{% csrf_token %}
 <br>
 <input type="text" placeholder="name" name="name" class="footer-text__input">
 <input type="email" placeholder="email" name="email" class="footer-text__input">
 <input type="text" placeholder="phone" name="phone" class="footer-text__input">
 <input type="text" placeholder="city" name="city" class="footer-text__input">
-<textarea class="footer-text__area" name="message" id="" cols="40" rows="10" placeholder="Enter Your Message Here..."></textarea>
+<textarea class="footer-text__area" name="message" id="" cols="30" rows="10" placeholder="Enter Your Message Here...">
+
+</textarea>
 <div class="footer-button-box">
 <br>
 <button class="footer-button-box__button">Submit</button>
