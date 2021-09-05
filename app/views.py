@@ -185,3 +185,7 @@ def damage_charges(request):
 
 def sitemap(request):
     return render(request, "app/sitemap.xml")
+
+
+def experiences(request):
+    return render(request, "app/experiences.html")

@@ -16,4 +16,5 @@ urlpatterns = [
     url(r'^faq/$', views.faq, name="faq"),
     url(r'^damage-charges/$', views.damage_charges, name="damage_charges"),
     url(r'^sitemap/$', views.sitemap, name="sitemap"),
+    url(r'^experiences/$', views.experiences, name="experiences"),
 ]
