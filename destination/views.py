@@ -539,4 +539,8 @@ def experiences(request):
     return render(request, "destination/experiences.html")
 
 
+def experience_detail(request, slug):
+    return render(request, "destination/experience_detail.html")
+
+
 
