@@ -12,19 +12,6 @@
 {% endblock %}
  <body>
     <header class="heador">
-      <!--<nav class="heador__nav">-->
-        <!--<ul class="navigation__list">-->
-          <!--<li class="navigation__item" > <a href="#" class="navigation__link">Campsites</a></li>-->
-          <!--<li class="navigation__item" > <a href="#" class="navigation__link">Campers</a></li>-->
-          <!--<li class="navigation__item" > <a href="#" class="navigation__link">Circuits</a></li>-->
-          <!--<li class="navigation__item" > <a href="#" class="navigation__link">Journal</a></li>-->
-          <!--<li class="navigation__item" > <a href="#" class="navigation__link">Contact</a></li>-->
-          <!--<li class="navigation__item" > <a href="#" class="navigation__link">Login/Sign up</a></li>-->
-        <!--</ul>-->
-        <!--<div class="header__logo-box">-->
-          <!--<img src="logo 400x400.png" alt="Logo" class="header__logo">-->
-        <!--</div>-->
-      <!--</nav>-->
 
       <div class="heador__text-box">
         <h1 class="heading-primary">
@@ -41,18 +28,18 @@
             The only trace we leave behind are tyre marks.
           </div>
       </div>
-      <div class="row">
-        <div class="col-xs-12 col-md-4">
+      <div class="wrapper">
+        <div class="">
             <div class="image image--1">
                 <a href="{% url 'destination:circuit' slug='meghalaya' %}"><p>Inhabited by Khasi, Jaintia and Garo tribes, the state in Northeast India is known for its immaculate natural beauty and unique culture. One of the only states in India with a matrilineal society, the state offers unbounded landscapes, exiting and variable weather, well-maintained roads and eccentric culinary wonders.</p></a>
             </div>
             <div class="heading-tertiary">
                 <span class="heading-tertiary__heading">Meghalaya:</span>
-            <span class="heading-tertiary__text">Not just cloud</span>
+                <span class="heading-tertiary__text">Not just cloud</span>
             </div>
         </div>
 
-        <div class="col-xs-12 col-md-4">
+        <div class="">
             <div class="image image--2">
                 <a href="{% url 'destination:circuit' slug='nagaland' %}"><p>Home to the largest riverine island in the world, Majuli, Assam is one of the more refined parts of the region. Kaziranga and Manas Wildlife Sanctuaries are an absolute bliss with the wildlife they help preserve and flourish. The Brahmaputra river is a driving force in the region for the changes it makes in the state every monsoon. And of course, there's all the tea in the world and the best of it..</p></a>
             </div>
@@ -62,20 +49,19 @@
             </h2>
         </div>
 
-        <div class="col-xs-12 col-md-4">
+        <div class="">
             <div class="image image--3">
                 <a href="{% url 'destination:circuit' slug='arunachal-pradesh' %}"><p>Land of the rising sun in India, Arunachal Pradesh is the largest of the Northeastern states. With 82% of its land covered by forests, the state has some of the most exotic landscapes, sub-tropical to alpine forests, paired with isolated and distinct species of flora and fauna specific to this region. It is 1 of the world's 17 bio-diversity heritage sites in the world and truly lives up to it.</p></a>
             </div>
             <h2 class="heading-tertiary">
                 <span class="heading-tertiary__heading">Arunachal pradesh:</span>
-            <span class="heading-tertiary__text">Nature re-defined</span>
+                <span class="heading-tertiary__text">Nature re-defined</span>
             </h2>
         </div>
       </div>
-      <br><br><br>
 
-      <div class="row">
-          <div class="col-xs-12 col-md-4">
+      <div class="wrapper">
+          <div class="">
               <div class="image image--4">
                   <a href="{% url 'destination:circuit' slug='assam' %}"><p>Home to the largest riverine island in the world, Majuli, Assam is one of the more refined parts of the region. Kaziranga and Manas Wildlife Sanctuaries are an absolute bliss with the wildlife they help preserve and flourish. The Brahmaputra river is a driving force in the region for the changes it makes in the state every monsoon. And of course, there's all the tea in the world and the best of it.</p></a>
               </div>
@@ -85,7 +71,7 @@
               </h2>
           </div>
 
-          <div class="col-xs-12 col-md-4">
+            <div class="">
               <div class="image image--5">
                   <a href="{% url 'destination:circuit' slug='bhutan' %}"><p>An overland journey across India and Bhutan, one is bound to have the experience of a lifetime! Bhutan is the only carbon-negative country in the world and has promised to keep 71% of its land as forest cover. With its Buddhist culture and lessons come great valleys, rivers, adventures, culture and people. The winding tarmac roads take you to gorgeous Dzongs, museums, heritage sites, fortresses and forests.</p></a>
               </div>
@@ -95,67 +81,21 @@
               </h2>
           </div>
 
+
+
+          <div class="remove" style="opacity:0">
+              <div class="image image--5">
+                  <a href="{% url 'destination:circuit' slug='bhutan' %}"><p>An overland journey across India and Bhutan, one is bound to have the experience of a lifetime! Bhutan is the only carbon-negative country in the world and has promised to keep 71% of its land as forest cover. With its Buddhist culture and lessons come great valleys, rivers, adventures, culture and people. The winding tarmac roads take you to gorgeous Dzongs, museums, heritage sites, fortresses and forests.</p></a>
+              </div>
+              <h2 class="heading-tertiary">
+                  <span class="heading-tertiary__heading">Dummy:</span>
+              <span class="heading-tertiary__text">Cross country overland</span>
+              </h2>
+          </div>
+
         </div>
 
 
     </section>
-
-    <footer class="footer">
-      <div class="row">
-        <div class="col-4">
-            <h5>
-                <img src="{% static 'images/main_v2/logo 400x400.png' %}" class="header__logo">
-                <br><br><br>
-                <span class="footer-text__description">Nature has a subtle way of enhancing consciousness,
-                    mindfulness, and awareness. With this belief, The
-                    Camping Company was created to provide a platform
-                    to have an immersive experience with nature. It enables
-                    travelers to explore the unexplored with the help of
-                    SUVs, jeeps equipped with rooftop tents and camping
-                    gears for a comfortable overlanding expedition. We are
-                    the creators and believers of an alternate way of travel.</span>
-                    <br><br><br><br><br><br><br>
-                    <hr>
-                    <br><br>
-                    <span class="footer-text__follow">Follow Us:
-                    <a href="https://www.facebook.com/thecampingco"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/camping_co"><i class="fab fa-instagram"></i></a>
-                  <i class="fab fa-twitter"></i>
-                </span>
-                    <br><br><br>
-                    <hr>
-              </h5>
-        </div>
-        <div class="col-4">
-          <h5>
-              <strong><span class="footer-text__heading">Contact Us</span></strong>
-              <br><br>
-              <span class="footer-text__description">Talk to our experts? +91-6913332761 or Drop us a line, We promise to get back to you in 24 hours.</span>
-              <form class="footer__form">
-                <br>
-                <input type="text" placeholder="name" class="footer-text__input">
-                <input type="email" placeholder="email" class="footer-text__input">
-                <input type="text" placeholder="phone" class="footer-text__input">
-                <input type="text" placeholder="city" class="footer-text__input">
-                <textarea class="footer-text__area" name="" id="" cols="40" rows="10" placeholder="Enter Your Message Here..."></textarea>
-                <div class="footer-button-box">
-                  <br>
-                    <a href="#" class="footer-button-box__button">Submit</a>
-                </div>
-              </form>
-              <span>@2019 Camping <col></span>
-            </h5>
-        </div>
-
-        <div class="col-4">
-           <div class="tertiary-text__box">
-                <a href="#" class="footer-text__heading">Careers</a>
-                <a href="{% url 'app:terms_condition' %}" class="footer-text__heading">Policy</a>
-                <a href="#" class="footer-text__heading">Media</a>
-                <a href="{% url 'app:faq' %}" class="footer-text__heading">FAQ</a>
-           </div>
-        </div>
-      </div>
-    </footer>
   </body>
 {% endblock %}
