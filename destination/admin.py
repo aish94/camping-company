@@ -3,7 +3,7 @@ from .models import (Destination, Map, Region,
                      Amenity, Activity,Image,
                      Detail, Circuit, Booking,
                      Feature, Experience,
-                     PaymentCampsite,Pricing)
+                     PaymentCampsite,Pricing,Experiences)
 # Register your models here.
 
 admin.site.register(Destination)
@@ -19,4 +19,5 @@ admin.site.register(Feature)
 admin.site.register(Experience)
 admin.site.register(PaymentCampsite)
 admin.site.register(Pricing)
+admin.site.register(Experiences)
 

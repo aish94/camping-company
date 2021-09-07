@@ -16,7 +16,7 @@ from destination.models import (Destination, Map,
                                 Region, Amenity, Activity,
                                 Detail, Circuit, Booking,
                                 Experience, Feature,
-                                PaymentCampsite, Pricing)
+                                PaymentCampsite, Pricing,Experiences)
 
 # Create your views here.
 queue = django_rq.get_queue('default')
@@ -536,11 +536,13 @@ def camp_update(request, slug):
 
 
 def experiences(request):
-    return render(request, "destination/experiences.html")
+    experiences = Experiences.objects.all()
+    return render(request, "destination/experiences.html", {"experiences": experiences})
 
 
 def experience_detail(request, slug):
-    return render(request, "destination/experience_detail.html")
+    experience = Experiences.objects.get(slug=slug)
+    return render(request, "destination/experience_detail.html", {"experience": experience})
 
 
 

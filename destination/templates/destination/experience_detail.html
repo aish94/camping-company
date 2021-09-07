@@ -33,34 +33,30 @@
         <section class="main">
             <div class="main__content">
                 <div class="heading__content">
-                    <h1 class="heading__primary">[Sale] Ski Dubai Admission Ticket</h1>
-                    <p class="heading__text">Visit world biggest park</p>
+                    <p style="color:blue;">{{ experience.rating }} </p>
+                    <h1 class="heading__primary">{{ experience.name }}</h1>
+                    <p class="heading__text">{{ experience_quotation }}</p>
                     <p class="heading__rating">4.5/5.0 (<a href="#">859 reviews</a>) 1200 Booked</p>
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eaque eos facere omnis veniam. Accusantium at consectetur dignissimos dolore dolores ducimus facere impedit numquam, odit perferendis provident, quibusdam suscipit, voluptas!</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eaque eos facere omnis veniam. Accusantium at consectetur dignissimos dolore dolores ducimus facere impedit numquam, odit perferendis provident, quibusdam suscipit, voluptas!</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eaque eos facere omnis veniam. Accusantium at consectetur dignissimos dolore dolores ducimus facere impedit numquam, odit perferendis provident, quibusdam suscipit, voluptas!</p>
-
-                    <p>
-                        <ul>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                    <li>5</li>
-                    <li>6</li>
-                    </ul>
+                    <p class="heading__description">
+                        {{ experience.description }}
                     </p>
+
+                    <p><span class="active">Difficulty Level</span> - {{ experience.difficulty }}</p>
+
+                    <p><span class="active">Price</span> - INR. {{ experience.price }}/Person </p>
+
+                    <p><span class="active">Group Size</span> - {{ experience.group_size }}</p>
+
                 </div>
             </div>
 
             <div class="main__price">
                 <div class="card">
                     <p>Best price guarantee</p>
-                    <p>from INR 3347</p>
-                    <p>Book now for today</p>
-                    <p>Instant confirmation</p>
-                    <a href="#" class="btn btn--orange">Select options</a>
+                    <p>from <span class="active">INR {{ experience.price }}</span></p>
+                    <p><i class="far fa-clock"></i> Book now for today</p>
+                    <p><i class="fas fa-bolt"></i> Instant confirmation</p>
                     <a href="#" class="btn btn--orange">Select options</a>
                     <p>Get credit when complete experience</p>
                 </div>

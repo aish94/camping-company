@@ -25,27 +25,11 @@
 <section class="destinations">
   <h2 class="destinations__heading">Incredible destinations</h2>
   <div class="wrapper">
-    <div class="card" style="background-image: url({% static 'images/experiences/1_experiences.jpg' %})">
-      <p class="card__text" style="padding: 1rem 4.5rem;">The Jungle Book </p>
-    </div>
-
-  <div class="card" style="background-image: url({% static 'images/experiences/2_experiences.jpg' %})">
-      <p class="card__text">Deep beneath the ground</p>
-  </div>
-    <div class="card" style="background-image: url({% static 'images/experiences/3_experiences.jpg' %})">
-      <p class="card__text">The Hidden Treasure of the Meghalaya</p>
-  </div>
-
-  <div class="card" style="background-image: url({% static 'images/experiences/4_experiences.jpg' %});">
-      <p class="card__text">Cascading down a rocky waterfall</p>
-  </div>
-    <div class="card" style="background-image: url({% static 'images/experiences/5_experiences.jpg' %})">
-      <p class="card__text">Bluewater Meghalaya</p>
-  </div>
-
-  <div class="card" style="background-image: url({% static 'images/experiences/6_experiences.jpg' %})">
-      <p class="card__text">Whitewater Kayaking Meghalaya</p>
-  </div>
+    {% for experience in experiences %}
+        <div class="card" style="background-image: url({{experience.main_image.url }})">
+            <a href="{% url 'destination:experience_detail' slug=experience.slug %}"><p class="card__text" style="padding: 1rem 4.5rem;">{{ experience.name }} </p></a>
+        </div>
+    {% endfor %}
   </div>
    <a class="btn btn--grey" style="width:30rem; margin:0 auto;">Explore All destinations</a>
 </section>

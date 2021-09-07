@@ -218,3 +218,33 @@ def destination_pre_save_receiver(sender, instance, **kwargs):
 
 
 pre_save.connect(destination_pre_save_receiver, sender=Destination)
+
+
+class Experiences(models.Model):
+    slug = models.SlugField(max_length=40, blank=True, null=True)
+    name = models.CharField(max_length=128, blank=True, null=True)
+    activity = models.CharField(max_length=256, blank=True, null=True)
+    quotation = models.CharField(max_length=256, blank=True, null=True)
+    difficulty = models.CharField(max_length=256, blank=True, null=True)
+    price = models.CharField(max_length=256, blank=True, null=True)
+    group_size = models.CharField(max_length=256, blank=True, null=True)
+    description = models.TextField()
+    main_image = models.ImageField(upload_to='experiences', blank=True)
+    image1 = models.ImageField(upload_to='experiences', blank=True)
+    image2 = models.ImageField(upload_to='experiences', blank=True)
+    image3 = models.ImageField(upload_to='experiences', blank=True)
+    image4 = models.ImageField(upload_to='experiences', blank=True)
+    image5 = models.ImageField(upload_to='experiences', blank=True)
+
+
+    def __str__(self):
+        return self.name
+
+
+def experiences_pre_save_receiver(sender, instance, **kwargs):
+    temp = ["-" if x is " " else x for x in instance.name]
+    instance.slug = "".join(temp)
+    # slug cant have question marks boy
+
+
+pre_save.connect(experiences_pre_save_receiver, sender=Experiences)
