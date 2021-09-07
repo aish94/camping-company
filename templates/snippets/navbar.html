@@ -1,4 +1,4 @@
-{% url 'app:home' as home_url %} {% url 'customer:user_page' as customer_url %} {% url 'destination:circuits' as circuits_url %} {% url 'app:about' as about_url %} {% url 'destination:destinations' as destination_url %} {% url 'vehicle:vehicle' as vehicle_url %} {% url 'app:findus' as findus_url %} {% url 'register:signout' as signout_url %} {% url 'register:signin' as register_url %} {% url 'app:faq' as faq_url %} {% url 'blog:all_blog' as blog_url %} {% url 'blog:event' as event_url %} {% url 'app:represent' as represent_url %} {% url 'customer:experience' as experience_url %} {% url 'tent_check:all' as rtt_url %}{% load staticfiles %}
+{% url 'app:home' as home_url %} {% url 'customer:user_page' as customer_url %} {% url 'destination:circuits' as circuits_url %} {% url 'app:about' as about_url %} {% url 'destination:destinations' as destination_url %} {% url 'vehicle:vehicle' as vehicle_url %} {% url 'app:findus' as findus_url %} {% url 'register:signout' as signout_url %} {% url 'register:signin' as register_url %} {% url 'app:faq' as faq_url %} {% url 'blog:all_blog' as blog_url %} {% url 'blog:event' as event_url %} {% url 'app:represent' as represent_url %} {% url 'customer:experience' as experience_url %} {% url 'tent_check:all' as rtt_url %}{% url 'destination:experiences' as experiences_url %}{% load staticfiles %}
 <header>
         <link rel="preload" href="{% static 'css/home/header.css' %}?v=1.0.1" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="{% static 'css/home/header.css' %}?v=1.0.1"></noscript>
@@ -24,6 +24,7 @@
                 {% else %}
                 <li class="nav-item {% if request.path == register_url  %}active{% endif %}"><a class="nav-link" href="{{register_url}}">Login</a></li>
                 {% endif %}
+                <li class="nav-item {% if request.path == experiences_url %}active{% endif %} experience__header"><a class="nav-link" href="{{experiences_url}}">Experience</a></li>
                 <li class="nav-item {% if request.path == experience_url %}active{% endif %} experience__header"><a class="nav-link" href="{{experience_url}}">Customize</a></li>
                 <li class="nav-item {% if request.path == rtt_url  %}active{% endif %}"><a class="nav-link" href="{{rtt_url}}">Buy rooftop tent</a></li>
             </ul>

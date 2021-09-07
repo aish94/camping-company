@@ -27,7 +27,7 @@
   <div class="wrapper">
     {% for experience in experiences %}
         <div class="card" style="background-image: url({{experience.main_image.url }})">
-            <a href="{% url 'destination:experience_detail' slug=experience.slug %}"><p class="card__text" style="padding: 1rem 4.5rem;">{{ experience.name }} </p></a>
+            <a href="{% url 'destination:experience_detail' slug=experience.slug %}"><p class="card__text">{{ experience.name }} </p></a>
         </div>
     {% endfor %}
   </div>
