@@ -4,32 +4,21 @@
 <link rel="stylesheet" href="{% static 'css/destination/experience_detail.css' %}">
 {% endblock %}
 {% block content_block %}
-    <br>
-    <br>
+    <br><br>
     <div class="container">
         <section class="slide">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img class="d-block w-100" src="{{ experience.image1.url }}" alt="First slide">
-                </div>
-                <div class="carousel-item">
-                   <img class="d-block w-100" src="{{ experience.image2.url }}" alt="second slide">
-                </div>
-                <div class="carousel-item">
-                   <img class="d-block w-100" src="{{ experience.image3.url }}" alt="third slide">
-                </div>
-                  {% if experience.image4 %}
-                   <div class="carousel-item">
-                        <img class="d-block w-100" src="{{ experience.image4.url }}" alt="fourth slide">
+                   <div class="carousel-inner">
+                       {% for image in experience.experience_name.all %}
+                        {% if forloop.counter == 1 %}
+                            <div class="carousel-item active">
+                        {% else %}
+                            <div class="carousel-item">
+                        {% endif %}
+                                <img class="d-block w-100" src="{{ image.image.url }}" alt="First slide">
+                            </div>
+                       {% endfor %}
                    </div>
-                  {% endif %}
-                  {% if experience.image5 %}
-                   <div class="carousel-item">
-                        <img class="d-block w-100" src="{{ experience.image5.url }}" alt="fifth slide">
-                   </div>
-                  {% endif %}
-              </div>
               <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
@@ -59,6 +48,27 @@
                     <p><span class="active">Group Size</span> - {{ experience.group_size }}</p>
 
                 </div>
+                <h2 class="active" style="font-size:2.8rem;">Package Description</h2>
+                <h3 class="active">What is included?</h3>
+
+                {{experience.include|safe}}
+
+                <h3 class="active">What is this trip not inclusive of?</h3>
+               {{experience.inclusive|safe}}
+                <h3 class="active">Itinerary</h3>
+                {{experience.itinerary|safe}}
+
+                <h3 class="active">Validity</h3>
+                {{experience.validity|safe}}
+
+                <h3 class="active">Eligibility</h3>
+                {{experience.eligibility|safe}}
+
+                <h3 class="active">Additional Info</h3>
+                {{experience.additional_info|safe}}
+
+                <h3 class="active">What to bring</h3>
+                {{experience.what_to_bring|safe}}
             </div>
 
             <div class="main__price">
@@ -67,10 +77,227 @@
                     <p>from <span class="active">INR {{ experience.price }}</span></p>
                     <p><i class="far fa-clock"></i> Book now for today</p>
                     <p><i class="fas fa-bolt"></i> Instant confirmation</p>
-                    <a href="#" class="btn btn--orange">Select options</a>
+                    <a href="#" class="btn btn--orange" data-toggle="modal" data-target="#exampleModalCenter">Book Now</a>
                     <p>Get credit when complete experience</p>
                 </div>
             </div>
         </section>
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-lg modal-dialog modal-dialog-centered" role="document" style="max-width: 1200px; border-radius:20px;">
+              <div class="modal-content myModal" >
+                <div class="modal-header">
+                  <h3 class="modal-title" id="exampleModalCenterTitle" style="font-size: 30px;">Booking</h3>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="font-size:40px;">&times;</span>
+                  </button>
+                </div>
+                <form action="POST">{%csrf_token%}
+                <div class="modal-body">
+                  <p>Check in:</p>
+                    <input id="datetimepicker" name="tripDay" class="check-in__date" type="text" required pattern="\d{4}-\d{2}-\d{2}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <br>
+                  <div class="row">
+                    <div class="col-3">
+                      <strong>Item</strong>
+                    </div>
+
+                    <div class="col-3">
+                      <strong>Price</strong>
+                    </div>
+
+                    <div class="col-3">
+                      <strong>Number of person</strong>
+                    </div>
+
+                    <div class="col-3" style="text-align:right;">
+                      <strong>Total</strong>
+                    </div>
+                  </div>
+                  {% if pricing.caravan is not 0 %}
+                  <div class="row" style="padding:15px; padding-top:20px;">
+                    <div class="col-3">
+                        <i class="fas fa-plane"></i>
+                      {{experience.name}}
+                    </div>
+
+                    <div class="col-3">
+                      INR {{experience.price}}
+                    </div>
+
+                    <div class="col-3" style="text-align:center;">
+                        <div class="input-group">
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-light btn-number" data-quantity="minus" data-field="quantity">
+                              <span class="fa fa-minus"></span>
+                            </button>
+
+                          </span>
+                          <span id="quantity">0</span>
+
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-light btn-number" data-quantity="plus" data-field="quantity">
+                                <span class="fa fa-plus"></span>
+                            </button>
+                          </span>
+                        </div>
+                    </div>
+
+                    <div class="col-3" style="text-align:right;">
+                      <span id="caravan-total">INR 0</span>
+                    </div>
+                  </div>
+                  {% endif %}
+
+                  <div class="row" style="padding-top:30px;">
+                    <div class="col-6"></div>
+                    <div class="col-6" style="text-align:right;">
+                      <p id="subtotal">Subtotal 0</p>
+                      <p id="IGST">IGST 0</p>
+                      <p id="convenience">Convenience charge 0</p>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="modal-footer" >
+                  <span  id="total" style="font-size: 24px;">Total INR 0</span>
+                  <button type="button" id="rzp-button1" class="btn btn--orange book">Checkout</button>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
     </div>
+<script>
+       window.onload = function(){
+       var rooftop = 0,igst = 0, convenience = 0, subtotal = 0, room = 0;
+      function updateValue(price,totString){
+              subtotal = caravan
+              IGST = subtotal * .18
+              convenience = subtotal * .024
+              total = subtotal + IGST + convenience;
+
+              str1 = "INR " + price.toString()
+              str2 = "Subtotal INR " + subtotal.toString()
+              str3 = "IGST INR " + IGST.toString()
+              str4 = "Convenience INR " + convenience.toString()
+              str5 = "Total INR " + total.toString()
+
+              $(totString).text(str1)
+              $("#subtotal").text(str2)
+              $("#IGST").text(str3)
+              $("#convenience").text(str4)
+              $("#total").text(str5)
+      }
+
+        $('button[data-quantity="plus"]').click(function(e){
+          e.preventDefault();
+          fieldName = $(this).attr('data-field');
+          var currentVal = parseInt($('#'+fieldName).text());
+          if (!isNaN(currentVal)) {
+              $('#'+fieldName).text(currentVal + 1);
+              caravan = ({{experience.price}} * (currentVal + 1))
+              updateValue(caravan, "#rooftop-total")
+          } else {
+              // Otherwise put a 0 there
+              $('#'+fieldName).text(0);
+          }
+      });
+      $('button[data-quantity="minus"]').click(function(e) {
+          e.preventDefault();
+          fieldName = $(this).attr('data-field');
+          var currentVal = parseInt($('#'+fieldName).text());
+          if (!isNaN(currentVal) && currentVal > 0) {
+              $('#'+fieldName).text(currentVal - 1);
+              caravan = ({{experience.price}} * (currentVal - 1))
+              updateValue(caravan, "#rooftop-total")
+          } else {
+              $('#'+fieldName).text(0);
+          }
+      });
+
+      $("#datetimepicker").datetimepicker({
+     timepicker:false,
+     format:'Y-m-d',
+     minDate:0,
+     });
+
+       var options = {
+       "currency": "INR",
+       "name": "Camping co",
+       "description": "Overlanding expedition booked",
+       "image": "{% static 'images/favi/apple-icon-72x72.png' %}",
+       "handler": function (response){
+               var end_point = {% url 'destination:destinations' %}
+               var end = end_point + "success/";//success/faliure
+               var t = $("input[name=csrfmiddlewaretoken]").val();
+               data = {
+                 "txnid": response.razorpay_payment_id,
+                 "csrfmiddlewaretoken": t
+               }
+               $.ajax({
+                 data: data,
+                 url: end,
+                 method: "POST",
+                 success: function(data){
+                 window.location.href = end;
+                 },
+                 error: function(error){
+                     console.log(error)
+                 }
+             })
+       },
+       "prefill": {
+       },
+       "notes": {
+           "address": "note value"
+       },
+       "theme": {
+           "color": "#1ab188"
+       }
+   };
+
+ document.getElementById('rzp-button1').onclick = function(e){
+ if ($("input[name=tripDay]").val() == ""){
+    alert("Please fill date")
+ } else {
+    e.preventDefault();
+        var paymentMethodEndpoint = "{% url 'destination:experience_detail' slug=experience.slug %}"
+        var t = $("input[name=csrfmiddlewaretoken]").val();
+        data = {
+         "csrfmiddlewaretoken": t,
+         "Caravan": caravan,
+         "date": $("input[name=tripDay]").val(),
+         "number": $("input[name=Duration]").val(),
+         "room": room,
+        }
+      $.ajax({
+            data: data,
+            url: paymentMethodEndpoint,
+            method: "POST",
+            success: function(data){
+            if (data.error){
+              alert("Please log in first");
+              window.location.href = "{% url 'register:signin' %}" + "?next=/destination/experiences/{{destination.slug}}"
+            } else {
+              if (options.amount == 0){
+                alert("please check any item");
+              } else {
+                console.log(data.amount)
+                options.amount = data.amount * 100;
+                options.prefill.email = data.email
+                options.prefill.name = data.name
+                options.key = "rzp_test_jhx8CJoTQCL3Eh"
+                var rzp1 = new Razorpay(options);
+                rzp1.open();
+                }
+            }
+            },
+            error: function(error){
+                console.log(error)
+            }
+        })
+        }
+  }
+  }
+</script>
 {% endblock %}

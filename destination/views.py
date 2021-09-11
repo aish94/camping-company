@@ -542,6 +542,8 @@ def experiences(request):
 
 def experience_detail(request, slug):
     experience = Experiences.objects.get(slug=slug)
+    for x in experience.experience_name.all():
+        print(x.image.url)
     return render(request, "destination/experience_detail.html", {"experience": experience})
 
 

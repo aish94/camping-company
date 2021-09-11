@@ -228,17 +228,26 @@ class Experiences(models.Model):
     difficulty = models.CharField(max_length=256, blank=True, null=True)
     price = models.CharField(max_length=256, blank=True, null=True)
     group_size = models.CharField(max_length=256, blank=True, null=True)
-    description = models.TextField()
+    description = models.TextField(blank=True, null=True)
+    include = models.TextField(blank=True, null=True)
+    inclusive = models.TextField(blank=True, null=True)
+    itinerary = models.TextField(blank=True, null=True)
+    validity = models.TextField(blank=True, null=True)
+    eligibility = models.TextField(blank=True, null=True)
+    additional_info = models.TextField(blank=True, null=True)
+    what_to_bring = models.TextField(blank=True, null=True)
     main_image = models.ImageField(upload_to='experiences', blank=True)
-    image1 = models.ImageField(upload_to='experiences', blank=True)
-    image2 = models.ImageField(upload_to='experiences', blank=True)
-    image3 = models.ImageField(upload_to='experiences', blank=True)
-    image4 = models.ImageField(upload_to='experiences', blank=True)
-    image5 = models.ImageField(upload_to='experiences', blank=True)
-
 
     def __str__(self):
         return self.name
+
+
+class ExperiencesImage(models.Model):
+    experiences = models.ForeignKey(Experiences, on_delete=models.CASCADE, related_name="experience_name")
+    image = models.ImageField(upload_to='experiences', blank=True)
+
+    def __str__(self):
+        return self.experiences.name
 
 
 def experiences_pre_save_receiver(sender, instance, **kwargs):

@@ -10,10 +10,21 @@
       <span class="heading-primary--main">Introducing experiences</span>
       <span class="heading-primary--sub">One-of-a-kind activities hosted by our network of guides</span>
     </h1>
-    <div class="search">
-      <input type="text" class="search__input" placeholder="Where are you going">
-            <div class="header__vertical-bar"></div>
+    <div class="search" style="opacity:0; visibility:hidden;">
+      <input list="experiences" type="text" class="search__input" placeholder="Where are you going">
+        <datalist id="">
+          <option value="Meghalaya">
+        </datalist>
+        <div class="header__vertical-bar"></div>
         <input type="text" class="search__input" placeholder="Date">
+      <a href="#" class="btn btn--orange">&#x1F50D;</a>
+    </div>
+    <div class="search">
+      <input list="experiences" type="text" class="search__input" placeholder="Where are you going">
+        <datalist id="experiences">
+          <option value="Meghalaya">
+        </datalist>
+        <input id="datetimepicker" type="text" class="search__input" placeholder="Date" style="border-left: 1px solid var(--black);">
       <a href="#" class="btn btn--orange">&#x1F50D;</a>
     </div>
 </section>
@@ -24,13 +35,36 @@
 </section>
 <section class="destinations">
   <h2 class="destinations__heading">Incredible Experiences</h2>
-  <div class="wrapper">
-    {% for experience in experiences %}
-        <div class="card" style="background-image: url({{experience.main_image.url }})">
-            <a href="{% url 'destination:experience_detail' slug=experience.slug %}"><p class="card__text">{{ experience.name }} </p></a>
+    <i class="fas fa-arrow-left arrow"></i>
+        <div class="wrapper">
+        {% for experience in experiences %}
+            <div class="card" style="background-image: url({{experience.main_image.url }})">
+                <a href="{% url 'destination:experience_detail' slug=experience.slug %}"><p class="card__text">{{ experience.name }} </p></a>
+            </div>
         </div>
-    {% endfor %}
+        {% endfor %}
   </div>
+        <i class="fas fa-arrow-right arrow" style="left:95%;"></i>
    <a class="btn btn--grey" style="width:30rem; margin:0 auto;">Explore All Experiences</a>
 </section>
+<script>
+    window.onload = function(){$("#datetimepicker").datetimepicker({timepicker:!1,format:"Y-m-d",minDate:0})
+
+        $(".fa-arrow-right").click(function(){
+           document.querySelector(".wrapper").scrollBy({
+                  top: 0,
+                  left: 300,
+                  behavior: 'smooth'
+            });
+            })
+
+        $(".fa-arrow-left").click(function(){
+           document.querySelector(".wrapper").scrollBy({
+                  top: 0,
+                  left: -300,
+                  behavior: 'smooth'
+            });
+        })
+        }
+</script>
 {% endblock %}
