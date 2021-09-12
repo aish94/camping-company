@@ -25,7 +25,7 @@
           <option value="Meghalaya">
         </datalist>
         <input id="datetimepicker" type="text" class="search__input" placeholder="Date" style="border-left: 1px solid var(--black);">
-      <a href="#" class="btn btn--orange">&#x1F50D;</a>
+      <a href="#wrapper" class="btn btn--orange">&#x1F50D;</a>
     </div>
 </section>
 <section class="intro">
@@ -36,15 +36,16 @@
 <section class="destinations">
   <h2 class="destinations__heading">Incredible Experiences</h2>
     <i class="fas fa-arrow-left arrow"></i>
-        <div class="wrapper">
+        <div class="wrapper" id="wrapper">
             {% for experience in experiences %}
-                <div class="card" style="background-image: url({{experience.main_image.url }})">
-                    <a href="{% url 'destination:experience_detail' slug=experience.slug %}"><p class="card__text">{{ experience.name }} </p></a>
-                </div>
+                <a href="{% url 'destination:experience_detail' slug=experience.slug %}">
+                    <div class="card" style="background-image: url({{experience.main_image.url }})">
+                        <p class="card__text">{{ experience.name }} </p>
+                    </div>
+                </a>
             {% endfor %}
         </div>
         <i class="fas fa-arrow-right arrow" style="left:95%;"></i>
-   <a class="btn btn--grey" style="width:30rem; margin:0 auto;">Explore All Experiences</a>
 </section>
 <script>
     window.onload = function(){$("#datetimepicker").datetimepicker({timepicker:!1,format:"Y-m-d",minDate:0})
