@@ -362,7 +362,7 @@
    };
 
  document.getElementById('rzp-button1').onclick = function(e){
- if ($("input[name=tripDay]").val() == "" && experiences===0){
+ if ($("input[name=tripDay]").val() == "" || experiences===0){
     alert("Please fill date or pick at least one person experience")
  } else {
     e.preventDefault();
