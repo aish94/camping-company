@@ -237,6 +237,7 @@ class Experiences(models.Model):
     additional_info = models.TextField(blank=True, null=True)
     what_to_bring = models.TextField(blank=True, null=True)
     main_image = models.ImageField(upload_to='experiences', blank=True)
+    total_book = models.IntegerField(default=10)
 
     def __str__(self):
         return self.name
@@ -254,6 +255,22 @@ def experiences_pre_save_receiver(sender, instance, **kwargs):
     temp = ["-" if x is " " else x for x in instance.name]
     instance.slug = "".join(temp)
     # slug cant have question marks boy
+
+
+class ExperiencesBooking(models.Model):
+    txnid = models.CharField(max_length=128, blank=True, null=True)
+    experience = models.ForeignKey(Experiences, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    camper = models.IntegerField()
+    experiences = models.IntegerField()
+    campkit = models.IntegerField()
+    date = models.DateField(null=True, blank=True)
+    amount = models.IntegerField()
+    igst = models.FloatField(blank=True, null=True)
+    convenient = models.FloatField(blank=True, null=True)
+
+    def __str__(self):
+        return self.experience.name
 
 
 pre_save.connect(experiences_pre_save_receiver, sender=Experiences)

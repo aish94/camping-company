@@ -35,7 +35,7 @@
                     <p style="color:blue;">{{ experience.rating }} </p>
                     <h1 class="heading__primary">{{ experience.name }}</h1>
                     <p class="heading__text">{{ experience_quotation }}</p>
-                    <p class="heading__rating">4.5/5.0 (<a href="#">859 reviews</a>) 1200 Booked</p>
+                    <p class="heading__rating">4.5/5.0 (<a href="#">859 reviews</a>) {{experience.total_book}} Booked</p>
 
                     <p class="heading__description">
                         {{ experience.description }}
@@ -86,68 +86,109 @@
             <div class="modal-lg modal-dialog modal-dialog-centered" role="document" style="max-width: 1200px; border-radius:20px;">
               <div class="modal-content myModal" >
                 <div class="modal-header">
-                  <h3 class="modal-title" id="exampleModalCenterTitle" style="font-size: 30px;">Booking</h3>
+                  <h3 class="modal-title active" id="exampleModalCenterTitle">Booking</h3>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" style="font-size:40px;">&times;</span>
+                    <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
                 <form action="POST">{%csrf_token%}
                 <div class="modal-body">
                   <p>Check in:</p>
-                    <input id="datetimepicker" name="tripDay" class="check-in__date" type="text" required pattern="\d{4}-\d{2}-\d{2}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <br>
-                  <div class="row">
-                    <div class="col-3">
-                      <strong>Item</strong>
-                    </div>
-
-                    <div class="col-3">
-                      <strong>Price</strong>
-                    </div>
-
-                    <div class="col-3">
+                    <input style="width: 100%;" id="datetimepicker" name="tripDay" class="check-in__date" type="text" required pattern="\d{4}-\d{2}-\d{2}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <br><br>
+                  <div class="d-flex justify-content-between">
+                    <strong>Item</strong>
+                    <div class="ml-auto">
                       <strong>Number of person</strong>
                     </div>
-
-                    <div class="col-3" style="text-align:right;">
-                      <strong>Total</strong>
-                    </div>
                   </div>
-                  {% if pricing.caravan is not 0 %}
-                  <div class="row" style="padding:15px; padding-top:20px;">
-                    <div class="col-3">
-                        <i class="fas fa-plane"></i>
-                      {{experience.name}}
+                  <div class="d-flex">
+                    <div style="display:flex; align-items:center;">
+                     <img src="{% static 'images/destination-detail/hiker.svg' %}">&nbsp;
+                      <span>{{experience.name}}</span>
                     </div>
 
-                    <div class="col-3">
-                      INR {{experience.price}}
-                    </div>
-
-                    <div class="col-3" style="text-align:center;">
+                    <div class="ml-auto">
                         <div class="input-group">
                           <span class="input-group-btn">
-                            <button type="button" class="btn btn-light btn-number" data-quantity="minus" data-field="quantity">
+                            <button type="button" class="btn btn-light btn-number" data-quantity="minus" data-field="experience">
                               <span class="fa fa-minus"></span>
                             </button>
 
                           </span>
-                          <span id="quantity">0</span>
+                          <span id="experience">0</span>
 
                           <span class="input-group-btn">
-                            <button type="button" class="btn btn-light btn-number" data-quantity="plus" data-field="quantity">
+                            <button type="button" class="btn btn-light btn-number" data-quantity="plus" data-field="experience">
                                 <span class="fa fa-plus"></span>
                             </button>
                           </span>
                         </div>
                     </div>
-
-                    <div class="col-3" style="text-align:right;">
-                      <span id="caravan-total">INR 0</span>
+                  </div>
+                <hr/>
+              <div class="d-flex justify-content-between">
+                    <strong>Item</strong>
+                    <div class="ml-auto">
+                      <strong>Number of Days</strong>
                     </div>
                   </div>
-                  {% endif %}
+                    <div class="d-flex">
+                    <div style="display:flex; align-items:center;">
+                    <img src="{% static 'images/destination-detail/camper.svg' %}">&nbsp;
+                    <span>Camper</span>
+                    </div>
 
+                    <div class="ml-auto">
+                    <div class="input-group">
+                    <span class="input-group-btn">
+                    <button type="button" class="btn btn-light btn-number" data-quantity="first_minus" data-field="camper">
+                    <span class="fa fa-minus"></span>
+                    </button>
+
+                    </span>
+                    <span id="camper">0</span>
+
+                    <span class="input-group-btn">
+                    <button type="button" class="btn btn-light btn-number" data-quantity="first_plus" data-field="camper">
+                    <span class="fa fa-plus"></span>
+                    </button>
+                    </span>
+                    </div>
+                    </div>
+                    </div>
+                    <hr/>
+                    <div class="d-flex justify-content-between">
+                    <strong>Item</strong>
+                    <div class="ml-auto">
+                      <strong>Number of Quantity</strong>
+                    </div>
+                  </div>
+                    <div class="d-flex">
+                    <div style="display:flex; align-items:center;">
+                    <img src="{% static 'images/destination-detail/Bonfire.svg' %}">&nbsp;
+                    <span>Campkit</span>
+                    </div>
+
+                    <div class="ml-auto">
+                    <div class="input-group">
+                    <span class="input-group-btn">
+                    <button type="button" class="btn btn-light btn-number" data-quantity="second_minus" data-field="campkit">
+                    <span class="fa fa-minus"></span>
+                    </button>
+
+                    </span>
+                    <span id="campkit">0</span>
+
+                    <span class="input-group-btn">
+                    <button type="button" class="btn btn-light btn-number" data-quantity="second_plus" data-field="campkit">
+                    <span class="fa fa-plus"></span>
+                    </button>
+                    </span>
+                    </div>
+                    </div>
+                    </div>
+                    <hr/>
                   <div class="row" style="padding-top:30px;">
                     <div class="col-6"></div>
                     <div class="col-6" style="text-align:right;">
@@ -158,8 +199,8 @@
                   </div>
 
                 </div>
-                <div class="modal-footer" >
-                  <span  id="total" style="font-size: 24px;">Total INR 0</span>
+                <div class="modal-footer">
+                  <span  id="total">Total INR 0</span>
                   <button type="button" id="rzp-button1" class="btn btn--orange book">Checkout</button>
                 </div>
                 </form>
@@ -167,20 +208,21 @@
             </div>
           </div>
     </div>
+<script defer src="{% static 'js/razorpay.js' %}"></script>
 <script>
        window.onload = function(){
-       var rooftop = 0,igst = 0, convenience = 0, subtotal = 0, room = 0;
+       var experiences = 0,igst = 0, convenience = 0, subtotal = 0, campkit = 0, camper = 0;
       function updateValue(price,totString){
-              subtotal = caravan
-              IGST = subtotal * .18
-              convenience = subtotal * .024
+              subtotal = camper + experiences + campkit
+              IGST = Math.ceil(subtotal * .18)
+              convenience = Math.ceil(subtotal * .024)
               total = subtotal + IGST + convenience;
 
               str1 = "INR " + price.toString()
               str2 = "Subtotal INR " + subtotal.toString()
               str3 = "IGST INR " + IGST.toString()
               str4 = "Convenience INR " + convenience.toString()
-              str5 = "Total INR " + total.toString()
+              str5 = "Total INR " + Math.ceil(total).toString()
 
               $(totString).text(str1)
               $("#subtotal").text(str2)
@@ -195,8 +237,8 @@
           var currentVal = parseInt($('#'+fieldName).text());
           if (!isNaN(currentVal)) {
               $('#'+fieldName).text(currentVal + 1);
-              caravan = ({{experience.price}} * (currentVal + 1))
-              updateValue(caravan, "#rooftop-total")
+              experiences = ({{experience.price}} * (currentVal + 1))
+              updateValue(experiences, "#experience-total")
           } else {
               // Otherwise put a 0 there
               $('#'+fieldName).text(0);
@@ -208,8 +250,71 @@
           var currentVal = parseInt($('#'+fieldName).text());
           if (!isNaN(currentVal) && currentVal > 0) {
               $('#'+fieldName).text(currentVal - 1);
-              caravan = ({{experience.price}} * (currentVal - 1))
-              updateValue(caravan, "#rooftop-total")
+              experiences = ({{experience.price}} * (currentVal - 1))
+              updateValue(experiences, "#experiences-total")
+          } else {
+              $('#'+fieldName).text(0);
+          }
+      });
+
+
+
+          $('button[data-quantity="first_plus"]').click(function(e){
+            if(experiences==0){
+                alert("You can select camper only if you have picked a experience")
+            }else {
+                  e.preventDefault();
+                  fieldName = $(this).attr('data-field');
+                  var currentVal = parseInt($('#'+fieldName).text());
+                  if (!isNaN(currentVal)) {
+                      $('#'+fieldName).text(currentVal + 1);
+                      camper = 2999 * (currentVal + 1)
+                      updateValue(camper, "#caravan-total")
+                  } else {
+                      // Otherwise put a 0 there
+                      $('#'+fieldName).text(0);
+                  }
+              }
+          });
+          $('button[data-quantity="first_minus"]').click(function(e) {
+          if(experiences==0){
+            alert("You can select camper only if you have picked a experience")
+          }else{
+              e.preventDefault();
+              fieldName = $(this).attr('data-field');
+              var currentVal = parseInt($('#'+fieldName).text());
+              if (!isNaN(currentVal) && currentVal > 0) {
+                  $('#'+fieldName).text(currentVal - 1);
+                  camper = 2999 * (currentVal - 1)
+                  updateValue(camper, "#camper-total")
+              } else {
+                  $('#'+fieldName).text(0);
+              }
+              }
+          });
+
+
+      $('button[data-quantity="second_plus"]').click(function(e){
+          e.preventDefault();
+          fieldName = $(this).attr('data-field');
+          var currentVal = parseInt($('#'+fieldName).text());
+          if (!isNaN(currentVal)) {
+              $('#'+fieldName).text(currentVal + 1);
+              campkit = 2000 * (currentVal + 1)
+              updateValue(campkit, "#campkit-total")
+          } else {
+              // Otherwise put a 0 there
+              $('#'+fieldName).text(0);
+          }
+      });
+      $('button[data-quantity="second_minus"]').click(function(e) {
+          e.preventDefault();
+          fieldName = $(this).attr('data-field');
+          var currentVal = parseInt($('#'+fieldName).text());
+          if (!isNaN(currentVal) && currentVal > 0) {
+              $('#'+fieldName).text(currentVal - 1);
+              campkit = 2000 * (currentVal - 1)
+              updateValue(campkit, "#campkit-total")
           } else {
               $('#'+fieldName).text(0);
           }
@@ -227,8 +332,8 @@
        "description": "Overlanding expedition booked",
        "image": "{% static 'images/favi/apple-icon-72x72.png' %}",
        "handler": function (response){
-               var end_point = {% url 'destination:destinations' %}
-               var end = end_point + "success/";//success/faliure
+               var end_point = "{% url 'destination:experiences' %}"
+               var end = end_point + "booked/";//success/faliure
                var t = $("input[name=csrfmiddlewaretoken]").val();
                data = {
                  "txnid": response.razorpay_payment_id,
@@ -265,10 +370,13 @@
         var t = $("input[name=csrfmiddlewaretoken]").val();
         data = {
          "csrfmiddlewaretoken": t,
-         "Caravan": caravan,
          "date": $("input[name=tripDay]").val(),
-         "number": $("input[name=Duration]").val(),
-         "room": room,
+         "camper": camper,
+         "experiences": experiences,
+         "campkit": campkit,
+         "igst": igst,
+         "convenience": convenience,
+         "amount": total,
         }
       $.ajax({
             data: data,
@@ -282,11 +390,10 @@
               if (options.amount == 0){
                 alert("please check any item");
               } else {
-                console.log(data.amount)
                 options.amount = data.amount * 100;
                 options.prefill.email = data.email
                 options.prefill.name = data.name
-                options.key = "rzp_test_jhx8CJoTQCL3Eh"
+                options.key = data.razor_id
                 var rzp1 = new Razorpay(options);
                 rzp1.open();
                 }

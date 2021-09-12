@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.contrib import messages
 from datetime import date
-from app.utils import invoice_message_camp, compress, send_sms
+from app.utils import invoice_message_camp, compress, send_sms, invoice_message_experience
 import os
 import datetime
 import math
@@ -16,7 +16,8 @@ from destination.models import (Destination, Map,
                                 Region, Amenity, Activity,
                                 Detail, Circuit, Booking,
                                 Experience, Feature,
-                                PaymentCampsite, Pricing,Experiences)
+                                PaymentCampsite, Pricing,
+                                Experiences, ExperiencesBooking)
 
 # Create your views here.
 queue = django_rq.get_queue('default')
@@ -542,9 +543,55 @@ def experiences(request):
 
 def experience_detail(request, slug):
     experience = Experiences.objects.get(slug=slug)
-    for x in experience.experience_name.all():
-        print(x.image.url)
+    if request.is_ajax():
+        if request.user.is_authenticated:
+            camper = int(request.POST.get("camper"))
+            experiences = int(request.POST.get("experiences"))
+            campkit = int(request.POST.get("campkit"))
+            amount = int(request.POST.get("amount"))
+            igst = int(request.POST.get("igst"))
+            convenience = int(request.POST.get("convenience"))
+            dates = datetime.datetime.strptime(request.POST.get("date"), "%Y-%m-%d").date()
+            ExperiencesBooking(experience=experience, user=request.user,
+                               camper=camper, experiences=experiences, campkit=campkit,
+                               date=dates, amount=amount, igst=igst, convenient=convenience).save()
+            return JsonResponse({"amount": amount, "email": request.user.email,
+                                 "name": request.user.first_name,
+                                 "razor_id": os.environ.get("razor_id")
+                                 })
+        else:
+            return JsonResponse({"error": "Please log in"})
     return render(request, "destination/experience_detail.html", {"experience": experience})
+
+
+def experience_success(request):
+    print("i ran")
+    now = date.today().strftime("%Y-%m-%d")
+    try:
+        book = ExperiencesBooking.objects.filter(user=request.user).last()
+    except:
+        messages.warning(request, "Book a experience first")
+        return redirect("app:home")
+    if request.is_ajax():
+        txnid = request.POST.get("txnid")
+        book.txnid = txnid
+        book.save()
+        camper = book.camper
+        experiences = book.experiences
+        campkit = book.campkit
+        txnid = book.txnid
+        total = book.amount
+        count = book.pk
+        email = book.user.email
+        name = book.user.first_name
+        igst = book.igst
+        check_in = book.date
+        convenient = book.convenient
+        invoice_message_experience(email,  os.environ.get("email"),
+                                   txnid=txnid, now=now, name=name, convenient=convenient, total=total,
+                                   count=count, igst=igst, camper=camper, check_in=check_in,
+                                   campkit=campkit, experience=experiences)
+    return render(request, "destination/success.html", {"book": book})
 
 
 
