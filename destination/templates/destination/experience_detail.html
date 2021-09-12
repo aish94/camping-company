@@ -362,8 +362,8 @@
    };
 
  document.getElementById('rzp-button1').onclick = function(e){
- if ($("input[name=tripDay]").val() == ""){
-    alert("Please fill date")
+ if ($("input[name=tripDay]").val() == "" && experiences===0){
+    alert("Please fill date or pick at least one person experience")
  } else {
     e.preventDefault();
         var paymentMethodEndpoint = "{% url 'destination:experience_detail' slug=experience.slug %}"
