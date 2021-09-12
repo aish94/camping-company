@@ -210,7 +210,7 @@
 <script defer src="{% static 'js/razorpay.js' %}"></script>
 <script>
        window.onload = function(){
-       var experiences = 0,igst = 0, convenience = 0, subtotal = 0, campkit = 0, camper = 0;
+       var experiences = 0,IGST = 0, convenience = 0, subtotal = 0, campkit = 0, camper = 0;
       function updateValue(price,totString){
               subtotal = camper + experiences + campkit
               IGST = Math.ceil(subtotal * .18)
@@ -373,7 +373,7 @@
          "camper": camper,
          "experiences": experiences,
          "campkit": campkit,
-         "igst": igst,
+         "IGST": IGST,
          "convenience": convenience,
          "amount": total,
         }

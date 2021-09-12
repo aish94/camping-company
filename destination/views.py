@@ -549,7 +549,7 @@ def experience_detail(request, slug):
             experiences = int(request.POST.get("experiences"))
             campkit = int(request.POST.get("campkit"))
             amount = int(request.POST.get("amount"))
-            igst = int(request.POST.get("igst"))
+            igst = int(request.POST.get("IGST"))
             convenience = int(request.POST.get("convenience"))
             dates = datetime.datetime.strptime(request.POST.get("date"), "%Y-%m-%d").date()
             ExperiencesBooking(experience=experience, user=request.user,
@@ -565,7 +565,6 @@ def experience_detail(request, slug):
 
 
 def experience_success(request):
-    print("i ran")
     now = date.today().strftime("%Y-%m-%d")
     try:
         book = ExperiencesBooking.objects.filter(user=request.user).last()
@@ -589,7 +588,7 @@ def experience_success(request):
         convenient = book.convenient
         invoice_message_experience(email,  os.environ.get("email"),
                                    txnid=txnid, now=now, name=name, convenient=convenient, total=total,
-                                   count=count, igst=igst, camper=camper, check_in=check_in,
+                                   count=count, igst=igst, camper=camper, check_in=check_in.strftime("%d-%m-%Y"),
                                    campkit=campkit, experience=experiences)
     return render(request, "destination/success.html", {"book": book})
 
