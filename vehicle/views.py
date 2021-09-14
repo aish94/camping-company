@@ -15,7 +15,7 @@ def car_book(now, check_in, check_out):
         t = 0
         if not _.available:
             continue
-        book = Book.objects.filter(definition=_, check_in_date__gte=now)
+        book = Book.objects.filter(definition=_, check_in_date__gte=now).order_by("year")
         if book.count() == 0:
             car_ids.append(_.pk)
             continue
