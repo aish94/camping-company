@@ -46,7 +46,7 @@ def vehicles(request):
         return redirect("app:home")
 
     car_ids = car_book(now, check_in, check_out)
-    cars = Definition.objects.filter(pk__in=car_ids)
+    cars = Definition.objects.filter(pk__in=car_ids).order_by("year")
     return render(request, "vehicle/vehicles.html", {"cars": cars})
 
 
