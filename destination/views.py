@@ -543,7 +543,7 @@ def experiences(request):
 
 def experience_detail(request, slug):
     experience = Experiences.objects.get(slug=slug)
-    if experience.id in [2, 3, 4]:
+    if experience.pk in [2, 3, 4]:
         redirect("app:home")
 
     if request.is_ajax():
