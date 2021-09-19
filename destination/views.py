@@ -537,12 +537,15 @@ def camp_update(request, slug):
 
 
 def experiences(request):
-    experiences = Experiences.objects.all()
+    experiences = Experiences.objects.filter(pk__in=[1, 5, 6])
     return render(request, "destination/experiences.html", {"experiences": experiences})
 
 
 def experience_detail(request, slug):
     experience = Experiences.objects.get(slug=slug)
+    if experience.id in [2, 3, 4]:
+        redirect("app:home")
+
     if request.is_ajax():
         if request.user.is_authenticated:
             camper = int(request.POST.get("camper"))
