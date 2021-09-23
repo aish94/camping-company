@@ -17,9 +17,6 @@ def car_book(now, check_in, check_out):
         if not _.available:
             continue
         book = Book.objects.filter(definition=_, check_in_date__gte=now)
-        if book.count() == 0:
-            car_ids.append(_.pk)
-            continue
         for b in book:
             if check_out < b.check_in_date or check_in > b.check_out_date:
                 t += 1
@@ -27,7 +24,7 @@ def car_book(now, check_in, check_out):
             if _.car_name not in car_booked:
                 car_ids.append(_.pk)
                 car_booked[_.car_name] = _.pk
-    return car_ids
+    return car_ids, car_booked
 
 
 def vehicles(request):
