@@ -17,7 +17,7 @@
                 <div class="col-lg-4 col-12">
                            <div class="card">
                                <div class="card__side card__side--front">
-                                    <div class="card__picture card__picture--2" style="background-image: url({{car.car_image.url}});background-size: cover; background-position: bottom;">
+                                    <div class="card__picture card__picture--2" style="background-image: url({{car.car_image.url}});">
                                         &nbsp;
                                     </div>
                                     <h4 class="card__heading">
@@ -37,7 +37,7 @@
                                             <input hidden name="price" value="{{car.price}}">
                                             <button id="btn-{{car.pk}}-{{car.seat}}" class="btn btn--white">Book Now!</button>
                                         </form>
-                                        <a href="{% url 'pay:pay' %}" class="btn btn--white">Book now!</a>
+
                                     </div>
                                 </div>
                            </div>
