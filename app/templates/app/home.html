@@ -345,6 +345,7 @@ The only trace we leave behind are tyre marks.
         });
     };
 </script>
+<!-- Global site tag (gtag.js) - Google Ads: 479010803 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-479010803"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -356,9 +357,9 @@ The only trace we leave behind are tyre marks.
 
 <script type="text/javascript">
   window.addEventListener('load',function(){
-  if (window.location.pathname == "/vehicles/") {
-			gtag('event', 'conversion', {'send_to': 'AW-479010803/x58gCNS43PYCEPO_tOQB'});
-   }
+   jQuery('[action="/vehicles/"]').submit(function() {
+   	gtag('event', 'conversion', {'send_to': 'AW-479010803/x58gCNS43PYCEPO_tOQB'});
+   });
   });
 </script>
 {% endblock %}
