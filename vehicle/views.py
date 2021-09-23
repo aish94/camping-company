@@ -24,7 +24,7 @@ def car_book(now, check_in, check_out):
             if _.car_name not in car_booked:
                 car_ids.append(_.pk)
                 car_booked[_.car_name] = _.pk
-    return car_ids, car_booked
+    return car_ids
 
 
 def vehicles(request):
