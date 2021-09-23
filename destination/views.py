@@ -537,13 +537,16 @@ def camp_update(request, slug):
 
 
 def experiences(request):
-    experiences = Experiences.objects.all()
+    experiences = Experiences.objects.filter(pk__in=[2, 3])
     return render(request, "destination/experiences.html", {"experiences": experiences})
 
 
 def experience_detail(request, slug):
     try:
         experience = Experiences.objects.get(slug=slug)
+        if experience.pk in [2, 3]:
+            return redirect("app:home")
+            
     except:
         messages.warning("experience does not exist")
         return redirect("app:home")
