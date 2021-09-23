@@ -43,54 +43,38 @@
           {% endif %}
           <!-- Modal -->
           <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-lg modal-dialog modal-dialog-centered" role="document" style="max-width: 1200px; border-radius:20px;">
+            <div class="modal-lg modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content myModal" >
                 <div class="modal-header">
-                  <h3 class="modal-title" id="exampleModalCenterTitle" style="font-size: 30px;">Booking</h3>
+                  <h3 class="modal-title" id="exampleModalCenterTitle">Booking</h3>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" style="font-size:40px;">&times;</span>
+                    <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
                 <form action="POST">{%csrf_token%}
                 <div class="modal-body">
-                  <p>&nbsp;Check in: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  Days:
-                  </p>
-                  <p>
-                  &nbsp; <input id="datetimepicker" name="tripDay" class="check-in__date" type="text" required pattern="\d{4}-\d{2}-\d{2}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <div class="date__input">
+                    <p> Check in: Day:
+                      <input id="datetimepicker" name="tripDay" class="check-in__date" type="text" required pattern="\d{4}-\d{2}-\d{2}"></p>
+                  <p >Number of day
                     <input class="days__date" min="0" style="text-align:left;" name="Duration" type="number" pattern="\d{4}-\d{2}-\d{2}" required>
                   </p>
-                  <br>
-
-                  <div class="row tableHeading" style="padding:15px";>
-                    <div class="col-5">
-                      <strong>&nbsp;&nbsp;&nbsp;Item</strong>
-                    </div>
-
-                    <div class="col-3">
-                      <strong>Price</strong>
-                    </div>
-
-                    <div class="col-2">
-                      <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QTY</strong>
-                    </div>
-
-                    <div class="col-2" style="text-align:right;">
-                      <strong>Total</strong>
+                  </div>
+                <br><br>
+                  <div class="d-flex justify-content-between">
+                    <strong>Item</strong>
+                    <div class="ml-auto">
+                      <strong>Number of person</strong>
                     </div>
                   </div>
                   {% if pricing.caravan is not 0 %}
-                  <div class="row" style="padding:15px; padding-top:20px;">
-                    <div class="col-5">
-                      &nbsp;&nbsp;&nbsp;<img src="{% static 'images/destination-detail/Caravan.svg' %}"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      Caravan
+                  <div class="d-flex">
+                    <div style="display:flex; align-items:center;">
+                         <img src="{% static 'images/destination-detail/Caravan.svg' %}">                
+                      <span>Caravan INR</span>
                     </div>
 
-                    <div class="col-3">
-                      INR {{pricing.caravan}}
-                    </div>
-
-                    <div class="col-2" style="text-align:center;">
+                    <div class="ml-auto">
                         <div class="input-group">
                           <span class="input-group-btn">
                             <button type="button" class="btn btn-light btn-number" data-quantity="minus" data-field="quantity">
@@ -106,25 +90,17 @@
                           </span>
                         </div>
                     </div>
-
-                    <div class="col-2" style="text-align:right;">
-                      <span id="caravan-total">INR 0</span>
-                    </div>
                   </div>
                   {% endif %}
-
+                  <hr/>
                   {% if pricing.rooftop is not 0 %}
-                  <div class="row" style="padding:15px; padding-top:20px;">
-                    <div class="col-5">
-                      &nbsp;&nbsp;&nbsp;<img src="{% static 'images/destination-detail/camper.svg' %}"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      Roottop Tent
+                  <div class="d-flex">
+                    <div style="display:flex; align-items:center;">
+                      <img src="{% static 'images/destination-detail/camper.svg' %}">                
+                      <span>Roottop Tent</span>
                     </div>
 
-                    <div class="col-3">
-                      INR {{pricing.rooftop}}
-                    </div>
-
-                    <div class="col-2" style="text-align:center;">
+                    <div class="ml-auto">
                         <div class="input-group">
                           <span class="input-group-btn">
                             <button type="button" class="btn btn-light btn-number" data-quantity="first_minus" data-field="roof">
@@ -140,25 +116,17 @@
                           </span>
                         </div>
                     </div>
-
-                    <div class="col-2" style="text-align:right;">
-                        <span id="rooftop-total">INR 0</span>
-                    </div>
                   </div>
                   {% endif %}
-
+                  <hr/>
                   {% if pricing.BYOT is not 0 %}
-                  <div class="row" style="padding:15px; padding-top:20px;">
-                    <div class="col-5">
-                      &nbsp;&nbsp;&nbsp;<img src="{% static 'images/destination-detail/tent.svg' %}"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      Ground Tent
+                  <div class="d-flex">
+                    <div style="display:flex; align-items:center;">
+                         <img src="{% static 'images/destination-detail/tent.svg' %}">                
+                      <span>Ground Tent</span>
                     </div>
 
-                    <div class="col-3">
-                      INR {{pricing.BYOT}}
-                    </div>
-
-                    <div class="col-2" style="text-align:center;">
+                    <div class="ml-auto">
                         <div class="input-group">
                           <span class="input-group-btn">
                             <button type="button" class="btn btn-light btn-number" data-quantity="second_minus" data-field="ground">
@@ -174,25 +142,17 @@
                           </span>
                         </div>
                     </div>
-
-                    <div class="col-2" style="text-align:right;">
-                       <span id="BYOT-total">INR 0</span>
-                    </div>
                   </div>
                 {% endif %}
-
+                  <hr/>
                 {% if pricing.room is not 0 %}
-                  <div class="row" style="padding:15px; padding-top:20px;">
-                    <div class="col-5">
-                      &nbsp;&nbsp;&nbsp;<img src="{% static 'images/destination-detail/home.svg' %}"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      Rooms
+                  <div class="d-flex">
+                    <div style="display:flex; align-items:center;">
+                      <img src="{% static 'images/destination-detail/home.svg' %}">
+                      <span>Rooms</span>
                     </div>
 
-                    <div class="col-3">
-                      INR {{pricing.room}}
-                    </div>
-
-                    <div class="col-2" style="text-align:center;">
+                    <div class="ml-auto">
                         <div class="input-group">
                           <span class="input-group-btn">
                             <button type="button" class="btn btn-light btn-number" data-quantity="third_minus" data-field="room">
@@ -208,16 +168,14 @@
                           </span>
                         </div>
                     </div>
-
-                    <div class="col-2" style="text-align:right;">
-                       <span id="price-total">INR 0</span>
-                    </div>
                   </div>
                   {% endif %}
 
+                  <hr/>
                   <div class="row" style="padding-top:30px;">
                     <div class="col-6"></div>
                     <div class="col-6" style="text-align:right;">
+                      <p id="cleaning">Cleaning 0</p>
                       <p id="subtotal">Subtotal 0</p>
                       <p id="IGST">IGST 0</p>
                       <p id="convenience">Convenience charge 0</p>
@@ -226,8 +184,8 @@
 
                 </div>
                 <div class="modal-footer" >
-                  <span  id="total" style="font-size: 24px;">Total INR 0</span>
-                  <button type="button" id="rzp-button1" class="btn btn-primary book">Checkout</button>
+                  <span  id="total">Total INR 0</span>
+                  <button type="button" id="rzp-button1" class="btn btn--orange">Checkout</button>
                 </div>
                 </form>
               </div>
@@ -364,9 +322,9 @@
                 <li class="space-bottom--small"></li>
 
                  {% if amenity.campfire %}
-                    <li><img class="loc" src="{% static 'images/destination-detail/Bonfire.svg' %}">&nbsp;&nbsp;&nbsp;&nbsp;Bonfire</li>
+                    <li><img class="loc" src="{% static 'images/destination-detail/Bonfire.svg' %}">    Bonfire</li>
                  {% else %}
-                    <li class="strike loc"><img class="loc" src="{% static 'images/destination-detail/Bonfire.svg' %}">&nbsp;&nbsp;&nbsp;&nbsp;Bonfire</li>
+                    <li class="strike loc"><img class="loc" src="{% static 'images/destination-detail/Bonfire.svg' %}">    Bonfire</li>
                  {% endif %}
 
                 <li class="space-bottom--small"></li>
@@ -840,20 +798,22 @@ window.onload = function(){
           }
 
       });
-      var rooftop = 0, ground = 0, caravan = 0,igst = 0, convenience = 0, subtotal = 0, room = 0;
-      function updateValue(price,totString){
-              subtotal = caravan + ground + rooftop + room
-              IGST = subtotal * .18
-              convenience = subtotal * .024
-              total = subtotal + IGST + convenience;
+      var rooftop = 0, ground = 0, caravan = 0,igst = 0, convenience = 0, subtotal = 0, room = 0, cleaning=0;
+      function updateValue(price){
+              subtotal = caravan + ground + rooftop + room + cleaning;
+              IGST = Math.ceil(subtotal * .18)
+              convenience = Math.ceil(subtotal * .024)
+              total = Math.ceil(subtotal + IGST + convenience);
 
-              str1 = "INR " + price.toString()
+
+              str1 = "Cleaning INR " + cleaning
+              $("#cleaning").text(str1)
+
               str2 = "Subtotal INR " + subtotal.toString()
               str3 = "IGST INR " + IGST.toString()
               str4 = "Convenience INR " + convenience.toString()
               str5 = "Total INR " + total.toString()
 
-              $(totString).text(str1)
               $("#subtotal").text(str2)
               $("#IGST").text(str3)
               $("#convenience").text(str4)
@@ -913,6 +873,7 @@ window.onload = function(){
           }
         }
       });
+
       $('button[data-quantity="first_minus"]').click(function(e) {
           e.preventDefault();
           fieldName = $(this).attr('data-field');
@@ -965,6 +926,7 @@ window.onload = function(){
           if (!isNaN(currentVal)) {
               $('#'+fieldName).text(currentVal + 1);
               room = ({{pricing.room}} * (currentVal + 1)) * parseInt($(".days__date").val())
+              cleaning = {{pricing.cleaning_fees}};
               updateValue(room, "#price-total")
           } else {
               $('#'+fieldName).text(0);
@@ -977,6 +939,7 @@ window.onload = function(){
           var currentVal = parseInt($('#'+fieldName).text());
           if (!isNaN(currentVal) && currentVal > 0) {
               $('#'+fieldName).text(currentVal - 1);
+              if(currentVal === 1){cleaning=0;}
               room = ({{pricing.room}} * (currentVal - 1)) * parseInt($(".days__date").val())
               updateValue(room, "#price-total")
           } else {
@@ -1028,7 +991,11 @@ window.onload = function(){
  document.getElementById('rzp-button1').onclick = function(e){
  if ($("input[name=tripDay]").val() == ""){
     alert("Please fill date")
- } else {
+    }
+ else if (caravan === 0 && room === 0 && rooftop === 0 && ground === 0) {
+   alert("Please pick one of the items")
+ }
+  else {
     e.preventDefault();
         var paymentMethodEndpoint = "{% url 'destination:destination_detail_page' slug=destination.slug %}"
         var t = $("input[name=csrfmiddlewaretoken]").val();
@@ -1040,6 +1007,7 @@ window.onload = function(){
          "date": $("input[name=tripDay]").val(),
          "number": $("input[name=Duration]").val(),
          "room": room,
+         "cleaning": cleaning,
         }
       $.ajax({
             data: data,

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.contrib import messages
 from datetime import date
-from app.utils import invoice_message_camp, compress, send_sms, invoice_message_experience
+from app.utils import invoice_message_camp, compress, invoice_message_experience
 import os
 import datetime
 import math
@@ -145,8 +145,9 @@ def destination_detail_page(request, slug):
             ground = int(request.POST.get("Ground"))
             rooftop = int(request.POST.get("Rooftop"))
             room = int(request.POST.get("room"))
+            cleaning = int(request.POST.get("cleaning"))
             dates = datetime.datetime.strptime(request.POST.get("date"), "%Y-%m-%d").date()
-            amount = caravan + ground + rooftop + room
+            amount = caravan + ground + rooftop + room + cleaning
             igst = amount*.18
             convenient = amount*.024
             amount += igst + convenient
@@ -154,7 +155,7 @@ def destination_detail_page(request, slug):
             Booking(destination=detail, user=request.user,
                     caravan=caravan, ground=ground, rooftop=rooftop,
                     days=days, date=dates, amount=amount, igst=igst,
-                    convenient=convenient, room=room).save()
+                    convenient=convenient, room=room, cleaning_fees=cleaning).save()
             return JsonResponse({"amount": amount, "email": request.user.email,
                                  "name": request.user.first_name,
                                  "razor_id": os.environ.get("razor_id")
@@ -211,12 +212,14 @@ def success(request):
         booked_date = book.date
         days = book.days
         room = book.room
+        cleaning = book.cleaning_fees
         convenient = book.convenient
-        invoice_message_camp(email,  os.environ.get("email"),
+        invoice_message_camp(email,  os.environ.get("email"), check_in=booked_date.strftime("%Y-%m-%d"),
                              txnid=txnid, now=now, name=name, convenient=convenient, total=total, duration=duration,
-                             count=count, igst=igst, caravan=caravan, ground=ground, rooftop=rooftop, room=room)
-        send_sms(phone_owner=payment.phone, name=request.user, phone_user=customer.phone, RTT=rooftop, tent=ground,
-                 days=days, room=room, date=booked_date)
+                             count=count, igst=igst, caravan=caravan, ground=ground, rooftop=rooftop, room=room,
+                             cleaning=cleaning)
+        # send_sms(phone_owner=payment.phone, name=request.user, phone_user=customer.phone, RTT=rooftop, tent=ground,
+        #          days=days, room=room, date=booked_date)
     return render(request, "destination/success.html", {"book": book})
 
 
@@ -596,7 +599,7 @@ def experience_success(request):
         convenient = book.convenient
         invoice_message_experience(email,  os.environ.get("email"),
                                    txnid=txnid, now=now, name=name, convenient=convenient, total=total,
-                                   count=count, igst=igst, camper=camper, check_in=check_in.strftime("%d-%m-%Y"),
+                                   count=count, igst=igst, camper=camper, check_in=check_in.strftime("%Y-%m-%d"),
                                    campkit=campkit, experience=experiences)
     return render(request, "destination/success.html", {"book": book})
 

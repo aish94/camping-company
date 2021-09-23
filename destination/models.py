@@ -80,6 +80,7 @@ class Booking(models.Model):
     days = models.IntegerField()
     room = models.IntegerField()
     date = models.DateField(null=True, blank=True)
+    cleaning_fees = models.IntegerField()
     amount = models.IntegerField()
     igst = models.FloatField(blank=True, null=True)
     convenient = models.FloatField(blank=True, null=True)
@@ -148,6 +149,7 @@ class Pricing(models.Model):
     BYOT = models.IntegerField(default=0)
     room = models.IntegerField(default=0)
     book = models.BooleanField(default=False)
+    cleaning_fees = models.IntegerField(default=0)
 
     def __str__(self):
         return str(self.book)
