@@ -5,13 +5,12 @@ from vehicle.models import Definition, Book, Region
 from django.contrib import messages
 import datetime
 from datetime import date
-from collections import defaultdict
 from app.utils import get_fields, get_val
 
 
 def car_book(now, check_in, check_out):
     car_ids = []
-    car_booked = defaultdict(int)
+    car_booked = {}
     definition = Definition.objects.all()
     for _ in definition:
         t = 0
@@ -25,7 +24,7 @@ def car_book(now, check_in, check_out):
             if check_out < b.check_in_date or check_in > b.check_out_date:
                 t += 1
         if t == book.count():
-            if not car_booked[_.car_name]:
+            if _.car_name not in car_booked:
                 car_ids.append(_.pk)
                 car_booked[_.car_name] = _.pk
     return car_ids
@@ -77,7 +76,7 @@ def vehicle(request):
 def vehicle_create_check(request, pk):
     users = User.objects.get(id=pk)
     input_data = get_fields(VehicleCheck())
-    input_data_list = input_data[2:len(input_data)-1]
+    input_data_list = input_data[2:len(input_data) - 1]
     if request.method == "POST":
         data = get_val(request=request, body=input_data_list)
         VehicleCheck(user=users, **data).save()
