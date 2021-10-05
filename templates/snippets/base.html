@@ -27,6 +27,35 @@
       {% block css %}
 
       {% endblock %}
+       <!-- Global site tag (gtag.js) - Google Ads: 479010803 -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-479010803"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'AW-479010803');
+        </script>
+
+        <script type="text/javascript">
+          window.addEventListener('load',function(){
+           jQuery('[action="/vehicles/"]').submit(function() {
+            gtag('event', 'conversion', {'send_to': 'AW-479010803/x58gCNS43PYCEPO_tOQB'});
+           });
+          });
+        </script>
+        <script>
+          window.addEventListener('load',function(){
+            jQuery('body').on('click', 'a:contains(Book now)', function() {
+              gtag('event', 'conversion', {
+                'send_to': 'AW-479010803/7-BiCIDX1PcCEPO_tOQB'
+              });
+            })
+            jQuery('[action="/accounts/signup/"]').submit(function(){
+              gtag('event', 'conversion', {'send_to': 'AW-479010803/UKsGCM_7vvkCEPO_tOQB'});
+            })
+          })
+        </script>
    </head>
       <body>
             {% include "snippets/navbar.html" %}
