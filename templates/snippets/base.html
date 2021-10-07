@@ -28,8 +28,8 @@
 
       {% endblock %}
        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-149837617-2"></script>
-        <script>
+        <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-149837617-2"></script>
+        <script defer>
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
@@ -38,8 +38,8 @@
         </script>
 
        <!-- Global site tag (gtag.js) - Google Ads: 479010803 -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-479010803"></script>
-        <script>
+        <script defer src="https://www.googletagmanager.com/gtag/js?id=AW-479010803"></script>
+        <script defer>
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
@@ -47,14 +47,14 @@
           gtag('config', 'AW-479010803');
         </script>
 
-        <script type="text/javascript">
+        <script defer type="text/javascript">
           window.addEventListener('load',function(){
            jQuery('[action="/vehicles/"]').submit(function() {
             gtag('event', 'conversion', {'send_to': 'AW-479010803/x58gCNS43PYCEPO_tOQB'});
            });
           });
         </script>
-        <script>
+        <script defer>
           window.addEventListener('load',function(){
             jQuery('body').on('click', 'a:contains(Book now)', function() {
               gtag('event', 'conversion', {
