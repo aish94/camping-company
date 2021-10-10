@@ -217,7 +217,7 @@ def success(request):
         invoice_message_camp(email,  os.environ.get("email"), check_in=booked_date.strftime("%Y-%m-%d"),
                              txnid=txnid, now=now, name=name, convenient=convenient, total=total, duration=duration,
                              count=count, igst=igst, caravan=caravan, ground=ground, rooftop=rooftop, room=room,
-                             cleaning=cleaning, phone=customer.phone, campsite=book.definition.destination.place)
+                             cleaning=cleaning, phone=customer.phone, campsite=book.destination.destination.place)
         # send_sms(phone_owner=payment.phone, name=request.user, phone_user=customer.phone, RTT=rooftop, tent=ground,
         #          days=days, room=room, date=booked_date)
     return render(request, "destination/success.html", {"book": book})
