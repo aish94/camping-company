@@ -19,6 +19,7 @@ class Pay(models.Model):
     torch = models.IntegerField(blank=True, null=True)
     chair = models.IntegerField(blank=True, null=True)
     table = models.IntegerField(blank=True, null=True)
+    air_mattress = models.IntegerField(blank=True, null=True)
     igst = models.FloatField(blank=True, null=True)
     convenient = models.FloatField(blank=True, null=True)
     shillong_transfer = models.IntegerField(blank=True, null=True)

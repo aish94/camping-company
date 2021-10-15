@@ -48,6 +48,7 @@ def payment_success(request):
         campkit = pay.campkit
         gas = pay.gas_stove
         torch = pay.torch
+        air_mattress = pay.air_mattress
         table = pay.table
         igst = pay.igst
         convenient = pay.convenient
@@ -64,7 +65,8 @@ def payment_success(request):
                         gas=gas, torch=torch, table=table,
                         igst=igst, convenient=convenient, chair=chair,total=total,
                         count=count, coupon=coupon, shillong=shillong, airport=airport,
-                        check_in=check_in.strftime("%d-%m-%Y"), check_out=check_out.strftime("%d-%m-%Y"))
+                        check_in=check_in.strftime("%d-%m-%Y"), check_out=check_out.strftime("%d-%m-%Y"),
+                        air_mattress=air_mattress)
 
     return render(request, "payment/success.html", {"pay": pay})
 
@@ -95,6 +97,7 @@ def cart(request):
         campkit = math.ceil(float(request.POST.get("campkit")))
         gas_stove = math.ceil(float(request.POST.get("gas_stove")))
         torch = math.ceil(float(request.POST.get("torch")))
+        air_mattress = math.ceil(float(request.POST.get("air_mattress")))
         chair = math.ceil(float(request.POST.get("chair")))
         table = math.ceil(float(request.POST.get("table")))
         igst = float(request.POST.get("igst"))
@@ -107,7 +110,8 @@ def cart(request):
                                              person_price=person_price, campkit=campkit,
                                              gas_stove=gas_stove, torch=torch, chair=chair, table=table,
                                              igst=igst, convenient=convenient, coupon=coupon,
-                                             shillong_transfer=shillong_transfer, airport_transfer=airport_transfer)
+                                             shillong_transfer=shillong_transfer, airport_transfer=airport_transfer,
+                                             air_mattress=air_mattress)
         payment = Pay.objects.get(user=user)
         name = payment.firstname
         email = payment.email
