@@ -35,7 +35,7 @@
                                         </div>
                                         <form action="{% url 'pay:pay' %}" method="POST">{% csrf_token %}
                                             <input hidden name="price" value="{{car.price}}">
-                                            {% if car.year == 3 %}
+                                            {% if car.year == '3' %}
                                                 <button class="btn btn--white">Coming soon</button>
                                             {% else %}
                                                  <button id="btn-{{car.pk}}-{{car.seat}}" class="btn btn--white">Book Now!</button>
