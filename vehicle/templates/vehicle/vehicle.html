@@ -57,7 +57,11 @@
                                 <p class="card__price-only">Starting at</p>
                                 <p class="card__price-value">INR 3749</p>
                             </div>
-                            <a href="{% url 'pay:pay' %}" class="btn btn--white">Book now!</a>
+                           {% if car.year == '3' %}
+                                <button class="btn btn--white">Coming soon</button>
+                            {% else %}
+                                 <button class="btn btn--white">Book Now!</button>
+                            {% endif %}
                         </div>
                     </div>
                </div>
