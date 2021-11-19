@@ -63,9 +63,9 @@ def vehicle(request):
         if not car.available:
             continue
 
-        if car.name not in unique_cars:
+        if car.car_name not in unique_cars:
             car_ids.append(car.id)
-            unique_cars[car.name] = car.pk
+            unique_cars[car.car_name] = car.pk
 
     cars = Definition.objects.filter(pk__in=car_ids).order_by("year")
 
