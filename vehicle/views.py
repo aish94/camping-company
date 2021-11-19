@@ -56,7 +56,7 @@ def vehicle_info(request):
 
 def vehicle(request):
     unique_cars = {}
-    cars = Definition.objects.filter()
+    cars = Definition.objects.all()
     car_ids = []
 
     for car in cars:
