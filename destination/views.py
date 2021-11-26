@@ -540,14 +540,15 @@ def camp_update(request, slug):
 
 
 def experiences(request):
-    experiences = Experiences.objects.filter(pk__in=[1, 5, 6])
+    # 4 not present
+    experiences = Experiences.objects.filter(pk__in=[1, 2, 5, 6])
     return render(request, "destination/experiences.html", {"experiences": experiences})
 
 
 def experience_detail(request, slug):
     try:
         experience = Experiences.objects.get(slug=slug)
-        if experience.pk in [2, 3] and not request.user.is_superuser:
+        if experience.pk in [3] and not request.user.is_superuser:
             return redirect("app:home")
 
     except:

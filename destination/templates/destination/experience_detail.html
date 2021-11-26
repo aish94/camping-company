@@ -213,7 +213,7 @@
        var experiences = 0,IGST = 0, convenience = 0, subtotal = 0, campkit = 0, camper = 0;
       function updateValue(price,totString){
               subtotal = camper + experiences + campkit
-              IGST = Math.ceil(subtotal * .18)
+              IGST = Math.ceil(subtotal * .05)
               convenience = Math.ceil(subtotal * .025)
               total = subtotal + IGST + convenience;
 
