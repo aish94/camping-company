@@ -547,7 +547,7 @@ def experiences(request):
 def experience_detail(request, slug):
     try:
         experience = Experiences.objects.get(slug=slug)
-        if experience.pk in [2, 3]:
+        if experience.pk in [2, 3] or request.user.is_superuser:
             return redirect("app:home")
 
     except:
