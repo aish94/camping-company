@@ -76,12 +76,13 @@
             {% block content_block %}
 
             {% endblock %}
-            {% include "snippets/js.html" %}
 
             {% block js %}
 
             {% endblock %}
-      </body>
 
-        {% include "snippets/footer.html" %}
+            {% include "snippets/footer.html" %}
+
+            {% include "snippets/js.html" %}
+      </body>
 </html>
