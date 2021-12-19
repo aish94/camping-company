@@ -1,5 +1,5 @@
 {% extends "snippets/base.html" %} {% load staticfiles %} {% block css %}
-<link rel="stylesheet" href="{% static 'css/vehicles/vehicle_info.css' %}">
+<link rel="stylesheet" href="{% static 'css/tent/tent.css' %}">
 {% endblock %}
 {% block title %}
     <title>Camper Rental Information | Camping Co</title>
@@ -9,89 +9,18 @@
 <meta name="keywords" content="vehicles at camping company, type of vehicle, Manual transmission, All-terrain tires,Ironman 4x4 roof top, tent,Seats 5,Camping kit BBQ, utensils, mugs & shovel ,All weather sleeping bags ">
 {% endblock %}
 {% block content_block %}
-<div class="container">
-   <div class="car">
-      <div class="row">
-         <div class="col-md-6 col-sm-12">
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-               <!-- Indicators -->
-               <ul class="carousel-indicators">
-                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#myCarousel" data-slide-to="1"></li>
-                  <li data-target="#myCarousel" data-slide-to="2"></li>
-               </ul>
-               <!-- The slideshow -->
-               <div class="carousel-inner">
-                  <div class="carousel-item active">
-                     <img src="{% static 'images/SSS03663.jpg' %}">
-                  </div>
-                  <div class="carousel-item">
-                     <img src="{% static 'images/SSS04084.jpg' %}" >
-                  </div>
-                  <div class="carousel-item">
-                     <img src="{% static 'images/SSS04379.jpg' %}">
-                  </div>
-               </div>
-               <!-- Left and right controls -->
-               <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
-               <span class="carousel-control-prev-icon"></span>
-               </a>
-               <a class="carousel-control-next" href="#myCarousel" data-slide="next">
-               <span class="carousel-control-next-icon"></span>
-               </a>
-            </div>
-         </div>
-         <div class="col-md-6 col-sm-12">
-            <div class="info1" style="float:left;">
-               <h3> Soft Top tent </h3>
-               <br>
-               <p>Camping Co's roof top tents Roof Top Tents come in universal size & can be installed on roof racks, cross bars on any vehicle type It’s engineered for quick setup. Once in camp, you undo a few straps, pop it open and deploy the poles and ladder. Camping Co's roof top tent fabric and pole materials are extra robust to withstand stormy weather. Comes with a super-plush foam mattress for your comfort</p>
-            </div>
-         </div>
+   <section class="tent">
+      <img class="tent__img" src="{% static 'images/tent/tent2.jpg' %}"/>
+
+      <div class="tent__container">
+         <h1 class="tent__heading">Thule Tepui  Explorer</h1>
+            <p class="tent__description">4-person roof top tent haze grey</p>
+            <ul>
+               <li>Good ventilation</li>
+               <li>Usable year round</li>
+               <li>Include extent canopy</li>
+            </ul>
+            <a href="#" class="tent__read">read more</a>
       </div>
-   </div>
-
-
-   <div class="car">
-      <div class="row">
-         <div class="col-md-6 col-sm-12">
-            <div id="myCarousel3" class="carousel slide" data-ride="carousel">
-               <!-- Indicators -->
-               <ul class="carousel-indicators">
-                  <li data-target="#myCarousel3" data-slide-to="0" class="active"></li>
-                  <li data-target="#myCarousel3" data-slide-to="1"></li>
-                  <li data-target="#myCarousel3" data-slide-to="2"></li>
-               </ul>
-               <!-- The slideshow -->
-               <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="{% static 'images/hard1.jpg' %}">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="{% static 'images/hard2.jpg' %}">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="{% static 'images/hard3.jpg' %}">
-                  </div>
-               </div>
-               <!-- Left and right controls -->
-               <a class="carousel-control-prev" href="#myCarousel3" data-slide="prev">
-               <span class="carousel-control-prev-icon"></span>
-               </a>
-               <a class="carousel-control-next" href="#myCarousel3" data-slide="next">
-               <span class="carousel-control-next-icon"></span>
-               </a>
-            </div>
-         </div>
-                  <div class="col-md-6 col-sm-12">
-            <div class="info2">
-               <h3>Hard Shell Rooftop Tent</h3>
-               <br>
-               <p>Camping Co's roof top tents Roof Top Tents come in universal size & can be installed on roof racks, cross bars on any vehicle type It’s engineered for quick setup. Once in camp, you undo a few straps, pop it open and deploy the poles and ladder. Camping Co's roof top tent fabric and pole materials are extra robust to withstand stormy weather. Comes with a super-plush foam mattress for your comfort</p>
-            </div>
-         </div>
-      </div>
-   </div>
-
-</div>
+   </section>
 {% endblock %}

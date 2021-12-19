@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.contrib import messages
 from customer.models import Customer
-from tent.models import TentCart
+from tent.models import TentCart, Tent
 from datetime import date
 import os
 import math
@@ -55,7 +55,8 @@ def tent_update_check(request, pk):
 
 
 def tents(request):
-    return render(request, "tent/tents.html")
+    tents = Tent.objects.all()
+    return render(request, "tent/tents.html", {'tents': tents})
 
 
 @login_required
@@ -104,5 +105,6 @@ def payment_success(request):
     return render(request, "payment/success.html", {"pay": pay})
 
 
-def tent_info(request):
+def tent_info(request, slug):
+    print(slug)
     return render(request,"tent/tent_info.html")
