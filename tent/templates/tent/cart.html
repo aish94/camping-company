@@ -33,20 +33,19 @@
     <div class="product-line-price">{{price}}</div>
   </div>
     <hr>
-  <div class="product">
-    <div class="product-image">
-      <img src="{{vehicle.car_image.url}}">
-    </div>
-    <div class="product-details">
-      <div class="product-title">Shipping charges</div>
-    </div>
-    <div class="product-price">5500</div>
-    <div class="product-quantity">
-      <input type="number" value="1" min="1" disabled>
-    </div>
-    <div class="product-line-price">5500</div>
-  </div>
-    <hr>
+<!--  <div class="product">-->
+<!--    <div class="product-image">-->
+<!--      <img src="{{vehicle.car_image.url}}">-->
+<!--    </div>-->
+<!--    <div class="product-details">-->
+<!--      <div class="product-title">Shipping charges</div>-->
+<!--    </div>-->
+<!--    <div class="product-price">5500</div>-->
+<!--    <div class="product-quantity">-->
+<!--      <input type="number" value="1" min="1" disabled>-->
+<!--    </div>-->
+<!--    <div class="product-line-price">5500</div>-->
+<!--  </div>-->
   <div class="totals">
     <div class="totals-item">
       <label>Subtotal(GST included)</label>
@@ -75,9 +74,9 @@ var fadeTime = 300;
 var pri = {{price}};
 var totals = 0;
 
-$(".totals-value")[0].textContent = pri+5500;
-$(".totals-value")[1].textContent = pri+5500;
-var total = pri+5500;
+$(".totals-value")[0].textContent = pri;
+$(".totals-value")[1].textContent = pri;
+var total = pri;
 
 /* Assign actions */
 $('.product-quantity input').change( function() {
