@@ -35,7 +35,7 @@ class Tent(models.Model):
     slug = models.SlugField(max_length=40, blank=True, null=True)
     main_tent_image = models.ImageField(upload_to='tent', blank=True)
 
-    name = models.CharField(max_length=128, blank=True, null=True)
+    name = models.CharField(max_length=128, blank=True, null=True, unique=True)
     name_extended = models.CharField(max_length=128, blank=True, null=True)
     price = models.IntegerField(blank=True, null=True)
     description = models.TextField()

@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.contrib import messages
 from customer.models import Customer
-from tent.models import TentCart, Tent
+from tent.models import TentCart, Tent, TentImage
 from datetime import date
 import os
 import math
@@ -106,5 +106,6 @@ def payment_success(request):
 
 
 def tent_info(request, slug):
-    print(slug)
-    return render(request,"tent/tent_info.html")
+    tent = Tent.objects.get(slug=slug)
+    tent_images = TentImage.objects.filter(tent=tent)
+    return render(request,"tent/tent_info.html", {'tent': tent, 'tent_images': tent_images})
