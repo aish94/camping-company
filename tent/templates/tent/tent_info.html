@@ -17,7 +17,11 @@
             <p class="tent__description">{{tent.name_extended}}</p>
             {{tent.summary|safe}}
             <p class="tent__description">Price {{tent.price}} INR</p>
-            <a href="#" class="tent__read">read more</a>
+<!--            <a href="#" class="tent__read">read more</a>-->
+          <form method="POST" action="{% url 'tent:cart' %}">{% csrf_token %}
+                <input hidden value="{{tent.price}}" name="price">
+                <button style="border: none; background-color:#fff; color: #007bff; cursor: pointer; font-size: 2rem;" class="active">Buy Now</button>
+            </form>
       </div>
    </section>
 
@@ -81,6 +85,29 @@
             <p><span class="active">Internal Frame:</span> {{tent.internal_frame}}</p>
             <p><span class="active">Mosquito Screen: </span>{{tent.mosquito_screens}}</p>
             <p><span class="active">Seaons:</span> {{tent.seasons}}</p>
+         </div>
+       </div>
+     </div>
+    <div class="card">
+       <div class="card-header" id="headingFour">
+         <h5 class="mb-0">
+           <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+             Refund Policy
+           </button>
+         </h5>
+       </div>
+       <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+         <div class="card-body">
+            <p>
+                Refunds will only be issued for unused and un-mounted products.
+                If a product is used, damaged or is not re-sellable, no refund will be issued.
+                Products must be returned within 10 days to receive a refund.
+                Whether or not a product meets refund requirements is at Camping Co's discretion.
+                Return shipping must be paid for by the customer
+                Exchanges
+                For product exchanges, Camping Co will send a return label.
+                Camping Co. will either charge or refund the price difference for new product exchanges.
+            </p>
          </div>
        </div>
      </div>
