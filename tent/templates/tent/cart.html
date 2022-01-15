@@ -33,6 +33,22 @@
     <div class="product-line-price">{{price}}</div>
   </div>
     <hr>
+
+    <div class="product">
+    <div class="product-image">
+      <img src="{{vehicle.car_image.url}}">
+    </div>
+    <div class="product-details">
+      <div class="product-title">Telescopic Ladder</div>
+    </div>
+    <div class="product-price">8000</div>
+    <div class="product-quantity">
+      <input type="number" value="0" min="0">
+    </div>
+    <div class="product-line-price">0</div>
+  </div>
+    <hr>
+
 <!--  <div class="product">-->
 <!--    <div class="product-image">-->
 <!--      <img src="{{vehicle.car_image.url}}">-->
@@ -71,7 +87,7 @@
 var taxRate = 0.05;
 var shippingRate = 15.00;
 var fadeTime = 300;
-var pri = {{price}};
+var pri = {{price}} + {{price}} * .18;
 var totals = 0;
 
 $(".totals-value")[0].textContent = pri;
@@ -98,10 +114,12 @@ function recalculateCart()
     subtotal += parseInt($(this).children('.product-line-price').text());
   });
 
+  subtotal += subtotal * .18
+
   /* Calculate totals */
   var tax = subtotal * taxRate;
   var shipping = (subtotal > 0 ? shippingRate : 0);
-  var total = subtotal;
+  var total = subtotal
   totals = total
 
   /* Update totals display */
