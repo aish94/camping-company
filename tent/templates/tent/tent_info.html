@@ -18,7 +18,7 @@
             {{tent.summary|safe}}
             <p class="tent__description">Price {{tent.price}} INR</p>
 <!--            <a href="#" class="tent__read">read more</a>-->
-          <form method="POST" action="{% url 'tent:cart' %}">{% csrf_token %}
+          <form method="POST" action="{% url 'tent:cart' slug=tent.slug %}">{% csrf_token %}
                 <input hidden value="{{tent.price}}" name="price">
                 <button style="border: none; background-color:#fff; color: #007bff; cursor: pointer; font-size: 2rem;" class="active">Buy Now</button>
             </form>
