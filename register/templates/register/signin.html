@@ -22,7 +22,7 @@
                 <div id="signup">
 
                   <form action="{% url 'register:signup' %}" method="post" autocomplete="off">{% csrf_token %}
-
+                    <input type="hidden" name="next" value="{{next}}">
                   <div class="top-row">
                     <div class="field-wrap">
                       <label>

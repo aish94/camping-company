@@ -86,6 +86,7 @@ def cart(request):
         return redirect("register:welcome")
     razor_id = os.environ.get("razor_id")
     if not request.is_ajax():
+        # this logic making redirection after sign up not working
         try:
             price = int(request.POST.get("price"))
         except:

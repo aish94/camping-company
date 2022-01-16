@@ -17,6 +17,9 @@ from datetime import date
 
 def signup(request):
     if request.method == "POST":
+        next_post = request.POST.get('next')
+        if next_post == 'None':
+            next_post = '/'
         username = request.POST.get("username")
         email = request.POST.get("email")
         user_n = User.objects.filter(username=username)
@@ -44,7 +47,7 @@ def signup(request):
             message_to_company(email=email, message="someone signed up yay!! :)",
                                name=username, phone=number,
                                subject="Leads Team Rock and Roll")
-            return redirect("app:home")
+            return redirect(next_post)
         try:
             ref_user = Referral.objects.get(slug=code)
         except:
