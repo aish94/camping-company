@@ -60,19 +60,15 @@ def tents(request):
 
 
 @login_required
-def cart(request):
+def cart(request, slug):
     user = User.objects.get(pk=request.user.pk)
+    tent = Tent.objects.get(slug=slug)
     try:
         customer = Customer.objects.get(user=user)
     except:
         messages.warning(request, "Complete Sign up")
         return redirect("register:welcome")
     razor_id = os.environ.get("razor_id")
-    if not request.is_ajax():
-        try:
-            price = int(request.POST.get("price"))
-        except:
-            return redirect("app:home")
     if request.is_ajax():
         amount = math.ceil(float(request.POST.get("total")))
 
@@ -83,10 +79,7 @@ def cart(request):
                              "name": name,
                              "razor_id": razor_id
                              })
-    # if price not in [95000, 70000]:
-    #     messages.warning(request, "NO HACKY HACKY")
-    #     return redirect("tent_check:all")
-    return render(request, "tent/cart.html", {"price": price})
+    return render(request, "tent/cart.html", {"tent": tent})
 
 
 @login_required

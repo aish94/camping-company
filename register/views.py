@@ -8,7 +8,6 @@ from referral.models import Referral
 from app.utils import *
 from pay.models import Pay
 import re
-from django.utils.http import is_safe_url
 from django.http import JsonResponse
 from register.models import Password
 from datetime import date
@@ -79,6 +78,8 @@ def signin(request):
     next_ = request.GET.get('next')
     if request.method == "POST":
         next_post = request.POST.get('next')
+        if next_post == 'None':
+            next_post = '/'
         username = request.POST.get("username")
         password = request.POST.get("password")
         if re.search("@", username):
@@ -96,21 +97,9 @@ def signin(request):
                 login(request, user)
                 return redirect("app:represent")
             else:
-                #customer = Customer.objects.filter(user=user)
                 login(request, user)
                 messages.success(request, "Logged in")
-                # if customer.count() == 1:
-                #     login(request, user)
-                #     messages.success(request, "Logged in")
-                #     request.session["user_pk"] = user.pk
-                # else:
-                #     login(request, user)
-                #     messages.warning(request, "Complete sign up")
-                #     return redirect("register:welcome")
-                if next_post != "None":  # not used is_safe_url  here next post is none (a string)
-                    return redirect(next_post)
-                else:
-                    return redirect("app:home")
+                return redirect(next_post)
         else:
             messages.warning(request, "Password/Username is wrong")
             return redirect("register:signin")

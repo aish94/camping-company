@@ -42,6 +42,7 @@ class Tent(models.Model):
     summary = models.TextField()
     warranty = models.TextField()
     features = models.TextField()
+    telescopic_ladder = models.IntegerField(blank=True, null=True)
 
     sleeping_capacity = models.CharField(max_length=128, blank=True, null=True)
     dimentions_closed = models.CharField(max_length=128, blank=True, null=True)

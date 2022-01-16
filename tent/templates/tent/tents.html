@@ -95,8 +95,7 @@
                 <div class="items__card__content">
                     <h5 class="items__card__heading">{{tent.name}} &trade;RTT</h5>
                     <p>{{tent.description}}</p>
-                    <form method="POST" action="{% url 'tent:cart' %}">{% csrf_token %}
-                        <input hidden value="{{tent.price}}" name="price">
+                    <form method="POST" action="{% url 'tent:cart' slug=tent.slug %}">{% csrf_token %}
                         <button style="border: none; background-color:#fff; color: #007bff; cursor: pointer;">Buy Now</button>
                         <a class="" style="float:right;" href="{% url 'tent:tent_info' slug=tent.slug %}">More Info</a>
                     </form>
