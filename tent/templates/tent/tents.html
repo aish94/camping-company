@@ -93,7 +93,7 @@
             <div class="items__card">
                 <img class="items__card__img" alt="tent" src="{{tent.main_tent_image.url}}"/>
                 <div class="items__card__content">
-                    <h5 class="items__card__heading">{{tent.name}} &trade;RTT</h5>
+                    <h5 class="items__card__heading">{{tent.name}}</h5>
                     <p>{{tent.description}}</p>
                     <form method="POST" action="{% url 'tent:cart' slug=tent.slug %}">{% csrf_token %}
                         <button style="border: none; background-color:#fff; color: #007bff; cursor: pointer;">Buy Now</button>
