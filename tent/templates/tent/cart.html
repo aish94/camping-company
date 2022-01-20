@@ -30,7 +30,7 @@
     <div class="product-quantity">
       <input type="number" value="1" min="1">
     </div>
-    <div class="product-line-price">{{tent.price}}</div>
+    <div class="product-line-price" id="car-price">{{tent.price}}</div>
   </div>
     <hr>
 
@@ -73,37 +73,29 @@
   <p style="font-size: 10px;"></p>
   </div>
   <hr/>
-
-<!--  <div class="product">-->
-<!--    <div class="product-image">-->
-<!--      <img src="{{vehicle.car_image.url}}">-->
-<!--    </div>-->
-<!--    <div class="product-details">-->
-<!--      <div class="product-title">Shipping charges</div>-->
-<!--    </div>-->
-<!--    <div class="product-price">5500</div>-->
-<!--    <div class="product-quantity">-->
-<!--      <input type="number" value="1" min="1" disabled>-->
-<!--    </div>-->
-<!--    <div class="product-line-price">5500</div>-->
-<!--  </div>-->
   <div class="totals">
     <div class="totals-item">
-      <label>Subtotal(GST included)</label>
-      <div class="totals-value" id="cart-subtotal">71.97</div>
+      <label>Subtotal</label>
+      <div class="totals-value" id="cart-subtotal">{{price}}</div>
     </div>
     <div class="totals-item">
+      <label>IGST</label>
+      <div class="totals-value" id="cart-tax">539.82</div>
     </div>
     <div class="totals-item">
+      <label>Convenience charge</label>
+      <div class="totals-value" id="cart-shipping">59.98</div>
     </div>
-    <div style="opacity:0; display:none;" class="totals-item totals-item-total">
+
+    <div class="totals-item totals-item-total">
       <label>Grand Total</label>
-      <div class="totals-value" id="cart-total">90.57</div>
+      <div class="totals-value" id="cart-total">3598.8</div>
     </div>
+
     <div class="totals-item">
       <label>Discount Applied</label>
       <div class="totals-value" id="cart-discount">0</div>
-   </div>
+    </div>
   </div>
 
       <button id="rzp-button1" class="checkout">Pay</button>
@@ -112,17 +104,18 @@
 <br>
 <script defer src="{% static 'js/razorpay.js' %}"></script>
 <script>
-  window.onload = function(){
-      function couponCode(a){
+
+
+
+window.onload = function(){
+ function couponCode(a){
         if(a<=100)
-          coupon = (pr * a).toFixed(2);
+          coupon = (pri * a).toFixed(2);
         else
           coupon = a;
         $("#cart-discount").html(-coupon)
-
-        pr = pr - +coupon
-        console.log(pr, coupon);
-        $(".product-line-price")[1].textContent = pr;
+        pri = pri - coupon
+        $(".product-line-price")[1].textContent = pri;
         if(a<=100)
           var iine = "You got " + 100*a.toString() + "% discount";
         else
@@ -134,118 +127,111 @@
 	        y.disabled = true
             }
   }
-var taxRate = 0.05;
-var shippingRate = 15.00;
-var fadeTime = 300;
-var pr = {{tent.price}};
-var pri = pr + 5000 + pr * .18;
-var totals = 0;
+  var totals = 0;
+  var taxs = 0;
+  var shippings = 0;
+  var taxRate = 0.18;
+  var shippingRate = .024;
+  var fadeTime = 300;
+  var coupon = 0;
+  var pri = {{tent.price}};
 
-$(".totals-value")[0].textContent = pri;
-$(".totals-value")[1].textContent = pri;
-var total = pri;
+  recalculateCart()
 
-/* Assign actions */
-$('.product-quantity input').change( function() {
-  updateQuantity(this);
-});
-
-$('.product-removal button').click( function() {
-  removeItem(this);
-});
-
-
-/* Recalculate cart */
-function recalculateCart()
-{
-  var subtotal = 0;
-
-  /* Sum up row totals */
-  $('.product').each(function () {
-    subtotal += parseInt($(this).children('.product-line-price').text());
+  /* Assign actions */
+  $('.product-quantity input').change( function() {
+    updateQuantity(this);
   });
 
-  subtotal += pr * .18;
-
-
-  /* Calculate totals */
-  var tax = subtotal * taxRate;
-  var shipping = (subtotal > 0 ? shippingRate : 0);
-  var total = subtotal
-  totals = total
-
-  /* Update totals display */
-  $('.totals-value').fadeOut(fadeTime, function() {
-    $('#cart-subtotal').html(subtotal.toFixed(2));
-    $('#cart-tax').html(tax.toFixed(2));
-    $('#cart-shipping').html(shipping.toFixed(2));
-    $('#cart-total').html(total.toFixed(2));
-    if(total == 0){
-      $('.checkout').fadeOut(fadeTime);
-    }else{
-      $('.checkout').fadeIn(fadeTime);
-    }
-    $('.totals-value').fadeIn(fadeTime);
+  $('.product-removal button').click( function() {
+    removeItem(this);
   });
-}
 
 
-/* Update quantity */
-function updateQuantity(quantityInput)
-{
-  /* Calculate line price */
-  var productRow = $(quantityInput).parent().parent();
-  var price = parseFloat(productRow.children('.product-price').text());
-  var quantity = $(quantityInput).val();
-  var linePrice = price * quantity;
 
-  /* Update line price display and recalc cart totals */
-  productRow.children('.product-line-price').each(function () {
-    $(this).fadeOut(fadeTime, function() {
-      $(this).text(linePrice.toFixed(2));
-      recalculateCart();
-      $(this).fadeIn(fadeTime);
+    /* Recalculate cart */
+    function recalculateCart() {
+      var subtotal = 0;
+
+      /* Sum up row totals */
+      $('.product').each(function () {
+        subtotal += parseFloat($(this).children('.product-line-price').text());
+      });
+
+      /* Calculate totals */
+      var tax = {{tent.price}} * taxRate;
+      var shipping = (subtotal + tax) * shippingRate;
+      var total = subtotal + tax + shipping;
+      totals = total
+      taxs = tax
+      shippings = shipping
+
+    /* Update totals display */
+    $('.totals-value').fadeOut(fadeTime, function() {
+
+      $('#cart-subtotal').html(subtotal.toFixed(2));
+      $('#cart-tax').html(tax.toFixed(2));
+      $('#cart-shipping').html(shipping.toFixed(2));
+      $('#cart-total').html((total).toFixed(2));
+      $('#cart-payable').html(total.toFixed(2));
+
+      if(total == 0){
+        $('.checkout').fadeOut(fadeTime);
+      }else{
+        $('.checkout').fadeIn(fadeTime);
+      }
+      $('.totals-value').fadeIn(fadeTime);
     });
-  });
-}
+  }
 
 
-/* Remove item from cart */
-function removeItem(removeButton)
-{
-  /* Remove row from DOM and recalc cart total */
-  var productRow = $(removeButton).parent().parent();
-  productRow.slideUp(fadeTime, function() {
-    productRow.remove();
-    recalculateCart();
-  });
-}
-      if (totals == 0){
+  /* Update quantity */
+  function updateQuantity(quantityInput)
+  {
+    /* Calculate line price */
+    var productRow = $(quantityInput).parent().parent();
+    var price = parseFloat(productRow.children('.product-price').text());
+    var quantity = $(quantityInput).val();
+    var linePrice = price * quantity;
+
+    /* Update line price display and recalc cart totals */
+    productRow.children('.product-line-price').each(function () {
+      $(this).fadeOut(fadeTime, function() {
+        $(this).text(linePrice.toFixed(2));
+        recalculateCart();
+        $(this).fadeIn(fadeTime);
+      });
+    });
+    }
+
+    if (totals === 0){
           totals = total
-        }
+          taxs = tax
+          shippings = shipping
+      }
+        $("#btn-coupon").click(function(e){
+        e.preventDefault();
+        if($("#coupon-code").val() == "XP20"){
+          couponCode(.2);
+         } else if($("#coupon-code").val() == "Camping10"){
+            couponCode(.1);
 
-     $("#btn-coupon").click(function(e){
-      e.preventDefault();
-      if($("#coupon-code").val() == "XP20"){
-        couponCode(.2);
-       } else if($("#coupon-code").val() == "Camping10"){
-          couponCode(.1);
+          } else if($("#coupon-code").val() === "CCPUJO20" || $("#coupon-code").val() === "CC20"){
+          couponCode(.2);
 
-        } else if($("#coupon-code").val() === "CCPUJO20" || $("#coupon-code").val() === "CC20"){
-        couponCode(.2);
+          } else if($("#coupon-code").val() == "NOTM25"){
+          couponCode(.25);
 
-        } else if($("#coupon-code").val() == "NOTM25"){
-        couponCode(.25);
+         } else {
+            alert("Invalid code");
+         }
+  });
 
-       } else {
-          alert("Invalid code");
-       }
-});
 
   var options = {
     "currency": "INR",
     "name": "Camping co",
-    "description": "Overlanding expedition booked",
+    "description": "{{tent.name}}",
     "image": "{% static 'images/favi/apple-icon-72x72.png' %}",
     "handler": function (response){
             var end_point = "{% url 'tent_check:success' %}"
