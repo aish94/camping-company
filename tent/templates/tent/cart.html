@@ -105,8 +105,6 @@
 <script defer src="{% static 'js/razorpay.js' %}"></script>
 <script>
 
-
-
 window.onload = function(){
  function couponCode(a){
         if(a<=100)
@@ -271,7 +269,13 @@ document.getElementById('rzp-button1').onclick = function(e){
         var t = $("input[name=csrfmiddlewaretoken]").val();
         var data = {
             "total": totals,
-            'csrfmiddlewaretoken': t
+            'csrfmiddlewaretoken': t,
+            "tent": $(".product-line-price")[1].textContent,
+            "igst": taxs,
+            "coupon": coupon,
+            "convenient": shippings,
+            "ladder": $(".product-line-price")[2].textContent,
+            "shipping": $(".product-line-price")[3].textContent,
         }
         $.ajax({
             data: data,
@@ -281,7 +285,7 @@ document.getElementById('rzp-button1').onclick = function(e){
             options.amount = (data.amount) * 100
             options.prefill.email = data.email
             options.prefill.name = data.name
-            options.key = data.razor_id
+            options.key = data.razor_id;
             var rzp1 = new Razorpay(options);
             rzp1.open();
             },

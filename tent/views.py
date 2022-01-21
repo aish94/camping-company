@@ -7,8 +7,10 @@ from django.contrib import messages
 from customer.models import Customer
 from tent.models import TentCart, Tent, TentImage
 from datetime import date
+from app.utils import invoice_message_tent
 import os
 import math
+
 
 # Create your views here.
 
@@ -71,8 +73,17 @@ def cart(request, slug):
     razor_id = os.environ.get("razor_id")
     if request.is_ajax():
         amount = math.ceil(float(request.POST.get("total")))
+        igst = math.ceil(float(request.POST.get("igst")))
+        coupon = math.ceil(float(request.POST.get("coupon")))
+        convenient = math.ceil(float(request.POST.get("convenient")))
+        ladder = math.ceil(float(request.POST.get("convenient")))
+        shipping = math.ceil(float(request.POST.get("shipping")))
+        tent = math.ceil(float(request.POST.get("tent")))
 
-        TentCart(user=user, amount=amount, email=user.email).save()
+        TentCart(user=user, amount=amount, email=user.email,
+                 ladder=ladder, shipping=shipping,
+                 coupon=coupon, convenient=convenient, igst=igst,
+                 tent=tent).save()
         name = user.username
         email = user.email
         return JsonResponse({"amount": amount, "email": email,
@@ -89,11 +100,27 @@ def payment_failure(request):
 
 @login_required
 def payment_success(request):
+    now = date.today().strftime("%Y-%m-%d")
     pay = TentCart.objects.filter(user=request.user).last()
     if request.is_ajax():
         txnid = request.POST.get("txnid")
         pay.txnid = txnid
         pay.save()
+
+        igst = pay.igst
+        coupon = pay.coupon
+        convenient = pay.convenient
+        ladder = pay.ladder
+        shipping = pay.shipping
+
+        count = pay.pk
+        amount = pay.amount
+        tent = pay.tent
+        invoice_message_tent(pay.email, os.environ.get("email"),tent=tent,
+                             txnid=txnid, now=now, name=pay.user.username,
+                             igst=igst, convenient=convenient, total=amount,
+                             count=count, coupon=coupon,
+                             ladder=ladder, shipping=shipping)
 
     return render(request, "payment/success.html", {"pay": pay})
 

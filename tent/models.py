@@ -25,7 +25,13 @@ class TentCart(models.Model):
     txnid = models.CharField(max_length=128, blank=True, null=True)
     amount = models.IntegerField(blank=True, null=True)
     email = models.CharField(max_length=128, blank=True, null=True)
+    igst = models.FloatField(blank=True, null=True)
+    convenient = models.FloatField(blank=True, null=True)
     created = models.DateField(auto_now=True)
+    coupon = models.FloatField(blank=True, null=True)
+    ladder = models.FloatField(blank=True, null=True)
+    shipping = models.FloatField(blank=True, null=True)
+    tent = models.FloatField(blank=True, null=True)
 
     def __str__(self):
         return self.user.username
