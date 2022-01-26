@@ -57,7 +57,7 @@ def tent_update_check(request, pk):
 
 
 def tents(request):
-    tents = Tent.objects.all()
+    tents = Tent.objects.all().order_by("-pk")
     return render(request, "tent/tents.html", {'tents': tents})
 
 
