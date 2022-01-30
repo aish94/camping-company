@@ -15,13 +15,13 @@
         <div class="row">
             {% for tent in tents %}
                 <div class="col-lg-6 col-12">
-                   <div class="card" style="height: 50rem;">
+                   <div class="card">
                        <div class="card__side card__side--front">
                             <div class="card__picture card__picture--2" style="background-image: url({{tent.main_tent_image.url}});">
                                 &nbsp;
                             </div>
                             <h4 class="card__heading">
-                                <span class="card__heading-span card__heading-span--2">{{tent.name}}&trade;</span>
+                                <span class="card__heading-span card__heading-span--2" style="text-transform: none;">{{tent.name}}&trade;</span>
                             </h4>
                             <div class="card__details">
                                 <p>{{tent.description}}</p>
