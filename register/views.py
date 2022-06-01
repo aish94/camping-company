@@ -28,6 +28,10 @@ def signup(request):
         number = request.POST.get("phone")
         code = request.POST.get("slug")
 
+        if len(number) > 11:
+            messages.warning(request, "Phone number should be less than 10")
+            return redirect("register:signin")
+
         if user_n.count() == 1 or user_e.count() == 1:
             messages.warning(request, "Username/email already taken or log in to complete signup")
             return redirect("register:signin")
