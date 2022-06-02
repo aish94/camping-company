@@ -28,7 +28,7 @@ def signup(request):
         number = request.POST.get("phone")
         code = request.POST.get("slug")
 
-        if len(number) > 11:
+        if len(number) > 10:
             messages.warning(request, "Phone number should be less than 10")
             return redirect("register:signin")
 
