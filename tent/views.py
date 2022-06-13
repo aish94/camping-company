@@ -76,7 +76,7 @@ def cart(request, slug):
         igst = math.ceil(float(request.POST.get("igst")))
         coupon = math.ceil(float(request.POST.get("coupon")))
         convenient = math.ceil(float(request.POST.get("convenient")))
-        ladder = math.ceil(float(request.POST.get("convenient")))
+        ladder = math.ceil(float(request.POST.get("ladder")))
         shipping = math.ceil(float(request.POST.get("shipping")))
         tent = math.ceil(float(request.POST.get("tent")))
 
