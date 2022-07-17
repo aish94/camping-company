@@ -16,7 +16,7 @@ idna==2.7
 jmespath==0.9.3
 Pillow==5.2.0
 pip-autoremove==0.9.1
-psycopg2==2.7.5
+psycopg2==2.8.3
 python-dateutil==2.7.3
 python-memcached==1.59
 pytz==2018.5
