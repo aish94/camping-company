@@ -1,11 +1,11 @@
-from django.conf.urls import url
+from django.urls import path
 from genie.views import create, index, show, offline
 
 app_name = "genie"
 
 urlpatterns = [
-    url(r'^$', index, name="index"),
-    url(r'^offline/$', offline, name="offline"),
-    url(r'^(?P<pk>\d+)/create$', create, name="create"),
-    url(r'^(?P<pk>\d+)/show$', show, name="show"),
+    path('', index, name="index"),
+    path('offline/', offline, name="offline"),
+    path('<int:pk>/create/', create, name="create"),
+    path('<int:pk>/show/', show, name="show"),
 ]

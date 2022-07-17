@@ -140,6 +140,8 @@ MEDIA_ROOT = MEDIA_DIR
 
 STATIC_ROOT = STATIC_ROOT_DIR
 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 LOGIN_URL = "/accounts/login/"
 
 CORS_REPLACE_HTTPS_REFERER      = False

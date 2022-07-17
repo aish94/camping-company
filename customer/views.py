@@ -97,7 +97,7 @@ def custom_itinerary(request):
                 hour = 12
         list1.append(list2)
 
-    if request.is_ajax():
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         message = request.POST.get("places")
         list1 = [int(s) for s in message.split(',')]
         itinerary = Itinerary(user=request.user)

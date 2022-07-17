@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.urls import path
 from destination.views import (destination, destination_detail_page,
                                circuits, circuit, success, camp_add,
                                camp_update, experiences, experience_detail,
@@ -7,14 +7,14 @@ from destination.views import (destination, destination_detail_page,
 app_name = "destination"
 
 urlpatterns = [
-    url(r'^$', destination, name="destinations"),
-    url(r'^experiences/$', experiences, name="experiences"),
-    url(r'circuits/$', circuits, name="circuits"),
-    url(r'success/$', success, name="success"),
-    url(r'experiences/booked/$', experience_success, name="experience_success"),
-    url(r'camp-add/$', camp_add, name="camp_add"),
-    url(r'experiences/(?P<slug>[\w-]+)/$', experience_detail, name="experience_detail"),
-    url(r'(?P<slug>[\w-]+)/update/$', camp_update, name="camp_update"),
-    url(r'^(?P<slug>[\w-]+)/$', destination_detail_page, name="destination_detail_page"),
-    url(r'^circuits/(?P<slug>[\w-]+)/$', circuit, name="circuit"),
+    path('', destination, name="destinations"),
+    path('experiences/', experiences, name="experiences"),
+    path('circuits/', circuits, name="circuits"),
+    path('success/', success, name="success"),
+    path('experiences/booked/', experience_success, name="experience_success"),
+    path('camp-add/', camp_add, name="camp_add"),
+    path('experiences/<slug:slug>/', experience_detail, name="experience_detail"),
+    path('<slug:slug>/update/', camp_update, name="camp_update"),
+    path('<slug:slug>/', destination_detail_page, name="destination_detail_page"),
+    path('circuits/<slug:slug>/', circuit, name="circuit"),
 ]

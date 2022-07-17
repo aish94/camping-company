@@ -17,32 +17,25 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from django.contrib import admin
-from django.urls import path
-from django.conf.urls import url, include
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^', include("app.urls", namespace="app")),
-    url(r'^equipment/', include("equipment.urls", namespace="equipment")),
-    url(r'^tent/', include("tent.urls", namespace="tent")),
-    url(r'^trip/', include("trip.urls", namespace="trip")),
-    url(r'^vehicles/', include("vehicle.urls", namespace="vehicle")),
-    url(r'^accounts/', include("register.urls", namespace="register")),
-    url(r'^user/', include("customer.urls", namespace="customer")),
-    url(r'^blog/', include("blog.urls", namespace="blog")),
-    url(r'^referral/', include("referral.urls", namespace="referral")),
-    url(r'^destination/', include("destination.urls", namespace="destination")),
-    url(r'^cart/', include("pay.urls", namespace="pay")),
-    url(r'^genie/', include("genie.urls", namespace="genie")),
-    url(r'^reviews/', include("reviews.urls", namespace="reviews")),
-    url(r'^django-rq/', include('django_rq.urls')),
+    path('', include("app.urls", namespace="app")),
+    path('equipment/', include("equipment.urls", namespace="equipment")),
+    path('tent/', include("tent.urls", namespace="tent")),
+    path('trip/', include("trip.urls", namespace="trip")),
+    path('vehicles/', include("vehicle.urls", namespace="vehicle")),
+    path('accounts/', include("register.urls", namespace="register")),
+    path('user/', include("customer.urls", namespace="customer")),
+    path('blog/', include("blog.urls", namespace="blog")),
+    path('referral/', include("referral.urls", namespace="referral")),
+    path('destination/', include("destination.urls", namespace="destination")),
+    path('cart/', include("pay.urls", namespace="pay")),
+    path('genie/', include("genie.urls", namespace="genie")),
+    path('reviews/', include("reviews.urls", namespace="reviews")),
+    path('django-rq/', include('django_rq.urls')),
 ]
-
-if settings.DEBUG:
-    import debug_toolbar
-    urlpatterns = [
-        path('__debug__/', include(debug_toolbar.urls)),
-    ] + urlpatterns
 
 if settings.DEBUG:
     urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

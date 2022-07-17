@@ -71,7 +71,7 @@ def cart(request, slug):
         messages.warning(request, "Complete Sign up")
         return redirect("register:welcome")
     razor_id = os.environ.get("razor_id")
-    if request.is_ajax():
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         amount = math.ceil(float(request.POST.get("total")))
         igst = math.ceil(float(request.POST.get("igst")))
         coupon = math.ceil(float(request.POST.get("coupon")))
@@ -102,7 +102,7 @@ def payment_failure(request):
 def payment_success(request):
     now = date.today().strftime("%Y-%m-%d")
     pay = TentCart.objects.filter(user=request.user).last()
-    if request.is_ajax():
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         txnid = request.POST.get("txnid")
         pay.txnid = txnid
         pay.save()

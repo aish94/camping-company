@@ -63,7 +63,7 @@ def destination(request):
             list2.append(x.total_rating // rev)
     maps = os.environ.get("maps")
     places = Map.objects.all().order_by("pk")
-    if request.is_ajax():
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         try:
             place = request.POST.get("place").split(" ")[0]
             place = ''.join(place)
@@ -138,7 +138,7 @@ def destination_detail_page(request, slug):
             "meta_des": meta_des
            }
 
-    if request.is_ajax():
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         if request.user.is_authenticated:
             days = int(request.POST.get("number"))
             caravan = int(request.POST.get("Caravan"))
@@ -195,7 +195,7 @@ def success(request):
         return redirect("app:home")
     customer = Customer.objects.get(user=request.user)
     payment = PaymentCampsite.objects.get(destination=book.destination.destination)
-    if request.is_ajax():
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         txnid = request.POST.get("txnid")
         book.txnid = txnid
         book.save()
@@ -226,7 +226,7 @@ def success(request):
 def camp_add(request):
     maps = os.environ.get("maps")
 
-    if request.is_ajax():
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         place = request.GET.get("place")
         destination = Destination.objects.filter(place=place)
         if destination.count() == 1:
@@ -555,7 +555,7 @@ def experience_detail(request, slug):
         messages.warning("experience does not exist")
         return redirect("app:home")
 
-    if request.is_ajax():
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         if request.user.is_authenticated:
             camper = int(request.POST.get("camper"))
             experiences = int(request.POST.get("experiences"))
@@ -583,7 +583,7 @@ def experience_success(request):
     except:
         messages.warning(request, "Book a experience first")
         return redirect("app:home")
-    if request.is_ajax():
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         txnid = request.POST.get("txnid")
         book.txnid = txnid
         book.save()

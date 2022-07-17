@@ -99,7 +99,7 @@ def event_form(request):
 
 
 def event_pay(request):
-    if request.is_ajax():
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         try:
             user = User.objects.get(pk=request.user.pk)
         except:
@@ -136,7 +136,7 @@ def payment_failure(request):
 @login_required
 def payment_success(request):
     pay = EventCart.objects.filter(user=request.user).last()
-    if request.is_ajax():
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         txnid = request.POST.get("txnid")
         pay.txnid = txnid
         pay.save()

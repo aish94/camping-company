@@ -1,9 +1,9 @@
-from django.conf.urls import url
+from django.urls import path
 from referral.views import referred_view
 
 
 app_name = "referral"
 
 urlpatterns = [
-    url(r'^(?P<slug>[\w-]+)/$', referred_view, name="referred"),
+    path('<slug:slug>/', referred_view, name="referred"),
 ]

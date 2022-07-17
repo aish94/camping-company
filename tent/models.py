@@ -78,7 +78,7 @@ class TentImage(models.Model):
 
 
 def tent_pre_save_receiver(sender, instance, **kwargs):
-    instance.slug = "".join(["-" if x is " " else x for x in instance.name])
+    instance.slug = "".join(["-" if x == " " else x for x in instance.name])
 
 
 pre_save.connect(tent_pre_save_receiver, sender=Tent)

@@ -9,7 +9,7 @@ from django.contrib import messages
 
 
 def destination_add_review(request):
-    if request.is_ajax():
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         if request.user.is_authenticated:
             des = Destination.objects.get(slug=request.POST.get("slug"))
             rating = request.POST.get("star")
@@ -23,7 +23,7 @@ def destination_add_review(request):
 
 
 def blog_add_review(request):
-    if request.is_ajax():
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         if request.user.is_authenticated:
             blog = Blog.objects.get(slug=request.POST.get("slug"))
             rating = request.POST.get("star")

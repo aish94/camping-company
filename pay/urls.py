@@ -1,10 +1,11 @@
-from django.conf.urls import url
-from pay.views import (cart, payment_success, payment_failure)
+from django.urls import path
+from genie.views import create, index, show, offline
 
-app_name = "pay"
+app_name = "genie"
 
 urlpatterns = [
-    url(r'^$', cart, name="pay"),
-    url(r'^success/$', payment_success, name="success"),
-    url(r'^failure/$', payment_failure, name="failure"),
+    path('', index, name="index"),
+    path('offline/', offline, name="offline"),
+    path('<int:pk>/create/', create, name="create"),
+    path('<int:pk>/show/', show, name="show"),
 ]

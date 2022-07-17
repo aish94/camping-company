@@ -23,7 +23,7 @@ def payment_success(request):
     except:
         messages.warning(request, "Book a car first")
         return redirect("app:home")
-    if request.is_ajax():
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         duration = int(request.POST.get("duration"))
         check_in = request.POST.get("check_in").replace("-", "")
         check_in = datetime.datetime.strptime(check_in, "%Y%m%d").date()
@@ -85,13 +85,13 @@ def cart(request):
         messages.warning(request, "Complete Sign up")
         return redirect("register:welcome")
     razor_id = os.environ.get("razor_id")
-    if not request.is_ajax():
+    if not request.headers.get('x-requested-with') == 'XMLHttpRequest':
         # this logic making redirection after sign up not working
         try:
             price = int(request.POST.get("price"))
         except:
             return redirect("app:home")
-    if request.is_ajax():
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         amount = math.ceil(float(request.POST.get("total")))
         car_price = request.POST.get("car_price")
         person_price = math.ceil(float(request.POST.get("person_price")))

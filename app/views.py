@@ -61,7 +61,7 @@ def detail_user(request, pk):
     except:
         messages.warning(request, "This user has incomplete signup/user info is corrupted")
         return redirect("app:all_user")
-    if request.is_ajax():
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         lead_status = request.POST.get("lead_status")
         Customer.objects.filter(user=user).update(
             lead_status=lead_status)
@@ -146,7 +146,7 @@ def show_status(request, pk):
 @login_required
 def represent(request):
     if request.user.is_superuser:
-        if request.is_ajax():
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
             email = request.POST.get("email")
             try:
                 user = User.objects.get(email=email)

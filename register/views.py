@@ -150,7 +150,7 @@ def welcome(request):
 
 def pass_reset(request):
 
-    if request.is_ajax():
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         email = request.POST.get("email")
         try:
             user = User.objects.get(email=email)
