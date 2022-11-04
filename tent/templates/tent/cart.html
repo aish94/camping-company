@@ -129,7 +129,7 @@ window.onload = function(){
   var taxs = 0;
   var shippings = 0;
   var taxRate = 0.18;
-  var shippingRate = .025;
+  var shippingRate = .022;
   var fadeTime = 300;
   var coupon = 0;
   var pri = {{tent.price}};
@@ -158,8 +158,8 @@ window.onload = function(){
 
       /* Calculate totals */
       var tax = {{tent.price}} * taxRate;
-      var shipping = (subtotal + tax) * shippingRate;
-      var total = subtotal + tax + shipping;
+      var total = subtotal + tax;
+      var shipping = total * shippingRate;
       totals = total
       taxs = tax
       shippings = shipping

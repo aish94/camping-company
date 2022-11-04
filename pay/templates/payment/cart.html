@@ -275,7 +275,7 @@
   var taxs = 0;
   var shippings = 0;
   var taxRate = 0.18;
-  var shippingRate = .025;
+  var shippingRate = .022;
   var fadeTime = 300;
   var coupon = 0;
   var pri = {{price}} * duration;
@@ -289,12 +289,12 @@ $('.product-price')[3].textContent = 2000
 $('#car-price').html(pri)
 
 var tax = pri * taxRate;
-var shipping = pri * shippingRate;
+var total = pri + tax;
+var shipping = total * shippingRate;
 
-var total = pri + tax + shipping;
 $(".totals-value")[0].textContent = pri
 $(".totals-value")[1].textContent = (.18 * pri).toFixed(2);
-$(".totals-value")[2].textContent = (shippingRate * pri).toFixed(2);
+$(".totals-value")[2].textContent = (shipping).toFixed(2);
 $(".totals-value")[3].textContent = total.toFixed(2);
 
 $('#cart-payable').html((total).toFixed(2));
