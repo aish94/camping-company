@@ -294,7 +294,7 @@ var shipping = pri * shippingRate;
 var total = pri + tax + shipping;
 $(".totals-value")[0].textContent = pri
 $(".totals-value")[1].textContent = (.18 * pri).toFixed(2);
-$(".totals-value")[2].textContent = (.024 * pri).toFixed(2);
+$(".totals-value")[2].textContent = (shippingRate * pri).toFixed(2);
 $(".totals-value")[3].textContent = total.toFixed(2);
 
 $('#cart-payable').html((total).toFixed(2));
